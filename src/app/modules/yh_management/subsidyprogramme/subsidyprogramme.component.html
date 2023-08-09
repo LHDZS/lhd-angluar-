@@ -1,0 +1,198 @@
+<div class="form-container">
+    <nx-zlw-header-search-panel #headerSearchPanel [model]="searchPanelModel"></nx-zlw-header-search-panel>
+    <nx-zlw-toolbar-panel #toolbarPanel [model]="toolbarPanelModel"></nx-zlw-toolbar-panel>
+    <div class="wrapper">
+        <nx-zlw-form-list #formListInstance [model]="model"></nx-zlw-form-list>
+    </div>
+    <dx-popup
+        width="650"
+        height="410"
+        [(visible)]="popupVisible"
+        [dragEnabled]="false"
+        [showTitle]="true"
+        [title]="title"
+        (onHiding)="onHiding($event)"
+    >
+    <dx-form
+    #form
+    id="form"
+    [colCount]="1"
+    width="100%"
+    [(formData)]="formData"
+    style="padding-right: 10px;margin-bottom: 20px;"
+    [showRequiredMark]="true"
+>
+    <dxi-item itemType="group" [colCount]="2" cssClass="group-row">
+        <dxi-item
+            [label]="{ text: '项目名称', alignment: 'right',showColon: false }"
+            dataField="YHSubsidyName"
+            [editorOptions]="{ placeholder: '请输入项目名称' }"
+        >
+            <dxi-validation-rule type="required" message="项目名称必填"> </dxi-validation-rule>
+            <dxi-validation-rule type="stringLength" min="0" max="30" message="项目名称内容长度最大30字">
+            </dxi-validation-rule>
+            <dxi-validation-rule type="pattern" message="非法字符" [pattern]="limitCharacter"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '项目编码', alignment: 'right',showColon: false }"
+            dataField="YhSubsidyCode"
+            [editorOptions]="{ placeholder: '请输入项目编码' }"
+        >
+            <dxi-validation-rule type="required" message="项目编码必填"> </dxi-validation-rule>
+            <dxi-validation-rule type="stringLength" min="1" max="4" message="项目编码最多4位数">
+            </dxi-validation-rule>
+            <dxi-validation-rule type="pattern" message="非法字符" [pattern]="limitNumberCharacter"></dxi-validation-rule>
+        </dxi-item>
+        </dxi-item>
+    <dxi-item itemType="group" [colCount]="2" cssClass="group-row">
+        <dxi-item
+            [label]="{ text: '补扣类型', alignment: 'right',showColon: false }"
+            editorType="dxSelectBox"
+            [editorOptions]="{
+                dataSource: subsidyTypeSource,
+                valueExpr: 'DictId',
+                displayExpr: 'DictName',
+                placeholder: '请选择补扣类型'
+            }"
+            dataField="YhSubsidyType"
+        >
+            <dxi-validation-rule type="required" message="补扣类型必填"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '备注', alignment: 'right',showColon: false }"
+            dataField="Remarks"
+            [editorOptions]="{ placeholder: '请输入备注' }"
+        >
+            <dxi-validation-rule type="stringLength" min="0" max="400" message="备注内容长度最大400字">
+            </dxi-validation-rule>
+            <dxi-validation-rule type="pattern" message="非法字符" [pattern]="limitCharacter"></dxi-validation-rule>
+        </dxi-item>
+    </dxi-item>
+    <dxi-item itemType="group" [colCount]="2" cssClass="group-row">
+        <dxi-item
+            [label]="{ text: '状态', alignment: 'right',showColon: false }"
+            editorType="dxRadioGroup"
+            dataField="Status"
+            [editorOptions]="{
+                items: [
+                    { label: '启用', value: true },
+                    { label: '禁用', value: false }
+                ],
+                valueExpr: 'value',
+                displayExpr: 'label',
+                layout: 'horizontal'
+            }"
+        >
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '允许调整', alignment: 'right',showColon: false }"
+            editorType="dxRadioGroup"
+            dataField="AllowAdjust"
+            [editorOptions]="{
+                items: [
+                    { label: '允许', value: true },
+                    { label: '禁止', value: false }
+                ],
+                valueExpr: 'value',
+                displayExpr: 'label',
+                layout: 'horizontal'
+            }"
+        >
+        </dxi-item>
+    </dxi-item>
+    <dxi-item itemType="group" [colCount]="1" cssClass="group-row">
+        <dxi-item
+            [label]="{ text: '是否计入毛利', alignment: 'right',showColon: false }"
+            editorType="dxRadioGroup"
+            dataField="GrossProfit"
+            [editorOptions]="{
+                items: [
+                    { label: '是', value: true },
+                    { label: '否', value: false }
+                ],
+                valueExpr: 'value',
+                displayExpr: 'label',
+                layout: 'horizontal'
+            }"
+        >
+        </dxi-item>
+    </dxi-item>
+    <dxi-item itemType="group" [colCount]="1" cssClass="group-row">
+        <dxi-item
+            [label]="{ text: '计算公式', alignment: 'right',showColon: false }"
+            editorType="dxRadioGroup"
+            dataField="ExpType"
+            [editorOptions]="{
+                items: [
+                    { label: '指标系数', value: 1 },
+                    { label: '固定金额', value: 2 },
+                    { label: '自定义公式', value: 3 }
+                ],
+                valueExpr: 'value',
+                displayExpr: 'label',
+                layout: 'horizontal',
+                onValueChanged: onExpTypeChanged
+            }"
+        >
+            <dxi-validation-rule type="required" message="计算公式必选"> </dxi-validation-rule>
+        </dxi-item>
+    </dxi-item>
+    <dxi-item *ngIf="ExpType==1" itemType="group" [colCount]="2" cssClass="group-row">
+        <dxi-item
+            [label]="{ text: '指标', alignment: 'right',showColon: false }"
+            editorType="dxSelectBox"
+            [editorOptions]="{
+                dataSource: fieldsSource2,
+                valueExpr: 'fieldText',
+                displayExpr: 'fieldText',
+                placeholder: '请选择指标',
+                grouped:true,
+                searchEnabled:true
+            }"
+            dataField="Indicator"
+        >
+            <dxi-validation-rule type="required" message="指标必填"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '系数', alignment: 'right',showColon: false }"
+            dataField="Factor"
+            [editorOptions]="{ placeholder: '请输入系数' }"
+        >
+            <dxi-validation-rule type="required" message="系数必填"></dxi-validation-rule>
+            <dxi-validation-rule type="pattern" message="限制4位小数" [pattern]="limitNumber2Character"></dxi-validation-rule>
+        </dxi-item>
+    </dxi-item>
+    <dxi-item *ngIf="ExpType==2" itemType="group" [colCount]="1" cssClass="group-row">
+        <dxi-item
+            [label]="{ text: '金额', alignment: 'right',showColon: false }"
+            dataField="Amount"
+            [editorOptions]="{ placeholder: '请输入金额' }"
+        >
+            <dxi-validation-rule type="required" message="金额必填"></dxi-validation-rule>
+            <dxi-validation-rule type="pattern" message="限制2位小数" [pattern]="limitNumber3Character"></dxi-validation-rule>
+        </dxi-item>
+    </dxi-item>
+    <dxi-item *ngIf="ExpType==3" itemType="group" [colCount]="1" cssClass="group-row">
+        <dxi-item style=" display: flex;">
+            <div class="operation-title">
+                <i style="color:red;">*</i><span style="color:#666;margin-right: 10px;"> 自定义公式</span>
+            </div>
+            <div id="Expression" style="cursor: pointer;flex:1;min-height: 50px;overflow: auto;border:1px solid #cedae4;padding:5px;" (click)="openFormula()">
+                <dx-text-area [height]="60" [maxLength]="null" [(value)]="Expression" placeholder="请输入计算公式" [disabled]="true">
+                </dx-text-area>
+                <!-- {{Expression}}
+                <span style="color:#8899a8;" *ngIf="!Expression">请输入计算公式</span> -->
+            </div>
+        </dxi-item>
+    </dxi-item>
+    </dx-form>
+    <dxi-item itemType="group" [colCount]="1" cssClass="group-row1">
+        <dxi-item style="text-align: center">
+            <dx-button style="margin-right: 10px;" type="default" text="保存并新增" (onClick)="onFormSubmit(true)" [disabled]="saveDisabled"></dx-button>
+            <dx-button type="default" text="保存" (onClick)="onFormSubmit(false)" [disabled]="saveDisabled"></dx-button>
+        </dxi-item>
+    </dxi-item>
+    </dx-popup>
+    <app-formula-computing #formulaComputing [(visible)]="visible" (sure)="sureFormula($event)">
+    </app-formula-computing>
+</div>

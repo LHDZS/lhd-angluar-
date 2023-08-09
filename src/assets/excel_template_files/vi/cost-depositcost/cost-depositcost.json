@@ -1,0 +1,42 @@
+[
+    {
+        "caption": "*Này bắt đầu",
+        "dataField": "DataDate",
+        "dataType": "date"
+      }, 
+    {
+      "caption": "*Số tai/ lô",
+      "dataField": "EarNumber",
+      "dataType": "string"
+    }, 
+    {
+        "caption": "Cân nặng (kg)",
+        "dataField": "PigTotalWeight",
+        "dataType": "string"
+    }, 
+    {
+        "caption": "*giá thành heo thịt/ Chi phítrả trước và khấu hao TSCĐ của heo giống (tệ)",
+        "dataField": "PigCost",
+        "dataType": "string"
+    }, 
+    {
+        "caption": "*Giá thành cám (tệ)",
+        "dataField": "MaterialCost",
+        "dataType": "string"
+    }, 
+    {
+        "caption": "*Giá thành thuốc (tệ)",
+        "dataField": "MedicantCost",
+        "dataType": "string"
+    }, 
+    {
+        "caption": "*Giá thành vắc xin (tệ)",
+        "dataField": "VaccineCost",
+        "dataType": "string"
+    }, 
+    {
+        "caption": "*Chi phí (tệ)",
+        "dataField": "ExpensesCost",
+        "dataType": "string"
+    }
+]

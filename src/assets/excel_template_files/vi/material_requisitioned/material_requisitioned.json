@@ -1,0 +1,43 @@
+[
+    {
+        "caption": "*Kho",
+        "dataField": "WarehouseId",
+        "dataType": "string"
+      },
+      {
+        "caption": "*Cài đặt kho",
+        "dataField": "GodownMan",
+        "dataType": "string"
+      },
+      {
+        "caption": "*Người lĩnh",
+        "dataField": "Recipient",
+        "dataType": "string"
+      },
+      {
+        "caption": "*Ngày lĩnh",
+        "dataField": "DataDate",
+        "dataType": "date"
+      },
+    
+      {
+        "caption": "*Kiểu lĩnh",
+        "dataField": "RequisitionUnitType",
+        "dataType": "string"
+      },
+      {
+        "caption": "*Đơn vị lĩnh",
+        "dataField": "RequisitionUnit",
+        "dataType": "string"
+      },
+      {
+        "caption": "*Tên vật tư",
+        "dataField": "RequisitionObject",
+        "dataType": "string"
+      },
+      {
+        "caption": "*Số lượng",
+        "dataField": "Quantity",
+        "dataType": "string"
+      }
+]

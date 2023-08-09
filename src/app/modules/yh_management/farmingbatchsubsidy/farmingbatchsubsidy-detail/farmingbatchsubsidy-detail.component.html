@@ -1,0 +1,249 @@
+<view-container>
+
+    <dx-load-panel shadingColor="rgba(0,0,0,0)" [showPane]="true" [shading]="true" [showIndicator]="true"
+        [(visible)]="loading">
+    </dx-load-panel>
+
+    <dx-popup
+        #popup
+        [width]="400"
+        [height]="400"
+        [showTitle]="true"
+        title="{{ messageBoxDisplayText }}"
+        [dragEnabled]="true"
+        [closeOnOutsideClick]="false"
+        [(visible)]="messageBoxVisible"
+        [shading]="false"
+        [resizeEnabled]="true"
+    >
+        <dxo-position at="right bottom" offset="-220 -280" of="Window"> </dxo-position>
+        <div class="message-box-wrapper">
+            <dx-scroll-view width="100%" height="100%">
+                <p *ngIf="messageBoxInfo.length == 0" style="font-size: 14px">{{ notMessageDisplayText }}</p>
+                <div class="message-box-info" *ngFor="let info of messageBoxInfo">
+                    <p [innerHTML]="info | SafeHtml"></p>
+                </div>
+            </dx-scroll-view>
+        </div>
+    </dx-popup>
+
+    <editor-grid #editorGrid [fullScreen]="false" [mode]="mode">
+        <editor-toolbar #editorToolbar [zqModel]="this">
+            <dx-button position="left" [elementAttr]="{ name: 'add-btn' }" (onClick)="onCreate('1')"></dx-button>
+            <dx-button position="left" [elementAttr]="{ name: 'save-btn' }" (onClick)="onSave()"></dx-button>
+            <dx-button position="left" [elementAttr]="{ name: 'cancel-btn' }" (onClick)="onCancel()"></dx-button>
+            <dx-button position="left" [elementAttr]="{ name: 'delete-btn' }" (onClick)="onDelete()"></dx-button>
+        </editor-toolbar>
+        <editor-header>
+            <editor-header-group>
+                <editor-header-item [defaultValue]="defaultData.DataDate">
+                    <label required>日期</label>
+                    <dx-date-box
+                        [(value)]="data.DataDate"
+                        [openOnFieldClick]="true"
+                        [showClearButton]="false"
+                        [acceptCustomValue]="false"
+                        displayFormat="yyyy-MM-dd"
+                        [readOnly]="submited"
+                    ></dx-date-box>
+                </editor-header-item>
+                <editor-header-item [defaultValue]="defaultData.YHFarmerID">
+                    <label required>养户</label>
+                    <dx-select-box
+                        [(value)]="data.YHFarmerID"
+                        [dataSource]="yhFarmerSource"
+                        placeholder=""
+                        valueExpr="YHFarmerID"
+                        displayExpr="YHFarmerName"
+                        searchEnabled="true" 
+                        [readOnly]="submited || hasDetail"
+                        (onValueChanged)="onFarmerChanged($event)"
+                    ></dx-select-box>
+                </editor-header-item>
+                <editor-header-item [defaultValue]="defaultData.YHBatch">
+                    <label required>批次</label>
+                    <dx-select-box
+                        [(value)]="data.YHBatch"
+                        [dataSource]="yhBatchSource"
+                        placeholder=""
+                        valueExpr="YHBatchID"
+                        displayExpr="YHBatchName"
+                        searchEnabled="true" 
+                        [readOnly]="submited || hasDetail"
+                        (onValueChanged)="onYHBatchChanged($event)"
+                    ></dx-select-box>
+                </editor-header-item>
+                <editor-header-item [defaultValue]="data.ChickenFarmName">
+                    <label>养殖场</label>
+                    <dx-text-box placeholder=""  readOnly="true" [(value)]="data.ChickenFarmName" ></dx-text-box>
+                </editor-header-item>
+            </editor-header-group>
+            <editor-header-group>   
+                <editor-header-item [defaultValue]="data.Remarks">
+                    <label>备注</label>
+                    <dx-text-box placeholder=""  [readOnly]="submited" [(value)]="data.Remarks" ></dx-text-box>
+                </editor-header-item>
+                <editor-header-item>
+                    <label>单据号：</label>
+                    <span>{{ data.Number || '--' }}</span>
+                </editor-header-item>
+                <editor-header-item>
+                </editor-header-item>
+                <editor-header-item>
+                </editor-header-item>
+            </editor-header-group>
+        </editor-header>
+        <editor-multiple-grid>
+            <editor-grid-tab (onOptionClick)="onDetailOptionClick($event)" >
+                <!-- ,{ text: '删行', key: 'del',visible:submited } -->
+                <editor-grid-item [title]="title1" [options]="[{ text: '调整公式', key: 'addStock',visible:submited },{ text: '行筛选', key: 'rowFilter' }]">
+                    <dx-data-grid
+                        #detailGrid
+                        [dataSource]="detailSource"
+                        width="100%"
+                        height="70%"
+                        [sorting]="false"
+                        (onEditorPreparing)="onDetailEditorPreparing($event)"
+                    >
+                        <dxo-filter-row [visible]="rowFilter"></dxo-filter-row>
+                        <dxi-column dataField="IDENTITY_RECORD"></dxi-column>
+                        <template *ngFor = "let item of columnSettingArr">
+                            <template *ngIf="item.visible">
+                                <dxi-column
+                                    [fixed] = "item.fixed"
+                                    [cssClass]="classType(item)"
+                                    [minWidth] = "item.width"
+                                    [caption] = "item.caption"
+                                    [dataField] = "item.dataField"
+                                    [dataType] = "item.dataType?item.dataType:'string'"
+                                    [allowEditing]="item.allowEditing"
+                                    [alignment]="item.editorOptions ? 'right' : 'center'"
+                                    [calculateDisplayValue] = "item.calculateDisplayValue"
+                                    [editorOptions] = "item.editorOptions ? item.editorOptions : undefined"
+                                >
+                                    <dxo-lookup
+                                        *ngIf="item.calculateDisplayValue"
+                                        [dataSource]="giveDataSource(item)"
+                                        [displayExpr]="item.displayExpr"
+                                        [valueExpr]="item.valueExpr"
+                                        [allowClearing]="item.allowClearing"
+                                        (Changed)="itemValueChanged($event)"
+                                    ></dxo-lookup>
+                                    <dxo-format *ngIf="item.editorOptions" type="fixedPoint" [precision]="item.fixedPoint"></dxo-format>
+                                </dxi-column>
+                            </template>
+                        </template>
+                        <dxo-editing [enabled]="true" [allowUpdating]="!submited"></dxo-editing>
+                    </dx-data-grid>
+                </editor-grid-item>
+            </editor-grid-tab>
+        </editor-multiple-grid>
+        <!-- <editor-remark [defaultValue]="data.Remarks" [(value)]="data.Remarks" [readOnly]="submited"></editor-remark> -->
+        <editor-review-remote
+            #review
+            [numericalOrder]="data.NumericalOrder"
+            [appId]="appId"
+            [load]="getReviewInfo"
+            [userId]="userId"
+            [operation]="operationReview"
+            [order]="true"
+            [orderly]="['review']"
+            (onReviewOptionChanged)="onReviewOptionChanged($event)"
+        >
+            <editor-review-remote-item type="review"></editor-review-remote-item>
+            <editor-review-remote-item type="making"></editor-review-remote-item>
+        </editor-review-remote>
+    </editor-grid>
+    <div
+        [ngClass]="{
+            'reviewed-img': true,
+            'reviewed-img-hidden': !reviewed,
+            'reviewed-zh': lang == 'zh' || lang == 'zh_cn',
+            'reviewed-vi': lang == 'vi'
+        }"
+    ></div>
+    <!-- <app-upload-view [readonly]="submited" (fileListChange)="fileListChanged($event)" [numericalOrder]="data.NumericalOrder"></app-upload-view> -->
+    <dx-popup
+        width="450"
+        height="250"
+        [(visible)]="outVisible"
+        [dragEnabled]="false"
+        [showTitle]="true"
+        title="养殖批次补扣"
+        (onHiding)="onHiding($event)"
+    >
+    <dx-form
+    #form
+    id="form"
+    [colCount]="1"
+    width="100%"
+    [(formData)]="formData"
+    style="padding-right: 10px;margin-bottom: 20px;"
+    [showRequiredMark]="true"
+>
+    <dxi-item itemType="group" [colCount]="1" cssClass="group-row">
+        <dxi-item
+            [label]="{ text: '项目名称', alignment: 'right',showColon: false }"
+            dataField="YHSubsidyName"
+            [editorOptions]="{readOnly:true }"
+        >
+        </dxi-item>
+    </dxi-item>
+    <dxi-item *ngIf="ExpType==1" itemType="group" [colCount]="2" cssClass="group-row">
+        <dxi-item
+            [label]="{ text: '指标', alignment: 'right',showColon: false }"
+            editorType="dxSelectBox"
+            [editorOptions]="{
+                dataSource: fieldsSource2,
+                valueExpr: 'fieldText',
+                displayExpr: 'fieldText',
+                placeholder: '请选择指标',
+                grouped:true,
+                searchEnabled:true
+            }"
+            dataField="Indicator"
+        >
+            <dxi-validation-rule type="required" message="指标必填"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '系数', alignment: 'right',showColon: false }"
+            dataField="Factor"
+            [editorOptions]="{ placeholder: '请输入系数' }"
+        >
+            <dxi-validation-rule type="required" message="系数必填"></dxi-validation-rule>
+            <dxi-validation-rule type="pattern" message="限制4位小数" [pattern]="limitNumber2Character"></dxi-validation-rule>
+        </dxi-item>
+    </dxi-item>
+    <dxi-item *ngIf="ExpType==2" itemType="group" [colCount]="1" cssClass="group-row">
+        <dxi-item
+            [label]="{ text: '金额', alignment: 'right',showColon: false }"
+            dataField="Amount"
+            [editorOptions]="{ placeholder: '请输入金额' }"
+        >
+            <dxi-validation-rule type="required" message="金额必填"></dxi-validation-rule>
+            <dxi-validation-rule type="pattern" message="限制2位小数" [pattern]="limitNumber3Character"></dxi-validation-rule>
+        </dxi-item>
+    </dxi-item>
+    <dxi-item *ngIf="ExpType==3" itemType="group" [colCount]="1" cssClass="group-row">
+        <dxi-item style=" display: flex;">
+            <!-- <div class="operation-title">
+                <i style="color:red;">*</i><span style="color:#666;margin-right: 10px;"> 自定义公式</span>
+            </div> -->
+            <div id="Expression" style="cursor: pointer;flex:1;min-height: 50px;overflow: auto;border:1px solid #cedae4;padding:5px;" (click)="openFormula()">
+                <!-- {{Expression}} -->
+                <dx-text-area [height]="60" [maxLength]="null" [(value)]="Expression" placeholder="请输入计算公式" [disabled]="true">
+                </dx-text-area>
+                <!-- <span style="color:#8899a8;" *ngIf="!Expression">请输入计算公式</span> -->
+            </div>
+        </dxi-item>
+    </dxi-item>
+    </dx-form>
+    <dxi-item itemType="group" [colCount]="1" cssClass="group-row1">
+        <dxi-item style="text-align: center">
+            <dx-button type="default" text="确定" (onClick)="onFormSubmit()"></dx-button>
+        </dxi-item>
+    </dxi-item>
+    </dx-popup>
+    <app-formula-computing #formulaComputing [(visible)]="visible" (sure)="sureFormula($event)">
+    </app-formula-computing>
+</view-container>

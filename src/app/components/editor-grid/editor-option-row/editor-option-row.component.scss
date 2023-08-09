@@ -1,0 +1,11 @@
+:host {
+    .editor-option-row {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        .add-delete-wrapper {
+            width: auto;
+            height: 100%;
+        }
+    }
+}

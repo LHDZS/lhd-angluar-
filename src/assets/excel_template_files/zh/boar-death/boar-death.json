@@ -1,0 +1,34 @@
+[
+  {
+    "caption": "*死亡日期",
+    "dataField": "DataDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "公猪批次",
+    "dataField": "BatchID",
+    "dataType": "string"
+  },
+  {
+    "caption": "* 耳号",
+    "dataField": "EarNumber",
+    "dataType": "string"
+  },
+  
+  {
+    "caption": "* 死亡类型",
+    "dataField": "DeathTypeID",
+    "dataType": "string"
+  },
+  {
+    "caption": "* 死亡原因",
+    "dataField": "DeathReasonID",
+    "dataType": "string"
+  },
+  {
+    "caption": "* 重量（公斤）",
+    "dataField": "Weight",
+    "dataType": "string"
+  }
+
+]

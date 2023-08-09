@@ -1,0 +1,8 @@
+<div class="editor-review-remote-container" ngClass="{{ _items.length == 1 ? 'single' : '' }}">
+    <div class="editor-review-remote-item" *ngFor="let item of _items">
+        <span>{{ item.label }} : {{ item.personName || '--' }}</span>
+        <span *ngIf="item.code != 65536" (click)="_onReviewClick(item)" class="editor-review-remote-review-btn">{{
+            item.reviewed ? '取消审核' : '审核'
+        }}</span>
+    </div>
+</div>

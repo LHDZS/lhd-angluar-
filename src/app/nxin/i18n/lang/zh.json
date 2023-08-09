@@ -1,0 +1,197 @@
+{
+    "commandOptions": {
+        "create": {
+            "text": "新增",
+            "success": "新增成功",
+            "failed": "新增失败"
+        },
+        "delete": {
+            "text": "删除",
+            "success": "删除成功",
+            "failed": "删除失败",
+            "confirm": "您确认要删除吗?",
+            "confirmTitle": "提示",
+            "confirmFormat": "您确认要删除这 {0} 项吗?",
+            "emptyMessage": "请选择要删除的行",
+            "confirmFormatMore": "`当前为第{0}页 共{1}页 {2}条数据，已关联{p}条数据"
+        },
+        "examine": {
+            "text": "审核",
+            "range": "批量审核",
+            "cancel": "取消审核",
+            "success": "审核成功",
+            "failed": "审核失败",
+            "confirm": "您确认要审核吗?",
+            "confirmTitle": "提示",
+            "confirmFormat": "您确认要审核这 {0} 项吗?",
+            "emptyMessage": "请选择要审核的行",
+            "noRights": "您没有审核权限"
+        },
+        "search": {
+            "text": "查询"
+        },
+        "edit": {
+            "text": "修改",
+            "success": "修改成功",
+            "failed": "修改失败"
+        },
+        "save": {
+            "text": "保存",
+            "success": "保存成功",
+            "failed": "保存失败",
+            "noChange": "您没有修改任何内容",
+            "error": "接口请求异常"
+        },
+        "reset": {
+            "text": "重置"
+        },
+        "cancel": {
+            "text": "撤销"
+        },
+        "refresh": {
+            "text": "刷新"
+        },
+        "setting": {
+            "text": "设置"
+        },
+        "filterRow": {
+            "text": "筛选行"
+        },
+        "moreOptions": {
+            "text": "更多操作"
+        },
+        "exportExcel": {
+            "text": "导出Excel"
+        },
+        "import": {
+            "text": "导入"
+        },
+        "print": {
+            "text": "打印"
+        },
+        "all": {
+            "text": "全部"
+        },
+        "cleanAll": {
+            "text": "清空全部"
+        },
+        "empty": {
+            "text": "空白"
+        },
+        "ok": {
+            "text": "确定"
+        },
+        "pager": {
+            "pageInfo": "当前为第{0}页 共{1}页 {2}条数据"
+        },
+        "down": {
+            "text": "展开"
+        },
+        "up": {
+            "text": "收起"
+        },
+        "selected": {
+            "text": "已选择 {0} 项"
+        },
+        "options": {
+            "text": "操作"
+        },
+        "yes": {
+            "text": "是"
+        },
+        "no": {
+            "text": "否"
+        },
+        "printQuantityPerLine": {
+            "text": "每行打印数量"
+        },
+        "headSetting": {
+            "text": "表单设置"
+        }
+    },
+    "messageBox": {
+        "text": "消息盒子",
+        "noMessage": "暂无消息提示"
+    },
+    "dataGridOptions": {
+        "emptyData": "暂无数据",
+        "rowOptions": {
+            "add": {
+                "text": "增行",
+                "insertOn": "在上方插入行",
+                "insertDown": "在下方插入行",
+                "copyOn": "复制行到上方",
+                "copyDown": "复制行到下方",
+                "deleteRow": "删除当前行",
+                "appendRow": "添加行"
+            },
+            "delete": {
+                "text": "删行"
+            },
+            "copy": {
+                "text": "复制"
+            },
+            "index": {
+                "text": "序号"
+            }
+        },
+        "remarks": {
+            "text": "备注",
+            "placeholder": "请输入备注信息"
+        },
+        "summary": {
+            "sum": {
+                "text": "合计"
+            }
+        },
+        "save": {
+            "notSaveEmptyData": "不可以保存空数据",
+            "checkSaveData": "请检查您输入的内容"
+        },
+        "review": {
+            "reviewed": "单据已审核无法进行操作",
+            "saveDataAfter": "请先保存数据，然后再操作",
+            "noPermission": "您没有审核权限"
+        }
+    },
+    "dataGridWidgets": {
+        "dateBox": {
+            "placeholder": "请选择"
+        }
+    },
+    "printComponent": {
+        "notSavedMessage": "当前单据未保存，不可打印",
+        "noData": "暂无数据"
+    },
+    "importComponent": {
+        "text": "导入数据",
+        "importTemplateTitle": "导入Excel模板",
+        "tip": "批量导入数据，建议您按照系统模板填写",
+        "downloadTip": "点击下载系统模板",
+        "clickUpload": "点击上传",
+        "uploadSupport": "支持扩展名：",
+        "importing": "导入数据中，请耐心等待一会儿",
+        "error": {
+            "have": "有",
+            "num": "个错误",
+            "view": "点击查看"
+        },
+        "buttonImporting": "导入中...",
+        "buttonImport": "导入",
+        "errorListTitle": "异常列表",
+        "column": "列",
+        "columnNotFound": "不存在或列名称不正确",
+        "redownloadTemplate": "请检查模板或重新下载模板",
+        "importFileBeforeSave": "请先导入文件再提交",
+        "importDataException": "导入数据错误，请确认模板是否正确且不是空文件",
+        "index": "第",
+        "line": "行",
+        "inputError": "填写错误",
+        "importSuccess": "导入成功",
+        "importFailed": "导入失败"
+    },
+    "reviewComponent": {
+        "maker": "制单人",
+        "audit": "审核人"
+    }
+}

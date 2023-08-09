@@ -1,0 +1,226 @@
+<view-container>
+<div class="yhfamershortcut">
+  <!-- <app-print-page class="print" #printPage (getSource)="getSource($event)" [ENV]="environment.ENV"
+    [menu_id]="tokenData.menu_id" (jump)="jump()"></app-print-page> -->
+    <!-- <dx-button stylingMode="text" text="增行" type="normal" class="text_button" (onClick)="addItemClick($event,i)"></dx-button> -->
+    <!-- <dx-button stylingMode="text" text="删行" type="normal" class="text_button" (onClick)="delItemClick($event,i)"></dx-button> -->
+    
+  <editor-grid #editorGrid [showCheckBox]="false" [fullScreen]="false" [mode]="mode">
+    <editor-toolbar [zqModel]="this" [allowEditing]="false">
+      <dx-button position="left" [elementAttr]="{ name: 'add-btn' }" (onClick)="onCreate()"></dx-button>
+      <dx-button position="left" [elementAttr]="{ name: 'save-btn' }" (onClick)="onSave()"></dx-button>
+      <dx-button position="left" [elementAttr]="{ name: 'cancel-btn' }" (onClick)="onCancel()"></dx-button>
+      <dx-button position="left" [elementAttr]="{ name: 'delete-btn' }" (onClick)="onDelete()"></dx-button>
+      <dx-button position="left" [elementAttr]="{ name: 'refer-btn' }" text="参照新增" type="default" (onClick)="dataCopyClick()"></dx-button>
+      <dx-button position="left" [disabled]="$addList" text="添加卡片" type="default" (onClick)="addClick($event)"></dx-button>
+    </editor-toolbar>
+    <editor-header>
+      <editor-header-group [MaxClass]="false" [expansionNone]="true" [flex]="'0 0 33%'" [labelWidth]="'80px'">
+        <editor-header-item>
+          <label required>制单日期</label>
+          <dx-date-box placeholder="请选择日期" [(value)]="dataFormData.DataDate" [disabled]="$addList"
+            [openOnFieldClick]="true" displayFormat="yyyy-MM-dd"></dx-date-box>
+        </editor-header-item>
+        <editor-header-item>
+          <label required>生效日期</label>
+          <dx-date-box placeholder="请选择日期" [(value)]="dataFormData.EffectDate" [disabled]="$addList"
+            [openOnFieldClick]="true" (onValueChanged)="onChanged()"></dx-date-box>
+        </editor-header-item>
+        <editor-header-item>
+          <label>单据号</label>
+          <dx-text-box placeholder="" [(value)]="dataFormData.Number" [readOnly]="true"></dx-text-box>
+        </editor-header-item>
+        <editor-header-item>
+          <label>备注</label>
+          <dx-text-box placeholder="" [(value)]="dataFormData.Remarks" [disabled]="$addList" (onValueChanged)="onChanged()"></dx-text-box>
+        </editor-header-item>
+      </editor-header-group>
+    </editor-header>
+
+    <editor-header-grid *ngFor="let item of headerGridArr let i = index" >
+      <editor-header>
+        <editor-header-group [MaxClass]="false" [expansionNone]="true" [labelWidth]="'80px'">
+          <editor-header-item [itemWidth]="'calc(100% - 140px)'" [itemWidthMax]="true">
+            <label required>品种</label>
+            <dx-tag-box
+                placeholder="请输入"
+                [dataSource]="BreedingSource"
+                [(value)]="item.BreedingIDArr"
+                valueExpr="BreedingID"
+                displayExpr="BreedingName"
+                searchEnabled="true"
+                [disabled]="$addList"
+                [searchExpr]="['BreedingName','MnemonicCode']"
+                (onValueChanged)="onChanged()"
+            ></dx-tag-box>
+          </editor-header-item>
+          <editor-header-item [itemWidth]="'140px'" [itemLabelWidth]="'0px'">
+            <dx-button text="复制卡片" type="default" style="margin: 0 15px;" [disabled]="$addList" (onClick)="copyClick($event,item)"></dx-button>
+            
+          </editor-header-item>
+          <editor-header-item [itemWidth]="'calc(40% - 70px)'">
+            <label>饲养日龄</label>
+            <dx-number-box [(value)]="item.StartDaysOld" format="#0" min="0" [disabled]="$addList" (onValueChanged)="onChanged()"></dx-number-box> 
+            <span style="margin: 0px 8px;" >~</span> 
+            <dx-number-box [(value)]="item.EndDaysOld" format="#0" min="0" [disabled]="$addList" (onValueChanged)="onChanged()"></dx-number-box>
+          </editor-header-item>
+          <editor-header-item [itemWidth]="'calc(60% - 70px)'" [itemWidthMax]="true">
+            <label>体重（斤）</label>
+            <span class="label_span">母</span>
+            <dx-number-box [(value)]="item.FemaleWeight" format="#0.00" min="0" [disabled]="$addList" (onValueChanged)="onChanged()"></dx-number-box>
+            <span class="label_span">公</span>
+            <dx-number-box [(value)]="item.MaleWeight" format="#0.00" min="0" [disabled]="$addList" (onValueChanged)="onChanged()"></dx-number-box>
+            <span class="label_span">混合</span>
+            <dx-number-box [(value)]="item.MixedWeight" format="#0.00" min="0" [disabled]="$addList" (onValueChanged)="onChanged()"></dx-number-box>
+          </editor-header-item>
+          <editor-header-item [itemWidth]="'140px'" [itemLabelWidth]="'0px'">
+            
+            <dx-button text="删除卡片" type="default" style="margin: 0 15px;" [disabled]="$addList" (onClick)="delClick($event,i)"></dx-button>
+          </editor-header-item>
+        </editor-header-group>
+      </editor-header>
+      <dx-data-grid 
+          #detailGrid
+          [dataSource]="item.MaterialSettingsExtendDto"
+          width="100%"
+          [sorting]="false"
+          (onEditorPreparing)="onEditorPreparingFn($event)"
+          (onRowRemoved)="onRowRemoved($event)"
+      >   
+          <dxo-paging [enabled]="false"></dxo-paging>
+          <dxo-editing
+            mode="cell"
+            [allowUpdating]="!$addList"
+            [allowAdding]="!$addList"
+            [allowDeleting]="!$addList"
+          >
+          </dxo-editing>
+          <dxi-column minWidth="80" cssClass="disabled" caption="序号" alignment="center" cellTemplate="CardNoCell" [allowEditing]="false">
+            <div *dxTemplate="let item of 'CardNoCell'">
+              <span>{{item.rowIndex + 1}}</span>
+          </div>
+          </dxi-column>
+          <dxi-column minWidth="100" cssClass="required" caption="起始日龄" dataField="StartDaysOld" dataType="number" [editorOptions]="{
+                type: 'fixedPoint',
+                min: 0,
+                format: '#0'
+            }" alignment="center">
+            
+          </dxi-column>
+          <dxi-column minWidth="100" cssClass="required" caption="截止日龄" dataField="EndDaysOld" dataType="number" [editorOptions]="{
+                type: 'fixedPoint',
+                min: 0,
+                format: '#0'
+            }" alignment="center"></dxi-column>
+          <dxi-column minWidth="130" cssClass="required" caption="饲料商品代号" dataField="ProductID" alignment="center">
+            <dxo-lookup
+                [dataSource]="ProductSource"
+                displayExpr="ProductName"
+                valueExpr="ProductID"
+            ></dxo-lookup>
+          </dxi-column>
+          <dxi-column minWidth="80" cssClass="disabled" caption="规格" dataField="Specification" alignment="center" [allowEditing]="false"></dxi-column>
+          <dxi-column minWidth="80" cssClass="disabled" caption="阶段" dataField="Stages" alignment="center" [allowEditing]="false"></dxi-column>
+          <dxi-column minWidth="150" caption="每千只最低数量" dataField="MinQuantity" dataType="number" [editorOptions]="{
+                type: 'fixedPoint',
+                min: 0,
+                format: '#0.00'
+            }" alignment="center"></dxi-column>
+          <dxi-column minWidth="150" caption="每千只最高数量" dataField="MaxQuantity" dataType="number" [editorOptions]="{
+                type: 'fixedPoint',
+                min: 0,
+                format: '#0.00'
+            }" alignment="center"></dxi-column>
+          <dxi-column minWidth="80" cssClass="disabled" caption="计量单位" dataField="MeasureUnitName" alignment="center" [allowEditing]="false"></dxi-column>
+          <dxi-column minWidth="100" caption="备注" dataField="Remarks" alignment="center"></dxi-column>
+          <dxo-summary>
+            <dxi-total-item column="IDENTITY_RECORD" displayFormat="合计"></dxi-total-item>
+            <dxi-total-item column="ElementQuantity" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 1 }"></dxi-total-item>
+            <dxi-total-item column="NetWeight" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 4 }"></dxi-total-item>
+        </dxo-summary>
+      </dx-data-grid>
+    </editor-header-grid>
+
+    <editor-review-remote
+      #review
+      [numericalOrder]="numericalOrder"
+      [appId]="appId"
+      [load]="getReviewInfo"
+      [userId]="userId"
+      [operation]="operationReview"
+      [order]="true"
+      [orderly]="['review']"
+      (onReviewOptionChanged)="onReviewOptionChanged($event)"
+    >
+      <editor-review-remote-item type="review"></editor-review-remote-item>
+      <editor-review-remote-item type="making"></editor-review-remote-item>
+    </editor-review-remote>
+  </editor-grid>
+
+  <div
+      [ngClass]="{
+          'reviewed-img': true,
+          'reviewed-img-hidden': !reviewed,
+          'reviewed-zh': lang == 'zh' || lang == 'zh_cn',
+          'reviewed-vi': lang == 'vi'
+      }"
+  ></div>
+
+  <div class="uploader-wrapper" >
+    <app-upload-view [readonly]="!permission.$$edit && !permission.$$add || $addList" (fileListChange)="fileListChanged($event)" [numericalOrder]="numericalOrder"></app-upload-view>
+  </div>
+
+  <!-- 报错 -->
+  <dx-popup
+    #popup
+    [width]="400"
+    [height]="400"
+    [showTitle]="true"
+    title="{{ messageBoxDisplayText }}"
+    [dragEnabled]="true"
+    [closeOnOutsideClick]="false"
+    [(visible)]="messageBoxVisible"
+    [shading]="false"
+    [resizeEnabled]="true"
+  >
+    <dxo-position at="right bottom" offset="-220 -280" of="Window"> </dxo-position>
+    <div class="message-box-wrapper">
+        <dx-scroll-view width="100%" height="100%">
+            <p *ngIf="messageBoxInfo.length == 0" style="font-size: 14px">{{ notMessageDisplayText }}</p>
+            <div class="message-box-info" *ngFor="let info of messageBoxInfo">
+                <p [innerHTML]="info | SafeHtml"></p>
+            </div>
+        </dx-scroll-view>
+    </div>
+  </dx-popup>
+  <!-- 删除提示 -->
+  <dx-popup
+  [width]="300"
+  [height]="180"
+  [showTitle]="true"
+  title="提示"
+  [(visible)]="actionDelVisible"
+>
+  <div style="text-align: center;">
+      <p>您确定要删除吗？</p>
+      <div>
+          <dx-button
+              style="margin-right: 15px"
+              type="normal"
+              text="确定"
+              (onClick)="_deleteonActiRowImpl()"
+              >
+          </dx-button>
+          <dx-button
+              type="normal"
+              text="取消"
+              (onClick)="actionDelVisible = false"
+              >
+          </dx-button>
+      </div>
+  </div>
+</dx-popup>
+</div>
+</view-container>

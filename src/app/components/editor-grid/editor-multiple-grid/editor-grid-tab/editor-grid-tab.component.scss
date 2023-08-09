@@ -1,0 +1,40 @@
+:host {
+    .editor-grid-tab-panel {
+        width: 100%;
+        height: 30px;
+        font-size: 14px;
+        font-weight: 600;
+        display: flex;
+        .tab-item {
+            line-height: 30px;
+            box-sizing: border-box;
+            margin-right: 10px;
+            transition: all 0.5s;
+            display: flex;
+            .title {
+                color: #5c6064;
+            }
+            .title.active {
+                color: #d9544f;
+            }
+            .options {
+                width: auto;
+                height: 30px;
+                line-height: 30px;
+                margin-left: 18px;
+                display: flex;
+                .item {
+                    color: #d9544f;
+                    user-select: none;
+                    margin-left: 30px;
+                }
+                .item:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .editor-grid-tab-content {
+        width: 100%;
+    }
+}

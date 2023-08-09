@@ -1,0 +1,47 @@
+[
+  {
+    "caption": "*Ngày chết",
+    "dataField": "DataDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "*Lô heo thịt",
+    "dataField": "BatchID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*Chuồng hiện tại",
+    "dataField": "PigHouseUnitId",
+    "dataType": "string"
+  },
+  {
+    "caption": "* Số lượng chết",
+    "dataField": "PigCount",
+    "dataType": "string"
+  },
+  {
+    "caption": "*kiểu chết",
+    "dataField": "DeathTypeID",
+    "dataType": "string"
+  },
+  {
+    "caption": "* Nguyên nhân chết",
+    "dataField": "DeathReasonID",
+    "dataType": "string"
+  },
+  {
+    "caption": "Cân nặng (kg)",
+    "dataField": "Weight",
+    "dataType": "string"
+  },
+  {
+    "caption": "Mô tả",
+    "dataField": "DeathDescription",
+    "dataType": "string"
+  },
+  {
+    "caption": "Người phụ trách",
+    "dataField": "PersonName",
+    "dataType": "string"
+  }
+]

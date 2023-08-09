@@ -1,0 +1,77 @@
+[
+  {
+    "caption": "*填报日期",
+    "dataField": "DataDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "*养户名称",
+    "dataField": "YHFarmerID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*养户批次",
+    "dataField": "YHBatch",
+    "dataType": "string"
+  },
+  {
+    "caption": "栋舍",
+    "dataField": "HenhouseID",
+    "dataType": "string"
+  },
+  {
+    "caption": "管理员",
+    "dataField": "PersonID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*期初",
+    "dataField": "isbegin",
+    "dataType": "string"
+  },
+  {
+    "caption": "*日期",
+    "dataField": "DataDateDetail",
+    "dataType": "date"
+  },
+  {
+    "caption": "死亡只数",
+    "dataField": "DeathQuantity",
+    "dataType": "string"
+  },
+  {
+    "caption": "淘汰只数",
+    "dataField": "CullQuantity",
+    "dataType": "string"
+  },
+  {
+    "caption": "死淘备注",
+    "dataField": "DeathCullRemarks",
+    "dataType": "string"
+  },
+  {
+    "caption": "饲料商品代号",
+    "dataField": "ProductID",
+    "dataType": "string"
+  },
+  {
+    "caption": "饲料批号",
+    "dataField": "ProductBatchID",
+    "dataType": "string"
+  },
+  {
+    "caption": "饲喂件数",
+    "dataField": "Packages",
+    "dataType": "string"
+  },
+  {
+    "caption": "饲喂数量",
+    "dataField": "Quantity",
+    "dataType": "string"
+  },
+  {
+    "caption": "饲喂备注",
+    "dataField": "FeedRemarks",
+    "dataType": "string"
+  }
+]

@@ -1,0 +1,84 @@
+<view-container>
+    <dx-load-panel shadingColor="rgba(0,0,0,0)" [showPane]="true" [shading]="true" [showIndicator]="true"
+        [(visible)]="loading">
+    </dx-load-panel>
+    <editor-grid #editorGrid [fullScreen]="false" [mode]="mode">
+        <editor-toolbar>
+            <dx-button position="left" [elementAttr]="{ name: 'save-btn' }" (onClick)="onSave()"></dx-button>
+                <dx-button position="left" [elementAttr]="{ name: 'edit-btn' }" (onClick)="onUpdate()"></dx-button>
+        </editor-toolbar>
+        <editor-multiple-grid>
+            <editor-grid-tab (onOptionClick)="onSettingOptionClick($event)">
+                <editor-grid-item  title="明细表" [options]="[{ text: '+ 增行', key: 'add' },{ text: '- 删行', key: 'del' }]">
+                    <dx-data-grid
+                        #detailGrid
+                        [dataSource]="settingDataSource"
+                        width="100%"
+                        height="100%"
+                        [sorting]="false"
+                        (onEditorPreparing)="onEditorPreparingFn($event)"
+                    >
+                        <dxi-column cssClass="required dx-editor-cell dx-center-cell" caption="商品代号" [fixed]="true" alignment="center" cellTemplate="pcommandCell" >
+                            <!-- <dxo-lookup
+                                [dataSource]="productDataSource"
+                                displayExpr="cProductName"
+                                valueExpr="ProductID">
+                            ></dxo-lookup> -->
+                            <div *dxTemplate="let item of 'pcommandCell'">
+                                <dx-select-box
+                                    placeholder=""
+                                    [dataSource]="productDataSourceAll"
+                                    [value]="item.row.data.ProductID"
+                                    valueExpr="ProductID"
+                                    displayExpr="cProductName"
+                                    [searchEnabled]='true'
+                                    [searchExpr]="['UnicumUnitName','MnemonicCode']"
+                                    [readOnly]="edited"
+                                    (onOpened)="onCustomOpened(item,$event)"
+                                    (onValueChanged)="onProductChanged(item,$event)"
+                                >
+                                </dx-select-box>
+                            </div>
+                        </dxi-column>
+                        <dxi-column cssClass="required" caption="公母"   dataField="SexType" alignment="center" >
+                            <dxo-lookup
+                                [dataSource]="SexTypeDataSource"
+                                displayExpr="DictName"
+                                valueExpr="DictId">
+                            ></dxo-lookup>
+                        </dxi-column>
+                        <dxi-column cssClass="required" caption="等级" dataField="PoultrySalesRank" alignment="center" >
+                            <dxo-lookup
+                                [dataSource]="RemindDataSource"
+                                displayExpr="RemindName"
+                                valueExpr="RemindID">
+                            ></dxo-lookup>
+                        </dxi-column>
+                        <!-- 明细表自定义下拉组件 -->
+                        <dxi-column cssClass="dx-editor-cell dx-center-cell" caption="品种" alignment="center" cellTemplate="commandCell">
+                            <div *dxTemplate="let item of 'commandCell'">
+                                <dx-select-box
+                                    placeholder=""
+                                    [dataSource]="BreedingDataSource"
+                                    [value]="item.row.data.BreedingID"
+                                    valueExpr="BreedingID"
+                                    displayExpr="BreedingName"
+                                    [searchEnabled]="true"
+                                    [showClearButton]="true"
+                                    [readOnly]="edited"
+                                    (onValueChanged)="onValueChanged(item,$event)"
+                                >
+                                </dx-select-box>
+                            </div>
+                        </dxi-column>
+                        <dxi-column cssClass="disabled" caption="计量单位" dataField="UnitName" [allowEditing]="false" alignment="center">
+                        </dxi-column>
+                        <dxi-column cssClass="disabled" caption="状态" dataField="bUseName" [allowEditing]="false" alignment="center">
+                        </dxi-column>
+                        <dxo-editing mode="cell" [enabled]="!edited" [allowUpdating]="!edited"></dxo-editing>
+                    </dx-data-grid>
+                </editor-grid-item>
+            </editor-grid-tab>
+        </editor-multiple-grid>
+    </editor-grid>
+</view-container>

@@ -1,0 +1,27 @@
+[
+    {
+        "caption": "*kiểu chuồng",
+        "dataField": "PigHouseType",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Tên chuồng",
+        "dataField": "PigHouseName",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Sức chứa",
+        "dataField": "Capacity",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Người phụ trách",
+        "dataField": "Persons",
+        "dataType": "string"
+    },
+    {
+        "caption": "Chú thích",
+        "dataField": "Remarks",
+        "dataType": "string"
+    }
+]

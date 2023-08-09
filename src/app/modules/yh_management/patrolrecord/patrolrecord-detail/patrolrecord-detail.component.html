@@ -1,0 +1,248 @@
+<nx-zlw-form-detail #detailInstance [model]="model"></nx-zlw-form-detail>
+<dx-load-panel shadingColor="rgba(0,0,0,0)" [showPane]="true" [shading]="true" [showIndicator]="true"
+    [(visible)]="loading">
+</dx-load-panel>
+<app-print-page class="print"
+    #printPage
+    (getSource)="getSource($event)"
+    [ENV]="environment.ENV"
+    [menu_id]="tokenData.menu_id"
+    (jump)="jump()"
+></app-print-page>
+<div class="uploader-wrapper" >
+    <app-upload-view [readonly]="!permission.$$edit && !permission.$$add" (fileListChange)="fileListChanged($event)" [numericalOrder]="numericalOrder"></app-upload-view>
+</div>
+<dx-tooltip
+    target="#LmDataDate"
+    [(visible)]="DataDateVisible"
+    position="bottom"
+    (hideOnOutsideClick)="false"
+>
+    <p>{{this.allLmDataDate}}</p>
+</dx-tooltip>
+<dx-popup
+    [(visible)]="outVisible"
+    width="60%"
+    [maxHeight]="400"
+    [minWidth]="800"
+    [dragEnabled]="false"
+    [showTitle]="true"
+    (onHiding)="onPopupHiding()"
+    resizeEnabled="true"
+    title="批量增行弹出框"
+    showCloseButton="true"
+>
+  <dx-form #form id="form" [colCount]="2" width="80%" style="margin: 0 auto" [(formData)]="formData"
+  validationGroup="customerData" [showOptionalMark]="false" [showRequiredMark]="true" [readOnly]="$form"
+  (onFieldDataChanged)="onFieldDataChanged($event)">
+    <dxi-item
+        [colSpan]="1" [colCount]="1"
+        [label]="{ text: '开始日期', alignment: 'right',showColon: false }"
+        dataField="StartDate"
+        editorType="dxDateBox"
+        [editorOptions]="StartDateEditorOptions"
+    >
+        <dxi-validation-rule type="required" message="开始日期必填"></dxi-validation-rule>
+    </dxi-item>
+    <dxi-item
+        [colSpan]="1" [colCount]="1"
+        [label]="{ text: '结束日期', alignment: 'right',showColon: false }"
+        dataField="EndDate"
+        editorType="dxDateBox"
+        [editorOptions]="EndDateEditorOptions"
+    >
+        <dxi-validation-rule type="required" message="结束日期必填"></dxi-validation-rule>
+    </dxi-item>
+    <dxi-item
+        [colSpan]="2" [colCount]="2"
+        [label]="{ text: '饲料商品代号', alignment: 'right',showColon: false }"
+        editorType="dxSelectBox"
+        dataField="ProductID"
+        [editorOptions]="{
+            dataSource: cPatrolRecordData,
+            valueExpr: 'ProductID',
+            displayExpr: 'ProductName',
+            showClearButton:true,
+            searchEnabled:true,
+            placeholder: '请选择商品代号'
+        }"
+    >
+    </dxi-item>
+    <dxi-item
+        [colSpan]="2" [colCount]="2"
+        [label]="{ text: '饲料批号', alignment: 'right',showColon: false }"
+        editorType="dxSelectBox"
+        dataField="ProductBatchID"
+        [editorOptions]="{
+            dataSource: ProductBatchSource,
+            valueExpr: 'ProductBatchID',
+            displayExpr: 'ProductBatchName',
+            showClearButton:true,
+            searchEnabled:true,
+            placeholder: '请选择饲料批号'
+        }"
+    >
+    </dxi-item>
+  </dx-form>
+<div height="40px" style="margin-top: 60px;text-align: center;">
+    <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+    text="确定"
+    (onClick)="getSelection(1)"
+  >
+  </dx-button>
+  <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+    text="确定并继续"
+    (onClick)="getSelection(2)"
+  >
+  </dx-button>
+  <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+    text="关闭"
+    (onClick)="getSelection(3)"
+  >
+  </dx-button>
+</div>
+</dx-popup>
+<dx-popup
+    [(visible)]="jcAddVisible"
+    width="70%"
+    [maxHeight]="700"
+    [minWidth]="1200"
+    [dragEnabled]="false"
+    [showTitle]="true"
+    resizeEnabled="true"
+    title="按结存饲料新增弹出框"
+    showCloseButton="true"
+    >
+    <dx-form #formAdd id="formAdd" [colCount]="4" width="100%" [(formData)]="addFormData"
+    validationGroup="customerData" [showOptionalMark]="false" [showRequiredMark]="true" [readOnly]="$formAdd"
+    (onFieldDataChanged)="onFieldDataChanged1($event)">
+    <dxi-item itemType="group" [colSpan]="4" [colCount]="4">
+        <dxi-item [label]="{ text: '日期', alignment: 'right',showColon: false }" dataField="DataDate" editorType="dxDateBox"
+            [editorOptions]="{
+                placeholder: '请选择日期',
+                showClearButton: true,
+                max: maxDate
+            }">
+        </dxi-item>
+        <dxi-item>
+            <div class="l_div">
+                <dx-check-box [(value)]="balanceType" (onValueChanged)="onQuery()"></dx-check-box>
+                &nbsp;只显示结存>0
+                <!-- <dx-button
+                    text="查询"
+                    class="l_button"
+                    (onClick)="onQuery()"
+                >
+                </dx-button> -->
+            </div>
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '日龄',showColon: false }"
+        >
+            <span class="l_span">{{addFormData.DaysOld}}</span>
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '存栏',showColon: false }"
+        >
+            <span class="l_span">{{addFormData.QmQuantity}}</span>
+        </dxi-item>
+    </dxi-item>
+    </dx-form>
+    
+    <dx-data-grid
+        class="data-grid-wrapper"
+        #jcDetailGrid
+        [dataSource]="jcAddDataSource"
+        width="100%"
+        height="calc(100% - 90px)"
+        [allowColumnResizing]="true"
+        [columnAutoWidth]="true"
+        columnResizingMode='widget'
+        [showBorders]="true"
+        keyExpr="RecordID"
+        [(selectedRowKeys)]="selectedRows"
+        (onEditorPreparing)="onEditorPreparingFn2($event)"
+    >
+        <dxo-paging [pageSize]="100"></dxo-paging>
+        <dxo-pager
+            [showPageSizeSelector]="true"
+            [allowedPageSizes]="[10, 25, 50, 100]"
+        ></dxo-pager>
+        <dxo-editing mode="cell" [allowUpdating]="true"> </dxo-editing>
+        <dxo-sorting mode="none"></dxo-sorting>
+        <dxo-selection showCheckBoxesMode="always" mode="multiple"></dxo-selection>
+        <dxi-column width="120" caption="饲料商品代号" dataField="ProductName" [fixed]="true" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="80" caption="规格" dataField="Specification" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <!-- <dxi-column width="100" caption="结存数量" dataField="SljcQuantity" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column> -->
+        <dxi-column [width]="100" headerCellTemplate="info" caption="结存数量 ⍰" dataField="SljcQuantity" cssClass="disabled" dataType="number" [allowEditing]="false" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+            <div *dxTemplate="let data of 'info'" style="display: flex; justify-content: center; align-items: center;">
+                结存数量
+              <span id="take-out" style="margin-left:3px;" (mouseenter)="toggleDefault()" (mouseleave)="toggleDefault()" class="dx-icon dx-icon-help"></span>
+            </div>
+            <dxo-format type="fixedPoint" [precision]="4"></dxo-format>
+        </dxi-column>
+        <dxi-column width="100" caption="计量单位" dataField="MeasureUnitName" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="100" caption="饲喂件数" dataField="Packages" alignment="center" editorOptions="{
+            type: 'fixedPoint',
+            min: 0
+        }">
+            <dxo-format type="fixedPoint" precision="4"></dxo-format>
+        </dxi-column>
+        <dxi-column width="100" caption="饲喂数量" dataField="Quantity"  alignment="center" editorOptions="{
+            type: 'fixedPoint',
+            min: 0
+        }">
+            <dxo-format type="fixedPoint" precision="4"></dxo-format>
+        </dxi-column>
+        <dxi-column width="100" caption="饲喂备注" dataField="FeedRemarks" alignment="center"></dxi-column>
+        <!-- <dxi-column width="100" caption="结存件数" dataField="SljcPackages" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column> -->
+        <dxi-column [width]="100" headerCellTemplate="info1" caption="结存件数 ⍰" dataField="SljcPackages" cssClass="disabled" dataType="number" [allowEditing]="false" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+            <div *dxTemplate="let data of 'info1'" style="display: flex; justify-content: center; align-items: center;">
+                结存件数
+              <span id="take-out1" style="margin-left:3px;" (mouseenter)="toggleDefault1()" (mouseleave)="toggleDefault1()" class="dx-icon dx-icon-help"></span>
+            </div>
+            <dxo-format type="fixedPoint" [precision]="4"></dxo-format>
+        </dxi-column>
+        <dxi-column width="120" caption="批号" dataField="BatchName" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="80" caption="标品" dataField="bIsStandardPackText" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="80" caption="标包" dataField="StandardPack" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxo-summary [recalculateWhileEditing]="true">
+            <dxi-total-item column="ProductName" displayFormat="合计："></dxi-total-item>
+            <dxi-total-item column="SljcQuantity" summaryType="sum" displayFormat="{0}"
+                [valueFormat]="{ type: 'fixedPoint', precision: 4 }"></dxi-total-item>
+            <dxi-total-item column="Packages" summaryType="sum" displayFormat="{0}"
+                [valueFormat]="{ type: 'fixedPoint', precision: 4 }"></dxi-total-item>
+            <dxi-total-item column="Quantity" summaryType="sum" displayFormat="{0}"
+                [valueFormat]="{ type: 'fixedPoint', precision: 4 }"></dxi-total-item>
+            <dxi-total-item column="SljcPackages" summaryType="sum" displayFormat="{0}"
+                [valueFormat]="{ type: 'fixedPoint', precision: 4 }"></dxi-total-item>
+      </dxo-summary>
+    </dx-data-grid>
+    <div height="40px" style="margin-top: 10px;text-align: center;">
+        <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+            text="确定"
+            [disabled]="!selectedRows?.length"
+            (onClick)="postSelection(1)"
+        >
+        </dx-button>
+        <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+            text="关闭"
+            (onClick)="postSelection(3)"
+        >
+        </dx-button>
+    </div>
+</dx-popup>
+<dx-tooltip
+  target="#take-out"
+  [(visible)]="defaultVisible"
+  (hideOnOutsideClick)="false"
+>
+  <p>结存=该养户批次该养殖场栋的（养户领料单-饲喂记录）</p>
+</dx-tooltip>
+<dx-tooltip
+  target="#take-out1"
+  [(visible)]="defaultVisible1"
+  (hideOnOutsideClick)="false"
+>
+  <p>结存=该养户批次该养殖场栋的（养户领料单-饲喂记录）</p>
+</dx-tooltip>

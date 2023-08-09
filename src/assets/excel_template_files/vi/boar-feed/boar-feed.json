@@ -1,0 +1,32 @@
+[
+    {
+        "caption": "*Loại hình cho ăn",
+        "dataField": "FeedType",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Người phụ trách",
+        "dataField": "PersonID",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Ngày cho ăn",
+        "dataField": "DataDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "* Đối tượng cho ăn",
+        "dataField": "FeedObject",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Tên cám",
+        "dataField": "ProductID",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Số lượng",
+        "dataField": "Quantity",
+        "dataType": "string"
+    }
+]

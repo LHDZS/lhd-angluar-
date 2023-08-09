@@ -1,0 +1,76 @@
+:host ::ng-deep .dx-checkbox-indeterminate .dx-checkbox-icon {
+    color: #d9544f;
+}
+:host ::ng-deep .dx-checkbox-checked .dx-checkbox-icon {
+    color: #fff;
+    background-color: #d9544f;
+    font-weight: 600;
+    border-color: #e0e0e0;
+}
+:host ::ng-deep .dx-datagrid-checkbox-size .dx-checkbox-icon {
+    height: 18px;
+    width: 18px;
+    border-radius: 2px;
+}
+// :host ::ng-deep .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused) > td,
+// .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused) > tr > td,
+// .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > td,
+// .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > tr > td {
+//     background-color: #e6f7ff;
+// }
+:host .command-line {
+    color: #1890ff;
+}
+:host .header-required-icon {
+    color: red;
+}
+:host .data-grid-wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    padding: 8px 8px 0px 8px;
+}
+:host .row-options {
+    width: calc(100% - 16px);
+    height: 40px;
+    line-height: 40px;
+    margin: 0px 8px;
+    border: 1px solid #e4e7ed;
+    border-top: none;
+    display: flex;
+    justify-content: space-between;
+}
+:host .append-row,
+.remove-row {
+    color: #d9544f;
+    width: 55px;
+    text-align: center;
+    padding-left: 8px;
+    user-select: none;
+}
+:host .append-row:hover,
+.remove-row:hover {
+    cursor: pointer;
+}
+:host .has-row-options {
+    height: calc(100% - 40px);
+}
+:host .cell-link {
+    color: #1890fe;
+    text-decoration: underline;
+}
+:host .cell-link:focus {
+    color: #333333;
+    text-decoration: underline;
+}
+:host .cell-link:active {
+    color: #333333;
+    text-decoration: underline;
+}
+:host ::ng-deep .dx-loadindicator {
+    width: 80px;
+    height: 80px;
+}
+:host ::ng-deep .dx-loadindicator-icon .dx-loadindicator-segment {
+    width: 15%;
+}

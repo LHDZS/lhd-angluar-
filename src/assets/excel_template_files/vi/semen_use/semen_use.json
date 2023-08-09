@@ -1,0 +1,39 @@
+[
+    
+      {
+        "caption": "*Người phụ trách",
+        "dataField": "PersonId",
+        "dataType": "string"
+      },
+      {
+        "caption": "*Ngày sổ sách",
+        "dataField": "DataDate",
+        "dataType": "date"
+      },
+      {
+        "caption": "*Kho",
+        "dataField": "WarehouseId",
+        "dataType": "string"
+      },
+      {
+        "caption": "*Loại hình",
+        "dataField": "RequisitionType",
+        "dataType": "string"
+      },
+    
+      {
+        "caption": "*Hàng hóa",
+        "dataField": "ProductId",
+        "dataType": "string"
+      },
+      {
+        "caption": " Một lô tinh trùng  ",
+        "dataField": "BatchName",
+        "dataType": "string"
+      },
+      {
+        "caption": "*Số lượng",
+        "dataField": "Quantity",
+        "dataType": "string"
+      }
+]

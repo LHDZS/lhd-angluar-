@@ -1,0 +1,22 @@
+[
+  {
+    "caption": "*日期",
+    "dataField": "DataDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "*养户名称",
+    "dataField": "YHFarmerID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*金额",
+    "dataField": "Amount",
+    "dataType": "string"
+  },
+  {
+    "caption": "备注",
+    "dataField": "Remarks",
+    "dataType": "string"
+  }
+]

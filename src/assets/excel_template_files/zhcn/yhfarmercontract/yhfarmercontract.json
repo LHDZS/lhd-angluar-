@@ -1,0 +1,77 @@
+[
+  {
+    "caption": "*签订日期",
+    "dataField": "DataDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "*养户名称",
+    "dataField": "YHFarmerID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*生效日期",
+    "dataField": "BeginDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "*截止日期",
+    "dataField": "EndDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "*合同编号",
+    "dataField": "ContractNo",
+    "dataType": "string"
+  },
+  {
+    "caption": "备注",
+    "dataField": "Remarks",
+    "dataType": "string"
+  },
+  {
+    "caption": "一致行动人",
+    "dataField": "ConcertPerson",
+    "dataType": "date"
+  },
+  {
+    "caption": "*领苗摘要",
+    "dataField": "ChickAbstract",
+    "dataType": "string"
+  },
+  {
+    "caption": "*领饲料摘要",
+    "dataField": "FeedAbstract",
+    "dataType": "string"
+  },
+  {
+    "caption": "*领药杂摘要",
+    "dataField": "DrugAbstract",
+    "dataType": "string"
+  },
+  {
+    "caption": "*养殖场",
+    "dataField": "ChickenFarmID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*栋舍",
+    "dataField": "HenhouseID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*明细生效日期",
+    "dataField": "StartDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "*明细截止日期",
+    "dataField": "EndDate2",
+    "dataType": "date"
+  },
+  {
+    "caption": "备注",
+    "dataField": "RemarksDetail",
+    "dataType": "string"
+  }
+]

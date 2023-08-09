@@ -1,0 +1,148 @@
+:host .wrapper {
+    flex    : 1;
+    overflow: hidden;
+}
+
+.context {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.search-panel {
+    display: flex;
+
+    table {
+        flex-grow: 1;
+    }
+}
+
+td.label {
+    white-space: nowrap;
+}
+
+.tool-panel {
+    display: flex;
+    justify-content: flex-end;
+
+    dx-button {
+        margin: 5px;
+    }
+}
+
+.products{
+    display: flex;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+    height: calc(100% - 170px);
+    .product-all{
+        border: 1px solid rgb(150, 150, 150);
+        // flex-grow: 1;
+        // align-content: flex-start;
+        height: 90%;
+        overflow: auto;
+        // display: flex;
+        // flex-flow: row wrap;
+        a {
+            // display: block;
+            float: left;
+            width: 25%;
+            // pointer-events:none
+        }
+        
+        .card-assignee {
+            margin: 5px;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            height: 40px;
+
+            span {
+                // overflow: hidden; 
+                white-space: nowrap; 
+                text-overflow: ellipsis;
+            }
+
+            * {
+                margin: 5px;
+            }
+        }
+
+        .card-assignee:hover {
+            border: 1px solid lightblue;
+        }
+
+        .first-card {
+            background-color: rgb(242, 242, 242);
+        }
+    }
+
+    .product-selected {
+        background-color: rgb(233, 233, 233);
+        flex-grow: 0;
+    
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+
+        overflow: auto; 
+        white-space: nowrap; 
+        text-overflow: ellipsis;
+    
+        a {
+            display: block;
+        }
+        
+        .card-assignee {
+            background-color: rgb(255, 255, 242);
+            margin: 3px;
+            flex-grow: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 40px;
+            max-width: 150px;
+
+            span {
+                overflow: hidden; 
+                white-space: nowrap; 
+                text-overflow: ellipsis;
+            }
+
+            .product-text {
+                margin: 5px;
+                margin-right: 12px;
+            }
+
+            a {
+                margin: 0;
+                // position:absolute;
+                width: auto;
+                height: auto;
+                flex-grow: 1;
+                z-index: 1600;
+                align-self: center;
+                visibility: hidden;
+
+                span {
+                    margin: 0;
+                }
+            }
+        }
+
+        .card-assignee:hover a {
+            visibility: visible;
+        }
+    }
+}
+
+.apply-area {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    margin-top: 30px;
+
+    dx-button {
+        margin: 5px;
+    }
+}

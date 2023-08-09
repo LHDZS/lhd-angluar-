@@ -1,0 +1,128 @@
+[{
+  "caption": "*Người phụ trách",
+  "dataField": "PersonID",
+  "dataType": "string"
+},
+{
+  "caption": "*Ngày phối",
+  "dataField": "DataDate",
+  "dataType": "date"
+},
+{
+  "caption": "Kho",
+  "dataField": "WarehouseId",
+  "dataType": "string"
+},
+{
+  "caption": "* Lô heo thịt",
+  "dataField": "BatchID",
+  "dataType": "string"
+},
+{
+  "caption": "*Chuồng hiện tại",
+  "dataField": "PigHouseUnitID",
+  "dataType": "string"
+},
+
+
+{
+  "caption": "*Số tai heo cái",
+  "dataField": "EarNumber",
+  "dataType": "string"
+},
+{
+  "caption": "*Chuồng chuyển vào",
+  "dataField": "InPigHouseUnitID",
+  "dataType": "string"
+},
+{
+  "caption": "Ô chuyển vào",
+  "dataField": "InPigField",
+  "dataType": "string"
+},
+{
+  "caption": "*Cân nặng (kg)",
+  "dataField": "Weight",
+  "dataType": "string"
+},
+{
+  "caption": "*Kiểu phối",
+  "dataField": "BreedingMode",
+  "dataType": "string"
+},
+{
+  "caption": "Hàng phối lần đầu/heo đực",
+  "dataField": "BoarPigID1",
+  "dataType": "string"
+},
+{
+  "caption": "chấm điểm lần phối đầu",
+  "dataField": "Score1",
+  "dataType": "string"
+},
+{
+  "caption": "Một lô tinh trùng",
+  "dataField": "SemenBatch1",
+  "dataType": "string"
+},
+{
+  "caption": "Lượng tinh trùng",
+  "dataField": "SemenCount1",
+  "dataType": "string"
+},
+{
+  "caption": "Heo đực phối lần 2",
+  "dataField": "BoarPigID2",
+  "dataType": "string"
+},
+{
+  "caption": "Hàng phối lần 2",
+  "dataField": "ProductID2",
+  "dataType": "string"
+},
+{
+  "caption": "Đánh giá phối lần 2",
+  "dataField": "Score2",
+  "dataType": "string"
+},
+{
+  "caption": "Lô tinh phối lần 2",
+  "dataField": "SemenBatch2",
+  "dataType": "string"
+},
+{
+  "caption": "Lượng dùng tinh phối lần 2",
+  "dataField": "SemenCount2",
+  "dataType": "string"
+},
+{
+  "caption": "Heo đực phối lần 3",
+  "dataField": "BoarPigID3",
+  "dataType": "string"
+},
+{
+  "caption": "Hàng phối lần 3",
+  "dataField": "ProductID3",
+  "dataType": "string"
+},
+{
+  "caption": "Đánh giá phối lần 3",
+  "dataField": "Score3",
+  "dataType": "string"
+},
+{
+  "caption": "Lô tinh phối lần 3",
+  "dataField": "SemenBatch3",
+  "dataType": "string"
+},
+{
+  "caption": "Lượng dùng tinh phối lần 3",
+  "dataField": "SemenCount3",
+  "dataType": "string"
+},
+{
+  "caption": "Chuyển vào lô lợn nái",
+  "dataField": "SowBatchID",
+  "dataType": "string"
+}
+]

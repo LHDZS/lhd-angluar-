@@ -1,0 +1,9 @@
+<div class="editor-review-item">
+    <label class="review-label">
+        <span class="label">{{ map(type) }} :</span>
+        <span class="name">{{ _name || '--' }}</span>
+    </label>
+    <a *ngIf="type != 'making'" class="review-btn" href="javascript:void(0)" (click)="review()">{{
+        _reviewed ? '取消审核' : '审核'
+    }}</a>
+</div>

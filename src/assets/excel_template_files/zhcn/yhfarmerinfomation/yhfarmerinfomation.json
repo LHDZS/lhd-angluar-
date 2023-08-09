@@ -1,0 +1,77 @@
+[
+  {
+    "caption": "*养户手机号",
+    "dataField": "Phone",
+    "dataType": "string"
+  },
+  {
+    "caption": "*养户身份证",
+    "dataField": "IdCardNumber",
+    "dataType": "string"
+  },
+  {
+    "caption": "*养户姓名",
+    "dataField": "YHPersonName",
+    "dataType": "string"
+  },
+  {
+    "caption": "*养户名称",
+    "dataField": "YHFarmerName",
+    "dataType": "string"
+  },
+  {
+    "caption": "家庭住址",
+    "dataField": "Address",
+    "dataType": "string"
+  },
+  {
+    "caption": "性别",
+    "dataField": "Sex",
+    "dataType": "string"
+  },
+  {
+    "caption": "助记码",
+    "dataField": "MnemonicCode",
+    "dataType": "string"
+  },
+  {
+    "caption": "管理部门",
+    "dataField": "MarketID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*合作日期",
+    "dataField": "StartDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "备注",
+    "dataField": "Remarks",
+    "dataType": "string"
+  },
+  {
+    "caption": "状态",
+    "dataField": "Status",
+    "dataType": "string"
+  },
+  {
+    "caption": "开始日期",
+    "dataField": "BeginDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "结束日期",
+    "dataField": "EndDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "*人员",
+    "dataField": "PersonID",
+    "dataType": "string"
+  },
+  {
+    "caption": "管理员类型",
+    "dataField": "RoleID",
+    "dataType": "string"
+  }
+]

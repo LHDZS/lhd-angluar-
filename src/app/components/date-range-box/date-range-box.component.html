@@ -1,0 +1,86 @@
+<div [ngClass]="['date-range-box-container-' + guid]">
+    <dx-text-box
+        [value]="textValue"
+        [width]="width"
+        [placeholder]="placeholder"
+        (onFocusIn)="_calandarPop = true"
+        [showClearButton]="true"
+        (onValueChanged)="_onValueChanged($event, -1)"
+        [hint]="textValue"
+    >
+        <dxi-button name="clear"></dxi-button>
+        <dxi-button
+            name="date"
+            location="after"
+            [options]="{
+                stylingMode: 'text',
+                icon: 'iconfont iconcalendar'
+            }"
+        ></dxi-button>
+    </dx-text-box>
+</div>
+<dx-popup
+    [width]="585"
+    [height]="328"
+    [shading]="false"
+    [(visible)]="_calandarPop"
+    [closeOnOutsideClick]="true"
+    [showTitle]="false"
+    container="{{ '.date-range-box-container-' + guid }}"
+    [animation]="null"
+>
+    <dxo-position
+        my="top"
+        at="bottom"
+        offset="130 0"
+        of="{{ '.date-range-box-container-' + guid }}"
+        collision="flipfit flip"
+    >
+        <dxo-boundary-offset [x]="50" [y]="50"></dxo-boundary-offset>
+    </dxo-position>
+    <div class="date-range-calandar-container" *dxTemplate="let item of 'content'">
+        <div class="calandar-selector">
+            <div class="start-calandar">
+                <dx-calendar [min]="min" [max]="value[1] || max" [(value)]="value[0]"></dx-calendar>
+            </div>
+            <div class="end-calandar">
+                <dx-calendar [min]="value[0] || min" [max]="max" [(value)]="value[1]"></dx-calendar>
+            </div>
+        </div>
+        <div class="calandar-options">
+            <div class="calandar-input-container">
+                <dx-date-box
+                    class="start-time-input"
+                    width="50%"
+                    [min]="min"
+                    [max]="max"
+                    placeholder="开始时间"
+                    [showClearButton]="true"
+                    [useMaskBehavior]="true"
+                    displayFormat="shortdate"
+                    type="date"
+                    [value]="value[0]"
+                    [showDropDownButton]="false"
+                    (onValueChanged)="_onValueChanged($event, 0)"
+                    [displayFormat]="format"
+                ></dx-date-box>
+                <dx-date-box
+                    class="end-time-input"
+                    width="50%"
+                    [min]="value[0] || min"
+                    [max]="max"
+                    placeholder="结束时间"
+                    [showClearButton]="true"
+                    [useMaskBehavior]="true"
+                    displayFormat="shortdate"
+                    type="date"
+                    [value]="value[1]"
+                    [showDropDownButton]="false"
+                    (onValueChanged)="_onValueChanged($event, 1)"
+                    [displayFormat]="format"
+                ></dx-date-box>
+            </div>
+            <dx-button text="确定" type="default" (onClick)="_confirm()"></dx-button>
+        </div>
+    </div>
+</dx-popup>

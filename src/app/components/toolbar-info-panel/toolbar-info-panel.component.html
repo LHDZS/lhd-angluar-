@@ -1,0 +1,26 @@
+<div class="toolbar-info-panel">
+    <div class="toolbar-panel">
+        <div class="left-panel">
+            <ng-content select="[position=left]"></ng-content>
+        </div>
+        <div class="right-panel">
+            <ng-content select="[position=right]"></ng-content>
+        </div>
+    </div>
+    <div
+        *ngIf="infoVisible"
+        [ngClass]="{
+            'info-panel': infoVisible,
+            'info-text': infoType == 'info',
+            'success-text': infoType == 'success',
+            'error-text': infoType == 'error',
+            'warning-text': infoType == 'warning'
+        }"
+    >
+        <i class="iconfont icontishi tip-icon"></i>
+        <span class="tip-text">
+            {{ infoText }}
+        </span>
+        <i *ngIf="infoType != defaultType" class="iconfont iconclose close-icon" (click)="default()"></i>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+
+<dx-popup #popup
+          [width]="400"
+          [height]="400"
+          [showTitle]="true"
+          title="{{ messageBoxDisplayText }}"
+          [dragEnabled]="true"
+          [closeOnOutsideClick]="false"
+          [(visible)]="messageBoxVisible"
+          [shading]="false"
+          [resizeEnabled]="true">
+    <dxo-position at="right bottom" offset="-220 -280" of="Window"> </dxo-position>
+    <div class="message-box-wrapper">
+        <dx-scroll-view width="100%" height="100%">
+            <p *ngIf="messageBoxInfo.length == 0" style="font-size: 14px">{{ notMessageDisplayText }}</p>
+            <div class="message-box-info" *ngFor="let info of messageBoxInfo">
+                <p [innerHTML]="info | SafeHtml"></p>
+            </div>
+        </dx-scroll-view>
+    </div>
+</dx-popup>

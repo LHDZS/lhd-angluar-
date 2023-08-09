@@ -1,0 +1,37 @@
+[
+  {
+    "caption": "*Ngày thải loại",
+    "dataField": "DataDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "Lợn rừng lô  ",
+    "dataField": "BatchId",
+    "dataType": "string"
+  },
+  {
+    "caption": "*Số tai",
+    "dataField": "EarNumber",
+    "dataType": "string"
+  },
+  {
+    "caption": "*Trạng thái",
+    "dataField": "IsLeave",
+    "dataType": "string"
+  },
+  {
+    "caption": "*Nguyên nhân thải loại",
+    "dataField": "DeathReasonID",
+    "dataType": "string"
+  },
+  {
+    "caption": "Cân nặng (kg)",
+    "dataField": "Weight",
+    "dataType": "string"
+  },
+  {
+    "caption": "Người phụ trách",
+    "dataField": "PersonName",
+    "dataType": "string"
+  }
+]

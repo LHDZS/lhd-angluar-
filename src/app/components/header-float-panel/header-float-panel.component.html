@@ -1,0 +1,205 @@
+<div class="header-search-panel" #HeaderFloatPanel>
+    <div class="search-conditions">
+        <div class="search-row" *ngFor="let arr of model.conditionItems; let i = index">
+            <div
+                class="search-condition-item"
+                *ngFor="let item of arr; let j = index"
+                [ngClass]="{ showAll: i == 0 || show }"
+            >
+                <div class="search-condition-label" [ngClass]="{ 'label-width': show }">
+                    <span *ngIf="item.required" class="star">*</span>
+                    {{ item.label }} :
+                </div>
+                <div class="search-condition-widget">
+                    <div *ngIf="item.type == 'Span'" class="span-widget">
+                        {{
+                            item.dataType == 'Date'
+                                ? convertToDate(model.data[item.dataField], item.format)
+                                : model.data[item.dataField]
+                                ? model.data[item.dataField]
+                                : '-- --'
+                        }}
+                    </div>
+                    <dx-text-box
+                        *ngIf="item.type == 'TextBox'"
+                        class="textbox-widget"
+                        [(value)]="model.data[item.dataField]"
+                        [showClearButton]="item.widget.props['showClearButton']"
+                        [disabled]="item.widget.props['disabled']"
+                        [visible]="item.widget.props['visible']"
+                        (onValueChanged)="onValueChangedEvent($event, i, j)"
+                        (onFocusIn)="onFocusInEvent($event, i, j)"
+                        (click)="onClickEvent($event, i, j)"
+                    ></dx-text-box>
+                    <dx-date-box
+                        *ngIf="item.type == 'DateBox'"
+                        class="datebox-widget"
+                        [(value)]="model.data[item.dataField]"
+                        [placeholder]="item.widget.props['placeholder']"
+                        [maxZoomLevel]="item.widget.props['maxZoomLevel']"
+                        [showClearButton]="item.widget.props['showClearButton']"
+                        [visible]="item.widget.props['visible']"
+                        [disabled]="item.widget.props['disabled']"
+                        [min]="item.widget.props['min']"
+                        [max]="item.widget.props['max']"
+                        [dateSerializationFormat]="item.widget.props['dateSerializationFormat']"
+                        [type]="item.widget.props['type']"
+                        [openOnFieldClick]="item.widget.props['openOnFieldClick']"
+                        [acceptCustomValue]="item.widget.props['acceptCustomValue']"
+                        [displayFormat]="item.widget.props['displayFormat']"
+                        [calendarOptions]="item.widget.props['calendarOptions']"
+                        [useMaskBehavior]="item.widget.props['useMaskBehavior']"
+                        (onValueChanged)="onValueChangedEvent($event, i, j)"
+                    ></dx-date-box>
+                    <dx-select-box
+                        *ngIf="item.type == 'SelectBox'"
+                        class="selectbox-widget"
+                        [dataSource]="item.widget.props['dataSource']"
+                        [valueExpr]="item.widget.props['valueExpr']"
+                        [acceptCustomValue]="item.widget.props['acceptCustomValue']"
+                        [displayExpr]="item.widget.props['displayExpr']"
+                        [(value)]="model.data[item.dataField]"
+                        [placeholder]="item.widget.props['placeholder']"
+                        [disabled]="item.widget.props['disabled']"
+                        [visible]="item.widget.props['visible']"
+                        [searchEnabled]="item.widget.props['searchEnabled']"
+                        [showClearButton]="item.widget.props['showClearButton']"
+                        (onValueChanged)="onValueChangedEvent($event, i, j)"
+                    ></dx-select-box>
+                    <dx-tag-box
+                        class="tagbox-widget"
+                        *ngIf="item.type == 'TagBox'"
+                        [dataSource]="item.widget.props['dataSource']"
+                        [valueExpr]="item.widget.props['valueExpr']"
+                        [displayExpr]="item.widget.props['displayExpr']"
+                        [(value)]="model.data[item.dataField]"
+                        [disabled]="item.widget.props['disabled']"
+                        [visible]="item.widget.props['visible']"
+                        [placeholder]="item.widget.props['placeholder']"
+                        [searchEnabled]="item.widget.props['searchEnabled']"
+                        (onValueChanged)="onValueChangedEvent($event, i, j)"
+                        (onSelectionChanged)="onTagBoxSelectionChangedEvent($event, i, j)"
+                    >
+                    </dx-tag-box>
+                    <!-- <div class="item-half" *ngIf="item.type == 'StartEndDateBox'">
+                            <dx-date-box
+                                [(value)]="model.data[item.dataField][0]"
+                                [placeholder]="item.widget.props['placeholder']"
+                                [showClearButton]="item.widget.props['showClearButton']"
+                                [visible]="item.widget.props['visible']"
+                                [disabled]="item.widget.props['disabled']"
+                                [min]="item.widget.props['min']"
+                                [max]="model.data[item.dataField][1]"
+                                [dateSerializationFormat]="item.widget.props['dateSerializationFormat']"
+                                [openOnFieldClick]="item.widget.props['openOnFieldClick']"
+                                [acceptCustomValue]="item.widget.props['acceptCustomValue']"
+                                [displayFormat]="item.widget.props['displayFormat']"
+                                [useMaskBehavior]="item.widget.props['useMaskBehavior']"
+                            ></dx-date-box>
+                        </div>
+                        <span *ngIf="item.type == 'StartEndDateBox'">-</span>
+                        <div class="item-half" *ngIf="item.type == 'StartEndDateBox'">
+                            <dx-date-box
+                                [(value)]="model.data[item.dataField][1]"
+                                [placeholder]="item.widget.props['placeholder']"
+                                [showClearButton]="item.widget.props['showClearButton']"
+                                [visible]="item.widget.props['visible']"
+                                [disabled]="item.widget.props['disabled']"
+                                [min]="model.data[item.dataField][0]"
+                                [max]="item.widget.props['max']"
+                                [dateSerializationFormat]="item.widget.props['dateSerializationFormat']"
+                                [openOnFieldClick]="item.widget.props['openOnFieldClick']"
+                                [acceptCustomValue]="item.widget.props['acceptCustomValue']"
+                                [displayFormat]="item.widget.props['displayFormat']"
+                                [useMaskBehavior]="item.widget.props['useMaskBehavior']"
+                            ></dx-date-box>
+                        </div> -->
+                    <!-- <div class="range-date" [tabindex]="i" hidefocus="true" *ngIf="item.type == 'StartEndDateBox'" (click)="openCalendar($event)">
+                            <span class="dx-icon-event"></span>
+                            <div class="date">
+                                <span>{{model.data[item.dataField][0] | date:'yyyy-MM-dd'}}</span>
+                                <span class="dx-icon-clear" (click)="clearStart($event)" *ngIf="model.data[item.dataField][0]"></span>
+                            </div>
+                            <span class="line"></span>
+                            <div class="date">
+                                <span>{{model.data[item.dataField][1] | date:'yyyy-MM-dd' }}</span>
+                                <span class="dx-icon-clear" (click)="clearEnd($event)" *ngIf="model.data[item.dataField][1]"></span>
+                            </div>
+                            <div class="date-box" [ngClass]="{'right-pos': !((i +1) % 3)}"  *ngIf="showCalendar" (click)="stop($event)">
+                                <dx-calendar
+                                [(value)]="model.data[item.dataField][0]"
+                                [min]="item.widget.props['min']"
+                                [max]="model.data[item.dataField][1]"
+                                >
+
+                                </dx-calendar>
+
+                                <dx-calendar
+                                [(value)]="model.data[item.dataField][1]"
+                                [min]="model.data[item.dataField][0]"
+                                [max]="item.widget.props['max']"
+                                >
+
+                                </dx-calendar>
+                            </div>
+                        </div> -->
+                    <nz-range-picker
+                        class="range-date-widget"
+                        *ngIf="item.type == 'StartEndDateBox'"
+                        [(ngModel)]="model.data[item.dataField]"
+                        nzFormat="yyyy-MM-dd"
+                        nzSize="large"
+                        nzSeparator="|"
+                    ></nz-range-picker>
+                    <dx-radio-group
+                        class="radio-group-widget"
+                        *ngIf="item.type == 'RadioGroup'"
+                        [items]="item.widget.props['items']"
+                        [valueExpr]="item.widget.props['valueExpr']"
+                        [displayExpr]="item.widget.props['displayExpr']"
+                        [(value)]="model.data[item.dataField]"
+                        [disabled]="item.widget.props['disabled']"
+                        [visible]="item.widget.props['visible']"
+                        [layout]="item.widget.props['layout']"
+                        (onValueChanged)="onValueChangedEvent($event, i, j)"
+                    >
+                    </dx-radio-group>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search-button" *ngIf="model.default">
+        <div class="button-item">
+            <dx-button
+                [text]="model.searchButton.props.text"
+                [stylingMode]="model.searchButton.props.stylingMode"
+                [type]="model.searchButton.props.type"
+                (onClick)="search()"
+            ></dx-button>
+        </div>
+        <div class="button-item">
+            <dx-button
+                [text]="model.resetButton.props.text"
+                [stylingMode]="model.resetButton.props.stylingMode"
+                (onClick)="reset()"
+            ></dx-button>
+        </div>
+        <div class="button-item" *ngIf="model.conditionItems.length > 1">
+            <div (click)="open()" class="open-button">
+                {{ model.openButton.props.text }} <i class="iconfont iconarrow-down" *ngIf="show"></i
+                ><i class="iconfont iconarrow-upup" *ngIf="!show"></i>
+            </div>
+            <!-- <dx-button
+                [text]="model.openButton.props.text"
+                [icon] = "model.openButton.props.icon"
+                [stylingMode]="model.openButton.props.stylingMode"
+                (onClick)="open()"
+                template='buttonTemplate'
+            >
+        <div *dxTemplate="let button of 'buttonTemplate'">
+            {{button.text}} <i [class.className]="button.icon"></i>{{button.icon}}
+        </div>
+        </dx-button> -->
+        </div>
+    </div>
+</div>

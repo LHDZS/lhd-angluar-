@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="title">{{ title }}</div>
+    <!-- <div class="wrapper">
+        <dx-data-grid id="gridContainer" [dataSource]="dataSource" [showBorders]="false" rowTemplate="rowspan">
+            <dxi-column caption="指标" alignment="center" [width]="220"></dxi-column>
+            <dxi-column caption="1月" alignment="center"></dxi-column>
+            <dxi-column caption="2月" alignment="center"></dxi-column>
+            <dxi-column caption="3月" alignment="center"></dxi-column>
+            <dxi-column caption="4月" alignment="center"></dxi-column>
+            <dxi-column caption="5月" alignment="center"></dxi-column>
+            <dxi-column caption="6月" alignment="center"></dxi-column>
+            <dxi-column caption="7月" alignment="center"></dxi-column>
+            <dxi-column caption="8月" alignment="center"></dxi-column>
+            <dxi-column caption="9月" alignment="center"></dxi-column>
+            <dxi-column caption="10月" alignment="center"></dxi-column>
+            <dxi-column caption="11月" alignment="center"></dxi-column>
+            <dxi-column caption="12月" alignment="center"></dxi-column>
+            <dxi-column caption="合计" alignment="center"></dxi-column>
+            <tbody *dxTemplate="let row of 'rowspan'">
+                <tr>
+                    <td rowspan="3" class="td-rowspan">
+                        <tbody>
+                            <tr>
+                                <td class="cell-rowspan" rowspan="3">{{ row.data.label }}</td>
+                            </tr>
+                            <tr *ngFor="let cell of row.data.group">
+                                <td class="cell">{{ cell.label }}</td>
+                            </tr>
+                        </tbody>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr *ngFor="let cell of row.data.group">
+                    <td>{{ cell.one }}</td>
+                    <td class="cell">{{ cell.two }}</td>
+                    <td class="cell">{{ cell.three }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </dx-data-grid>
+    </div> -->
+    <dx-pivot-grid id="sales" [allowSortingBySummary]="true" [allowSorting]="true" [allowFiltering]="true"
+        [allowExpandAll]="true"  [showBorders]="true" [dataSource]="dataSource">
+        
+        <dxo-field-chooser [enabled]="false"></dxo-field-chooser>
+    </dx-pivot-grid>
+
+</div>

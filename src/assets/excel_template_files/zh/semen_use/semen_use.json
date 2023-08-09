@@ -1,0 +1,34 @@
+[
+    
+      {
+        "caption": "*负责人",
+        "dataField": "PersonId",
+        "dataType": "string"
+      },
+      {
+        "caption": "*单据日期",
+        "dataField": "DataDate",
+        "dataType": "date"
+      },
+      {
+        "caption": "* 仓库",
+        "dataField": "WarehouseId",
+        "dataType": "string"
+      },
+      {
+        "caption": "* 类型",
+        "dataField": "RequisitionType",
+        "dataType": "string"
+      },
+    
+      {
+        "caption": "* 商品",
+        "dataField": "ProductId",
+        "dataType": "string"
+      },
+      {
+        "caption": "* 数量",
+        "dataField": "Quantity",
+        "dataType": "string"
+      }
+]

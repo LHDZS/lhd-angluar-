@@ -1,0 +1,15 @@
+<div
+    class="combox-panel"
+    [ngStyle]="{
+        height: dynamicHeight + 'px'
+    }"
+>
+    <div class="combox-content">
+        <ng-content select="combox-group"></ng-content>
+    </div>
+    <div class="combox-option">
+        <dx-button text="查询" type="default" (onClick)="search()" [visible]="searchVisible"></dx-button>
+        <dx-button text="重置" stylingMode="outlined" (onClick)="reset()" [visible]="resetVisible"></dx-button>
+        <dx-button text="展开" *ngIf="folder" stylingMode="text" icon="chevrondown" (onClick)="folding()"></dx-button>
+    </div>
+</div>

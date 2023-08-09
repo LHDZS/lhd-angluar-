@@ -1,0 +1,24 @@
+<div class="add-delete">
+    <div
+        *ngIf="addEnabled"
+        [ngClass]="{
+            'option-item': true,
+            'option-item-disabeld': !_editing
+        }"
+        (click)="addRowEvent()"
+    >
+        <!-- 增行 -->
+        + 增行
+    </div>
+    <div
+        *ngIf="deleteEnabled"
+        [ngClass]="{
+            'option-item': true,
+            'option-item-disabeld': !_editing
+        }"
+        (click)="deleteRowEvent()"
+    >
+        <!-- 删行 -->
+        - 删行
+    </div>
+</div>

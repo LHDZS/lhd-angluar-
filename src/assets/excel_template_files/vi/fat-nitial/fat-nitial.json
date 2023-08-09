@@ -1,0 +1,27 @@
+[
+    {
+        "caption": "*Lô",
+        "dataField": "Pig",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Chuồng",
+        "dataField": "PigHouseName",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Số con",
+        "dataField": "PigCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Cân nặng (kg)",
+        "dataField": "PigTotalWeight",
+        "dataType": "string"
+    },
+    {
+        "caption": "Tuổi trung bình mỗi ngày  ",
+        "dataField": "ShowAge",
+        "dataType": "string"
+    }
+]

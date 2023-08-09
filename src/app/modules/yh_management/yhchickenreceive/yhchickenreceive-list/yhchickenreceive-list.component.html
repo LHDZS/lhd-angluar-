@@ -1,0 +1,8 @@
+<div class="form-container">
+    <nx-zlw-header-search-panel #headerSearchPanel [model]="searchPanelModel"></nx-zlw-header-search-panel>
+    <nx-zlw-toolbar-panel #toolbar [model]="toolbarPanelModel"></nx-zlw-toolbar-panel>
+    <div class="data-grid-wrapper">
+        <nx-zlw-form-list #list [model]="dataGridModel"></nx-zlw-form-list>
+    </div>
+</div>
+<nx-excel-import #excel [model]="excelModel"></nx-excel-import>

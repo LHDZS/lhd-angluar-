@@ -1,0 +1,214 @@
+:host .toolbar-wrapper {
+    width: 100%;
+    height: auto;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background-color: #fff;
+    margin-bottom: 8px;
+    &.detail-tool-bar {
+        margin-bottom: 0;
+    }
+    > .toolbar-buttons {
+        display: flex;
+        height: 36px;
+        width: 100%;
+        justify-content: space-between;
+        &.detail-tool-bar {
+            justify-content: space-between;
+        }
+        > .option-main {
+            display: flex;
+            align-items: center;
+
+            height: 100%;
+            > .option-main-item {
+                display: inline-block;
+                > .option-main-item-wrapper {
+                    display: inline-block;
+                    margin-right: 14px;
+                    // > ::ng-deep .dx-button-mode-contained {
+                    //     border-color: #ebf5ff;
+                    //     background-color: #1890ff;
+                    //     border-radius: 5px;
+                    //     color: #fff;
+                    // }
+                }
+
+                > ::ng-deep .dx-button-mode-contained .dx-icon {
+                    color: #fff;
+                }
+            }
+            > .option-main-item:last-of-type {
+                > .option-main-item-wrapper {
+                    margin-right: 0px;
+                }
+            }
+        }
+        > .option-other {
+            display: flex;
+            align-items: center;
+
+            height: 100%;
+            margin-left: 20px;
+            text-align: right;
+            > ::ng-deep .dx-button-mode-text .dx-icon {
+                color: #53575b;
+            }
+            > .option-other-item {
+                flex: 1;
+            }
+        }
+    }
+    > .check-info,
+    .check-success,
+    .check-error {
+        display: flex;
+        height: 35px;
+        width: 100%;
+        border: 1px solid #87d1ff;
+        margin-top: 8px;
+        > .check-info-img,
+        .check-success-img,
+        .check-error-img,
+        .check-info-message,
+        .check-info-message,
+        .check-success-message,
+        .check-error-message {
+            display: inline-flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+        }
+        > .check-info-message {
+            color: #1890ff;
+        }
+        > .check-success-message {
+            color: #10c038;
+        }
+        > .check-error-message {
+            color: #f04134;
+        }
+        > .check-info-img,
+        .check-success-img,
+        .check-error-img {
+            width: 15px;
+            margin-left: 10px;
+            > img {
+                width: 15px;
+                height: 15px;
+            }
+        }
+        > .check-info-img {
+            > .check-info-icon {
+                color: #d9564e;
+            }
+        }
+        > .check-success-img {
+            > .check-success-icon {
+                color: #52c41a;
+            }
+        }
+        > .check-error-img {
+            > .check-error-icon {
+                color: #e9ca63;
+            }
+        }
+        > .check-info-message,
+        .check-success-message,
+        .check-error-message {
+            margin-left: 10px;
+        }
+        > .check-info-clear,
+        .check-success-clear,
+        .check-error-clear {
+            width: 60px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            flex-flow: row-reverse;
+            text-align: right;
+            line-height: 33px;
+            padding-right: 10px;
+            > .check-info-clear-text {
+                color: #1890ff;
+            }
+            > .check-success-clear-text {
+                color: #10c038;
+            }
+            > .check-error-clear-text {
+                color: #e9ca63;
+            }
+            > .check-info-clear-text:hover,
+            .check-success-clear-text:hover,
+            .check-error-clear-text:hover {
+                cursor: pointer;
+            }
+        }
+        .check-info-clear {
+            display: none;
+        }
+    }
+    > .check-info {
+        background-color: #fff1f0;
+        border-color: #ffc1bd;
+    }
+    > .check-success {
+        background-color: #f6ffed;
+        border-color: #ccf1ae;
+    }
+    > .check-error {
+        background-color: #fffbe6;
+        border-color: #fff1c2;
+    }
+}
+:host .dropdwon-button-outlined {
+    background-color: #d9544f;
+    color: #fff;
+    border-radius: 4px;
+    border-color: #d9544f;
+}
+:host ::ng-deep .dropdwon-button-outlined .dx-buttongroup .dx-buttongroup-wrapper .dx-item {
+    color: #fff;
+}
+:host ::ng-deep .dropdwon-button-outlined .dx-buttongroup .dx-buttongroup-wrapper .dx-item .dx-button-content .dx-icon {
+    color: #fff;
+}
+:host ::ng-deep .dx-button-has-icon .dx-icon {
+    font-size: 18px;
+    line-height: 18px;
+    width: 18px;
+    height: 18px;
+}
+::ng-deep .dx-list-item-icon {
+    width: 24px;
+    height: 24px;
+}
+::ng-deep .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item .dx-icon,
+.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-active .dx-button .dx-icon,
+.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-focused .dx-button .dx-icon {
+    font-size: 24px !important;
+}
+::ng-deep .dx-dropdownbutton-popup-wrapper .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item-content {
+    padding: 7px 14px;
+}
+::ng-deep .message-box-icon .dx-button-content .dx-button-text {
+    color: #d9544f;
+    font-weight: 400;
+}
+::ng-deep .message-box-icon .dx-button-content .dx-button-text::before {
+    content: '(';
+    color: #333333;
+}
+::ng-deep .message-box-icon .dx-button-content .dx-button-text::after {
+    content: ')';
+    color: #333333;
+}
+.column-setting-item {
+    display: flex;
+    align-items: center;
+}
+.column-setting-item .dx-checkbox {
+    margin-right: 3px;
+}

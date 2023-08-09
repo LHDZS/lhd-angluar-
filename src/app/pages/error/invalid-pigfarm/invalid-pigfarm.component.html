@@ -1,0 +1,16 @@
+<div class="invalid-page">
+    <div class="tip-title" *ngIf="type == ''">
+        {{i18n.noPigFarm}}
+        <div class='tip'>{{i18n.noPigFarmTip}}~</div>
+    </div>
+    <div class="tip-title" *ngIf="type == 'batch'">
+        未选择鸡场,功能无法使用
+    </div>
+    <div class="tip-title" *ngIf="type == 'ChickenFarm'">
+        请在左上角切换到种鸡场，再使用此功能。
+    </div>
+    <div class="tip-title" *ngIf="type == 'HatcheryFarm'">
+        请在左上角切换到孵化厂，再使用此功能。
+    </div>
+
+</div>

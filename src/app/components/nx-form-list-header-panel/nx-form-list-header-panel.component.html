@@ -1,0 +1,22 @@
+<div class="nx-form-list-header-panel">
+    <div class="global-search-panel">
+        <dx-text-box
+            [width]="model.fullTextSearch.props.width"
+            [visible]="model.fullTextSearch.props.visible"
+            [value]="model.fullTextSearch.props.value"
+            [disabled]="model.fullTextSearch.props.disabled"
+            [showClearButton]="model.fullTextSearch.props.showClearButton"
+            [placeholder]="model.fullTextSearch.props.placeholder"
+        ></dx-text-box>
+    </div>
+    <div class="toolbar-panel">
+        <div class="toolbar-options">
+            <div class="toolbar-options-item" *ngFor="let item of model.toolbarPanel; let i = index">
+                <dx-button
+                    [stylingMode]="item[model.toolbarPanelKeys[i]].props.stylingMode"
+                    [icon]="item[model.toolbarPanelKeys[i]].props.icon"
+                ></dx-button>
+            </div>
+        </div>
+    </div>
+</div>

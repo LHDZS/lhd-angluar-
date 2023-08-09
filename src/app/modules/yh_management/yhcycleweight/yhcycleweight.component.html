@@ -1,0 +1,953 @@
+<view-container>
+    <dx-load-panel shadingColor="rgba(0,0,0,0)" [showPane]="true" [shading]="true" [showIndicator]="true"
+        [(visible)]="loading">
+    </dx-load-panel>
+    <!-- <dx-tab-panel
+        #tabPanel
+        [dataSource]="companies"
+        [selectedIndex]="0"
+        [loop]="false"
+        [animationEnabled]="true"
+        [swipeEnabled]="false"
+        (onTitleClick)="TitleClick($event)"
+    > -->
+    <div class="yh_tab_Header">
+        <div *ngFor="let list of companies; let i = index;" [class]="list.ID == tabID ? 'yh_tab_select yh_tab_list' : 'yh_tab_list'" (click)="TitleClick(list)">{{ list.CompanyName }}</div>
+    </div>
+    <div class="yhcycleweight">
+        <!-- 列表 -->
+        <div class="searchList">
+            <!-- 拉伸区域 -->
+            <div class="search-bar"></div>
+            <div class="search-line"></div>
+            <!-- 列表内容 -->
+            <div class="search-save">
+                <!-- 列表表头 -->
+                <dx-form
+                    #form
+                    [colCount]="2"
+                    width="100%"
+                    [(formData)]="headerFormData"
+                    style="padding-right: 10px"
+                    validationGroup="customerData"
+                    [showOptionalMark]="false"
+                    [showRequiredMark]="true"
+                    [readOnly]="false"
+                    (onFieldDataChanged)="onFieldDataChanged($event)"
+                >
+                    <dxi-item
+                        [colSpan]="2" [colCount]="2"
+                        [label]="{ text: '日期', alignment: 'right',showColon: false }"
+                    >
+                        <nz-range-picker
+                            #rangePicker
+                            width="100%"
+                            [(ngModel)]="headerFormData.DataDate"
+                            nzFormat="yyyy-MM-dd"
+                            nzSize="large"
+                            nzSeparator="|"
+                        ></nz-range-picker>
+                    </dxi-item>
+                    <dxi-item itemType="group" [colSpan]="2" [colCount]="2">
+                        <dxi-item
+                            [label]="{ text: '状态', alignment: 'right',showColon: false }"
+                            editorType="dxSelectBox"
+                            [editorOptions]="{
+                                dataSource: StateTypeSource,
+                                displayExpr: 'name',
+                                valueExpr: 'value',
+                                showClearButton:true,
+                                searchEnabled:true,
+                                placeholder: '请选择状态'
+                            }"
+                            dataField="Status"
+                        >
+                        </dxi-item>
+                        <dxi-item
+                            *ngIf="tabID != 2"
+                            [label]="{ text: '客户', alignment: 'right',showColon: false }"
+                            editorType="dxSelectBox"
+                            [editorOptions]="{
+                                dataSource: CustomerSource,
+                                valueExpr: 'CustomerId',
+                                displayExpr: 'CustomerName',
+                                showClearButton:true,
+                                searchEnabled:true,
+                                placeholder: '请选择客户',
+                                searchExpr:['CustomerName','MnemonicCode']
+                            }"
+                            dataField="CustomerID"
+                        >
+                        </dxi-item>
+                        <dxi-item
+                            *ngIf="tabID != 3"
+                            [label]="{ text: '养户', alignment: 'right',showColon: false }"
+                            editorType="dxSelectBox"
+                            [editorOptions]="{
+                                dataSource: YHFarmerSource,
+                                valueExpr: 'YHFarmerID',
+                                displayExpr: 'YHFarmerName',
+                                showClearButton:true,
+                                searchEnabled:true,
+                                placeholder: '请选择养户',
+                                searchExpr:['YHFarmerName','MnemonicCode']
+                            }"
+                            dataField="YHFarmerID"
+                        >
+                        </dxi-item>
+                        <dxi-item
+                            [label]="{ text: '称重员', alignment: 'right',showColon: false }"
+                            editorType="dxSelectBox"
+                            [editorOptions]="{
+                                dataSource: PersonSource,
+                                displayExpr: 'PersonName',
+                                valueExpr: 'PersonID',
+                                showClearButton:true,
+                                searchEnabled:true,
+                                placeholder: '请选择称重员'
+                            }"
+                            dataField="PersonID"
+                        >
+                        </dxi-item>
+                    </dxi-item>
+                </dx-form>
+                <div class="l_button">
+                    <dx-button
+                        stylingMode="contained"
+                        text="重置"
+                        type="normal"
+                        [width]="100"
+                        (onClick)="resetSearch()"
+                    >
+                    </dx-button>
+                    <dx-button
+                        stylingMode="contained"
+                        text="查询"
+                        type="default"
+                        [width]="100"
+                        (onClick)="querySearch()"
+                    >
+                    </dx-button>
+                </div>
+                <!-- 列表表体 -->
+                <div class="list_grid">
+                    <dx-data-grid
+                        class="data-grid-wrapper"
+                        #detailGrid
+                        [dataSource]="detailDataSource"
+                        width="100%"
+                        height="62vh"
+                        [sorting]="false"
+                        [hoverStateEnabled]="false"
+                        [allowColumnResizing]="true"
+                        [allowColumnReordering]="true"
+                        [columnAutoWidth]="true"
+                        [(keyExpr)]="keyExpr"
+                        [(focusedRowEnabled)]="focusedRowEnabled"
+                        [(autoNavigateToFocusedRow)]="autoNavigateToFocusedRow"
+                        [(focusedRowKey)]="focusedRowKey"
+                        columnResizingMode='widget'
+                        (onFocusedRowChanged)="onfocusedrowchanged($event)"
+                    >
+                        <dxo-paging [pageSize]="100"></dxo-paging>
+                        <dxo-selection mode="single"></dxo-selection>
+                        <dxo-pager
+                            [showPageSizeSelector]="true"
+                            [allowedPageSizes]="[10, 25, 50, 100]"
+                        ></dxo-pager>
+                        <!-- 弹出框表格数据存储 -->
+                        <dxo-state-storing
+                            [enabled]="true"
+                            [type]="'custom'"
+                            [storageKey]="storageKey"
+                            [customSave]="customStateStoringSave"
+                            [customLoad]="customStateStoringLoad"
+                        ></dxo-state-storing>
+                        <template *ngFor = "let item of gridRefColumns let i = index">
+                            <dxi-column
+                                [fixed]="item.fixed"
+                                *ngIf="tabIDjudge(item)"
+                                [cssClass]="classType(item)"
+                                [dataType]="item.dataType"
+                                [width]="item.width"
+                                [caption]="item.caption"
+                                [dataField]="item.dataField"
+                                [allowEditing]="item.allowEditing"
+                                [alignment]="item.alignment"
+                                [calculateDisplayValue]="item.calculateDisplayValue"
+                                [editorOptions]="item.editorOptions"
+                                [sortIndex]="item.sortIndex ? item.sortIndex : i"
+                                [cellTemplate]="item.cellTemplate"
+                                [format]="item.format"
+                            >
+                                <div *dxTemplate="let item of 'ScommandCell'">
+                                    <span [ngStyle]="StatusColor(item.row.data.Status)">{{item.row.data.StatusName}}</span>
+                                </div>
+                            </dxi-column>
+                        </template>
+                        <dxo-editing [enabled]="false"  [allowUpdating]="false" ></dxo-editing>
+                    </dx-data-grid>
+                </div>
+            </div>
+        </div>
+        <!-- 详情 -->
+        <div class="itemDetail">
+            <!-- *ngIf="(dataFormData.Status == 0) || (dataFormData.Status == 2)" -->
+            <app-print-page
+                class="print"
+                #printPage
+                (getSource)="getSource($event)"
+                [ENV]="environment.ENV"
+                [menu_id]="tokenData.menu_id"
+                (jump)="jump()"
+            ></app-print-page>
+            <!-- 详情表头 -->
+            <editor-grid #editorGrid [heightType]="true" [showCheckBox]="false" [fullScreen]="false" [mode]="mode">
+                <editor-toolbar #editorToolbar [zqModel]="this">
+                    <dx-button position="left" *ngIf="tabID != 2" type="default" icon="back" text="引入" [disabled]="!(dataFormData.Status == undefined) && !(dataFormData.Status == 1)" (onClick)="onIntroduce()"></dx-button>
+                    <dx-button position="left" [elementAttr]="{ name: 'add-btn' }" [disabled]="false" (onClick)="onAdd()"></dx-button>
+                    <!-- <dx-button position="left" [elementAttr]="{ name: 'edit-btn' }" (onClick)="onUpdate()"></dx-button> -->
+                    <dx-button position="left" [elementAttr]="{ name: 'save-btn' }" [disabled]="$savBtn" (onClick)="onSave(true)" ></dx-button>
+                    <dx-button position="left" icon="iconfont iconashbin" [disabled]="!(dataFormData.Status == 1) " type="default" text="作废" (onClick)="onDelete()"></dx-button>
+                    <dx-button position="left" [disabled]="!(dataFormData.Status == 1) " type="default" text="单据完成" (onClick)="onComplete()"></dx-button>
+                    <dx-button position="left" [disabled]="!(dataFormData.Status == 0) && !(dataFormData.Status == 2)" type="default" text="取消{{dataFormData.Status == 0 ? '作废' : '完成'}}" (onClick)="onCancel()"></dx-button>
+                    <!-- <dx-button position="left" [disabled]="!(dataFormData.Status == 2) && !(dataFormData.Status == 3)" type="default" text="打印单据" (onClick)="onGetSource($event)"></dx-button> -->
+                    <dx-button position="left" [disabled]="!(dataFormData.Status == 2) && !(dataFormData.Status == 3)" type="default" text="{{dataFormData.Status == 2 ? '单据' : '取消'}}结算" (onClick)="onClearing(dataFormData.Status)"></dx-button>
+                    <dx-button position="left" *ngIf="tabID != 2" [disabled]="false" type="default" text="客户订单完成" (onClick)="onOrderCom()"></dx-button>
+                </editor-toolbar>
+                <editor-header>
+                    <editor-header-group [expressionType]="true">
+                        <editor-header-item [itemWidth]="'auto'">
+                            <label required>日期</label>
+                            <dx-date-box
+                                placeholder="请选择日期"
+                                [(value)]="dataFormData.DataDate"
+                                [max]="MaxDataDate"
+                                [openOnFieldClick]="true"
+                                displayFormat="yyyy-MM-dd"
+                                (onValueChanged)="onDataDateChanged($event)"
+                                [disabled]="!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)"
+                            ></dx-date-box>
+                        </editor-header-item>
+                        <editor-header-item [itemWidth]="'auto'" *ngIf="tabID != 2">
+                            <label required>客户</label>
+                            <dx-select-box
+                                placeholder="请选择"
+                                [(value)]="dataFormData.CustomerID"
+                                [dataSource]="CustomerSource"
+                                displayExpr="CustomerName"
+                                valueExpr="CustomerId"
+                                searchEnabled="true"
+                                [searchExpr]="['CustomerName','MnemonicCode']"
+                                (onValueChanged)="onCustomerChanged($event)"
+                                [disabled]="!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)"
+                            ></dx-select-box>
+                        </editor-header-item>
+                        <editor-header-item [itemWidth]="'auto'" *ngIf="tabID == 3">
+                            <label required>摘要</label>
+                            <dx-select-box
+                                placeholder="请选择"
+                                [(value)]="dataFormData.Abstract"
+                                [dataSource]="AbstractSource"
+                                displayExpr="DictName"
+                                valueExpr="DictId"
+                                [showClearButton]="true"
+                                searchEnabled="true"
+                                [disabled]="!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)"
+                            ></dx-select-box>
+                        </editor-header-item>
+                        <editor-header-item [itemWidth]="'auto'" *ngIf="tabID != 3">
+                            <label required>养户</label>
+                            <dx-select-box
+                                placeholder="请选择"
+                                [(value)]="dataFormData.YHFarmerID"
+                                [dataSource]="YHFarmerSource"
+                                displayExpr="YHFarmerName"
+                                valueExpr="YHFarmerID"
+                                searchEnabled="true"
+                                [searchExpr]="['YHFarmerName','MnemonicCode']"
+                                (onValueChanged)="onYHFarmerIDChanged($event)"
+                                [disabled]="!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)"
+                            ></dx-select-box>
+                        </editor-header-item>
+                        <editor-header-item [itemWidth]="'auto'" *ngIf="tabID != 3">
+                            <label required>批次</label>
+                            <dx-select-box
+                                placeholder="请选择"
+                                [(value)]="dataFormData.YHBatch"
+                                [dataSource]="YHBatchSource"
+                                displayExpr="YHBatchName"
+                                valueExpr="YHBatchID"
+                                searchEnabled="true"
+                                [searchExpr]="['YHBatchName','MnemonicCode']"
+                                (onValueChanged)="onYHBatchChanged($event)"
+                                [disabled]="!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)"
+                            ></dx-select-box>
+                        </editor-header-item>
+                        <editor-header-item [itemWidth]="'auto'">
+                            <label>备注</label>
+                            <dx-text-box
+                                placeholder="请输入"
+                                [(value)]="dataFormData.Remarks"
+                                (onValueChanged)="onChanged('备注')"
+                                [disabled]="!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)"
+                            ></dx-text-box>
+                        </editor-header-item>
+                        <editor-header-item [itemWidth]="'auto'" *ngIf="tabID != 2">
+                            <label>关联订单</label>
+                            <!-- <span>{{dataFormData.NumberRef || ''}}</span> -->
+                            <dx-text-box
+                                [(value)]="dataFormData.NumberRef"
+                                [readOnly]="true"
+                            ></dx-text-box>
+                        </editor-header-item>
+                        <editor-header-item [itemWidth]="'auto'">
+                            <label required>仓库</label>
+                            <dx-select-box
+                                placeholder="请选择"
+                                [(value)]="dataFormData.WarehouseID"
+                                [dataSource]="warehouseSource"
+                                displayExpr="WarehouseName"
+                                valueExpr="WarehouseID"
+                                searchEnabled="true"
+                                (onValueChanged)="onChanged('仓库')"
+                                [disabled]="!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)"
+                            ></dx-select-box>
+                        </editor-header-item>
+                        <editor-header-item [itemWidth]="'auto'" *ngIf="tabID != 2">
+                            <label required>核算单元</label>
+                            <dx-select-box
+                                placeholder="请选择"
+                                [(value)]="dataFormData.TicketedPointID"
+                                [dataSource]="TicketedPointSource"
+                                displayExpr="TicketedPointName"
+                                valueExpr="TicketedPointId"
+                                [showClearButton]="false"
+                                searchEnabled="true"
+                                (onValueChanged)="onChanged('核算单元')"
+                                [disabled]="!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)"
+                            ></dx-select-box>
+                        </editor-header-item>
+                        <editor-header-item [itemWidth]="'auto'" *ngIf="isManageToHenhouse && tabID != 3">
+                            <label required>栋舍</label>
+                            <dx-select-box
+                                placeholder="请选择"
+                                [(value)]="dataFormData.HenhouseID"
+                                [dataSource]="HenHouseSource"
+                                displayExpr="HenhouseName"
+                                valueExpr="HenhouseID"
+                                searchEnabled="true"
+                                (onOpened)="onHenhouseOpened($event)"
+                                (onValueChanged)="onChanged('栋舍')"
+                                [disabled]="!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)"
+                            ></dx-select-box>
+                        </editor-header-item>
+                        <editor-header-item [itemWidth]="'auto'">
+                            <label>单据号</label>
+                            <dx-text-box
+                                [(value)]="dataFormData.Number"
+                                [readOnly]="true"
+                            ></dx-text-box>
+                        </editor-header-item>
+                        <editor-header-item [itemWidth]="'auto'">
+                            <label>称重员</label>
+                            <dx-select-box
+                                placeholder="请选择"
+                                [(value)]="dataFormData.PersonID"
+                                [dataSource]="PersonSource"
+                                displayExpr="PersonName"
+                                valueExpr="PersonID"
+                                [readOnly]="true"
+                                searchEnabled="true"
+                                [disabled]="!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)"
+                            ></dx-select-box>
+                        </editor-header-item>
+                        <editor-header-item [itemWidth]="'auto'" *ngIf="tabID != 3">
+                            <label required>养殖场</label>
+                            <dx-select-box
+                                placeholder="请选择"
+                                [(value)]="dataFormData.ChickenFarmID"
+                                [dataSource]="ChickenFarmSource"
+                                displayExpr="ChickenFarmName"
+                                valueExpr="ChickenFarmID"
+                                [showClearButton]="true"
+                                searchEnabled="true"
+                                [readOnly]="true"
+                                [disabled]="!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)"
+                            ></dx-select-box>
+                        </editor-header-item>
+                        <editor-header-item *ngFor="let item of headerItems" [itemWidth]="'auto'"></editor-header-item>
+                        <!-- <editor-header-item [itemWidth]="'auto'" *ngIf="tabID == 2"></editor-header-item> -->
+                        <!-- <editor-header-item [itemWidth]="'auto'" *ngIf="isManageToHenhouse && tabID != 3"></editor-header-item> -->
+                        <!-- <editor-header-item [itemWidth]="'auto'" *ngIf="!isManageToHenhouse && tabID == 3"></editor-header-item> -->
+                    </editor-header-group>
+                </editor-header>
+            </editor-grid>
+            <!-- 详情表体 -->
+            <div class="detail_grid">
+                <div class="left_skin">
+                    <h4>皮重</h4>
+                    <dx-data-grid
+                        #tareDetailGrid
+                        [dataSource]="tareDetailDataSource"
+                        width="100%"
+                        height="300px"
+                        keyExpr="NumericalOrderDetail"
+                        [(selectedRowKeys)]="tareDetailSelectedRows"
+                        [allowColumnReordering]="true"
+                        [allowColumnResizing]="true"
+                        [columnAutoWidth]="true"
+                        columnResizingMode='widget'
+                        [sorting]="false"
+                    >
+                        <dxo-selection showCheckBoxesMode="always" mode="multiple"></dxo-selection>
+                        <dxo-paging [enabled]="true" [pageSize]="999"></dxo-paging>
+                        <dxi-column minWidth="80" cssClass="disabled" caption="皮重" dataField="BareWeight" alignment="right" [allowEditing]="false"></dxi-column>
+                        <dxi-column minWidth="80" caption="笼数" dataField="CageQuantity" cssClass="dx-editor-cell dx-right-cell" cellTemplate="commandCell">
+                            <div *dxTemplate="let item of 'commandCell'">
+                                <dx-number-box
+                                    type="number"
+                                    [disabled]="!item.row.data.Type || (!(dataFormData.Status == 1) && !(dataFormData.Status == undefined))"
+                                    [(value)]="item.row.data.CageQuantity"
+                                    format="#0"
+                                    (onValueChanged)="onFormValueChanged($event,item)"
+                                ></dx-number-box>
+                            </div>
+                        </dxi-column>
+                        <dxi-column minWidth="80" cssClass="disabled" caption="方式" dataField="Mode" alignment="center" [allowEditing]="false">
+                            <dxo-lookup
+                                [dataSource]="ModeSource"
+                                displayExpr="name"
+                                valueExpr="value"
+                            ></dxo-lookup>
+                        </dxi-column>
+                        <dxi-column minWidth="80" cssClass="disabled" caption="类型" dataField="Type" alignment="center" [allowEditing]="false" >
+                            <dxo-lookup
+                                [dataSource]="TypeSource"
+                                displayExpr="name"
+                                valueExpr="value"
+                            ></dxo-lookup>
+                        </dxi-column>
+                        <dxo-editing
+                            mode="row"
+                            [allowUpdating]="false"
+                            [allowAdding]="false"
+                        >
+                        </dxo-editing>
+                        <dxo-summary [calculateCustomSummary]="calculateSummary">
+                            <dxi-total-item showInColumn="Type" displayFormat="合计"></dxi-total-item>
+                            <dxi-total-item showInColumn="BareWeight" name="BareWeight" summaryType="custom" displayFormat="{0}"
+                            [valueFormat]="{ type: 'fixedPoint', precision: 2 }"></dxi-total-item>
+                            <dxi-total-item showInColumn="CageQuantity" alignment="right" name="CageQuantity" summaryType="custom" displayFormat="{0}"
+                            [valueFormat]="{ type: 'fixedPoint', precision: 0 }"></dxi-total-item>
+                        </dxo-summary>
+                    </dx-data-grid>
+
+                    <div class="grid_form">
+                        <div class="screen_text">{{ranNum}}</div>
+                        <div class="form_content">
+                            <dx-form id="form" #tareform [formData]="tareForm">
+                                <dxi-item [label]="{ text: '皮重', alignment: 'right',showColon: false }" editorType="dxNumberBox" dataField="BareWeight" >
+                                    <dxo-label template="name"></dxo-label>
+                                    <dxi-validation-rule type="pattern" message="保留两位小数" [pattern]="limitCharacterFix2"></dxi-validation-rule>
+                                </dxi-item>
+                                <dxi-item [label]="{ text: '笼数', alignment: 'right',showColon: false }" editorType="dxNumberBox" dataField="CageQuantity" >
+                                    <dxo-label template="name"></dxo-label>
+                                    <dxi-validation-rule type="pattern" message="请输入大于0的正整数" [pattern]="limitCharacter"></dxi-validation-rule>
+                                </dxi-item>
+                            </dx-form>
+                        </div>
+                    </div>
+                    <div class="grid_button">
+                        <dx-button text="称重" type="default" [disabled]="(!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)) || submited" (onClick)="tareWeigClick($event)"></dx-button>
+                        <dx-button text="增加" type="default" [disabled]="(!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)) || submited" style="margin: 0 10px;" (onClick)="tareAddClick($event)"></dx-button>
+                        <dx-button text="作废/取消" type="default" [disabled]="(!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)) || submited" (onClick)="tareCancelClick($event)"></dx-button>
+                    </div>
+                </div>
+                <div class="right_hair">
+                    <h4>毛重</h4>
+                    <dx-data-grid
+                        #roughDetailGrid
+                        [dataSource]="roughDetailDataSource"
+                        width="100%"
+                        height="300px"
+                        keyExpr="NumericalOrderDetail"
+                        [(selectedRowKeys)]="roughDetailSelectedRows"
+                        [allowColumnReordering]="true"
+                        [allowColumnResizing]="true"
+                        [columnAutoWidth]="true"
+                        columnResizingMode='widget'
+                        [sorting]="false"
+                    >
+                        <dxo-selection showCheckBoxesMode="always" mode="multiple"></dxo-selection>
+                        <dxo-paging [enabled]="true" [pageSize]="999"></dxo-paging>
+                        <dxi-column minWidth="120" cssClass="dx-editor-cell dx-center-cell" caption="商品代号" dataField="ProductID" cellTemplate="PcellTemplate">
+                            <div *dxTemplate="let item of 'PcellTemplate'">
+                                <dx-select-box
+                                    placeholder=""
+                                    [dataSource]="ProductSource"
+                                    [(value)]="item.row.data.ProductID"
+                                    valueExpr="ProductID"
+                                    displayExpr="cProductName"
+                                    [searchEnabled]="true"
+                                    [disabled]="!item.row.data.Type || (!(dataFormData.Status == 1) && !(dataFormData.Status == undefined))"
+                                    (onValueChanged)="onFormValueChanged($event,item)"
+                                >
+                                </dx-select-box>
+                            </div>
+                            <!-- <dxo-lookup
+                                    [dataSource]="ProductSource"
+                                    displayExpr="cProductName"
+                                    valueExpr="ProductID"
+                                ></dxo-lookup> -->
+                        </dxi-column>
+                        <dxi-column minWidth="80" cssClass="disabled" caption="毛重" dataField="GrossWeight" alignment="right" [allowEditing]="false" ></dxi-column>
+                        <dxi-column minWidth="80" caption="笼数" dataField="CageQuantity" cssClass="dx-editor-cell dx-right-cell" cellTemplate="CcellTemplate" >
+                            <div *dxTemplate="let item of 'CcellTemplate'">
+                                <dx-number-box
+                                    alignment="right"
+                                    [disabled]="!item.row.data.Type || (!(dataFormData.Status == 1) && !(dataFormData.Status == undefined))"
+                                    [(value)]="item.row.data.CageQuantity"
+                                    format="#0"
+                                    (onValueChanged)="onFormValueChanged($event,item)"
+                                ></dx-number-box>
+                            </div>
+                        </dxi-column>
+                        <dxi-column minWidth="80" caption="只数" dataField="Quantity" cssClass="dx-editor-cell dx-right-cell" cellTemplate="QcellTemplate" >
+                            <div *dxTemplate="let item of 'QcellTemplate'">
+                                <!-- <dx-number-box
+                                    [disabled]="!item.row.data.Type"
+                                    [(value)]="item.row.data.Quantity"
+                                    (onValueChanged)="onFormValueChanged($event,item)"
+                                ></dx-number-box> -->
+                                <dx-number-box
+                                    placeholder=""
+                                    [disabled]="!item.row.data.Type || (!(dataFormData.Status == 1) && !(dataFormData.Status == undefined))"
+                                    [(value)]="item.row.data.Quantity"
+                                    format="#0"
+                                    (onValueChanged)="onFormValueChanged($event,item)"
+                                    >
+                                </dx-number-box>
+                            </div>
+                        </dxi-column>
+                        <dxi-column minWidth="80" caption="车重" dataField="VehicleWeight" cssClass="dx-editor-cell dx-right-cell" cellTemplate="VcellTemplate" >
+                            <div *dxTemplate="let item of 'VcellTemplate'">
+                                <dx-number-box
+                                    [disabled]="!item.row.data.Type || (!(dataFormData.Status == 1) && !(dataFormData.Status == undefined))"
+                                    [(value)]="item.row.data.VehicleWeight"
+                                    format="#0.00"
+                                    (onValueChanged)="onFormValueChanged($event,item)"
+                                ></dx-number-box>
+                            </div>
+                        </dxi-column>
+                        <dxi-column minWidth="80" cssClass="disabled" caption="方式" dataField="Mode" alignment="center" [allowEditing]="false" >
+                            <dxo-lookup
+                                [dataSource]="ModeSource"
+                                displayExpr="name"
+                                valueExpr="value"
+                            ></dxo-lookup>
+                        </dxi-column>
+                        <dxi-column minWidth="80" cssClass="disabled" caption="类型" dataField="Type" alignment="center" [allowEditing]="false" >
+                            <dxo-lookup
+                                [dataSource]="TypeSource"
+                                displayExpr="name"
+                                valueExpr="value"
+                            ></dxo-lookup>
+                        </dxi-column>
+                        <dxi-column minWidth="80" cssClass="dx-editor-cell dx-center-cell" caption="备注" dataField="Remarks" alignment="center" [allowEditing]="true" cellTemplate="RcellTemplate">
+                            <div *dxTemplate="let item of 'RcellTemplate'">
+                                <dx-text-box
+                                    [disabled]="!item.row.data.Type || (!(dataFormData.Status == 1) && !(dataFormData.Status == undefined))"
+                                    [(value)]="item.row.data.Remarks"
+                                    (onValueChanged)="onFormValueChanged($event,item)"
+                                ></dx-text-box>
+                            </div>
+                        </dxi-column>
+                        <dxo-editing
+                            mode="row"
+                            [allowUpdating]="false"
+                            [allowAdding]="false"
+                        >
+                        </dxo-editing>
+                        <dxo-summary [calculateCustomSummary]="rightCalculateSummary">
+                            <dxi-total-item column="Remarks" displayFormat="合计"></dxi-total-item>
+                            <dxi-total-item showInColumn="GrossWeight" name="GrossWeight" summaryType="custom" displayFormat="{0}"
+                                [valueFormat]="{ type: 'fixedPoint', precision: 2 }">
+                            </dxi-total-item>
+                            <dxi-total-item showInColumn="CageQuantity" name="CageQuantity" alignment="right" summaryType="custom" displayFormat="{0}"
+                                [valueFormat]="{ type: 'fixedPoint', precision: 0 }">
+                            </dxi-total-item>
+                            <dxi-total-item showInColumn="Quantity" name="Quantity" alignment="right" summaryType="custom" displayFormat="{0}"
+                                [valueFormat]="{ type: 'fixedPoint', precision: 0 }">
+                            </dxi-total-item>
+                            <dxi-total-item showInColumn="VehicleWeight" name="VehicleWeight" alignment="right" summaryType="custom" displayFormat="{0}"
+                                [valueFormat]="{ type: 'fixedPoint', precision: 2 }">
+                            </dxi-total-item>
+                        </dxo-summary>
+                    </dx-data-grid>
+                    <div class="grid_form">
+                        <div class="screen_text">{{ranNum}}</div>
+                        <div class="form_content">
+                            <dx-form id="form" #roughform [formData]="roughForm" [colCount]="18">
+                                <dxi-item
+                                    [label]="{ text: '商品代号', alignment: 'right',showColon: false }"
+                                    [colSpan]="8"
+                                    editorType="dxSelectBox"
+                                    [editorOptions]="{
+                                        dataSource: ProductSource,
+                                        valueExpr: 'ProductID',
+                                        displayExpr: 'cProductName',
+                                        searchEnabled:true,
+                                        placeholder: '请选择商品代号'
+                                    }"
+                                    dataField="ProductID"
+                                >
+                                </dxi-item>
+                                <dxi-item [label]="{ text: '毛重', alignment: 'right',showColon: false }" editorType="dxNumberBox" dataField="GrossWeight"  [colSpan]="5">
+                                    <dxo-label template="name"></dxo-label>
+                                    <dxi-validation-rule type="pattern" message="保留两位小数" [pattern]="limitCharacterFix2"></dxi-validation-rule>
+                                </dxi-item>
+                                <dxi-item [label]="{ text: '笼数', alignment: 'right',showColon: false }" editorType="dxNumberBox" dataField="CageQuantity" [colSpan]="5">
+                                    <dxo-label template="name"></dxo-label>
+                                    <dxi-validation-rule type="pattern" message="请输入大于0的正整数" [pattern]="limitCharacter"></dxi-validation-rule>
+                                </dxi-item>
+                                <dxi-item [label]="{ text: '车重', alignment: 'right',showColon: false }" dataField="VehicleWeight" [colSpan]="8">
+                                    <div class="Vehicle">
+                                        <dx-number-box
+                                            width="100%"
+                                            [(value)]="roughForm.VehicleWeight"
+                                            format="#0.00"
+                                        ></dx-number-box>
+                                        <dx-button icon="plus" style="margin-left: 2px;" (onClick)="VehicleAdd($event)"></dx-button>
+                                    </div>
+                                </dxi-item>
+                                <dxi-item [label]="{ text: '只数', alignment: 'right',showColon: false }" editorType="dxNumberBox" dataField="Quantity" [colSpan]="5">
+                                    <dxo-label template="name"></dxo-label>
+                                    <dxi-validation-rule type="pattern" message="请输入正整数" [pattern]="limitnumber"></dxi-validation-rule>
+                                </dxi-item>
+                                <dxi-item [label]="{ text: '备注', alignment: 'left',showColon: false }" dataField="Remarks" [colSpan]="5">
+                                    <dxo-label template="name"></dxo-label>
+                                </dxi-item>
+                            </dx-form>
+                        </div>
+                    </div>
+                    <div class="grid_button">
+                        <dx-button text="称重" type="default" [disabled]="(!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)) || submited" (onClick)="roughWeightClick($event)"></dx-button>
+                        <dx-button text="增加" type="default" [disabled]="(!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)) || submited" style="margin: 0 10px;" (onClick)="roughAddClick($event)"></dx-button>
+                        <dx-button text="作废/取消" type="default" [disabled]="(!(dataFormData.Status == 1) && !(dataFormData.Status == undefined)) || submited" (onClick)="roughCancelClick($event)"></dx-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </dx-tab-panel> -->
+    <!-- 订单完成 -->
+    <dx-popup
+        [(visible)]="completeVisible"
+        width="60%"
+        [maxHeight]="600"
+        [minWidth]="1000"
+        [dragEnabled]="false"
+        [showTitle]="true"
+        resizeEnabled="true"
+        title="客户过磅完成确认"
+        showCloseButton="true"
+    >
+    <dx-form #importForm id="importForm" [colCount]="3" width="100%" [(formData)]="completeFormData"
+    validationGroup="customerData" [showOptionalMark]="false" [showRequiredMark]="true">
+    <dxi-item itemType="group" [colSpan]="3" [colCount]="3">
+        <dxi-item
+            [label]="{ text: '销售日期', alignment: 'right',showColon: false }"
+            dataField="ReqDeliveryDate"
+            editorType="dxDateBox"
+            [editorOptions]="{ width: '100%',placeholder:'请选择日期' }"
+        >
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '时段', alignment: 'right',showColon: false }"
+            editorType="dxSelectBox"
+            dataField="SalesPeriod"
+            [editorOptions]="{
+                dataSource: SalesPeriodNames,
+                valueExpr: 'value',
+                displayExpr: 'name',
+                showClearButton:true,
+                searchEnabled:true,
+                placeholder: '请选择时段'
+            }"
+        >
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '客户', alignment: 'right',showColon: false }"
+            editorType="dxSelectBox"
+            dataField="CustomerID"
+            [editorOptions]="{
+                dataSource: CustomerSource,
+                valueExpr: 'CustomerId',
+                displayExpr: 'CustomerName',
+                showClearButton:true,
+                searchEnabled:true,
+                placeholder: '请选择客户'
+            }"
+        >
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '完成确认状态', alignment: 'right',showColon: false }"
+            editorType="dxSelectBox"
+            dataField="WeightStatus"
+            [editorOptions]="{
+                dataSource: WeightStatusSource,
+                valueExpr: 'value',
+                displayExpr: 'name',
+                showClearButton:true,
+                searchEnabled:true,
+                placeholder: '请选择确认状态'
+            }"
+        >
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '单据号', alignment: 'right',showColon: false }"
+            dataField="Number"
+            [editorOptions]="{placeholder: ''}"
+        >
+        </dxi-item>
+        <dxi-item>
+        <dx-button
+            text="查询"
+            type="default"
+            (onClick)="comSearch()"
+        >
+        </dx-button>
+        <dx-button style="margin-left: 20px;"
+            text="重置"
+            type="normal"
+            (onClick)="comReset()"
+            >
+        </dx-button>
+        </dxi-item>
+    </dxi-item>
+    </dx-form>
+    <dx-data-grid
+        #completeGrigRef
+        style="margin-top: 20px;"
+        height="70%"
+        [dataSource]="completeSourceFilter"
+        [allowColumnResizing]="true"
+        [columnAutoWidth]="true"
+        columnResizingMode='widget'
+        keyExpr="NumericalOrder"
+        [(selectedRowKeys)]="completeSelectedRows"
+        [showBorders]="true"
+        (onEditorPreparing)="onEditorPreparingFn($event)"
+    >
+    <dxo-editing mode="cell" [allowUpdating]="true"> </dxo-editing>
+    <dxo-sorting mode="none"></dxo-sorting>
+    <dxo-selection showCheckBoxesMode="always" mode="multiple"> </dxo-selection>
+        <dxi-column dataField="ReqDeliveryDate" [fixed]="true" minWidth="80" dataType="date" alignment="center" caption="销售日期" [allowEditing]="false" ></dxi-column>
+        <dxi-column dataField="SalesPeriodName" dataType="string" caption="时段" alignment="center" [allowEditing]="false" ></dxi-column>
+        <dxi-column dataField="CustomerName" dataType="string" caption="客户" alignment="center" [allowEditing]="false" ></dxi-column>
+        <dxi-column dataField="OrderDetailStr" minWidth="200" dataType="string" caption="订单明细" alignment="center" [allowEditing]="false" ></dxi-column>
+        <dxi-column dataField="Quantity" dataType="number" caption="订单只数" alignment="right" [allowEditing]="false" ></dxi-column>
+        <dxi-column dataField="WeightQuantity" dataType="number"  caption="已过磅只数" alignment="right" [allowEditing]="false" ></dxi-column>
+        <dxi-column dataField="WeightStatusName" dataType="string" caption="完成确认状态" alignment="canter" [allowEditing]="false" ></dxi-column>
+        <dxi-column dataField="Number" minWidth="100" dataType="string" caption="单据号" alignment="center" [allowEditing]="false"></dxi-column>
+    </dx-data-grid>
+    <div height="40px" style="margin-top: 10px;text-align: center;">
+        <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+        text="过磅完成"
+        [disabled]="!completeSelectedRows?.length"
+        (onClick)="getComplete(1)"
+    >
+    </dx-button>
+    <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+        text="关闭"
+        (onClick)="getComplete(3)"
+    >
+    </dx-button>
+    </div>
+    </dx-popup>
+    <!-- 引入客户 -->
+    <dx-popup
+        [(visible)]="importVisible"
+        width="60%"
+        [maxHeight]="600"
+        [minWidth]="1000"
+        [dragEnabled]="false"
+        [showTitle]="true"
+        resizeEnabled="true"
+        title="引入肉禽销售订单"
+        showCloseButton="true"
+    >
+    <dx-form #importForm id="importForm" [colCount]="3" width="100%" [(formData)]="importFormData"
+    validationGroup="customerData" [showOptionalMark]="false" [showRequiredMark]="true">
+    <dxi-item itemType="group" [colSpan]="3" [colCount]="3">
+        <dxi-item
+            [label]="{ text: '销售日期', alignment: 'right',showColon: false }"
+            dataField="ReqDeliveryDate"
+            editorType="dxDateBox"
+            [editorOptions]="{ width: '100%',placeholder:'请选择日期', onValueChanged:onValueChangedEvent }"
+        >
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '时段', alignment: 'right',showColon: false }"
+            editorType="dxSelectBox"
+            dataField="SalesPeriod"
+            [editorOptions]="{
+                dataSource: SalesPeriodNames,
+                valueExpr: 'value',
+                displayExpr: 'name',
+                showClearButton:true,
+                searchEnabled:true,
+                placeholder: '请选择时段',
+                onValueChanged:onValueChangedEvent
+            }"
+        >
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '客户', alignment: 'right',showColon: false }"
+            editorType="dxSelectBox"
+            dataField="CustomerID"
+            [editorOptions]="{
+                dataSource: CustomerSource,
+                valueExpr: 'CustomerId',
+                displayExpr: 'CustomerName',
+                showClearButton:true,
+                searchEnabled:true,
+                placeholder: '请选择客户',
+                onValueChanged:onValueChangedEvent
+            }"
+        >
+        </dxi-item>
+        <!-- <dxi-item>
+        <dx-button
+            text="查询"
+            type="default"
+            (onClick)="impSearch()"
+        >
+        </dx-button>
+        <dx-button style="margin-left: 20px;"
+            text="重置"
+            type="normal"
+            (onClick)="impReset()"
+            >
+        </dx-button>
+        </dxi-item> -->
+    </dxi-item>
+    </dx-form>
+    <dx-data-grid
+        #importGrigRef
+        style="margin-top: 20px;"
+        height="80%"
+        [dataSource]="importSourceFilter"
+        [allowColumnResizing]="true"
+        [columnAutoWidth]="true"
+        columnResizingMode='widget'
+        [(selectedRowKeys)]="importSelectedRows"
+        [showBorders]="true"
+        (onEditorPreparing)="onEditorPreparingFn($event)"
+    >
+    <dxo-editing mode="cell" [allowUpdating]="true"> </dxo-editing>
+    <dxo-sorting mode="none"></dxo-sorting>
+    <dxo-selection showCheckBoxesMode="always" mode="multiple"> </dxo-selection>
+        <dxi-column dataField="ReqDeliveryDate" [fixed]="true" minWidth="80" dataType="date" alignment="center" caption="销售日期" [allowEditing]="false" ></dxi-column>
+        <dxi-column dataField="SalesPeriodName" dataType="string" caption="时段" alignment="center" [allowEditing]="false" ></dxi-column>
+        <dxi-column dataField="CustomerName" dataType="string" caption="客户" alignment="center" [allowEditing]="false" ></dxi-column>
+        <dxi-column dataField="OrderDetailStr" minWidth="200" dataType="string" caption="订单明细" alignment="center" [allowEditing]="false" ></dxi-column>
+        <dxi-column dataField="Quantity" dataType="number" caption="订单只数" alignment="right" [allowEditing]="false" ></dxi-column>
+        <dxi-column dataField="WeightQuantity" dataType="number"  caption="已过磅只数" alignment="right" [allowEditing]="false" ></dxi-column>
+        <dxi-column dataField="Number" minWidth="100" dataType="string" caption="单据号" alignment="center" [allowEditing]="false"></dxi-column>
+    </dx-data-grid>
+    <div height="40px" style="margin-top: 10px;text-align: center;">
+        <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+        text="确定"
+        [disabled]="!importSelectedRows?.length"
+        (onClick)="getSelection(1)"
+    >
+    </dx-button>
+    <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+        text="关闭"
+        (onClick)="getSelection(3)"
+    >
+    </dx-button>
+    </div>
+    </dx-popup>
+    <!-- 车重设置 -->
+    <dx-popup
+        width="500"
+        height="250"
+        [(visible)]="VehicleVisible"
+        [dragEnabled]="false"
+        [showTitle]="true"
+        title="车重设置"
+      >
+          <dx-form
+            #VehicleForm
+            [colCount]="1"
+            width="100%"
+            [(formData)]="VehicleFormData"
+            style="padding-right: 10px"
+            [showRequiredMark]="true"
+          >
+              <dxi-item
+                  [label]="{ text: '默认车重', alignment: 'right',showColon: false }"
+                  dataField="VehicleWeight"
+                  [editorOptions]="{placeholder: ''}"
+              >
+                  <dxi-validation-rule type="required" message="车重必填"> </dxi-validation-rule>
+              </dxi-item>
+              <dxi-item style="text-align: right;margin-top: 30px;">
+                  <dx-button type="default" text="保存" (onClick)="onVehicleFormSubmit()" [disabled]="VehicleSaveDisabled"></dx-button>
+              </dxi-item>
+          </dx-form>
+      </dx-popup>
+    <!-- 保存提示 -->
+    <dx-popup
+        [width]="300"
+        [height]="180"
+        [showTitle]="true"
+        title="提示"
+        [(visible)]="saveVisible"
+    >
+        <div style="text-align: center;">
+            <p>当前单据存在未保存的数据信息，请确认是否保存！</p>
+            <div>
+                <dx-button
+                    style="margin-right: 15px"
+                    type="normal"
+                    text="保存"
+                    (onClick)="delConfirm()"
+                    >
+                </dx-button>
+                <dx-button
+                    type="normal"
+                    text="不保存"
+                    (onClick)="delCancel()"
+                    >
+                </dx-button>
+            </div>
+        </div>
+    </dx-popup>
+    <!-- 报错 -->
+    <dx-popup
+        #popup
+        [width]="400"
+        [height]="400"
+        [showTitle]="true"
+        title="{{ messageBoxDisplayText }}"
+        [dragEnabled]="true"
+        [closeOnOutsideClick]="false"
+        [(visible)]="messageBoxVisible"
+        [shading]="false"
+        [resizeEnabled]="true"
+    >
+        <dxo-position at="right bottom" offset="-220 -280" of="Window"> </dxo-position>
+        <div class="message-box-wrapper">
+            <dx-scroll-view width="100%" height="100%">
+                <p *ngIf="messageBoxInfo.length == 0" style="font-size: 14px">{{ notMessageDisplayText }}</p>
+                <div class="message-box-info" *ngFor="let info of messageBoxInfo">
+                    <p [innerHTML]="info | SafeHtml"></p>
+                </div>
+            </dx-scroll-view>
+        </div>
+    </dx-popup>
+</view-container>

@@ -1,0 +1,16 @@
+:host {
+    .editor-grid-item {
+        margin-bottom: 10px;
+        .title {
+            font-size: 14px;
+            padding: 10px 0px 5px 0px;
+            box-sizing: border-box;
+            margin-bottom: 5px;
+            color: #5c6064;
+            font-weight: 600;
+        }
+        .grid-item-wrapper {
+            margin-top: 5px;
+        }
+    }
+}

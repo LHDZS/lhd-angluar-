@@ -1,0 +1,22 @@
+.form-wrapper {
+    width: 100%;
+    padding-top: 30px;
+    padding-left: 40px;
+}
+
+:host ::ng-deep .dx-field-item-required-mark {
+    padding-right: 5px;
+}
+
+:host ::ng-deep .dx-field-item-label-content {
+    display       : flex !important;
+    flex-direction: row-reverse;
+}
+
+:host ::ng-deep .dx-item {
+    margin-bottom: 10px;
+}
+
+:host ::ng-deep .dx-form-group-with-caption>.dx-form-group-content {
+    padding-bottom: 0;
+}

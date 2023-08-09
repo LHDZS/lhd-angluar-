@@ -1,0 +1,27 @@
+[
+    {
+        "caption": "* Số tai",
+        "dataField": "Pig",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Chuồng",
+        "dataField": "PigHouseName",
+        "dataType": "string"
+    },
+    {
+        "caption": " Cột",
+        "dataField": "PigField",
+        "dataType": "string"
+    },
+    {
+        "caption": "Cân nặng(kg)",
+        "dataField": "PigTotalWeight",
+        "dataType": "string"
+    },
+    {
+        "caption": "Lợn nái lô  ",
+        "dataField": "BatchId",
+        "dataType": "string"
+    }
+]

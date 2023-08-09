@@ -1,0 +1,4 @@
+:host .data-grid-wrapper {
+    width: 100%;
+    height: calc(100% - 119px);
+}

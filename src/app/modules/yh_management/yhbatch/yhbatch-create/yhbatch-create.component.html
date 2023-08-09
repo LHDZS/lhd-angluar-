@@ -1,0 +1,222 @@
+<div class="yhbatch-wrapper">
+
+    <!-- 工具条 -->
+    <nx-zlw-toolbar-panel #toolbarPanel [model]="toolBarPanelModel"></nx-zlw-toolbar-panel>
+
+    <!-- 表单 -->
+    <div class="form-wrapper">
+
+        <dx-form
+            #form
+            id="form"
+            [(formData)]="formData"
+            [colCount]="8"
+            width="100%"
+            style="padding-right: 10px"
+            validationGroup="customerData"
+            [showOptionalMark]="false"
+            [showRequiredMark]="true"
+            (onFieldDataChanged)="onFieldDataChanged($event)"
+        >
+
+            <!-- 第一行 -->
+            <dxi-item [label]="{ text: '建档日期', alignment: 'right',showColon: false }" editorType="dxDateBox" dataField="DataDate" [colSpan]="2"
+                [editorOptions]="{
+                    placeholder: '请选择建档日期',
+                    readOnly:isReadOnly
+            }">
+                <!-- <dx-date-box type="date" (onValueChanged)="_onValueChanged($event)" [value]="DataDate"></dx-date-box> -->
+                <dxi-validation-rule type="required" message="日期必填"></dxi-validation-rule>
+            </dxi-item>
+            <dxi-item [label]="{ text: '养户名称', alignment: 'right',showColon: false }" editorType="dxSelectBox" [colSpan]="2"
+                [editorOptions]="{
+                    dataSource: YhFarmerSource,
+                    valueExpr: 'YHFarmerID',
+                    displayExpr: 'YHFarmerName',
+                    placeholder: '请选择养户名称',
+                    showClearButton: true,
+                    searchEnabled: true,
+                    searchExpr: ['YHFarmerName', 'MnemonicCode', 'YHPersonName', 'Phone'],
+                    readOnly:isReadOnly
+                }" dataField="YHFarmerID" >
+                <dxi-validation-rule type="required" message="养户名称必填"> </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item [label]="{ text: '养殖合同', alignment: 'right',showColon: false }" editorType="dxSelectBox" [colSpan]="2"
+                [editorOptions]="{
+                    dataSource: YhFarmerContractSource,
+                    valueExpr: 'NumericalOrder',
+                    displayExpr: 'ContractNo',
+                    showClearButton: true,
+                    placeholder: '请选择养殖合同',
+                    readOnly:isReadOnly
+                }" dataField="YHFarmerContract">
+                <dxi-validation-rule type="required" message="养殖合同必填"> </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item [label]="{ text: '养殖场', alignment: 'right',showColon: false }" editorType="dxSelectBox" [colSpan]="2"
+                [editorOptions]="{
+                    dataSource: ChickenFarmSource,
+                    valueExpr: 'ChickenFarmID',
+                    displayExpr: 'ChickenFarmName',
+                    showClearButton: true,
+                    placeholder: '请选择养殖场',
+                    readOnly:isReadOnly
+                }" dataField="ChickenFarmID">
+                <dxi-validation-rule type="required" message="养殖场必填"> </dxi-validation-rule>
+            </dxi-item>
+
+            <!-- 第二行 -->
+            <dxi-item [label]="{ text: '批次名称', alignment: 'right',showColon: false }" editorType="dxTextBox" [colSpan]="2"
+                [editorOptions]="{ showClearButton:true,placeholder: '请输入批次名称' }" dataField="YHBatchName">
+                <dxi-validation-rule type="required" message="批次名称必填"></dxi-validation-rule>
+            </dxi-item>
+            <dxi-item [label]="{ text: '品种', alignment: 'right',showColon: false }" editorType="dxSelectBox" [colSpan]="2"
+                [editorOptions]="{
+                    dataSource: BreedingSource,
+                    valueExpr: 'BreedingID',
+                    displayExpr: 'BreedingName',
+                    showClearButton: true,
+                    searchEnabled: true,
+                    searchExpr: ['BreedingName','MnemonicCode'],
+                    placeholder: '请选择品种',
+                    readOnly:isReadOnly
+                }" dataField="BreedingID">
+                <dxi-validation-rule type="required" message="品种必填"> </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item [label]="{ text: '商品代号', alignment: 'right',showColon: false }" editorType="dxSelectBox" [colSpan]="2"
+                [editorOptions]="{
+                    dataSource: ProductSource,
+                    valueExpr: 'ProductID',
+                    displayExpr: 'ProductName',
+                    placeholder: '请选择商品代号',
+                    showClearButton: true,
+                    searchEnabled: true,
+                    searchExpr: ['ProductName', 'MnemonicCode'],
+                    readOnly:isReadOnly
+                }" dataField="ProductID">
+                <dxi-validation-rule type="required" message="商品代号必填"> </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item [label]="{ text: '家禽类型', alignment: 'right',showColon: false }" editorType="dxSelectBox" [colSpan]="2"
+                [editorOptions]="{
+                    dataSource: ChickenTypeSource,
+                    valueExpr: 'RemindID',
+                    displayExpr: 'RemindName',
+                    showClearButton: true,
+                    placeholder: '请选择家禽类型',
+                    readOnly:isReadOnly
+                }" dataField="ChickenType">
+            </dxi-item>
+
+            <!-- 第三行 -->
+            <!-- <dxi-item [label]="{ text: '苗源类型', alignment: 'right',showColon: false }" editorType="dxSelectBox" [colSpan]="2"
+            [editorOptions]="{
+                  dataSource: ChickSourceTypeSource,
+                  valueExpr: 'id',
+                  displayExpr: 'name',
+                  disabled: ChickSourceTypeDisable,
+                  showClearButton: true,
+                  placeholder: '请选择苗源类型',
+                  readOnly:isReadOnly
+                }" dataField="ChickSourceType">
+            </dxi-item>
+
+            <dxi-item [label]="{ text: '苗源', alignment: 'right',showColon: false }" editorType="dxSelectBox" [colSpan]="2"
+                [editorOptions]="{
+                    dataSource: ChickSourceDataSource,
+                    valueExpr: 'value',
+                    displayExpr: 'name',
+                    showClearButton: true,
+                    searchEnabled: true,
+                    placeholder: ChickenSourcePlaceHolder,
+                    readOnly:isReadOnly
+                }" dataField="ChickSource">
+            </dxi-item> -->
+
+            <!-- 第四行 -->
+            <dxi-item [label]="{ text: '养户批次序号', alignment: 'right',showColon: false }" editorType="dxNumberBox"  [colSpan]="2"
+                [editorOptions]="{ showClearButton:true,placeholder: '请输入养户批次序号',  readOnly:isReadOnly}" dataField="SerialNo">
+            </dxi-item>
+
+            <dxi-item [label]="{ text: '只药费', alignment: 'right',showColon: false }" editorType="dxNumberBox"  [colSpan]="2"
+                [editorOptions]="{ type: 'fixedPoint',showClearButton:true,placeholder: '请输入只药费', format:'#,##0.##', readOnly:isReadOnly, min: 0}" dataField="OneMedicineFee">
+                <dxo-format type="fixedPoint" precision="2"></dxo-format>
+            </dxi-item>
+
+            <dxi-item [label]="{ text: '日龄日期', alignment: 'right',showColon: false }" dataField="DaysOldDate" editorType="dxDateBox" [colSpan]="2"
+                [editorOptions]="{
+                    placeholder: '请选择日期',
+                    showClearButton: true,
+                    readOnly:true
+                }">
+                <!-- <dx-date-box type="date" (onValueChanged)="_onValueChanged($event)" [value]="DaysOldDate"></dx-date-box> -->
+                <!-- <dxi-validation-rule type="required" message="日龄日期必填"></dxi-validation-rule> -->
+            </dxi-item>
+            <dxi-item [label]="{ text: '基础日龄', alignment: 'right',showColon: false }" editorType="dxNumberBox"  [colSpan]="2"
+                [editorOptions]="{ showClearButton:true,placeholder: '请输入日龄',readOnly:true  }" dataField="DaysOld">
+            </dxi-item>
+
+
+
+            <dxi-item [label]="{ text: '备注', alignment: 'right',showColon: false }" editorType="dxTextArea" [colSpan]="8"
+            [editorOptions]="{ showClearButton:true,placeholder: '备注...'  }" dataField="Remarks">
+            </dxi-item>
+        </dx-form>
+    </div>
+
+    <view-container>
+        <editor-grid #editorGrid [fullScreen]="false">
+    <editor-multiple-grid *ngIf="showdetail">
+        <editor-grid-tab >
+            <editor-grid-item title="养户交接信息" [options]="[]">
+                <dx-data-grid
+                    #feedingGrid
+                    [dataSource]="batchTransferSource"
+                    [height]="300"
+                    [sorting]="false"
+                >
+                    <dxi-column dataField="IDENTITY_RECORD" caption="序号" ></dxi-column>
+                    <dxi-column caption="交接日期" dataField="DataDate" alignment="left"    dataType="date"></dxi-column>
+                    <dxi-column caption="批次交接单号" dataField="Number" alignment="left"></dxi-column>
+                    <dxi-column caption="原养户名称" dataField="OldYHFarmerName" alignment="left"></dxi-column>
+                    <dxi-column caption="原养殖合同" dataField="OldYHFarmerContractName" alignment="left"></dxi-column>
+                    <dxi-column caption="原批次序号" dataField="OldSerialNo" alignment="left"></dxi-column>
+                    <dxi-column caption="新养户名称" dataField="YHFarmerName" alignment="left"></dxi-column>
+                    <dxi-column caption="新养殖合同" dataField="YHFarmerContractName" alignment="left"></dxi-column>
+                    <dxi-column caption="新批次序号" dataField="SerialNo" alignment="left"></dxi-column>
+                    <dxo-editing mode="cell" [allowUpdating]="false"></dxo-editing>
+                </dx-data-grid>
+            </editor-grid-item>
+        </editor-grid-tab>
+    </editor-multiple-grid>
+</editor-grid>
+</view-container>
+</div>
+<dx-load-panel shadingColor="rgba(0,0,0,0)" [showPane]="true" [shading]="true" [showIndicator]="true"
+[(visible)]="loading">
+</dx-load-panel>
+<dx-popup
+    #popup
+    [width]="400"
+    [height]="400"
+    [showTitle]="true"
+    title="{{ messageBoxDisplayText }}"
+    [dragEnabled]="true"
+    [closeOnOutsideClick]="false"
+    [(visible)]="messageBoxVisible"
+    [shading]="false"
+    [resizeEnabled]="true"
+>
+    <dxo-position at="right bottom" offset="-220 -280" of="Window"> </dxo-position>
+    <div class="message-box-wrapper">
+        <dx-scroll-view width="100%" height="100%"
+            [scrollByContent]="true"
+            [scrollByThumb]="true"
+            [showScrollbar]="true"
+        >
+            <p *ngIf="messageBoxInfo.length == 0" style="font-size: 14px">{{ notMessageDisplayText }}</p>
+            <div class="message-box-info" *ngFor="let info of messageBoxInfo">
+                <p [innerHTML]="info | SafeHtml"></p>
+            </div>
+        </dx-scroll-view>
+    </div>
+</dx-popup>
+

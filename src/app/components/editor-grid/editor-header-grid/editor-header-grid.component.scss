@@ -1,0 +1,18 @@
+:host {
+    .editor-header-grid {
+        width: calc(100% - 24px);
+        height: calc(100% - 24px);
+        margin: 12px;
+        box-sizing: border-box;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        padding-bottom: 20px;
+        overflow: hidden;
+        .editor-grid {
+            width: calc(100% - 50px);
+            margin: 0 auto;
+        }
+        
+    }
+}

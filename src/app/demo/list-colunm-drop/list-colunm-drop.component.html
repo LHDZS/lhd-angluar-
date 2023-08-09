@@ -1,0 +1,8 @@
+<button (click)="add()" style="width: 200px;height: 40px;"></button>
+<dx-select-box
+    [dataSource]="selectBoxData"
+    valueExpr="id"
+    displayExpr="firstName"
+    [acceptCustomValue]="true"
+    (onCustomItemCreating)="onCustomItemCreating($event)">
+</dx-select-box>

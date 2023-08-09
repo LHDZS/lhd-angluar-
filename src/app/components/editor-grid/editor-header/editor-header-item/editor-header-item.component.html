@@ -1,0 +1,8 @@
+<div class="editor-header-item" id="headerItem" [ngStyle]="_itemStyle">
+    <div class="label" [ngStyle]="_labelStyle">
+        <ng-content select="label"></ng-content>
+    </div>
+    <div [class]="MaxClass ? 'editor' : 'editorMax'" [ngStyle]="_editorStyle">
+        <ng-content></ng-content>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+[
+        {
+            "caption": "*Người phụ trách",
+            "dataField": "PersonID",
+            "dataType": "string"
+        },
+        {
+            "caption": "*Ngày đo",
+            "dataField": "DataDate",
+            "dataType": "date"
+        },
+        {
+            "caption": "*Số tai",
+            "dataField": "EarNumber",
+            "dataType": "string"
+        },
+        {
+            "caption": "*Chỉ số mỡ lưng",
+            "dataField": "BackFatIndex",
+            "dataType": "string"
+        },
+        {
+            "caption": "* Cân nặng(kg)",
+            "dataField": "CheckWeight",
+            "dataType": "string"
+        },
+        {
+            "caption": "Diện tích mỡ lưng(mm)",
+            "dataField": "AvgGlma",
+            "dataType": "string"
+        },
+        {
+            "caption": "Độ dày mỡ lưng(mm)",
+            "dataField": "AvgDlma",
+            "dataType": "string"
+        }
+    ]

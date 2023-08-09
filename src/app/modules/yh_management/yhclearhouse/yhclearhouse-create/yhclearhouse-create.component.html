@@ -1,0 +1,8 @@
+<nx-zlw-form-detail #detailInstance [model]="model"></nx-zlw-form-detail>
+<app-print-page class="print"
+    #printPage
+    (getSource)="getSource($event)"
+    [ENV]="environment.ENV"
+    [menu_id]="tokenData.menu_id"
+    (jump)="jump()"
+></app-print-page>

@@ -1,0 +1,481 @@
+<dx-load-panel
+    #loadPanel
+    shadingColor="rgba(0,0,0,0.4)"
+    [showPane]="true"
+    [shading]="true"
+    [showIndicator]="true"
+    [(visible)]="loadingVisible"
+>
+</dx-load-panel>
+<div [ngClass]="{ 'data-grid-wrapper': true, 'has-row-options': model.type == 'detail' }">
+    <dx-data-grid
+        #DataGridInstance
+        [accessKey]="model.props.accessKey"
+        [activeStateEnabled]="model.props.activeStateEnabled"
+        [allowColumnReordering]="model.props.allowColumnReordering && model.type !== 'detail'"
+        [allowColumnResizing]="model.props.allowColumnResizing"
+        [autoNavigateToFocusedRow]="model.props.autoNavigateToFocusedRow"
+        [cacheEnabled]="model.props.cacheEnabled"
+        [cellHintEnabled]="model.props.cellHintEnabled"
+        [columnAutoWidth]="model.props.columnAutoWidth"
+        [columnHidingEnabled]="model.props.columnHidingEnabled"
+        [columnMinWidth]="model.props.columnMinWidth"
+        [columnResizingMode]="model.props.columnResizingMode"
+        [columnWidth]="model.props.columnWidth"
+        [(dataSource)]="model.props.dataSource"
+        [dateSerializationFormat]="model.props.dateSerializationFormat"
+        [disabled]="model.props.disabled"
+        [elementAttr]="model.props.elementAttr"
+        [errorRowEnabled]="model.props.errorRowEnabled"
+        [focusStateEnabled]="model.props.focusStateEnabled"
+        [noDataText]="model.props.noDataText"
+        [width]="model.props.width"
+        [height]="model.props.height"
+        [hoverStateEnabled]="model.props.hoverStateEnabled"
+        [repaintChangesOnly]="model.props.repaintChangesOnly"
+        [highlightChanges]="model.props.highlightChanges"
+        [rowAlternationEnabled]="model.props.rowAlternationEnabled"
+        [showBorders]="model.props.showBorders"
+        [showColumnHeaders]="model.props.showColumnHeaders"
+        [showColumnLines]="model.props.showColumnLines"
+        [showRowLines]="model.props.showRowLines"
+        [remoteOperations]="model.props.remoteOperations"
+        (onRowDblClick)="onRowDblClickEvent($event)"
+        (onRowClick)="onRowClickEvent($event)"
+        (onRowUpdating)="onRowUpdatingEvent($event)"
+        (onToolbarPreparing)="onToolbarPreparingEvent($event)"
+        (onContextMenuPreparing)="onContextMenuPreparingEvent($event)"
+        (onCellHoverChanged)="onCellHoverChanged($event)"
+        (onEditorPreparing)="onEditorPreparingEvent($event)"
+        (onSelectionChanged)="onSelectionChangedEvent($event)"
+        (onCellClick)="onCellClickEvent($event)"
+        (onEditingStart)="onEditingStartEvent($event)"
+        (onEditorPrepared)="onEditorPreparedEvent($event)"
+    >
+        <dxo-load-panel [showPane]="false" text="" [shading]="true"></dxo-load-panel>
+        <dxo-sorting mode="multiple" [showSortIndexes]="false"></dxo-sorting>
+        <dxo-paging
+            [pageIndex]="model.paginate.paging.pageIndex"
+            [enabled]="model.paginate.paging.enabled"
+            [pageSize]="model.paginate.paging.pageSize"
+        ></dxo-paging>
+        <dxo-pager
+            [allowedPageSizes]="model.paginate.pager.allowedPageSizes"
+            [infoText]="model.paginate.pager.infoText"
+            [showInfo]="model.paginate.pager.showInfo"
+            [showNavigationButtons]="model.paginate.pager.showNavigationButtons"
+            [showPageSizeSelector]="model.paginate.pager.showPageSizeSelector"
+            [visible]="model.paginate.pager.visible"
+        >
+        </dxo-pager>
+        <dxo-selection
+            *ngIf="model.selection.enabled"
+            [allowSelectAll]="model.selection.allowSelectAll"
+            [deferred]="model.selection.deferred"
+            [mode]="model.selection.mode"
+            [selectAllMode]="model.selection.selectAllMode"
+            [showCheckBoxesMode]="model.selection.showCheckBoxesMode"
+        >
+        </dxo-selection>
+        <dxo-filter-row
+            [visible]="model.filterRow.visible"
+            applyFilter="auto"
+            showAllText="{{ 'commandOptions.all.text' | NxI18nTranslate }}"
+            resetOperationText="{{ 'commandOptions.cleanAll.text' | NxI18nTranslate }}"
+            [showOperationChooser]="true"
+        ></dxo-filter-row>
+        <dxo-header-filter
+            [visible]="model.headerFilter.visible"
+            [texts]="model.headerFilter.texts"
+        ></dxo-header-filter>
+        <dxo-column-chooser mode="select" [enabled]="false"></dxo-column-chooser>
+        <dxo-editing
+            *ngIf="model.editing.enabled"
+            [mode]="model.editing.mode"
+            [allowUpdating]="model.editing.allowUpdating"
+        ></dxo-editing>
+        <dxo-export
+            *ngIf="model.export.enabled"
+            [fileName]="model.export.fileName"
+            [allowExportSelectedData]="model.export.allowExportSelectedData"
+        ></dxo-export>
+        <dxo-state-storing
+            [enabled]="model.stateStoring.enabled"
+            [type]="model.stateStoring.type"
+            [storageKey]="model.stateStoring.storageKey"
+            [customSave]="customStateStoringSave"
+            [customLoad]="customStateStoringLoad"
+        ></dxo-state-storing>
+        <dxo-keyboard-navigation
+            [enabled]="model.keyboardNavigation.enabled"
+            [editOnKeyPress]="model.keyboardNavigation.editOnKeyPress"
+            [enterKeyAction]="model.keyboardNavigation.enterKeyAction"
+            [enterKeyDirection]="model.keyboardNavigation.enterKeyDirection"
+        >
+        </dxo-keyboard-navigation>
+        <dxi-column
+            caption="{{ 'commandOptions.options.text' | NxI18nTranslate }}"
+            type="buttons"
+            [fixed]="true"
+            [width]="model.commandColumn.props.width"
+            fixedPosition="right"
+            cellTemplate="commandCell"
+            [allowHiding]="false"
+            [showInColumnChooser]="false"
+            [visible]="model.commandColumn.visible && model.type != 'detail'"
+        >
+        </dxi-column>
+        <div *dxTemplate="let row of 'commandCell'">
+            <div
+                style="display: flex; justify-content: center"
+                *ngIf="model.type == 'list' && model.commandColumn.useDefault"
+            >
+                <a
+                    *ngIf="isCanEdit && model.commandColumn.editButton.visible"
+                    href="javascript:void(0)"
+                    class="command-line"
+                    (click)="edit(row)"
+                    >{{ model.commandColumn.editButton.text ? model.commandColumn.editButton.text : 'commandOptions.edit.text' | NxI18nTranslate }}</a
+                >
+                <span *ngIf="isCanDelete && model.commandColumn.deleteButton.visible">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <a
+                    *ngIf="isCanDelete && model.commandColumn.deleteButton.visible"
+                    href="javascript:void(0)"
+                    [id]="'deleterow' + row.rowIndex"
+                    (click)="deletePopoverCtl(row, $event)"
+                    class="command-line"
+                    >{{ model.commandColumn.deleteButton.text ? model.commandColumn.deleteButton.text : 'commandOptions.delete.text' | NxI18nTranslate }}</a
+                >
+                <dx-popover
+                    [target]="'#deleterow' + row.rowIndex"
+                    [width]="190"
+                    [(visible)]="deletePopoverStates[row.rowIndex]"
+                    *ngIf="model.commandColumn.deleteButton.enabled"
+                >
+                    <div *dxTemplate="let data of 'content'">
+                        <p style="text-align: left; font-size: 14px">
+                            {{ model.commandColumn.deleteButton.confirmText ? model.commandColumn.deleteButton.confirmText :'commandOptions.delete.confirm' | NxI18nTranslate }}?
+                        </p>
+                        <p style="text-align: right; margin: 0px">
+                            <dx-button
+                                class="delete-option"
+                                text="{{ 'commandOptions.no.text' | NxI18nTranslate }}"
+                                stylingMode="text"
+                                (onClick)="confirmDelete(row, false)"
+                            >
+                            </dx-button>
+                            <dx-button
+                                class="delete-option"
+                                text="{{ 'commandOptions.yes.text' | NxI18nTranslate }}"
+                                stylingMode="contained"
+                                type="default"
+                                (onClick)="confirmDelete(row, true)"
+                            ></dx-button>
+                        </p>
+                    </div>
+                </dx-popover>
+                <ng-container *ngFor="let commandCol of model.commandColumn.customs">
+                    <ng-container *ngIf="commandCol.isVisible && commandCol.isVisible(row)">
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a
+                            *ngIf="commandCol.isAbled(row)"
+                            href="javascript:void(0)"
+                            class="command-line"
+                            (click)="customCommandClickEvent(commandCol, row)"
+                            >{{
+                                commandCol.label
+                                    ? commandCol.label['constructor'].name === 'String'
+                                        ? commandCol.label
+                                        : commandCol.label(row.data)
+                                    : ''
+                            }}</a
+                        >
+                        <a
+                            *ngIf="!commandCol.isAbled(row)"
+                            href="javascript:void(0)"
+                            style="color: #c6c6c6; cursor: not-allowed"
+                            >{{
+                                commandCol.label
+                                    ? commandCol.label['constructor'].name === 'String'
+                                        ? commandCol.label
+                                        : commandCol.label(row.data)
+                                    : ''
+                            }}</a
+                        >
+                    </ng-container>
+                    <ng-container *ngIf="!commandCol.isVisible">
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a
+                            href="javascript:void(0)"
+                            class="command-line"
+                            (click)="customCommandClickEvent(commandCol, row)"
+                            >{{
+                                commandCol.label
+                                    ? commandCol.label['constructor'].name === 'String'
+                                        ? commandCol.label
+                                        : commandCol.label(row.data)
+                                    : ''
+                            }}</a
+                        >
+                    </ng-container>
+                </ng-container>
+            </div>
+            <div *ngIf="!model.commandColumn.useDefault">
+                <a
+                    *ngFor="let commandCol of model.commandColumn.customs"
+                    href="javascript:void(0)"
+                    class="command-line"
+                    (click)="customCommandClickEvent(commandCol, row)"
+                    >{{ commandCol.label }}</a
+                >
+            </div>
+
+            <div *ngIf="model.type == 'detail'">
+                <a
+                    class="command-line"
+                    href="javascript:void(0)"
+                    [id]="'deleterow' + row.rowIndex"
+                    (click)="addRow(row)"
+                    >{{ 'dataGridOptions.rowOptions.add.text' | NxI18nTranslate }}</a
+                >
+                &nbsp;
+                <a
+                    class="command-line"
+                    href="javascript:void(0)"
+                    [id]="'deleterow' + row.rowIndex"
+                    (click)="copyRow(row)"
+                    >{{ 'dataGridOptions.rowOptions.copy.text' | NxI18nTranslate }}</a
+                >
+                &nbsp;
+                <a
+                    class="command-line"
+                    href="javascript:void(0)"
+                    [id]="'deleterow' + row.rowIndex"
+                    (click)="deleteRow(row)"
+                    >{{ 'dataGridOptions.rowOptions.delete.text' | NxI18nTranslate }}</a
+                >
+            </div>
+        </div>
+        <dxi-column
+            caption="{{ 'dataGridOptions.rowOptions.index.text' | NxI18nTranslate }}"
+            dataField="RECORDIDENTITY"
+            [width]="80"
+            [visible]="model.recordDisplay"
+            [allowResizing]="true"
+            [allowFiltering]="false"
+            [allowEditing]="false"
+            [allowExporting]="false"
+            [allowReordering]="false"
+            [allowSorting]="false"
+            [allowSearch]="false"
+            cellTemplate="recordTemplate"
+            alignment="center"
+            [fixed]="true"
+            fixedPosition="left"
+        >
+        </dxi-column>
+        <div *dxTemplate="let record of 'recordTemplate'">
+            {{ calculateRecord(record) }}
+        </div>
+        <dxi-column
+            *ngFor="let col of model.columns; let columnIndex = index"
+            [cssClass]="col.props.cssClass"
+            [caption]="col.props.caption"
+            [dataField]="col.props.dataField"
+            [dataType]="col.props.dataType"
+            [alignment]="col.props.alignment"
+            [allowEditing]="col.props.allowEditing"
+            [calculateDisplayValue]="col.props.calculateDisplayValue"
+            [calculateCellValue]="col.props.calculateCellValue"
+            [setCellValue]="col.props.setCellValue"
+            [trueText]="col.props.trueText"
+            [falseText]="col.props.falseText"
+            [showEditorAlways]="col.props.showEditorAlways"
+            [allowHeaderFiltering]="col.props.allowHeaderFiltering"
+            [allowFiltering]="col.props.allowFiltering"
+            [minWidth]="col.props.minWidth"
+            [width]="col.props.width"
+            [visible]="col.props.visible"
+            [filterOperations]="col.props.filterOperations"
+            [selectedFilterOperation]="col.props.selectedFilterOperation"
+            [sortOrder]="col.props.sortOrder"
+            [sortIndex]="col.props.sortIndex"
+            [headerCellTemplate]="
+                col.props.headerCellTemplateName ? col.props.headerCellTemplateName : col.props.dataField
+            "
+            [editCellTemplate]="col.props.cellTemplate.enabled ? col.props.cellTemplate.templateName : null"
+            [cellTemplate]="col.props.cellLinkTemplate.enabled ? col.props.cellLinkTemplate.templateName : null"
+            [format]="col.props.format"
+
+            [editorOptions]="col.props.editorOptions"
+            [calculateFilterExpression]="
+                col.props.calculateFilterExpression
+                    ? col.props.calculateFilterExpression
+                    : defaultCalculateFilterExpression
+            "
+            [fixed]="col.props.fixed"
+            [fixedPosition]="col.props.fixedPosition"
+            [customizeText]="col.props.customizeText"
+            [allowSorting]="col.props.allowSorting"
+        >
+            <div
+                *dxTemplate="
+                    let header of col.props.headerCellTemplateName
+                        ? col.props.headerCellTemplateName
+                        : col.props.dataField
+                "
+                style="display: flex; justify-content: center; align-items: center;"
+            >
+                <span class="header-required-icon" *ngIf="col.props.HeaderRequiredIcon">*</span>
+                {{ col.props.caption }}
+                <span
+                    *ngIf="col.props.headerHelpEnabled"
+                    [title]="col.props.headerHelpMessage"
+                    style="margin-left:3px;"
+                    class="dx-icon dx-icon-help"
+                ></span>
+                <span
+                    *ngIf="col.props.hasTooltip"
+                    [nzTooltipTitle]="col.props.tooltipTitle"
+                    nz-tooltip
+                    style="margin-left:3px;font-weight: normal;"
+                    class="iconfont iconprompt"
+                ></span>
+            </div>
+            <div *dxTemplate="let cell of col.props.cellLinkTemplate.templateName">
+                <a
+                    class="cell-link"
+                    *ngIf="
+                        col.props.cellLinkTemplate.type == 'Link' &&
+                            col.props.cellLinkTemplate.linkCondition(cell.data);
+                        else cellLink
+                    "
+                    href="javascript:void(0)"
+                    (click)="cellLinkEvent(cell)"
+                >
+                    {{ cell.value }}
+                </a>
+                <ng-template #cellLink>
+                    <span>{{ cell.value }}</span>
+                </ng-template>
+            </div>
+            <div *dxTemplate="let cell of col.props.cellTemplate.templateName">
+                <dx-tag-box
+                    *ngIf="col.props.cellTemplate.type == 'TagBox'"
+                    [dataSource]="col.props.cellTemplate.widget.props.dataSource"
+                    [value]="cell.value"
+                    [valueExpr]="col.props.cellTemplate.widget.props.valueExpr"
+                    [displayExpr]="col.props.cellTemplate.widget.props.displayExpr"
+                    (onValueChanged)="
+                        editorCellTemplateOnValueChangedEvent(cell, col.props.cellTemplate.widget, $event)
+                    "
+                    (onSelectionChanged)="cell.component.updateDimensions()"
+                ></dx-tag-box>
+                <dx-select-box
+                    *ngIf="col.props.cellTemplate.type == 'SelectBox'"
+                    [dataSource]="col.props.cellTemplate.widget.props.dataSource"
+                    [value]="cell.value"
+                    [valueExpr]="col.props.cellTemplate.widget.props.valueExpr"
+                    [displayExpr]="col.props.cellTemplate.widget.props.displayExpr"
+                    [searchEnabled]="col.props.cellTemplate.widget.props.searchEnabled"
+                    [searchExpr]="col.props.cellTemplate.widget.props.searchExpr"
+                    [showClearButton]="true"
+                    [acceptCustomValue]="col.props.cellTemplate.widget.props.acceptCustomValue"
+                    (onCustomItemCreating)="onCustomItemCreatingEvent($event, columnIndex, cell)"
+                    (onOpened)="onOpened($event, columnIndex, cell, col.props.cellTemplate.widget.props)"
+                    (onValueChanged)="
+                        editorCellTemplateOnValueChangedEvent(cell, col.props.cellTemplate.widget, $event)
+                    "
+                    (onSelectionChanged)="cell.component.updateDimensions()"
+                >
+                </dx-select-box>
+                <dx-drop-down-box
+                    *ngIf="col.props.cellTemplate.type == 'DropDownBox'"
+                    [(value)]="cell.value"
+                    [valueExpr]="col.props.cellTemplate.widget.props.valueExpr"
+                    [displayExpr]="col.props.cellTemplate.widget.props.displayExpr"
+                    placeholder="请选择"
+                    [showClearButton]="true"
+                    [dataSource]="col.props.cellTemplate.widget.props.dataSource"
+                    (onValueChanged)="
+                        editorCellTemplateOnValueChangedEvent(cell, col.props.cellTemplate.widget, $event)
+                    "
+                >
+                    <div *dxTemplate="let data of 'content'">
+                    <dx-tree-view
+                        [dataSource]="col.props.cellTemplate.widget.props.dataSource"
+                        dataStructure="plain"
+                        [keyExpr]="col.props.cellTemplate.widget.props.valueExpr"
+                        [parentIdExpr]="col.props.cellTemplate.widget.props.parentIdExpr || ''"
+                        selectionMode="multiple"
+                        showCheckBoxesMode="normal"
+                        [selectNodesRecursive]="false"
+                        [displayExpr]="col.props.cellTemplate.widget.props.displayExpr"
+                        [selectByClick]="true"
+                        (onContentReady)="editorCellTemplateOnTreeViewReadyEvent(cell, col.props.cellTemplate.widget, $event)"
+                        (onItemSelectionChanged)="editorCellTemplateOnTreeViewSelectionChangedEvent(cell, col.props.cellTemplate.widget, $event)"
+                    >
+                    </dx-tree-view>
+                    </div>
+                </dx-drop-down-box>
+            </div>
+            <dxo-lookup
+                *ngIf="col.props.lookup.enabled"
+                [dataSource]="col.props.lookup.dataSource"
+                [valueExpr]="col.props.lookup.valueExpr"
+                [displayExpr]="col.props.lookup.displayExpr"
+                [allowClearing]="col.props.lookup.allowClearing"
+            ></dxo-lookup>
+            <dxi-validation-rule
+                *ngFor="let validator of col.validationRules"
+                [type]="validator.type"
+                [message]="validator.message"
+                [ignoreEmptyValue]="validator.ignoreEmptyValue"
+                [max]="validator.max"
+                [min]="validator.min"
+                [pattern]="validator.pattern"
+            ></dxi-validation-rule>
+        </dxi-column>
+        <dxo-summary
+            *ngIf="model.summary.enabled"
+            [recalculateWhileEditing]="model.summary.recalculateWhileEditing"
+            [calculateCustomSummary]="model.summary.calculateSummary"
+        >
+            <dxi-total-item
+                [showInColumn]="model.InColumnText"
+                displayFormat="{{ 'dataGridOptions.summary.sum.text' | NxI18nTranslate }}"
+            ></dxi-total-item>
+            <dxi-total-item
+                *ngFor="let totalItem of model.summary.totalItems"
+                [name]="totalItem.name"
+                [column]="totalItem.column"
+                [summaryType]="totalItem.summaryType"
+                [displayFormat]="totalItem.displayFormat"
+                [valueFormat]="{ type: 'fixedPoint', precision: totalItem.valueFormat }"
+            ></dxi-total-item>
+        </dxo-summary>
+    </dx-data-grid>
+</div>
+<div class="row-options" *ngIf="model.type == 'detail' && model.commandRow.visible">
+    <div>
+        <span *ngIf="model.type == 'detail' && model.commandAddRow.visible" class="append-row" (click)="appendRow()"
+            >+ {{ 'dataGridOptions.rowOptions.add.text' | NxI18nTranslate }}</span
+        >
+        <span *ngIf="model.type == 'detail' && model.commandDelRow.visible" class="remove-row" (click)="removeRow()"
+            >- {{ 'dataGridOptions.rowOptions.delete.text' | NxI18nTranslate }}</span
+        >
+    </div>
+    <div
+        style="
+            border-left: 1px solid #dee1e3;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 240px;
+        "
+        *ngIf="model.operator.enabled"
+    >
+        <dx-button text="向上取整" stylingMode="contained" type="default" (onClick)="model.operator.up()"></dx-button>
+        <dx-button text="向下取整" stylingMode="contained" type="default" (onClick)="model.operator.down()"></dx-button>
+    </div>
+</div>

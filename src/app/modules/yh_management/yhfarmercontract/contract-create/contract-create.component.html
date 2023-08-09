@@ -1,0 +1,234 @@
+<div class="contract">
+    <nx-zlw-toolbar-panel #toolbarPanel [model]="toolBarPanelModel"></nx-zlw-toolbar-panel>
+    
+    <div class="contract-body">
+
+        <nx-zlw-search-panel
+            *ngIf="headConditionPanel.visible"
+            #searchPanel
+            [model]="headConditionPanel"
+        ></nx-zlw-search-panel>
+        
+        <div class="div_gray">
+            <h5>养殖场地信息</h5>
+        </div>
+
+        <div class="card">
+            <!-- <table class="area">
+                <tr class="area-condition">
+                    <td class="column-label">养殖场</td>
+                    <td class="column-content">
+                        <dx-select-box></dx-select-box>
+                    </td>
+                    <td class="column-label">养殖地区</td>
+                    <td class="area-select column-content">
+                        <dx-select-box></dx-select-box>
+                        <dx-select-box></dx-select-box>
+                        <dx-select-box></dx-select-box>
+                    </td>
+                    <td class="column-label">养殖地址</td>
+                    <td class="area-text column-content">
+                        <dx-text-box></dx-text-box>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="3">
+                        <div class="data-grid-container">
+                            <nx-zlw-form-list #dataGrid [model]="dataGridModel"></nx-zlw-form-list>
+                        </div>
+                    </td>
+                </tr>
+            </table> -->
+            <div class="area">
+                <div class="row-options">
+                    <!-- <dx-button
+                        stylingMode="contained"
+                        text="添加"
+                        type="default"
+                        [width]="90"
+                        (onClick)="addFarm()"
+                    ></dx-button> -->
+                    <span class="append-row" (click)="addFarm()">+ 添加</span>
+                    <span class="remove-row" (click)="removeRow()">- 删行</span>
+                </div>
+
+                <nx-zlw-form-list #dataGrid [model]="dataGridModel"></nx-zlw-form-list>
+                <!-- <div class="row-options">
+                    <div>
+                        <span class="remove-row" (click)="removeRow()">- 删行</span>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        
+        <div class="div_gray">
+            <h5>物料供应约定</h5>
+        </div>
+
+        <nx-zlw-search-panel
+            *ngIf="agreementConditionPanel.visible"
+            #searchPanel
+            [model]="agreementConditionPanel"
+        ></nx-zlw-search-panel>
+        
+        
+        <div class="div_gray">
+            <h5>合同文本</h5>
+        </div>
+        
+        <dx-html-editor [(value)]="htmlText" (onValueChanged)="htmlChanged($event)">
+            <dxo-toolbar [items]="HtmlToolItems" [multiline]="false"></dxo-toolbar>
+        </dx-html-editor>
+        <!-- <a href="">
+            <img src="\assets\icons\share-icon.png" alt="" class="upload"><h4 class="upload-text">上传附件</h4>
+        </a> -->
+        <app-upload-view  (fileListChange)="fileListChanged($event)" [numericalOrder]="NumericalOrder"></app-upload-view>
+        
+        <!-- <h3>保证金约定</h3>
+        <span>群大:保证金每只鸡10元，按鸡舍净每平米10只鸡，每平米100元;</span><br/>
+        <span>和盛:每只鸡8到15元</span> -->
+    </div>
+    <div class="foot"></div>
+</div>
+
+<dx-popup
+    #popup
+    [width]="400"
+    [height]="400"
+    [showTitle]="true"
+    title="{{ messageBoxDisplayText }}"
+    [dragEnabled]="true"
+    [closeOnOutsideClick]="false"
+    [(visible)]="messageBoxVisible"
+    [shading]="false"
+    [resizeEnabled]="true"
+>
+    <dxo-position at="right bottom" offset="-220 -280" of="Window"> </dxo-position>
+    <div class="message-box-wrapper">
+        <dx-scroll-view width="100%" height="100%"
+            [scrollByContent]="true"
+            [scrollByThumb]="true"
+            [showScrollbar]="true"
+        >
+            <p *ngIf="messageBoxInfo.length == 0" style="font-size: 14px">{{ notMessageDisplayText }}</p>
+            <div class="message-box-info" *ngFor="let info of messageBoxInfo">
+                <p [innerHTML]="info | SafeHtml"></p>
+            </div>
+        </dx-scroll-view>
+    </div>
+</dx-popup>
+
+<dx-popup
+    [(visible)]="outVisible"
+    width="70%"
+    [maxHeight]="600"
+    [dragEnabled]="false"
+    [showTitle]="true"
+    (onHiding)="onPopupHiding()"
+    resizeEnabled="true"
+    title="养殖场地添加弹出框"
+    showCloseButton="true"
+>
+    <dx-form 
+        #form
+        id="form"
+        [colCount]="4"
+        width="100%"
+        [(formData)]="outFormData"
+        validationGroup="customerData"
+        [showOptionalMark]="false"
+        [showRequiredMark]="true"
+        [readOnly]="$form"
+        (onFieldDataChanged)="_onFieldDataChanged($event)"
+    >
+        <dxi-item itemType="group" [colSpan]="4" [colCount]="3">
+            <dxi-item [label]="{ text: '开始日期', alignment: 'right',showColon: false }"  editorType="dxDateBox" 
+                [editorOptions]="{
+                    showClearButton: false,
+                    placeholder: '请选择开始日期'
+                }" 
+                dataField="StartDate"
+            >
+            </dxi-item>
+            <dxi-item [label]="{ text: '结束日期', alignment: 'right',showColon: false }"  editorType="dxDateBox" 
+                [editorOptions]="{
+                    showClearButton: false,
+                    placeholder: '请选择结束日期'
+                }" 
+                dataField="EndDate"
+            >
+            </dxi-item>
+            <dxi-item><span></span></dxi-item>
+            <!--  -->
+            <dxi-item [label]="{ text: '养殖场', alignment: 'right',showColon: false }"  editorType="dxSelectBox" 
+                [editorOptions]="{
+                    showClearButton: true,
+                    dataSource: ChickenFarmSource,
+                    valueExpr: 'ChickenFarmID',
+                    displayExpr: 'ChickenFarmName',
+                    placeholder: '请选择养殖场',
+                    searchEnabled:true,
+                    searchExpr:['ChickenFarmName','ChickenFarmID']
+                }" 
+                dataField="ChickenFarmID"
+            >
+            </dxi-item>
+            <dxi-item><span></span></dxi-item>
+            <dxi-item>
+                <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+                text="查询"
+                (onClick)="search()"
+                >
+                </dx-button>
+            </dxi-item>
+        </dxi-item>
+    </dx-form>
+    <dx-data-grid
+        #gridRef
+        style="margin-top: 20px;"
+        height="70%"
+        [dataSource]="raisingFarmDataSource"
+        [allowColumnResizing]="true"
+        [columnAutoWidth]="true"
+        columnResizingMode='widget'
+        keyExpr="HenHouseID"
+        [showBorders]="true"
+        [(selectedRowKeys)]="selectedRows"
+    >
+        <dxo-editing mode="cell" [allowUpdating]="true"> </dxo-editing>
+        <dxo-sorting mode="none"></dxo-sorting>
+        <dxo-selection showCheckBoxesMode="always" mode="multiple"> </dxo-selection>
+        <dxo-scrolling mode="virtual"> </dxo-scrolling>
+
+        <dxi-column dataField="ZoningID" dataType="string" caption="场区" [allowEditing]="false">
+            <dxo-lookup
+                [dataSource]="ZoningSource"
+                displayExpr="ZoningName"
+                valueExpr="ZoningID"
+            ></dxo-lookup>
+        </dxi-column>
+        <dxi-column dataField="HenHouseName" dataType="string" caption="栋舍" [allowEditing]="false" ></dxi-column>
+        <dxi-column dataField="iCount" dataType="number" caption="容量（只）" [allowEditing]="false" ></dxi-column>
+        <dxi-column dataField="AreaSize" dataType="number" caption="面积（平方米）" [allowEditing]="false"></dxi-column>
+    </dx-data-grid>
+    <div height="10%" style="margin-top: 10px;text-align: center;">
+        <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+        text="确定"
+        [disabled]="!selectedRows?.length"
+        (onClick)="getSelection(1)"
+    >
+        </dx-button>
+        <!-- <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+        text="确定并继续"
+        [disabled]="!selectedRows?.length"
+        (onClick)="getSelection(2)"
+        >
+        </dx-button> -->
+        <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+        text="关闭"
+        (onClick)="getSelection(3)"
+        >
+        </dx-button>
+    </div>
+</dx-popup>

@@ -1,0 +1,167 @@
+<nx-zlw-form-detail #detailInstance [model]="model"></nx-zlw-form-detail>
+<app-print-page class="print"
+    #printPage
+    (getSource)="getSource($event)"
+    [ENV]="environment.ENV"
+    [menu_id]="tokenData.menu_id"
+    (jump)="jump()"
+></app-print-page>
+<dx-load-panel shadingColor="rgba(0,0,0,0)" [showPane]="true" [shading]="true" [showIndicator]="true"
+    [(visible)]="loading">
+</dx-load-panel>
+<dx-popup
+    [(visible)]="citeVisible"
+    width="70%"
+    [maxHeight]="700"
+    [minWidth]="1200"
+    [dragEnabled]="false"
+    [showTitle]="true"
+    resizeEnabled="true"
+    [title]="citeTitle"
+    showCloseButton="true"
+    >
+    <dx-form #form id="form" [colCount]="4" width="100%" [(formData)]="formData"
+    validationGroup="customerData" [showOptionalMark]="false" [showRequiredMark]="true" [readOnly]="$form"
+    (onFieldDataChanged)="onFieldDataChanged($event)">
+    <dxi-item itemType="group" [colSpan]="4" [colCount]="4">
+        <dxi-item
+            [label]="{ text: '养户名称',showColon: false }"
+        >
+            <span>{{formData.YHFarmerName}}</span>
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '养殖批次',showColon: false }"
+        >
+            <span>{{formData.BatchName}}</span>
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '养户管理员',showColon: false }"
+        >
+            <span>{{formData.PersonNames}}</span>
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '养殖场',showColon: false }"
+        >
+            <span>{{formData.ChickenFarmName}}</span>
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '批次品种',showColon: false }"
+        >
+            <span>{{formData.BreedingName}}</span>
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '当前存栏',showColon: false }"
+        >
+            <span>{{formData.CurrQuantity}}</span>
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '当前日龄',showColon: false }"
+        >
+            <span>{{formData.CurrDaysOld}}</span>
+        </dxi-item>
+    </dxi-item>
+    <dxi-item itemType="group" [colSpan]="4" [colCount]="3">
+        <dxi-item
+            [label]="{ text: '引用状态', alignment: 'right',showColon: false }"
+            editorType="dxSelectBox"
+            dataField="QuoteStatus"
+            [editorOptions]="{
+                dataSource: ReferenceStateSource,
+                valueExpr: 'value',
+                displayExpr: 'name',
+                showClearButton:true,
+                searchEnabled:true,
+                placeholder: '请选择'
+            }"
+        >
+        </dxi-item>
+    </dxi-item>
+    </dx-form>
+    <dx-data-grid 
+        class="data-grid-wrapper"
+        #myDetailGrid
+        [dataSource]="citeDataSource"
+        width="100%"
+        height="calc(100% - 140px)"
+        [allowColumnResizing]="true"
+        [columnAutoWidth]="true"
+        columnResizingMode='widget'
+        [showBorders]="true"
+        [(selectedRowKeys)]="selectedRows"
+        keyExpr="RecordID"
+        (onEditorPreparing)="onEditorPreparingFn2($event)"
+    >   
+        <dxo-paging [pageSize]="100"></dxo-paging>
+        <dxo-pager
+            [showPageSizeSelector]="true"
+            [allowedPageSizes]="[10, 25, 50, 100]"
+        ></dxo-pager>
+        <dxo-editing mode="cell" [allowUpdating]="true"> </dxo-editing>
+        <dxo-sorting mode="none"></dxo-sorting>
+        <dxo-selection showCheckBoxesMode="always" mode="multiple"></dxo-selection>
+        <dxi-column width="80" caption="引用状态" dataField="QuoteStatusText" alignment="center" [fixed]="true" cellTemplate="QuoteStatusCell" 
+            [allowEditing]="false" cssClass="disabled">
+            <div *dxTemplate="let item of 'QuoteStatusCell'">
+                <span [ngStyle]="typeColor(item.row.data.QuoteStatus)">{{item.row.data.QuoteStatusText}}</span>
+            </div>
+        </dxi-column>
+        <dxi-column width="130" caption="天数" dataField="CompareText" alignment="center" [fixed]="true" cellTemplate="CompareCell" 
+            [allowEditing]="false" cssClass="disabled">
+            <div *dxTemplate="let item of 'CompareCell'">
+                <span [ngStyle]="typeColor(item.row.data.CompareType)">{{item.row.data.CompareText}}</span>
+            </div>
+        </dxi-column>
+        <dxi-column width="100" caption="通用名" dataField="ProductCommonName" [fixed]="true" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="110" caption="商品代号" dataField="ProductID" [fixed]="true" alignment="center">
+            <dxo-lookup
+                [dataSource]="ProductSource"
+                displayExpr="ProductName"
+                valueExpr="ProductID"
+            ></dxo-lookup>
+        </dxi-column>
+        <dxi-column width="100" caption="计量单位" dataField="MeasureUnitName" [fixed]="true" alignment="center">
+            <dxo-lookup
+                [dataSource]="MeasureUnitNameSource"
+                displayExpr="MeasureUnitName"
+                valueExpr="MeasureUnitName"
+            ></dxo-lookup>
+        </dxi-column>
+        <dxi-column width="100" caption="数量" dataField="Quantity" [fixed]="true" alignment="center" editorOptions="{
+            type: 'fixedPoint',
+            min: 0
+        }">
+            <dxo-format type="fixedPoint" precision="0"></dxo-format>
+        </dxi-column>
+        <dxi-column width="100" caption="方法" dataField="DrugMethod" alignment="center"></dxi-column>
+        <dxi-column width="100" caption="备注" dataField="DetailRemarks" alignment="center"></dxi-column>
+        <dxi-column width="100" caption="计划日期" dataField="PlanDate" dataType="date" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="120" caption="程序名称" dataField="ProcessName" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="100" caption="程序号" dataField="ProcessNo" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <!-- 保健 -->
+        <dxi-column *ngIf="bjType" width="100" caption="万只用量" dataField="Quantity" alignment="right" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column *ngIf="bjType" width="100" caption="计量单位" dataField="MeasureUnitName" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column *ngIf="bjType" width="100" caption="用药途径" dataField="DrugsWayName" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column *ngIf="bjType" width="100" caption="用药剂量" dataField="DrugsDose" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <!-- 免疫 -->
+        <dxi-column *ngIf="!bjType" width="130" caption="免疫项目" dataField="ImmuneSubjectName" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column *ngIf="!bjType" width="100" caption="剂型" dataField="DosageFormName" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column *ngIf="!bjType" width="100" caption="剂量" dataField="Quantity" alignment="right" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column *ngIf="!bjType" width="100" caption="剂量单位" dataField="DosageUnitName" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column *ngIf="!bjType" width="100" caption="免疫方式" dataField="ImmuneTypeName" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="100" caption="生产厂家" dataField="Vendor" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="100" caption="备注" dataField="Remarks" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+    </dx-data-grid>
+    <div height="40px" style="margin-top: 10px;text-align: center;">
+        <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+            text="确定"
+            [disabled]="!selectedRows?.length"
+            (onClick)="getSelection(1)"
+        >
+        </dx-button>
+        <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+            text="关闭"
+            (onClick)="getSelection(3)"
+        >
+        </dx-button>
+    </div>
+</dx-popup>

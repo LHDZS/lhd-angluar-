@@ -1,0 +1,14 @@
+<nx-zlw-form-detail #detailInstance [model]="model"></nx-zlw-form-detail>
+<dx-load-panel shadingColor="rgba(0,0,0,0)" [showPane]="true" [shading]="true" [showIndicator]="true"
+    [(visible)]="loading">
+</dx-load-panel>
+<app-print-page class="print"
+    #printPage
+    (getSource)="getSource($event)"
+    [ENV]="environment.ENV"
+    [menu_id]="tokenData.menu_id"
+    (jump)="jump()"
+></app-print-page>
+<div class="uploader-wrapper" >
+    <app-upload-view [readonly]="!permission.$$edit && !permission.$$add" (fileListChange)="fileListChanged($event)" [numericalOrder]="numericalOrder"></app-upload-view>
+</div>

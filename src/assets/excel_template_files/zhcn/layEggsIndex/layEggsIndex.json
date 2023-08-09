@@ -1,0 +1,22 @@
+[
+    {
+      "caption": "*日期",
+      "dataField": "DataDate",
+      "dataType": "date"
+    },
+    {
+      "caption": "*单据号",
+      "dataField": "Number",
+      "dataType": "string"
+    },
+    {
+      "caption": "*名称",
+      "dataField": "OptName",
+      "dataType": "string"
+    },
+    {
+      "caption": "备注",
+      "dataField": "Remarks",
+      "dataType": "string"
+    }
+]

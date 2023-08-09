@@ -1,0 +1,39 @@
+[
+    {
+      "caption": "*Ngay chết",
+      "dataField": "DataDate",
+      "dataType": "date"
+    },
+    {
+      "caption": "Lợn nái lô  ",
+      "dataField": "BatchId",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Số tai",
+      "dataField": "EarNumber",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Loại hình chết",
+      "dataField": "DeathTypeID",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Nguyên nhân chết",
+      "dataField": "DeathReasonID",
+      "dataType": "string"
+    },
+    {
+      "caption": "Cân nặng",
+      "dataField": "Weight",
+      "dataType": "string"
+    },
+    {
+      "caption": "Người phụ trách",
+      "dataField": "PersonName",
+      "dataType": "string"
+    }
+  
+  ]
+  

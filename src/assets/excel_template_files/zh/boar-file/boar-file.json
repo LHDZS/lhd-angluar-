@@ -1,0 +1,72 @@
+[
+    {
+        "caption": "* 耳号",
+        "dataField": "EarNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "耳缺号",
+        "dataField": "EarNumberShortage",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 品系",
+        "dataField": "Strain",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 品种",
+        "dataField": "Varieties",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 商品代号",
+        "dataField": "ProductName",
+        "dataType": "string"
+    },
+    {
+        "caption": "电子耳标号",
+        "dataField": "EarTag",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 出生日期",
+        "dataField": "BirthDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "入场日期",
+        "dataField": "DateOfEntry",
+        "dataType": "date"
+    },
+    {
+        "caption": "出生场地",
+        "dataField": "BirthPlace",
+        "dataType": "string"
+    },
+    {
+        "caption": "出生重(公斤)",
+        "dataField": "BirthUnitWeight",
+        "dataType": "string"
+    },
+    {
+        "caption": "断奶日龄(天)",
+        "dataField": "WeaningDays",
+        "dataType": "string"
+    },
+    {
+        "caption": "乳头数(左)",
+        "dataField": "LeftNippleCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "乳头数(右)",
+        "dataField": "RightNippleCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "断奶体重(公斤)",
+        "dataField": "WeaningUnitWeight",
+        "dataType": "string"
+    }
+]

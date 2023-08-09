@@ -1,0 +1,42 @@
+[
+    {
+        "caption": "*Ngày",
+        "dataField": "DataDate",
+        "dataType": "date"
+      }, 
+    {
+      "caption": "*Số tai",
+      "dataField": "EarNumber",
+      "dataType": "string"
+    }, 
+    {
+        "caption": "*Nguyên giá",
+        "dataField": "OriginalValue",
+        "dataType": "string"
+    }, 
+    {
+        "caption": "*Tổng số kỳ phân bổ khấu hao",
+        "dataField": "DepreciationMonths",
+        "dataType": "string"
+    }, 
+    {
+        "caption": "*Tỉ lệ giá trị còn lại",
+        "dataField": "ResidualRate",
+        "dataType": "string"
+    }, 
+    {
+        "caption": "*Số kỳ đã khấu hao kỳ đầu",
+        "dataField": "DepreciatedMonths",
+        "dataType": "string"
+    }, 
+    {
+        "caption": "*Tổng giá trị đã khấu hao",
+        "dataField": "Depreciated",
+        "dataType": "string"
+    }, 
+    {
+        "caption": "*Ngày bắt đầu",
+        "dataField": "BeginDate",
+        "dataType": "date"
+    }
+]

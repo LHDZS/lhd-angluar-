@@ -1,0 +1,41 @@
+[
+  {
+    "caption": "*转舍日期",
+    "dataField": "DataDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "*转出批次",
+    "dataField": "OutBatchId",
+    "dataType": "string"
+  },
+  {
+    "caption": "* 转出栋舍",
+    "dataField": "OutPigHouseUnitId",
+    "dataType": "string"
+  },
+  {
+    "caption": "* 转入批次",
+    "dataField": "InBatchID",
+    "dataType": "string"
+  },
+  
+  {
+    "caption": "*转入栋舍",
+    "dataField": "InPigHouseUnitID",
+    "dataType": "string"
+  },
+
+  
+  
+  {
+    "caption": "*头数",
+    "dataField": "PigCount",
+    "dataType": "string"
+  },
+  {
+    "caption": "*重量（公斤）",
+    "dataField": "Weight",
+    "dataType": "string"
+  }
+]

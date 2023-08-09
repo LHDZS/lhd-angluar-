@@ -1,0 +1,107 @@
+[
+    {
+      "caption": "*日期",
+      "dataField": "DataDate",
+      "dataType": "date"
+    },
+    {
+      "caption": "*客户",
+      "dataField": "CustomerID",
+      "dataType": "string"
+    },
+    {
+      "caption": "收货客户",
+      "dataField": "SubCustomerID",
+      "dataType": "string"
+    },
+    {
+      "caption": "业务员",
+      "dataField": "SalesManID",
+      "dataType": "string"
+    },
+    {
+      "caption": "*部门",
+      "dataField": "MarketID",
+      "dataType": "string"
+    },
+    {
+      "caption": "*出库仓库",
+      "dataField": "WarehouseID",
+      "dataType": "string"
+    },
+    {
+      "caption": "*摘要",
+      "dataField": "Abstract",
+      "dataType": "string"
+    },
+    {
+      "caption": "*核算单元",
+      "dataField": "TicketedPointID",
+      "dataType": "string"
+    },
+    {
+      "caption": "表头备注",
+      "dataField": "Remarks",
+      "dataType": "string"
+    },
+    {
+      "caption": "制单人",
+      "dataField": "CreatedOwnerID",
+      "dataType": "string"
+    },
+    {
+      "caption": "*商品代号",
+      "dataField": "ProductID",
+      "dataType": "string"
+    },
+    {
+      "caption": "销售单位",
+      "dataField": "MeasureUnitExt",
+      "dataType": "string"
+    },
+    {
+      "caption": "销售数量",
+      "dataField": "QuantityExt",
+      "dataType": "string"
+    },
+    {
+      "caption": "*计量单位",
+      "dataField": "MeasureUnitName",
+      "dataType": "string"
+    },
+    {
+      "caption": "*数量",
+      "dataField": "Quantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "金额",
+      "dataField": "Amount",
+      "dataType": "string"
+    },
+    {
+      "caption": "数量（枚）",
+      "dataField": "UnicumQuantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "重量（公斤）",
+      "dataField": "StatQuantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "税率",
+      "dataField": "TaxRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "*赠",
+      "dataField": "Gift",
+      "dataType": "string"
+    },
+    {
+      "caption": "表体备注",
+      "dataField": "RemarksDetail",
+      "dataType": "string"
+    }
+]

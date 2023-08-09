@@ -1,0 +1,186 @@
+<div class="yhhealthtips">
+  <div class="list_form">
+    <dx-form
+        #form
+        [colCount]="4"
+        width="100%"
+        [(formData)]="headerFormData"
+        style="padding-right: 10px"
+        validationGroup="customerData"
+        [showOptionalMark]="false"
+        [showRequiredMark]="true"
+        [readOnly]="false"
+    >
+        <dxi-item itemType="group" [colSpan]="4" [colCount]="4">
+            <dxi-item
+                [label]="{ text: '提示类型', alignment: 'right',showColon: false }"
+                editorType="dxSelectBox"
+                [editorOptions]="{
+                    dataSource: PromptTypeSource,
+                    displayExpr: 'name',
+                    valueExpr: 'value',
+                    showClearButton:true,
+                    searchEnabled:true,
+                    placeholder: '请选择'
+                }"
+                dataField="CompareType"
+            >
+            </dxi-item>
+            <dxi-item
+                [label]="{ text: '引用状态', alignment: 'right',showColon: false }"
+                editorType="dxSelectBox"
+                [editorOptions]="{
+                    dataSource: ReferenceStateSource,
+                    displayExpr: 'name',
+                    valueExpr: 'value',
+                    showClearButton:true,
+                    searchEnabled:true,
+                    placeholder: '请选择'
+                }"
+                dataField="QuoteStatus"
+            >
+            </dxi-item>
+            <dxi-item
+                [label]="{ text: '养户名称', alignment: 'right',showColon: false }"
+                editorType="dxSelectBox"
+                [editorOptions]="{
+                    dataSource: YHFarmerSource,
+                    valueExpr: 'YHFarmerID',
+                    displayExpr: 'YHFarmerName',
+                    showClearButton:true,
+                    searchEnabled:true,
+                    placeholder: '请选择',
+                    searchExpr:['YHFarmerName','MnemonicCode']
+                }"
+                dataField="YHFarmerID"
+            >
+            </dxi-item>
+            <dxi-item
+                [label]="{ text: '养户管理员', alignment: 'right',showColon: false }"
+                editorType="dxSelectBox"
+                [editorOptions]="{
+                    dataSource: PersonSource,
+                    valueExpr: 'PersonID',
+                    displayExpr: 'PersonName',
+                    showClearButton:true,
+                    searchEnabled:true,
+                    placeholder: '请选择',
+                    searchExpr:['PersonName','MnemonicCode']
+                }"
+                dataField="PersonIDs"
+            >
+            </dxi-item>
+            <dxi-item
+                [label]="{ text: '养殖批次', alignment: 'right',showColon: false }"
+                editorType="dxSelectBox"
+                [editorOptions]="{
+                    dataSource: YHBatchSource,
+                    valueExpr: 'YHBatchID',
+                    displayExpr: 'YHBatchName',
+                    showClearButton:true,
+                    searchEnabled:true,
+                    placeholder: '请选择',
+                    searchExpr:['YHBatchName','MnemonicCode']
+                }"
+                dataField="BatchID"
+            >
+            </dxi-item>
+            <dxi-item
+                [label]="{ text: '保健程序名称', alignment: 'right',showColon: false }"
+                editorType="dxSelectBox"
+                [editorOptions]="{
+                    dataSource: ProgramSource,
+                    valueExpr: 'HealthProgramName',
+                    displayExpr: 'HealthProgramName',
+                    showClearButton:true,
+                    searchEnabled:true,
+                    placeholder: '请选择',
+                    searchExpr:['HealthProgramName','MnemonicCode']
+                }"
+                dataField="ProcessName"
+            >
+            </dxi-item>
+            <dxi-item
+                [label]="{ text: '药品通用名', alignment: 'right',showColon: false }"
+                editorType="dxSelectBox"
+                [editorOptions]="{
+                    dataSource: CommonNameSource,
+                    valueExpr: 'CommonName',
+                    displayExpr: 'CommonName',
+                    showClearButton:true,
+                    searchEnabled:true,
+                    placeholder: '请选择',
+                    searchExpr:['CommonName','MnemonicCode']
+                }"
+                dataField="ProductCommonName"
+            >
+            </dxi-item>
+        </dxi-item>
+    </dx-form>
+    <div class="l_button">
+      <dx-button
+          stylingMode="contained"
+          style="margin-right: 10px;"
+          text="查询"
+          type="default"
+          [width]="100"
+          (onClick)="querySearch()"
+      >
+      </dx-button>
+      <dx-button
+          stylingMode="contained"
+          text="重置"
+          type="normal"
+          [width]="100"
+          (onClick)="resetSearch()"
+      >
+      </dx-button>
+    </div>
+  </div>
+  <!-- 列表表体 -->
+  <div class="list_grid">
+      <dx-data-grid 
+          class="data-grid-wrapper"
+          #detailGrid
+          [dataSource]="detailDataSource"
+          [allowColumnResizing]="true"
+          columnResizingMode = 'widget'
+          width="100%"
+          height="100%"
+          [sorting]="false"
+      >   
+          <dxo-paging [pageSize]="100"></dxo-paging>
+          <dxo-pager
+              [showPageSizeSelector]="true"
+              [allowedPageSizes]="[10, 25, 50, 100]"
+          ></dxo-pager>
+            <dxi-column width="80" caption="引用状态" dataField="QuoteStatusText" alignment="center" [fixed]="true" cellTemplate="QuoteStatusCell">
+                <div *dxTemplate="let item of 'QuoteStatusCell'">
+                    <span [ngStyle]="typeColor(item.row.data.QuoteStatus)">{{item.row.data.QuoteStatusText}}</span>
+                </div>
+            </dxi-column>
+            <dxi-column width="130" caption="天数" dataField="CompareText" alignment="center" [fixed]="true" cellTemplate="CompareCell">
+                <div *dxTemplate="let item of 'CompareCell'">
+                    <span [ngStyle]="typeColor(item.row.data.CompareType)">{{item.row.data.CompareText}}</span>
+                </div>
+            </dxi-column>
+            <dxi-column width="110" caption="计划日期" dataField="PlanDate"  sortOrder="asc" sortIndex="1" dataType="date" alignment="center"></dxi-column>
+            <dxi-column width="100" caption="养户名称" dataField="YHFarmerName" alignment="center"></dxi-column>
+            <dxi-column width="110" caption="养户管理员" dataField="PersonNames" alignment="center"></dxi-column>
+            <dxi-column width="100" caption="养殖批次" dataField="BatchName" alignment="center"></dxi-column>
+            <dxi-column width="100" caption="批次品种" dataField="BreedingName" alignment="center"></dxi-column>
+            <dxi-column width="100" caption="当前存栏" dataField="CurrQuantity" alignment="center"></dxi-column>
+            <dxi-column width="100" caption="当前日龄" dataField="CurrDaysOld" alignment="center"></dxi-column>
+            <dxi-column width="120" caption="保健程序名称" dataField="ProcessName" alignment="center"></dxi-column>
+            <dxi-column width="80" caption="程序号" dataField="ProcessNo" alignment="center"></dxi-column>
+            <dxi-column width="100" caption="通用名" dataField="ProductCommonName" alignment="center"></dxi-column>
+            <dxi-column width="100" caption="万只用量" dataField="Quantity" alignment="center"></dxi-column>
+            <dxi-column width="100" caption="计量单位" dataField="MeasureUnitName" alignment="center"></dxi-column>
+            <dxi-column width="100" caption="用药途径" dataField="DrugsWayName" alignment="center"></dxi-column>
+            <dxi-column width="100" caption="用药剂量" dataField="DrugsDose" alignment="center"></dxi-column>
+            <dxi-column width="100" caption="生产厂家" dataField="Vendor" alignment="center"></dxi-column>
+            <dxi-column width="100" caption="备注" dataField="Remarks" alignment="center"></dxi-column>
+            <dxo-editing [enabled]="false"  [allowUpdating]="false" ></dxo-editing>
+      </dx-data-grid>
+  </div>
+</div>

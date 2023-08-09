@@ -1,0 +1,34 @@
+:host {
+    .grid-view-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        .combox-wrapper {
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .toolbar-wrapper {
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .grid-wrapper {
+            width: 100%;
+            height: calc(100% - 60px - 110px);
+            padding: 10px 10px 0px 10px;
+            background-color: #fff;
+        }
+        .not-has-combox {
+            height: calc(100% - 110px);
+        }
+        .not-has-toolbar {
+            height: calc(100% - 60px);
+        }
+        .not-has-toolbar-info {
+            height: calc(100% - 60px - 60px);
+        }
+        .only-grid {
+            height: 100%;
+        }
+    }
+}

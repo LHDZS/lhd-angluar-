@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="title">预计分娩窝数</div>
+  <div class="box">
+    <div>
+      <dx-chart
+        id="chart"
+        [dataSource]="dataSource"
+        palette="Harmony Light"
+        [valueAxis]="[
+          {
+            name: 'frequency',
+            position: 'left',
+            tickInterval: 1
+          },
+          {
+            name: 'percentage',
+            position: 'right',
+            showZero: true,
+            label: {
+              customizeText: customizeLabelText
+            },
+            constantLines: [
+              {
+                value: 80,
+                color: '#fc3535',
+                dashStyle: 'dash',
+                width: 2,
+                label: { visible: false }
+              }
+            ],
+            tickInterval: 5,
+            valueMarginsEnabled: false
+          }
+        ]"
+      >
+        <dxo-argument-axis>
+          <dxo-label overlappingBehavior="stagger"></dxo-label>
+        </dxo-argument-axis>
+        <dxo-tooltip
+          [enabled]="true"
+          [shared]="true"
+          [customizeTooltip]="customizeTooltip"
+        >
+        </dxo-tooltip>
+        <dxo-common-series-settings argumentField="complaint">
+        </dxo-common-series-settings>
+        <dxi-series
+          type="bar"
+          valueField="count"
+          axis="frequency"
+          name="预计分娩窝数"
+          color="#3388ff"
+        >
+        </dxi-series>
+        <dxi-series
+          type="spline"
+          valueField="cumulativePercent"
+          axis="percentage"
+          name="预计分娩窝数占有率"
+          color="#fac29a"
+        >
+        </dxi-series>
+        <dxo-legend verticalAlignment="bottom" horizontalAlignment="center">
+        </dxo-legend>
+      </dx-chart>
+    </div>
+    <div>
+      <dx-data-grid
+        id="gridContainer"
+        [dataSource]="dataSource"
+        [showBorders]="true"
+      >
+        <dxi-column dataField="complaint" caption="时间" alignment="center">
+        </dxi-column>
+        <dxi-column dataField="start" caption="开始时间" alignment="center">
+        </dxi-column>
+        <dxi-column dataField="end" caption="结束时间" alignment="center">
+        </dxi-column>
+        <dxi-column dataField="count" caption="预计分娩窝数" alignment="center">
+        </dxi-column>
+      </dx-data-grid>
+    </div>
+  </div>
+</div>

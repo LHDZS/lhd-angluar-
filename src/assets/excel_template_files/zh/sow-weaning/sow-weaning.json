@@ -1,0 +1,47 @@
+[
+    {
+        "caption": "* 负责人",
+        "dataField": "PersonID",
+        "dataType": "string"
+    },
+    {
+        "caption": "*断奶日期",
+        "dataField": "DataDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "母猪批次",
+        "dataField": "BatchID",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 耳号",
+        "dataField": "EarNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "转入栋舍",
+        "dataField": "InPigHouseUnitID",
+        "dataType": "string"
+    },
+    {
+        "caption": "栏位",
+        "dataField": "InPigField",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 母猪重量（公斤）",
+        "dataField": "Weight",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 断奶头数（头）",
+        "dataField": "PigCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 断奶总窝重（公斤）",
+        "dataField": "PigTotalWeight",
+        "dataType": "string"
+    }
+]

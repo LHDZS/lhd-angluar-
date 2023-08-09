@@ -1,0 +1,368 @@
+<div class="yhfamershortcut">
+  <div class="form-toolbar">
+    <dx-button text="新增" icon="iconfont iconadd-select" type="default" (onClick)="add()"></dx-button>
+    &nbsp;
+    <dx-button text="保存" icon="iconfont iconsave" [disabled]="$save" type="default"
+      (onClick)="onFormSubmit()"></dx-button>
+    &nbsp;
+    <dx-button text="撤销" icon="iconfont iconresonserate" [disabled]="$save" type="default"
+      (onClick)="cancel()"></dx-button>
+    &nbsp;
+    <!-- <dx-button text="删除" icon="iconfont iconashbin" [disabled]="$deleted" type="default"
+      (onClick)="deleteData()"></dx-button> -->
+  </div>
+
+  <div class="form-wrapper">
+    <dx-form #form id="form" [colCount]="8" width="100%" [(formData)]="formData" style="padding-right: 10px"
+      validationGroup="customerData" [showOptionalMark]="false" [showRequiredMark]="true" [readOnly]="$form"
+      (onFieldDataChanged)="onFieldDataChanged($event)">
+      <dxi-item itemType="group" [colSpan]="8" [colCount]="8">
+        <dxi-item class="gray" [colSpan]="8">
+          <h5>养户个人信息</h5>
+        </dxi-item>
+        <dxi-item [label]="{ text: '养户手机号', alignment: 'right',showColon: false }" editorType="dxTextBox" [colSpan]="2"
+          [editorOptions]="{ showClearButton:true,placeholder: '请输入养户手机号', disabled: $fomat }" dataField="Phone">
+          <dxi-validation-rule type="required" message="养户手机号必填"></dxi-validation-rule>
+          <dxi-validation-rule type="pattern" message="请输入正确的手机格式" [pattern]="PhoneJudge"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [label]="{ text: '养户身份证', alignment: 'right',showColon: false }" editorType="dxTextBox" [colSpan]="2"
+          [editorOptions]="{ showClearButton:true,placeholder: '请输入养户身份证', disabled: $fomat }" dataField="IdCardNumber">
+          <dxi-validation-rule type="required" message="养户身份证必填"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [label]="{ text: '养户姓名', alignment: 'right',showColon: false }" editorType="dxTextBox" [colSpan]="2"
+          [editorOptions]="{ showClearButton:true,placeholder: '请输入养户姓名号', disabled: $fomat }" dataField="YHPersonName">
+          <dxi-validation-rule type="required" message="养户姓名必填"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [label]="{ text: '养户名称', alignment: 'right',showColon: false }" editorType="dxTextBox" [colSpan]="2"
+          [editorOptions]="{ showClearButton:true,placeholder: '请输入养户名称', disabled: $fomat }" dataField="YHFarmerName">
+          <dxi-validation-rule type="required" message="养户名称必填"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item class="lhd_dxi" [label]="{ text: '家庭住址', alignment: 'right',showColon: false }" dataField="Address"
+          [colSpan]="4" [editorOptions]="{ placeholder: '请输入家庭住址', disabled: $fomat }">
+          <!-- <dxi-validation-rule type="required" message="家庭住址必填"></dxi-validation-rule> -->
+          <dxi-validation-rule type="stringLength" min="0" max="200" message="家庭住址内容长度最大200字">
+          </dxi-validation-rule>
+          <dxi-validation-rule type="pattern" message="非法字符" [pattern]="limitCharacter"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [label]="{ text: '性别', alignment: 'right',showColon: false }" editorType="dxSelectBox" [colSpan]="2"
+          [editorOptions]="{
+            dataSource: SexSource,
+            valueExpr: 'value',
+            displayExpr: 'name',
+            placeholder: '请选择',
+            disabled: $fomat
+          }" dataField="Sex">
+        </dxi-item>
+        <dxi-item [label]="{ text: '助记码', alignment: 'right',showColon: false, disabled: $fomat }"
+          editorType="dxTextBox" [colSpan]="2" [editorOptions]="{ showClearButton:true,placeholder: '请输入助记码' }"
+          dataField="MnemonicCode">
+        </dxi-item>
+        <dxi-item [label]="{ text: '管理部门', alignment: 'right',showColon: false }" [colSpan]="2" editorType="dxSelectBox"
+          [editorOptions]="{
+          showClearButton: true,
+          dataSource: MarketSource,
+          valueExpr: 'MarketId',
+          displayExpr: 'MarketName',
+          placeholder: '请选择管理部门',
+          searchEnabled:true
+        }" dataField="MarketID">
+        </dxi-item>
+        <dxi-item [label]="{ text: '合作日期', alignment: 'right',showColon: false }" [colSpan]="2">
+          <dx-date-box (onValueChanged)="_onValueChanged($event)" [showClearButton]="true" [readOnly]="$form"
+            [value]="StartDate" type="date"> </dx-date-box>
+            <dxi-validation-rule type="required" message="合作日期必填"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [label]="{ text: '家禽种类', alignment: 'right',showColon: false }" [colSpan]="2" editorType="dxSelectBox" [editorOptions]="{
+          dataSource: PoultryCategorySource,
+          valueExpr: 'Id',
+          displayExpr: 'Name',
+          searchEnabled:true,
+          placeholder: '请选择家禽种类'
+        }" dataField="PoultryCategory">
+        <dxi-validation-rule type="required" message="家禽种类必填"> </dxi-validation-rule>
+      </dxi-item>
+        <dxi-item [label]="{ text: '备注', alignment: 'right',showColon: false }" editorType="dxTextBox" [colSpan]="2"
+          [editorOptions]="{ showClearButton:true,placeholder: '请输入备注' }" dataField="Remarks">
+        </dxi-item>
+        <dxi-item [colSpan]="2"><span></span></dxi-item>
+        <dxi-item [colSpan]="4">
+          <!-- <div class="uploader-wrapper" > -->
+          <app-upload-view [readonly]="$form" (fileListChange)="fileListChanged($event)"
+            [numericalOrder]="numericalOrder"></app-upload-view>
+          <!-- </div> -->
+        </dxi-item>
+      </dxi-item>
+    </dx-form>
+
+    <dx-form #form id="form" [colCount]="8" width="100%" [(formData)]="formData" style="padding-right: 10px"
+      validationGroup="customerData" [showOptionalMark]="false" [showRequiredMark]="true" [readOnly]="$form"
+      (onFieldDataChanged)="onFieldDataChanged($event)">
+      <dxi-item itemType="group" [colSpan]="8" [colCount]="8">
+        <dxi-item class="gray" [colSpan]="8">
+          <h5>养殖场栋信息</h5>
+        </dxi-item>
+        <dxi-item [label]="{ text: '养殖场名称', alignment: 'right',showColon: false }" editorType="dxTextBox" [colSpan]="2"
+          [editorOptions]="{ showClearButton:true,placeholder: '请输入养殖场名称' }" dataField="ChickenFarmName">
+          <dxi-validation-rule type="required" message="养殖场名称必填"></dxi-validation-rule>
+          <dxi-validation-rule type="async" message="集团内已存在相同名称的养殖场!"
+            [validationCallback]="NameValidation"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [label]="{ text: '养殖场类型', alignment: 'right',showColon: false }" editorType="dxSelectBox"
+          [colSpan]="2" [editorOptions]="{
+              dataSource: ChickenFarmTypeSource,
+              valueExpr: 'value',
+              displayExpr: 'name',
+              placeholder: '请选择',
+              searchEnabled:true
+          }" dataField="YHFarmType">
+          <dxi-validation-rule type="required" message="养殖场类型必填"> </dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [colSpan]="2"><span></span></dxi-item>
+        <dxi-item [colSpan]="2"><span></span></dxi-item>
+        <dxi-item [label]="{ text: '养殖地区', alignment: 'right',showColon: false }" dataField="AreaID" [disabled]="$form"
+          [colSpan]="4" [template]="'address'">
+          <dxi-validation-rule type="required" message="养殖地区必填"> </dxi-validation-rule>
+        </dxi-item>
+        <dxi-item class="lhd_dxi" [label]="{ text: '养殖地址', alignment: 'right',showColon: false }"
+          dataField="FullAddress" [colSpan]="3" [editorOptions]="{ placeholder: '请输入养殖地址' }">
+          <dxi-validation-rule type="required" message="养殖地址必填"></dxi-validation-rule>
+          <dxi-validation-rule type="stringLength" min="0" max="200" message="养殖地址内容长度最大200字">
+          </dxi-validation-rule>
+          <dxi-validation-rule type="pattern" message="非法字符" [pattern]="limitCharacter"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [colSpan]="1">
+          <dx-button icon="map" [disabled]="$form" (onClick)="showMap($event)"></dx-button>
+        </dxi-item>
+        <dxi-item [label]="{ text: '存栏仓库', alignment: 'right',showColon: false }" editorType="dxSelectBox" [colSpan]="2"
+          [editorOptions]="{
+            dataSource: warehouseSource,
+            valueExpr: 'WarehouseID',
+            displayExpr: 'WarehouseName',
+            searchEnabled:true,
+            placeholder: '请选择'
+          }" dataField="WarehouseID">
+        </dxi-item>
+        <dxi-item [label]="{ text: '饲料仓库', alignment: 'right',showColon: false }" editorType="dxSelectBox" [colSpan]="2"
+          [editorOptions]="{
+          dataSource: warehouseSource,
+          valueExpr: 'WarehouseID',
+          displayExpr: 'WarehouseName',
+          searchEnabled:true,
+          placeholder: '请选择'
+        }" dataField="FeedWarehouseID">
+        </dxi-item>
+        <dxi-item [label]="{ text: '药杂仓库', alignment: 'right',showColon: false }" editorType="dxSelectBox" [colSpan]="2"
+          [editorOptions]="{
+          dataSource: warehouseSource,
+          valueExpr: 'WarehouseID',
+          displayExpr: 'WarehouseName',
+          searchEnabled:true,
+          placeholder: '请选择'
+        }" dataField="DrugWarehouseID">
+        </dxi-item>
+        <dxi-item [label]="{ text: '备注', alignment: 'right',showColon: false }" editorType="dxTextBox" [colSpan]="2"
+          [editorOptions]="{ showClearButton:true,placeholder: '请输入备注' }" dataField="ChickenFarmRemarks">
+        </dxi-item>
+
+      </dxi-item>
+      <div *dxTemplate="let ad of 'address'">
+        <div style="display: flex">
+          <dx-select-box searchEnabled="true" class="popover-select" [(value)]="provinceId" placeholder="省"
+            [dataSource]="provinceSource" valueExpr="id" displayExpr="name"
+            (onValueChanged)="onProvinceChanged($event)"></dx-select-box>
+          <dx-select-box searchEnabled="true" class="popover-select" placeholder="市" [(value)]="cityId"
+            [dataSource]="citySource" valueExpr="id" displayExpr="name"
+            (onValueChanged)="onCityChanged($event)"></dx-select-box>
+          <dx-select-box searchEnabled="true" [(value)]="areaId" [dataSource]="areaSource" valueExpr="id"
+            displayExpr="name" class="popover-select" placeholder="县/区">
+          </dx-select-box>
+        </div>
+      </div>
+    </dx-form>
+    <editor-multiple-grid>
+      <editor-grid-tab (onOptionClick)="onDetailClick($event)">
+        <editor-grid-item title=" " [options]="[{ text: '增行', key: 'add' },{ text: '删行', key: 'del' }]">
+          <dx-data-grid class="data-grid-wrapper" #detailGrid [dataSource]="detailDataSource" width="100%" height="300"
+            [sorting]="false" (onCellClick)="onCellClickEvent($event)">
+            <!-- <dxi-column dataField="IDENTITY_RECORD"></dxi-column> -->
+            <dxi-column caption="栋舍" dataField="HenHouseName" alignment="left"></dxi-column>
+            <dxi-column caption="容量（只）" dataField="iCount" alignment="left"></dxi-column>
+            <dxi-column caption="面积（平方米）" dataField="AreaSize" alignment="left"></dxi-column>
+            <dxi-column caption="备注" dataField="Remarks" alignment="left"></dxi-column>
+            <!-- <dxo-editing [enabled]="true"  [allowUpdating]="true" ></dxo-editing> -->
+            <dxo-editing mode="cell" [allowUpdating]="true"></dxo-editing>
+          </dx-data-grid>
+        </editor-grid-item>
+      </editor-grid-tab>
+    </editor-multiple-grid>
+
+    <div class="div_gray">
+      <h5>养户一致行动人表</h5>
+    </div>
+
+    <editor-multiple-grid>
+      <editor-grid-tab (onOptionClick)="onActionClick($event)">
+        <editor-grid-item title=" " [options]="[{ text: '增行', key: 'add' },{ text: '删行', key: 'del' }]">
+          <dx-data-grid class="data-grid-wrapper" #ActionGrid [dataSource]="actionDataSource" width="100%" height="300"
+            [sorting]="false" (onEditorPreparing)="onDetailEditorPreparing($event)">
+            <!-- 选择框 -->
+            <dxo-selection showCheckBoxesMode="always" mode="multiple"> </dxo-selection>
+            <dxi-column cssClass="disabled" caption="姓名" dataField="Name" alignment="center"
+              [allowEditing]="false"></dxi-column>
+            <dxi-column cssClass="disabled" caption="手机号" dataField="Phone" alignment="center"
+              [allowEditing]="false"></dxi-column>
+            <dxi-column cssClass="disabled" caption="身份证号" dataField="Card" alignment="center"
+              [allowEditing]="false"></dxi-column>
+            <dxi-column caption="备注" dataField="Remarks" alignment="center" [allowEditing]="true"></dxi-column>
+            <dxi-column type="buttons" caption="操作" cellTemplate="commandCell"></dxi-column>
+            <div *dxTemplate="let row of 'commandCell'">
+              <span class="cellButton" *ngIf="row.data.Status && row.data.type" (click)="forbidden(row)">禁用</span>
+              <span class="cellButton" *ngIf="!row.data.Status && row.data.type" (click)="startUsing(row)">启用</span>
+            </div>
+            <dxo-editing mode="cell" [allowUpdating]="true" [allowDeleting]="true">
+            </dxo-editing>
+          </dx-data-grid>
+        </editor-grid-item>
+      </editor-grid-tab>
+    </editor-multiple-grid>
+
+    <div class="div_gray">
+      <h5>我公司管理人员表</h5>
+    </div>
+
+    <editor-multiple-grid>
+      <editor-grid-tab (onOptionClick)="onDetailPeopleClick($event)">
+        <editor-grid-item title=" " [options]="[{ text: '增行', key: 'add' },{ text: '删行', key: 'del' }]">
+          <dx-data-grid class="data-grid-wrapper" #detailPeopleGrid [dataSource]="detailDataPeopleSource" width="100%"
+            height="300" [sorting]="false" (onEditorPreparing)="onDetailEditorPreparing($event)"
+            (onCellClick)="onCellClickEvent1($event)">
+            <!-- <dxi-column dataField="IDENTITY_RECORD"></dxi-column> -->
+            <dxi-column cssClass="" caption="开始日期" dataField="StartDate" dataType="date" alignment="center"
+              [allowFiltering]="true" [editorOptions]="{
+                    displayFormat: 'yyyy/MM/dd' }"></dxi-column>
+            <dxi-column cssClass="" caption="结束日期" dataField="EndDate" dataType="date" alignment="center"
+              [allowFiltering]="true" [editorOptions]="{
+                    displayFormat: 'yyyy/MM/dd' }"></dxi-column>
+            <dxi-column caption="人员" dataField="PersonID" alignment="left">
+              <dxo-lookup [dataSource]="PersonSource" displayExpr="PersonName" valueExpr="PersonID"></dxo-lookup>
+            </dxi-column>
+            <dxi-column caption="手机号" cssClass="disabled" dataField="Phone" alignment="left"
+              [allowEditing]="false"></dxi-column>
+            <dxi-column caption="角色" dataField="RoleID" alignment="left">
+              <dxo-lookup [dataSource]="RoleSource" displayExpr="name" valueExpr="value"></dxo-lookup>
+            </dxi-column>
+            <!-- <dxo-editing [enabled]="false"  [allowUpdating]="true" >
+              </dxo-editing> -->
+            <dxo-editing mode="cell" [allowUpdating]="true"></dxo-editing>
+          </dx-data-grid>
+        </editor-grid-item>
+      </editor-grid-tab>
+    </editor-multiple-grid>
+  </div>
+  <!-- 手机号客户信息选择弹框 -->
+  <dx-popup [(visible)]="cusVisible" width="70%" [maxHeight]="600" [dragEnabled]="false" [showTitle]="true"
+    (onHiding)="_onPopupHiding()" resizeEnabled="true" title="客户引用" showCloseButton="true">
+    <dx-form #form id="form" [colCount]="3" width="100%" [(formData)]="cusFormData" validationGroup="customerData"
+      [showOptionalMark]="false" [showRequiredMark]="true" [readOnly]="$form">
+      <dxi-item itemType="group" [colSpan]="3" [colCount]="3">
+        <dxi-item [label]="{ text: '客户检索', alignment: 'right',showColon: false }" editorType="dxTextBox"
+          [editorOptions]="{ showClearButton: true, placeholder: '请输入客户' }" dataField="LinkMan">
+        </dxi-item>
+        <dxi-item><span></span></dxi-item>
+        <dxi-item>
+          <dx-button class="zz-dxButton" text="查询" (onClick)="onSearch()">
+          </dx-button>
+          <dx-button class="zz-dxButton" style="margin-left: 20px;" text="重置" (onClick)="reset()">
+          </dx-button>
+        </dxi-item>
+      </dxi-item>
+    </dx-form>
+    <div style="margin-top: 20px;" class="lhd_card">
+      <dx-list [dataSource]="customerListData" [height]="400">
+        <div *dxTemplate="let item of 'item'">
+          <div class="product">
+            <div><span>编号</span>{{ item.CustomerId }}</div>
+            <div><span>评价</span>{{ '暂无' }}</div>
+            <div><span>名称</span>{{ item.CustomerName }}</div>
+            <div></div>
+            <div><span>负责人</span>{{ item.LinkMan }}</div>
+            <div><span>手机号</span>{{ item.Phone }}</div>
+            <div><span>创建单位</span>{{ item.EnterpriseName }}</div>
+            <div><span>是否内部单位</span>{{ item.IsInner == 1 ? '是' : '否' }}</div>
+            <div><span>是否客户</span>{{ item. IsSa == 1 ? '是' : '否' }}</div>
+            <div><span>是否供应商</span>{{ item.IsPm == 1 ? '是' : '否' }}</div>
+            <div><span>是否已经引入</span>{{ item.IsSaImp == 1 ? '是' : '否' }}</div>
+            <div>
+              <dx-button class="zz-dxButton" text="引入" (onClick)="onIntroduce(item)">
+              </dx-button>
+            </div>
+          </div>
+        </div>
+      </dx-list>
+    </div>
+  </dx-popup>
+
+  <!-- 一致人员增加表 -->
+  <dx-popup width="500" height="500" [(visible)]="actionVisible" [dragEnabled]="false" [showTitle]="true"
+    title="养户一致行动人添加弹出框">
+    <dx-form #ZoningForm [colCount]="1" width="100%" [(formData)]="formDataZoning" style="padding-right: 10px"
+      [showRequiredMark]="true" (onFieldDataChanged)="onActionDataChanged($event)">
+      <dxi-item [label]="{ text: '手机号', alignment: 'right',showColon: false }" editorType="dxTextBox" [colSpan]="2"
+        [editorOptions]="{ showClearButton:true,placeholder: '请输入手机号', disabled: actionDisabled }" dataField="Phone">
+        <dxi-validation-rule type="required" message="手机号必填"></dxi-validation-rule>
+        <dxi-validation-rule type="pattern" message="请输入正确的手机格式" [pattern]="PhoneJudge"></dxi-validation-rule>
+      </dxi-item>
+      <br>
+      <dxi-item [label]="{ text: '姓名', alignment: 'right',showColon: false }" dataField="Name"
+        [editorOptions]="{ placeholder: '请输入姓名',disabled: actionDisabled }">
+        <dxi-validation-rule type="required" message="姓名必填"> </dxi-validation-rule>
+        <dxi-validation-rule type="stringLength" min="0" max="128" message="姓名长度最大128字">
+        </dxi-validation-rule>
+        <dxi-validation-rule type="pattern" message="非法字符" [pattern]="limitCharacter"></dxi-validation-rule>
+      </dxi-item>
+      <dxi-item [label]="{ text: '身份证', alignment: 'right',showColon: false }" editorType="dxTextBox" [colSpan]="2"
+        [editorOptions]="{ showClearButton:true,placeholder: '请输入身份证', disabled: actionDisabled }" dataField="Card">
+        <dxi-validation-rule type="pattern" message="请输入正确的身份证号" [pattern]="IdCardNumberType"></dxi-validation-rule>
+      </dxi-item>
+      <dxi-item [label]="{ text: '备注', alignment: 'right',showColon: false }" editorType="dxTextBox" [colSpan]="2"
+        [editorOptions]="{ showClearButton:true,placeholder: '请输入备注' }" dataField="Remarks">
+      </dxi-item>
+      <dxi-item style="text-align: center;margin-top: 30px;">
+        <dx-button style="margin-right: 10px;" type="default" text="保存并新增" (onClick)="onZoningFormSubmit(true)"
+          [disabled]="saveDisabled"></dx-button>
+        <dx-button type="default" text="保存" (onClick)="onZoningFormSubmit(false)" [disabled]="saveDisabled"></dx-button>
+      </dxi-item>
+    </dx-form>
+  </dx-popup>
+
+  <dx-popup [width]="800" [height]="500" [showTitle]="true" title="选择养殖地址" [dragEnabled]="true" [resizeEnabled]="true"
+    [(visible)]="showMapPop">
+    <app-show-map #maps (getValue)="popup_hiding($event)" [address]="mapsAddress" mode='single'></app-show-map>
+  </dx-popup>
+
+  <!-- 养户提示 -->
+  <dx-popup [width]="300" [height]="180" [showTitle]="true" title="提示" [(visible)]="FarmerVisible">
+    <div style="text-align: center;">
+      <p>当前集团已存在该手机号的养户，您确定将该养户引入贵单位吗？</p>
+      <div>
+        <dx-button style="margin-right: 15px" type="normal" text="确定" (onClick)="farConfirm()">
+        </dx-button>
+        <dx-button type="normal" text="取消" (onClick)="farCancel()">
+        </dx-button>
+      </div>
+    </div>
+  </dx-popup>
+
+  <!-- 一致人删除提示 -->
+  <dx-popup [width]="300" [height]="180" [showTitle]="true" title="提示" [(visible)]="actionDelVisible">
+    <div style="text-align: center;">
+      <p>您确定要删除此行吗？</p>
+      <div>
+        <dx-button style="margin-right: 15px" type="normal" text="确定" (onClick)="_deleteonActiRowImpl()">
+        </dx-button>
+        <dx-button type="normal" text="取消" (onClick)="actionDelVisible = false">
+        </dx-button>
+      </div>
+    </div>
+  </dx-popup>
+</div>

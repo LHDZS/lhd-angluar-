@@ -1,0 +1,101 @@
+:host .search-panel {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background-color: #fff;
+    position: relative;
+    text-align: right;
+    transition: 0.5s;
+    // overflow: hidden;
+
+    .overlap {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 10px;
+        background: #fff;
+        z-index: 100;
+    }
+
+    .search-conditions {
+        width: 100%;
+        table {
+            border: none;
+            width: 100%;
+        }
+        tr {
+            height: 50px;
+        }
+
+        .column-label {
+            text-align: center;
+            white-space: nowrap;
+            padding-right: 6px;
+            width: 1%;
+            .star {
+                color: red;
+            }
+        }
+        .column-content {
+            width: 20%;
+            padding-right: 10px;
+            text-align: left;
+        }
+        .column-content  .column-wrapper {
+            max-width: 260px;
+            display: flex;
+            align-items: center;
+            .widget{
+                flex:1;
+            }
+            .add-button{
+                color: #d9544f;
+                font-size: 26px;
+                margin-left: 10px;
+                cursor: pointer;
+            }
+            
+        }
+    }
+
+    .search-conditions::after {
+        display: block;
+        content: '';
+        height: 0;
+        clear: both;
+    }
+
+    .search-button {
+        position: absolute;
+        right: 15px;
+        top: 23px;
+
+        .button-item {
+            display: inline-block;
+            margin-left: 10px;
+            // ::ng-deep .dx-button-mode-contained {
+            //     border-color: #1890ff;
+            //     background-color: #1890ff;
+            //     border-radius: 5px;
+            //     color: #fff;
+            // }
+            // ::ng-deep .dx-button-mode-outlined {
+            //     border-color: #e0e0e0;
+            //     color: #767175;
+            // }
+            // ::ng-deep .dx-button-mode-text {
+            //     color: #1890ff;
+            // }
+            // ::ng-deep .dx-button-mode-text .dx-icon {
+            //     color: #1890ff;
+            //     height: 15.4px;
+            // }
+        }
+
+        .button-item:first-child {
+            margin-left: 0px;
+        }
+    }
+}

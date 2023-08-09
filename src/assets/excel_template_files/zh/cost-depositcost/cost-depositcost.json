@@ -1,0 +1,42 @@
+[
+    {
+        "caption": "* 开始日期",
+        "dataField": "DataDate ",
+        "dataType": "string"
+      }, 
+    {
+      "caption": "*耳号/批次",
+      "dataField": "EarNumber ",
+      "dataType": "string"
+    }, 
+    {
+        "caption": "*重量（公斤）",
+        "dataField": "PigTotalWeight  ",
+        "dataType": "string"
+    }, 
+    {
+        "caption": "* 肥猪成本/种猪待摊折旧（元）",
+        "dataField": "PigCost  ",
+        "dataType": "string"
+    }, 
+    {
+        "caption": "* 饲料成本（元）",
+        "dataField": "MaterialCost ",
+        "dataType": "string"
+    }, 
+    {
+        "caption": "* 兽药成本（元）",
+        "dataField": "MedicantCost  ",
+        "dataType": "string"
+    }, 
+    {
+        "caption": "* 疫苗成本（元）",
+        "dataField": "VaccineCost  ",
+        "dataType": "string"
+    }, 
+    {
+        "caption": "* 费用（元）",
+        "dataField": "ExpensesCost  ",
+        "dataType": "string"
+    }
+]

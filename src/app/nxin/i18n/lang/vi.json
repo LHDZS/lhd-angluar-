@@ -1,0 +1,199 @@
+{
+    "commandOptions": {
+        "create": {
+            "text": "Thêm mới",
+            "success": "Thêm thành công",
+            "failed": "Thêm không thành công"
+        },
+        "delete": {
+            "text": "xóa bỏ",
+            "success": "đã xóa thành công",
+            "failed": "không xóa được",
+            "confirm": "Bạn có chắc chắn muốn xóa?",
+            "confirmTitle": "lời nhắc",
+            "confirmFormat": "Bạn có chắc chắn muốn xóa {0} mục này không?",
+            "emptyMessage": "Vui lòng chọn hàng để xóa",
+            "confirmFormatMore": "Hiện tại là trang {0} Có {1} trang {2} dữ liệu, {p} dữ liệu đã được liên kết"
+        },
+        "examine": {
+            "text": "Đánh giá",
+            "range": "Đánh giá hàng loạt",
+            "cancel": "Hủy đánh giá",
+            "success": "Đánh giá thành công",
+            "failed": "Kiểm tra thất bại",
+            "confirm": "Bạn có chắc chắn muốn xem lại?",
+            "confirmTitle": "lời nhắc",
+            "confirmFormat": "Bạn có chắc chắn muốn xem lại {0} các mục này không?",
+            "emptyMessage": "Vui lòng chọn hàng để xem xét",
+            "noRights": "Bạn không có quyền đánh giá"
+        },
+        "search": {
+            "text": "Tra cứu"
+        },
+        "edit": {
+            "text": "sửa đổi",
+            "success": "Đã sửa đổi thành công",
+            "failed": "không thể chỉnh sửa"
+        },
+        "save": {
+            "text": "Lưu",
+            "success": "Lưu thành công",
+            "failed": "Lưu không thành công",
+            "noChange": "Bạn đã không sửa đổi bất cứ điều gì",
+            "error": "Ngoại lệ yêu cầu giao diện"
+        },
+        "reset": {
+            "text": "Cài lại"
+        },
+        "cancel": {
+            "text": "Thu hồi"
+        },
+        "refresh": {
+            "text": "Làm mới"
+        },
+        "setting": {
+            "text": "Thiết lập"
+        },
+        "filterRow": {
+            "text": "Lọc hàng"
+        },
+        "moreOptions": {
+            "text": "Nhiêu lựa chọn hơn"
+        },
+        "exportExcel": {
+            "text": "Xuất sang Excel"
+        },
+        "import": {
+            "text": "Nhập vào"
+        },
+        "print": {
+            "text": "in"
+        },
+        "all": {
+            "text": "Tất cả"
+        },
+        "cleanAll": {
+            "text": "Làm trống tất cả"
+        },
+        "empty": {
+            "text": "chỗ trống"
+        },
+        "ok": {
+            "text": "xác định"
+        },
+        "pager": {
+            "pageInfo": "Hiện tại là trang {0} Tổng số {1} trang {2} dữ liệu"
+        },
+        "down": {
+            "text": "Mở ra"
+        },
+        "up": {
+            "text": "Cất đi"
+        },
+        "selected": {
+            "text": "{0} mục được chọn"
+        },
+        "options": {
+            "text": "Thao tác"
+        },
+        "yes": {
+            "text": "Đúng"
+        },
+        "no": {
+            "text": "Không"
+        },
+        "printQuantityPerLine": {
+            "text": "Hàng in mỗi dòng"
+        },
+        "headSetting": {
+            "text": "Thiết lập mẫu"
+        }
+    },
+    "messageBox": {
+        "text": "Hộp thư",
+        "noMessage": "Không có lời nhắc tin nhắn"
+    },
+    "dataGridOptions": {
+        "emptyData": "Không có dữ liệu",
+        "rowOptions": {
+            "add": {
+                "text": "Thêm hàng",
+                "insertOn": "Chèn hàng trên",
+                "insertDown": "Chèn hàng bên dưới",
+                "copyOn": "Chép hàng lên trên",
+                "copyDown": "Chép dòng xuống dưới",
+                "deleteRow": "Xoá hàng hiện thời",
+                "appendRow": "Thêm hàng"
+            },
+            "delete": {
+                "text": "Xóa hàng"
+            },
+            "copy": {
+                "text": "sao chép"
+            },
+            "index": {
+                "text": "Số thứ tự"
+            }
+        },
+        "remarks": {
+            "text": "Chú thích",
+            "placeholder": "Vui lòng nhập chú thích"
+        },
+        "summary": {
+            "sum": {
+                "text": "Tổng cộng"
+            }
+        },
+        "save": {
+            "notSaveEmptyData": "Không thể lưu dữ liệu trống",
+            "checkSaveData": "Vui lòng kiểm tra thông tin đầu vào của bạn"
+        },
+        "review": {
+            "reviewed": "Tài liệu đã được xem xét và không thể vận hành",
+            "saveDataAfter": "Vui lòng lưu dữ liệu trước khi tiếp tục",
+            "noPermission": "Bạn không có quyền đánh giá "
+        }
+    },
+    "dataGridWidgets": {
+        "dateBox": {
+            "placeholder": "xin vui lòng chọn"
+        }
+    },
+    "printComponent": {
+        "notSavedMessage": "Tài liệu hiện tại chưa được lưu và không thể in được",
+        "noData": "Không có dữ liệu"
+    },
+    "importComponent": {
+        "text": "Nhập dữ liệu",
+        "importTemplateTitle": "Nhập vào mẫu Excel",
+        "^": "",
+        "tip": "Nhập dữ liệu theo lô, khuyên bạn nên điền theo mẫu hệ thống",
+        "downloadTip": "Nhấp để tải xuống mẫu hệ thống",
+        "clickUpload": "Bấm tải lên",
+        "uploadSupport": "Phần mở rộng hỗ trợ:",
+        "importing": "Đang nhập dữ liệu, vui lòng kiên nhẫn đợi một lúc",
+        "error": {
+            "have": "Có",
+            "num": "Lỗi",
+            "view": "Bấm để xem"
+        },
+        "buttonImporting": " Đang nhập vào...",
+        "buttonImport": "Nhập vào",
+        "errorListTitle": "Danh sách ngoại lệ",
+        "column": "Cột",
+        "columnNotFound": "Không tồn tại hoặc tên cột không chính xác",
+        "redownloadTemplate": "Vui lòng kiểm tra mẫu hoặc tải xuống lại mẫu",
+        "importFileBeforeSave": "Vui lòng nhập tệp trước khi gửi",
+        "importDataException": "Lỗi nhập dữ liệu, vui lòng xác nhận xem mẫu có đúng không và không phải là tệp trống",
+        "index": "Thứ",
+        "line": "Hàng",
+        "inputError": "Điền lỗi",
+        "importSuccess": "Đã nhập thành công",
+        "importFailed": "Nhập không thành công",
+        "/": ""
+    },
+    "reviewComponent": {
+        "maker": "Được soạn bởi",
+        "audit": "Người đánh giá"
+    }
+}

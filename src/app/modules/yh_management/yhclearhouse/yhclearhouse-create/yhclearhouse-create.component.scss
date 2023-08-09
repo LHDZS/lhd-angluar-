@@ -1,0 +1,60 @@
+:host .form-container {
+    background-color: #fff;
+}
+
+:host .form-toolbar {
+    width           : 100%;
+    padding         : 8px;
+    background-color: #ffffff;
+    box-sizing      : border-box;
+    position        : absolute;
+    border-bottom   : 2px solid #f4f4ff;
+    z-index         : 99;
+}
+
+:host ::ng-deep .dx-form-group-caption {
+    font-size  : 14px;
+    font-weight: 600;
+}
+
+:host .form-wrapper {
+    padding         : 16px 24px 0px 24px;
+    background-color: #ffffff;
+    box-sizing      : border-box;
+    height          : 100%;
+    margin-top      : 54px;
+}
+
+:host ::ng-deep .dx-field-item-required-mark {
+    padding-right: 5px;
+}
+
+:host ::ng-deep .dx-field-item-label-content {
+    display       : flex !important;
+    flex-direction: row-reverse;
+}
+
+:host ::ng-deep .dx-item {
+    margin-bottom: 10px;
+}
+
+:host ::ng-deep .dx-form-group-with-caption>.dx-form-group-content {
+    padding-bottom: 0;
+}
+
+:host ::ng-deep .product-wrapper {
+    display    : flex;
+    line-height: 36px;
+}
+
+:host ::ng-deep .product-wrapper {
+    display    : flex;
+    line-height: 36px;
+}
+
+.print {
+    position: absolute;
+    top: 18px;
+    right: 120px;
+    z-index: 100;
+}

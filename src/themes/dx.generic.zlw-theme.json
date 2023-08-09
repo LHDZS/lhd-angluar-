@@ -1,0 +1,97 @@
+{
+    "items": [
+        {
+            "key": "@datagrid-columnchooser-font-weight",
+            "value": "bold"
+        },
+        {
+            "key": "@toolbar-bg",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "@button-default-bg",
+            "value": "rgba(80, 139, 220, 1)"
+        },
+        {
+            "key": "@scrollable-scroll-bg",
+            "value": "rgba(191, 196, 201, 1)"
+        },
+        {
+            "key": "@texteditor-focused-border-color",
+            "value": "rgba(80, 139, 220, 1)"
+        },
+        {
+            "key": "@base-border-radius-small",
+            "value": "2px"
+        },
+        {
+            "key": "@textbox-search-icon-color",
+            "value": "rgba(80, 139, 220, 1)"
+        },
+        {
+            "key": "@texteditor-border-color",
+            "value": "rgba(80, 139, 220, 1)"
+        },
+        {
+            "key": "@tagbox-tag-bg",
+            "value": "rgba(80, 139, 220, 0.35)"
+        },
+        {
+            "key": "@calendar-shevron-icon-color",
+            "value": "rgba(80, 139, 220, 1)"
+        },
+        {
+            "key": "@calendar-cell-selected-bg",
+            "value": "rgba(80, 139, 220, 1)"
+        },
+        {
+            "key": "@button-default-border-color",
+            "value": "rgba(80, 139, 220, 1)"
+        },
+        {
+            "key": "@button-normal-border-color",
+            "value": "rgba(80, 139, 220, 1)"
+        },
+        {
+            "key": "@calendar-navigator-hover-border-color",
+            "value": "rgba(21, 108, 158, 0.58)"
+        },
+        {
+            "key": "@texteditor-hover-border-color",
+            "value": "rgba(80, 139, 220, 0.72)"
+        },
+        {
+            "key": "@loadindicator-bg",
+            "value": "rgba(56, 117, 166, 1)"
+        },
+        {
+            "key": "@treeview-focused-bg",
+            "value": "rgba(75, 149, 209, 1)"
+        },
+        {
+            "key": "@datagrid-columnchooser-item-color",
+            "value": "rgba(92, 96, 100, 1)"
+        },
+        {
+            "key": "@datagrid-row-invalid-faded-border-color",
+            "value": "rgba(161, 35, 31, 0.89)"
+        },
+        {
+            "key": "@datagrid-focused-border-color",
+            "value": "rgba(40, 101, 199, 0.99)"
+        },
+        {
+            "key": "@datagrid-row-error-color",
+            "value": "rgba(176, 25, 25, 1)"
+        },
+        {
+            "key": "@datagrid-spin-icon-color",
+            "value": "rgba(40, 11, 199, 1)"
+        }
+    ],
+    "baseTheme": "generic.softblue",
+    "outputColorScheme": "zlw-theme",
+    "makeSwatch": false,
+    "version": "19.2.7",
+    "widgets": []
+}

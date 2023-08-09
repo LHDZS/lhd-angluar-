@@ -1,0 +1,194 @@
+{
+    "commandOptions": {
+        "create": {
+            "text": "Add",
+            "success": "Added successfully",
+            "failed": "Add failed"
+        },
+        "delete": {
+            "text": "Delete",
+            "success": "Delete successfully",
+            "failed": "Deletion failed",
+            "confirm": "Are you sure you want to delete?",
+            "confirmTitle": "Prompt",
+            "confirmFormat": "Are you sure you want to delete these {0} items?",
+            "emptyMessage": "Please select the line to delete",
+            "confirmFormatMore": "`Currently is page {0}, total {1} ​​page {2} data, {p} data has been linked"
+        },
+        "examine": {
+            "text": "Audit",
+            "range": "Batch review",
+            "cancel": "Cancel review",
+            "success": "Successful review",
+            "failed": "Audit failed",
+            "confirm": "Are you sure you want to review?",
+            "confirmTitle": "Prompt",
+            "confirmFormat": "Are you sure you want to review these {0} items?",
+            "emptyMessage": "Please select the row to be reviewed",
+            "noRights": "You do not have review rights"
+        },
+        "search": {
+            "text": "Query"
+        },
+        "edit": {
+            "text": "Modify",
+            "success": "Modified successfully",
+            "failed": "Modification failed"
+        },
+        "save": {
+            "text": "Save",
+            "success": "Save successfully",
+            "failed": "Save failed",
+            "noChange": "You did not modify any content",
+            "error": "Interface request exception"
+        },
+        "reset": {
+            "text": "Reset"
+        },
+        "cancel": {
+            "text": "Undo"
+        },
+        "refresh": {
+            "text": "Refresh"
+        },
+        "setting": {
+            "text": "Settings"
+        },
+        "filterRow": {
+            "text": "Filter rows"
+        },
+        "moreOptions": {
+            "text": "More actions"
+        },
+        "exportExcel": {
+            "text": "Export to Excel"
+        },
+        "import": {
+            "text": "Import"
+        },
+        "print": {
+            "text": "Print"
+        },
+        "all": {
+            "text": "All"
+        },
+        "cleanAll": {
+            "text": "Empty all"
+        },
+        "empty": {
+            "text": "blank"
+        },
+        "ok": {
+            "text": "OK"
+        },
+        "pager": {
+            "pageInfo": "Currently is page {0}, a total of {1} pages {2} data"
+        },
+        "down": {
+            "text": "Expand"
+        },
+        "up": {
+            "text": "Collapse"
+        },
+        "selected": {
+            "text": "{0} items selected"
+        },
+        "options": {
+            "text": "Operation"
+        },
+        "yes": {
+            "text": "Yes"
+        },
+        "no": {
+            "text": "No"
+        },
+        "headSetting": {
+            "text": "Form settings"
+        }
+    },
+    "messageBox": {
+        "text": "Message Box",
+        "noMessage": "No message notification yet"
+    },
+    "dataGridOptions": {
+        "emptyData": "No data temporarily",
+        "rowOptions": {
+            "add": {
+                "text": "Add line",
+                "insertOn": "Insert a row above",
+                "insertDown": "Insert a row below",
+                "copyOn": "Copy line to the top",
+                "copyDown": "Copy the line to the bottom",
+                "deleteRow": "Delete the current row",
+                "appendRow": "Add Row"
+            },
+            "delete": {
+                "text": "Delete line"
+            },
+            "copy": {
+                "text": "Copy"
+            },
+            "index": {
+                "text": "Serial Number"
+            }
+        },
+        "remarks": {
+            "text": "Remarks",
+            "placeholder": "Please enter remarks information"
+        },
+        "summary": {
+            "sum": {
+                "text": "Total"
+            }
+        },
+        "save": {
+            "notSaveEmptyData": "Cannot save empty data",
+            "checkSaveData": "Please check what you entered"
+        },
+        "review": {
+            "reviewed": "The document has been reviewed and cannot be operated",
+            "saveDataAfter": "Please save the data first, and then operate",
+            "noPermission": "You do not have permission to review"
+        }
+    },
+    "dataGridWidgets": {
+        "dateBox": {
+            "placeholder": "Please select"
+        }
+    },
+    "printComponent": {
+        "notSavedMessage": "The current document is not saved and cannot be printed",
+        "noData": "No data yet"
+    },
+    "importComponent": {
+        "text": "Import data",
+        "importTemplateTitle": "Import Excel Template",
+        "tip": "Import data in batches, it is recommended that you fill in according to the system template",
+        "downloadTip": "Click to download system template",
+        "clickUpload": "Click to upload",
+        "uploadSupport": "Support extension:",
+        "importing": "Importing data, please wait patiently for a while",
+        "error": {
+            "have": "have",
+            "num": "An error",
+            "view": "Click to view"
+        },
+        "buttonImporting": "Importing...",
+        "buttonImport": "Import",
+        "errorListTitle": "Exception List",
+        "column": "Column",
+        "columnNotFound": "Does not exist or the column name is incorrect",
+        "redownloadTemplate": "Please check the template or download the template again",
+        "importFileBeforeSave": "Please import the file before submitting",
+        "importDataException": "Import data error, please confirm whether the template is correct and not an empty file",
+        "index": "on",
+        "line": "row",
+        "inputError": "Fill in error",
+        "importSuccess": "Import successful",
+        "importFailed": "Import failed"
+    },
+    "reviewComponent": {
+        "maker": "Maker",
+        "audit": "auditor"
+    }
+}

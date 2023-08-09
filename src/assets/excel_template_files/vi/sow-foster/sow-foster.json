@@ -1,0 +1,37 @@
+[
+        {
+          "caption": "*Ngày tách bầy",
+          "dataField": "DataDate",
+          "dataType": "date"
+        },
+        {
+          "caption": "Lợn nái lô  ",
+          "dataField": "FatPigId",
+          "dataType": "string"
+        },
+        {
+          "caption": "*Số tai",
+          "dataField": "EarNumber",
+          "dataType": "string"
+        },
+        {
+          "caption": "*Số lượng tách bầy",
+          "dataField": "PigCount",
+          "dataType": "string"
+        },
+        {
+          "caption": "Gửi mẫu lô  ",
+          "dataField": "FosterFatPigId",
+          "dataType": "string"
+        },
+        {
+          "caption": "*Đối tượng tách bầy",
+          "dataField": "FosterSowPigId",
+          "dataType": "string"
+        },
+        {
+          "caption": "Nguyên nhân tách bầy",
+          "dataField": "Description",
+          "dataType": "string"
+        }
+]

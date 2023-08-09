@@ -1,0 +1,43 @@
+[
+    {
+        "caption": "*仓库",
+        "dataField": "WarehouseId",
+        "dataType": "string"
+      },
+      {
+        "caption": "*库管",
+        "dataField": "GodownMan",
+        "dataType": "string"
+      },
+      {
+        "caption": "* 领取人",
+        "dataField": "PersonId",
+        "dataType": "string"
+      },
+      {
+        "caption": "* 领用日期",
+        "dataField": "DataDate",
+        "dataType": "date"
+      },
+    
+      {
+        "caption": "* 单位类型",
+        "dataField": "RequisitionUnitType",
+        "dataType": "string"
+      },
+      {
+        "caption": "* 领用单位",
+        "dataField": "RequisitionUnit",
+        "dataType": "string"
+      },
+      {
+        "caption": "* 物资名称",
+        "dataField": "RequisitionObject",
+        "dataType": "string"
+      },
+      {
+        "caption": "* 数量",
+        "dataField": "Quantity",
+        "dataType": "string"
+      }
+]

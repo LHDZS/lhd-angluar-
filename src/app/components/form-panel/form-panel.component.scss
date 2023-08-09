@@ -1,0 +1,358 @@
+:host .form-container {
+    background-color: #fff;
+    .pic {
+        width: 155px;
+        height: 155px;
+        margin: 0 auto;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+}
+:host .form-toolbar {
+    width: 100%;
+    padding: 8px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    position: absolute;
+    border-bottom: 2px solid #f4f4ff;
+    z-index: 99;
+}
+:host .form-wrapper {
+    padding: 16px 24px 0px 24px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    height: 100%;
+    margin-top: 54px;
+}
+:host ::ng-deep .dx-field-item-required-mark {
+    padding-right: 5px;
+}
+:host ::ng-deep .dx-field-item-label-content {
+    display: flex !important;
+    flex-direction: row-reverse;
+}
+
+.ihd_card .dx-field-item-label-content {
+    flex-direction: row;
+}
+
+:host ::ng-deep .dx-item {
+    margin-bottom: 10px;
+}
+
+:host ::ng-deep .dx-form-group-with-caption > .dx-form-group-content {
+    padding-bottom: 0;
+}
+:host ::ng-deep .dx-form-group-caption {
+    font-size: 14px;
+    font-weight: 600;
+}
+:host ::ng-deep .qrcode {
+    background: url(src/assets/img/sow-file-pig.jpg);
+}
+:host .pedigree-wrapper {
+    width: 100%;
+    height: 500px;
+}
+:host .pedigree-ear-number {
+    margin: 0px;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+:host .pedigree-level-1,
+.pedigree-level-2,
+.pedigree-level-3,
+.pedigree-level-4 {
+    float: left;
+    width: 240px;
+    height: 500px;
+}
+:host .relation-2-3-wrapper {
+    width: 50px;
+    height: 100%;
+    float: left;
+    .relation-2-3-A,
+    .relation-2-3-B {
+        height: 225px;
+        display: flex;
+        align-items: center;
+    }
+    .relation-2-3-A {
+        .pedigree-braces-2-3-A {
+            width: 50px;
+            height: 130px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .relation-2-3-B {
+        margin-top: 50px;
+        .pedigree-braces-2-3-B {
+            width: 50px;
+            height: 130px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+:host .relation-3-4-wrapper {
+    width: 50px;
+    height: 100%;
+    float: left;
+    .relation-3-4-1-wrapper,
+    .relation-3-4-2-wrapper {
+        height: 225px;
+    }
+    .relation-3-4-1-wrapper {
+        .relation-3-4-1-A-wrapper,
+        .relation-3-4-1-B-wrapper {
+            height: 240px;
+        }
+        .relation-3-4-1-A-wrapper {
+            .relation-3-4-1-A,
+            .relation-3-4-1-B {
+                height: 110px;
+                display: flex;
+                align-items: center;
+                img {
+                    width: 50px;
+                    height: 70px;
+                }
+            }
+            .relation-3-4-1-B {
+                margin-top: 10px;
+            }
+        }
+    }
+    .relation-3-4-2-wrapper {
+        margin-top: 50px;
+        .relation-3-4-2-A-wrapper,
+        .relation-3-4-2-B-wrapper {
+            height: 240px;
+        }
+        .relation-3-4-2-A-wrapper {
+            .relation-3-4-2-A,
+            .relation-3-4-2-B {
+                height: 110px;
+                display: flex;
+                align-items: center;
+                img {
+                    width: 50px;
+                    height: 70px;
+                }
+            }
+            .relation-3-4-2-B {
+                margin-top: 10px;
+            }
+        }
+    }
+}
+:host .pedigree-braces-1 {
+    float: left;
+    width: 50px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    img {
+        display: inline-block;
+        width: 50px;
+        height: 280px;
+    }
+}
+:host .pedigree-level-1 {
+    width: 130px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+}
+:host .pedigree-level-2 {
+    margin-left: 5px;
+    .pedigree-level-2-1,
+    .pedigree-level-2-2 {
+        display: flex;
+        align-items: center;
+        height: 225px;
+        line-height: 225px;
+    }
+    .pedigree-level-2-2 {
+        margin-top: 50px;
+    }
+}
+:host .pedigree-level-3 {
+    margin-left: 5px;
+    .pedigree-level-3-1,
+    .pedigree-level-3-2 {
+        height: 225px;
+        line-height: 225px;
+        .pedigree-level-3-1-1,
+        .pedigree-level-3-1-2 {
+            display: flex;
+            align-items: center;
+            height: 110px;
+            line-height: 110px;
+        }
+        .pedigree-level-3-1-2 {
+            margin-top: 5px;
+        }
+    }
+    .pedigree-level-3-2 {
+        margin-top: 50px;
+        .pedigree-level-3-2-1,
+        .pedigree-level-3-2-2 {
+            display: flex;
+            align-items: center;
+            height: 110px;
+            line-height: 110px;
+        }
+        .pedigree-level-3-2-2 {
+            margin-top: 5px;
+        }
+    }
+}
+:host .pedigree-level-4 {
+    margin-left: 5px;
+    .pedigree-level-4-1,
+    .pedigree-level-4-2 {
+        height: 225px;
+        line-height: 225px;
+        .pedigree-level-4-1-1,
+        .pedigree-level-4-1-2 {
+            height: 110px;
+        }
+    }
+    .pedigree-level-4-1 {
+        .pedigree-level-4-1-1 {
+            .pedigree-level-4-1-1-1,
+            .pedigree-level-4-1-1-2 {
+                display: flex;
+                align-items: center;
+                height: 50px;
+                line-height: 50px;
+            }
+            .pedigree-level-4-1-1-2 {
+                margin-top: 10px;
+            }
+        }
+        .pedigree-level-4-1-2 {
+            margin-top: 5px;
+            .pedigree-level-4-1-2-1,
+            .pedigree-level-4-1-2-2 {
+                display: flex;
+                align-items: center;
+                height: 50px;
+                line-height: 50px;
+            }
+            .pedigree-level-4-1-2-2 {
+                margin-top: 10px;
+            }
+        }
+        .pedigree-level-4-1-2 {
+            margin-top: 5px;
+        }
+    }
+    .pedigree-level-4-2 {
+        margin-top: 50px;
+        .pedigree-level-4-2-1 {
+            .pedigree-level-4-2-1-1,
+            .pedigree-level-4-2-1-2 {
+                display: flex;
+                align-items: center;
+                height: 50px;
+                line-height: 50px;
+            }
+            .pedigree-level-4-2-1-2 {
+                margin-top: 10px;
+            }
+        }
+        .pedigree-level-4-2-2 {
+            margin-top: 5px;
+            .pedigree-level-4-2-2-1,
+            .pedigree-level-4-2-2-2 {
+                display: flex;
+                align-items: center;
+                height: 50px;
+                line-height: 50px;
+            }
+            .pedigree-level-4-2-2-2 {
+                margin-top: 10px;
+            }
+        }
+        .pedigree-level-4-2-2 {
+            margin-top: 5px;
+        }
+    }
+}
+:host ::ng-deep .product-wrapper {
+    flex: 1;
+    display: flex;
+    line-height: 36px;
+}
+:host ::ng-deep .pedigree-label {
+    min-width: 45px;
+}
+//消息盒子
+::ng-deep .message-box-wrapper {
+    width: 100%;
+    height: 100%;
+    > .dx-scrollview
+        .dx-scrollable-wrapper
+        .dx-scrollable-container
+        .dx-scrollable-scrollbar
+        .dx-scrollable-scroll
+        .dx-scrollable-scroll-content {
+        background-color: #ccc !important;
+    }
+}
+.message-box-info {
+    margin: 0px;
+    width: 96%;
+    color: #828282;
+    border-bottom: 1px solid #eff1f0;
+    line-height: 24px;
+    font-size: 14px;
+    p {
+        margin: 1em 0px;
+    }
+}
+.message-box-info:first-of-type {
+    p {
+        margin-top: 0px;
+    }
+}
+.message-box-info-important {
+    color: red !important;
+}
+::ng-deep .dx-popup-title.dx-toolbar .dx-toolbar-label {
+    font-size: 16px;
+}
+::ng-deep .dx-form-group-caption {
+    font-size: 16px;
+}
+.star {
+    color: red;
+}
+.pic {
+    width: 155px;
+    height: 155px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.setting_btn {
+    color: #666666;
+    font-size: 18px !important;
+    margin-left: 10px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+}

@@ -1,0 +1,116 @@
+<div class="form-container">
+    <nx-zlw-header-search-panel #headerSearchPanel [model]="searchPanelModel"></nx-zlw-header-search-panel>
+    <nx-zlw-toolbar-panel #toolbarInstance [model]="toolbarPanel"></nx-zlw-toolbar-panel>
+    <div class="wrapper">
+        <nx-zlw-form-list #formListInstance [model]="formList"></nx-zlw-form-list>
+    </div>
+</div>
+
+<dx-popup
+    #popup
+    [width]="800"
+    [height]="600"
+    [showTitle]="true"
+    title="养户运价设置"
+    [dragEnabled]="true"
+    [closeOnOutsideClick]="false"
+    [(visible)]="showFarmAdder"
+    [shading]="false"
+    [resizeEnabled]="true"
+>
+    <div class="form-wrapper">
+        <dx-form
+            #form
+            id="form"
+            [(formData)]="formData"
+            [colCount]="6"
+            width="100%"
+            style="padding-right: 10px"
+            validationGroup="customerData"
+            [showOptionalMark]="false"
+            [showRequiredMark]="true"
+            (onFieldDataChanged)="onFieldDataChanged($event)"
+        >
+            
+            <dxi-item [label]="{ text: '养殖场名称', alignment: 'right',showColon: false }" editorType="dxSelectBox" [colSpan]="3"
+                [editorOptions]="{
+                    dataSource: farmDropDataSource,
+                    valueExpr: 'ChickenFarmID',
+                    displayExpr: 'ChickenFarmName',
+                    placeholder: '请选择养殖场名称',
+                    showClearButton: true,
+                    searchEnabled: true
+                }" dataField="ChickenFarmID">
+            </dxi-item>
+            <dxi-item [colSpan]="3"><span></span></dxi-item>
+
+            <dxi-item [colSpan]="6">
+                <dx-data-grid class="data-grid-wrapper"
+                    #FarmGrid
+                    [(dataSource)]="farmDataSource"
+                    width="100%"
+                    height="300"
+                    [sorting]="false"
+                    (onSelectionChanged)="onSelectionChangedEvent($event)"
+                >   
+                    <dxo-selection
+                        [allowSelectAll]="true"
+                        [deferred]="false"
+                        [mode]="'multiple'"
+                        [selectAllMode]="'allPages'"
+                        [showCheckBoxesMode]="'onClick'"
+                    ></dxo-selection>
+                    <dxo-paging
+                        [pageSize]="10"
+                    ></dxo-paging>
+                    <dxo-pager
+                        [allowedPageSizes]="[5, 10]"
+                        [infoText]="'页码 {0} / {1} (共{2}条)'"
+                        [showInfo]="true"
+                        [showNavigationButtons]="true"
+                        [showPageSizeSelector]="true"
+                        [visible]="true"
+                    >
+                    </dxo-pager>
+                    <!-- <dxi-column dataField="IDENTITY_RECORD"></dxi-column> -->
+                    <dxi-column caption="养殖厂名称" dataField="ChickenFarmID" alignment="left" calculateDisplayValue="ChickenFarmName"></dxi-column>
+                    <dxi-column caption="地区" dataField="AreaID" alignment="left" calculateDisplayValue="AreaName"></dxi-column>
+                    <dxi-column caption="详细地址" dataField="FullAddress" alignment="left" ></dxi-column>
+                    <!-- <dxo-editing [enabled]="true"  [allowUpdating]="true" ></dxo-editing> -->
+                    <dxo-editing mode="cell" [allowUpdating]="false"></dxo-editing>
+                </dx-data-grid>
+            </dxi-item>
+
+            <dxi-item [label]="{ text: '饲料运价', alignment: 'right',showColon: false }" editorType="dxNumberBox" [colSpan]="2"
+                [editorOptions]="{ showClearButton:true,placeholder: '请输入饲料运价' , format:'#,##0.####元', min: 0}" dataField="FeedFreight">
+            </dxi-item>
+
+            <dxi-item [label]="{ text: '禽苗运价', alignment: 'right',showColon: false }" editorType="dxNumberBox" [colSpan]="2"
+                [editorOptions]="{ showClearButton:true,placeholder: '请输入禽苗运价', format:'#,##0.####元', min: 0}" dataField="ChickFreight">
+            </dxi-item>
+
+            <dxi-item [label]="{ text: '肉禽回收运价', alignment: 'right',showColon: false }" editorType="dxNumberBox" [colSpan]="2"
+                [editorOptions]="{ showClearButton:true,placeholder: '请输入肉禽回收运价', format:'#,##0.####元', min: 0}" dataField="ChickenRecycleFreight">
+            </dxi-item>
+
+            <dxi-item [label]="{ text: '备注', alignment: 'right',showColon: false }" editorType="dxTextBox" [colSpan]="6"
+            [editorOptions]="{ showClearButton:true,placeholder: '备注...' }" dataField="Remarks">
+            </dxi-item>
+            
+
+            <dxi-item [colSpan]="1"><span></span></dxi-item>
+            <dxi-item [colSpan]="4">
+                <span style="width: 100%; text-align: center; display: block;">注：运费金额，仅用于补扣项目中的费用指标</span>
+            </dxi-item>
+            <dxi-item [colSpan]="1"><span></span></dxi-item>
+
+            <dxi-item [colSpan]="2"><span></span></dxi-item>
+            <dxi-item [colSpan]="2">
+                <dx-button text="确定" type="default" [disabled]="buttonDisable" (onClick)="onSave()" style="margin:0 auto; width: 100px; display: block;"></dx-button>
+            </dxi-item>
+            <dxi-item [colSpan]="2"><span></span></dxi-item>
+            
+        </dx-form>
+        
+    </div>
+</dx-popup>

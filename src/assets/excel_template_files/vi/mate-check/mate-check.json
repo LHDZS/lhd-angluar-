@@ -1,0 +1,45 @@
+[
+    {
+      "caption": "*Người phụ trách",
+      "dataField": "PersonID",
+      "dataType": "string"
+    },
+    {
+        "caption": "*Ngày khám thai",
+        "dataField": "DataDate",
+        "dataType": "date"
+    },
+   
+    {
+        "caption": "*Số tai",
+        "dataField": "EarNumber",
+        "dataType": "string"
+      },
+      
+      
+      {
+        "caption": "*Kiểu khám ",
+        "dataField": "PregnancyWay",
+        "dataType": "string"
+      },
+      {
+        "caption": "*Kết quả khám",
+        "dataField": "PregnancyResult",
+        "dataType": "string"
+      },
+      {
+        "caption": "Lợn nái lô  ",
+        "dataField": "BatchID",
+        "dataType": "string"
+      },
+      {
+        "caption": "Vào lô  ",
+        "dataField": "InBatchId",
+        "dataType": "string"
+      },
+      {
+        "caption": "Mô tả",
+        "dataField": "PregnancyAbnormalDescription",
+        "dataType": "string"
+      }
+]

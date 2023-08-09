@@ -1,0 +1,33 @@
+[
+    {
+      "caption": "* 负责人",
+      "dataField": "PersonID",
+      "dataType": "string"
+    },
+    {
+      "caption": "* 喂养日期",
+      "dataField": "DataDate",
+      "dataType": "date"
+    },
+    {
+      "caption": "* 喂养对象",
+      "dataField": "FeedObject",
+      "dataType": "string"
+    },
+    {
+      "caption": "* 饲料名称",
+      "dataField": "ProductID",
+      "dataType": "string"
+    },
+  
+    {
+      "caption": "* 喂养类型",
+      "dataField": "FeedType",
+      "dataType": "string"
+    },
+    {
+      "caption": "* 数量",
+      "dataField": "Quantity",
+      "dataType": "string"
+    }
+]

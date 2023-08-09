@@ -1,0 +1,179 @@
+:host .header-search-panel {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  background-color: #fff;
+  transition: 0.5;
+  position: relative;
+  display: flex;
+  .overlap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 10px;
+      background: #fff;
+      z-index: 100;
+  }
+
+  .search-conditions {
+      flex: 1;
+      .search-row {
+          display: flex;
+          align-items: center;
+      }
+      .search-condition-item {
+          display: flex;
+          width: 24%;
+          height: 0;
+          overflow: hidden;
+          &.showAll {
+              height: auto;
+              overflow: visible;
+          }
+          &.date-width {
+              min-width: 380px;
+          }
+          .search-condition-label,
+          .search-condition-widget {
+              height: 50px;
+              line-height: 50px;
+          }
+
+          .search-condition-label {
+              white-space: nowrap;
+              text-align: right;
+              margin-right: 4px;
+              width: auto;
+              .star {
+                  color: red;
+                  vertical-align: middle;
+              }
+              &.label-width {
+                  width: 65px!important;
+              }
+          }
+
+          .search-condition-widget {
+              display: flex;
+              flex: 1;
+              align-items: center;
+              .range-date {
+                  cursor: pointer;
+                  position: relative;
+                  width: 100%;
+                  max-width: 300px;
+                  height: 36px;
+                  background: #fff;
+                  border: 1px solid #dee1e3;
+                  border-radius: 2px;
+                  outline: 0;
+                  display: flex;
+                  align-items: center;
+                  .dx-icon-event {
+                      font-size: 18px;
+                      display: inline-block;
+                      color: #8899a8;
+                      width: 32px;
+                      height: 32px;
+                      text-align: center;
+                      line-height: 32px;
+                  }
+                  .date {
+                      flex: 1;
+                      padding-left: 10px;
+                      height: 34px;
+                      line-height: 34px;
+                      font-size: 14px;
+                      color: #333;
+                      display: flex;
+                      align-items: center;
+                      .dx-icon-clear {
+                          color: #8899a8;
+
+                          width: 34px;
+                          height: 34px;
+                          font-size: 18px;
+                          text-align: center;
+                          line-height: 34px;
+                      }
+                  }
+                  .line {
+                      display: inline-block;
+                      width: 1px;
+                      height: 20px;
+                      background-color: #dee1e3;
+                  }
+                  .date-box {
+                      position: absolute;
+                      padding: 10px;
+                      background-color: #fff;
+
+                      top: 40px;
+                      left: -1px;
+                      z-index: 100;
+                      display: flex;
+                      &.right-pos {
+                          right: -1px;
+                          left: auto;
+                      }
+                      .line {
+                          width: 4px;
+                          height: 240px;
+                      }
+                  }
+              }
+              .range-date:hover {
+                  border-color: rgba(240, 91, 65, 0.4);
+              }
+              .range-date:focus {
+                  border-color: #d9544f;
+              }
+          }
+      }
+  }
+
+  .search-button {
+      padding-top: 8px;
+      white-space: nowrap;
+      .button-item {
+          display: inline-block;
+          margin-left: 14px;
+          .open-button {
+              display: flex;
+              align-items: center;
+              height: 34px;
+              cursor: pointer;
+          }
+          .open-button:hover {
+              color: #d9544f;
+          }
+      }
+
+      .button-item:first-child {
+          margin-left: 0px;
+      }
+  }
+}
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-label .selectbox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-label .datebox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-label .textbox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-label .span-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-label .tagbox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .range-date-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-label .radio-group-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .selectbox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .datebox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .textbox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .span-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .tagbox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .range-date-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .radio-group-widget {
+  width: calc(100% - 10px);
+  max-width: 300px;
+}
+
+:host ::ng-deep .dx-button-mode-outlined {
+  border-color: #e5e5e5;
+}

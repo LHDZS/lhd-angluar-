@@ -1,0 +1,27 @@
+:host .wrapper{
+    flex:1;
+    overflow: hidden;
+}
+:host ::ng-deep .group-row{
+    padding: 20px 8px;
+}
+
+:host ::ng-deep .group-row1{
+    padding: 20px 8px;
+    margin-top: 50px;
+}
+
+:host ::ng-deep .formula-box{
+    cursor: pointer;
+    flex:1;
+    min-height: 100px;
+    overflow: auto;
+    border:1px solid #ccc;
+    padding:8px;
+}
+
+
+:host .form-container {
+    background-color: #fff;
+    padding: 20px;
+}

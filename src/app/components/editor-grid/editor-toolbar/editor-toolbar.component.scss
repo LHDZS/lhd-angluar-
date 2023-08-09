@@ -1,0 +1,59 @@
+:host {
+    .editor-toolbar {
+        width: 100%;
+        height: auto;
+        background-color: #ffffff;
+        padding: 0px 10px;
+        padding-bottom: 10px;
+        box-sizing: border-box;
+        .toolbar-panel {
+            width: 100%;
+            min-height: 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .left-panel {
+                width: auto;
+                ::ng-deep[position='left'] {
+                    margin-top: 10px;
+                    margin-right: 10px !important;
+                    float: left;
+                }
+            }
+            .right-panel {
+                width: auto;
+                text-align: right;
+                ::ng-deep[position='right'] {
+                    margin-left: 10px !important;
+                }
+                .icon-panel {
+                    cursor: pointer;
+                    width: 30px;
+                    height: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    img {
+                        display: inline-block;
+                        width: 14px;
+                    }
+                }
+                .icon-panel:hover {
+                    background-color: rgba(0, 0, 0, 0.04);
+                }
+                .icon-panel:active {
+                    background-color: rgba(0, 0, 0, 0.2);
+                }
+            }
+        }
+    }
+    
+}
+
+.tab_data_grid {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}

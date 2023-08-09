@@ -1,0 +1,23 @@
+:host .invalid-page{
+    background:#fff;
+    height:100vh;
+    position: relative;
+    user-select:none;
+    background:url('src/assets/img/invalid-pigfarm.png') no-repeat center center;
+    background-size:cover;
+    .tip-title{
+        position:absolute;
+        top:50%;
+        right:28%;
+        transform: translateY(-50%);
+        font-size:30px;
+        color:#000;
+        line-height: 60px;
+        .tip{
+            font-size:24px;
+            color:#8d9192;
+            line-height: 40px;;
+        }
+    }
+    
+}

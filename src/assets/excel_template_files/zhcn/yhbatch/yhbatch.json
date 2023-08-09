@@ -1,0 +1,57 @@
+[
+  {
+    "caption": "*建档日期",
+    "dataField": "DataDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "*养户名称",
+    "dataField": "YHFarmerID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*养殖合同",
+    "dataField": "YHFarmerContract",
+    "dataType": "string"
+  },
+  {
+    "caption": "*养殖场",
+    "dataField": "ChickenFarmID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*批次名称",
+    "dataField": "BatchName",
+    "dataType": "string"
+  },
+  {
+    "caption": "*品种",
+    "dataField": "BreedingID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*商品代号",
+    "dataField": "ProductID",
+    "dataType": "string"
+  },
+  {
+    "caption": "家禽类型",
+    "dataField": "ChickenType",
+    "dataType": "string"
+  },
+  {
+    "caption": "养户批次序号",
+    "dataField": "SerialNo",
+    "dataType": "string"
+  },
+  {
+    "caption": "只药费",
+    "dataField": "OneMedicineFee",
+    "dataType": "string"
+  },
+  {
+    "caption": "备注",
+    "dataField": "Remarks",
+    "dataType": "string"
+  }
+]

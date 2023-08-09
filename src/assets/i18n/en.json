@@ -1,0 +1,4517 @@
+{
+    "commandOptions": {
+        "create": {
+            "text": "Add",
+            "success": "Added successfully",
+            "failed": "Add failed"
+        },
+        "delete": {
+            "text": "Delete",
+            "success": "Delete successfully",
+            "failed": "Deletion failed",
+            "confirm": "Are you sure you want to delete?",
+            "confirmTitle": "Prompt",
+            "confirmFormat": "Are you sure you want to delete these {0} items?",
+            "emptyMessage": "Please select the line to delete",
+            "confirmFormatMore": "`Currently is page {0}, total {1} ​​page {2} data, {p} data has been linked"
+        },
+        "examine": {
+            "text": "Audit",
+            "success": "Successful review",
+            "failed": "Audit failed",
+            "confirm": "Are you sure you want to review?",
+            "confirmTitle": "Prompt",
+            "confirmFormat": "Are you sure you want to review these {0} items?",
+            "emptyMessage": "Please select the row to be reviewed",
+            "noRights": "You do not have review rights"
+        },
+        "search": {
+            "text": "Query"
+        },
+        "edit": {
+            "text": "Modify",
+            "success": "Modified successfully",
+            "failed": "Modification failed"
+        },
+        "save": {
+            "text": "Save",
+            "success": "Save successfully",
+            "failed": "Save failed",
+            "noChange": "You did not modify any content",
+            "error": "Interface request exception"
+        },
+        "reset": {
+            "text": "Reset"
+        },
+        "cancel": {
+            "text": "Undo"
+        }
+    },
+    "required": " is required",
+    "pigDataDictionary": {
+        "batchModeNotAll": "Not All In All Out",
+        "batchModeAll": "All in and all out",
+        "pigHouseType": "House Type",
+        "pigHouse": "Dong House",
+        "batchNumber": "Batch",
+        "pigFarm": "Pig Farm",
+        "batchStatusEnded": "Ended",
+        "batchStatusNotEnded": "Not Ended"
+    },
+    "dataGridOptions": {
+        "rowOptions": {
+            "add": {
+                "text": "Add line"
+            },
+            "delete": {
+                "text": "Delete line"
+            }
+        },
+        "remarks": {
+            "text": "Remarks",
+            "placeholder": "Please enter remarks information"
+        },
+        "summary": {
+            "sum": {
+                "text": "Total"
+            }
+        }
+    },
+    "printComponent": {
+        "notSavedMessage": "The current document is not saved and cannot be printed",
+        "noData": "No data yet"
+    },
+    "importComponent": {
+        "text": "Import data",
+        "importTemplateTitle": "Import Excel Template",
+        "archives": "Import File data"
+    },
+    "pedigreeimportComponent": {
+        "text": "Pedigree introduction"
+    },
+    "commonColumns": {
+        "status": {
+            "text": "Status"
+        },
+        "isFinish": {
+            "text": "Does it end"
+        },
+        "isInState": {
+            "text": "Presence"
+        },
+        "number": {
+            "text": "Document Number"
+        },
+        "numericalOrderParent": {
+            "text": "Mainstream water number"
+        },
+        "numericalOrder": {
+            "text": "serial number"
+        },
+        "numericalOrderDetail": {
+            "text": "Sub-serial number"
+        },
+        "createdOwnerName": {
+            "text": "Creator"
+        },
+        "ownerName": {
+            "text": "Edit person"
+        },
+        "createdDate": {
+            "text": "Created time"
+        },
+        "modifiedDate": {
+            "text": "Modification time"
+        },
+        "auditName": {
+            "text": "reviewer"
+        },
+        "auditDate": {
+            "text": "Audit time"
+        },
+        "dataDate": {
+            "text": "Event Date"
+        },
+        "code": {
+            "text": "code",
+            "requiredMessage": "code is required",
+            "placeholder": "Please enter the code",
+            "placeholderAuto": "System generated"
+        },
+        "earNumber": {
+            "text": "earmark",
+            "requiredMessage": "The ear tag is required",
+            "emptyMessage": "The ear tag cannot be empty",
+            "placeholder": "Please select ear tag",
+            "rangeMessage": "Please enter the ear tag",
+            "stringLengthMessage": "You can enter up to 25 characters"
+        },
+        "breedingFarmIdentifiy": {
+            "text": "Birth breeding farm identification",
+            "requiredMessage": "Birth breeding farm identification is required",
+            "emptyMessage": "Birth breeding farm identification cannot be empty",
+            "placeholder": "Please enter the birth breeding farm identification",
+            "placeholderAuto": "Automatically generate",
+            "rangeMessage": "Contains 5 letters and digits",
+            "tip": "1. Enter the birth field 5-digit field code\r\n2. Letters and digits"
+        },
+        "sowEarNumber": {
+            "text": "Sow Ear Tag",
+            "emptyMessage": "The sow's ear tag cannot be empty",
+            "requiredMessage": "Sow ear number is required"
+        },
+        "fatBatch": {
+            "text": "Fat Pig Batch",
+            "requiredMessage": "Fat pig batch is required"
+        },
+        "sowBatch": {
+            "text": "Sow batch",
+            "requiredMessage": "Sow batch is required",
+            "batchMessage": "Sow batch is required"
+        },
+        "sowdetails": {
+            "text": "Sow details"
+        },
+        "pigHouseUnitId": {
+            "text": "Dongshe",
+            "requiredMessage": "Building is required",
+            "emptyMessage": "The building cannot be empty"
+        },
+        "pigField": {
+            "text": "Field"
+        },
+        "gender": {
+            "text": "Gender"
+        },
+        "genderZhongZhu": {
+            "text": "Breeding pig sex",
+            "requiredSelect": "Breeding pig sex is required"
+        },
+        "productName": {
+            "text": "Product Code"
+        },
+        "varietiesName": {
+            "text": "Variety",
+            "placeholder": "Please select a variety",
+            "requiredMessage": "Type is required"
+        },
+        "strainName": {
+            "text": "Strain",
+            "placeholder": "Please select strain",
+            "requiredMessage": "Required for strain"
+        },
+        "pigTotalWeight": {
+            "text": "Weight (kg)",
+            "sowsText": "Sow weight (kg)",
+            "noUnit": "Weight",
+            "requiredMessage": "Weight is required",
+            "rangeMessage": "Please enter a number between 0-999999.99",
+            "patternMessage": "Keep up to two decimal places",
+            "emptyMessage": "Weight cannot be empty"
+        },
+        "boarEarNumber": {
+            "text": "Boar Ear Number",
+            "boarDetail": "Boar Details",
+            "requiredMessage": "Boar ear number is required",
+            "emptyMessage": "Boar ear number cannot be empty"
+        },
+        "currentPigHouseUnit": {
+            "text": "Current Building",
+            "requiredMessage": "The current building is required",
+            "emptyMessage": "The current building cannot be empty"
+        },
+        "currentPigField": {
+            "text": "Current field"
+        },
+        "turnInPigHouseUnit": {
+            "text": "Transfer to the building",
+            "requiredMessage": "Transfer to the building is required",
+            "emptyMessage": "The transferred building cannot be empty"
+        },
+        "turnOutPigHouseUnit": {
+            "text": "Transfer out of the building",
+            "requiredMessage": "It is required to transfer out of the building",
+            "emptyMessage": "The transferred building cannot be empty"
+        },
+        "turnInPigField": {
+            "text": "Transfer into field"
+        },
+        "turnOutBatch": {
+            "text": "Transfer out batch",
+            "requiredMessage": "The transfer batch is required",
+            "emptyMessage": "The transfer batch cannot be empty"
+        },
+        "turnInBatch": {
+            "text": "Transfer into batch",
+            "requiredMessage": "The transferred batch is required"
+        },
+        "pigCount": {
+            "text": "Head Number",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number between 1-999999",
+            "patternMessage": "Please enter a positive integer"
+        },
+        "personName": {
+            "text": "person in charge",
+            "requiredMessage": "The person in charge is required",
+            "emptyMessage": "The person in charge cannot be empty"
+        },
+        "breedingDate": {
+            "text": "Mating Date"
+        },
+        "birthDate": {
+            "text": "Birth Date"
+        },
+        "NoData": {
+            "text": "No data yet"
+        },
+        "warehouseReviewer": {
+            "text": "Warehouse auditor"
+        },
+        "warehouseReviewDate": {
+            "text": "Warehouse audit time"
+        },
+        "financeReviewer": {
+            "text": "Financial auditor"
+        },
+        "financeReviewDate": {
+            "text": "Financial audit time"
+        },
+        "warehouseReview": {
+            "text": "Warehouse audit"
+        },
+        "financeReview": {
+            "text": "Financial audit"
+        },
+        "cancelReview": {
+            "text": "Cancel audit"
+        },
+        "financeNotReview": {
+            "text": "Finance not audited"
+        },
+        "financeHasReview": {
+            "text": "Finance has been audited"
+        },
+        "warehouseNotReview": {
+            "text": "Warehouse not approved"
+        },
+        "warehouseHasReview": {
+            "text": "Warehouse approved"
+        },
+        "notReview": {
+            "text": "Not reviewed"
+        },
+        "hasReview": {
+            "text": "Reviewed"
+        },
+        "all": {
+            "text": "whole"
+        },
+        "noRight": {
+            "text": "No right to cancel audit"
+        },
+        "firstReview": {
+            "text": "The first several levels need to be reviewed first"
+        },
+        "firstCancelreview": {
+            "text": "Need to cancel the audit before several levels"
+        },
+        "company": {
+            "text": "company"
+        },
+        "producer": {
+            "text": "Producer"
+        },
+        "warehouse": {
+            "text": "Warehouse"
+        },
+        "finance": {
+            "text": "Finance"
+        },
+        "auditControll": {
+            "text": "Please check the first several levels first"
+        },
+        "cancelAudit": {
+            "text": "Please cancel the audit first"
+        },
+        "hbfile": "Reserve pig file",
+        "pedigree": {
+            "FpigNumber": "Father ear number",
+            "GfpigNumber": "Grandfather ear number",
+            "GmpigNumber": "Grandmother ear number",
+            "GffpigNumber": "Grandfather father ear number",
+            "GfmpigNumber": "Grandparent ear number",
+            "GmfpigNumber": "Grandmother father ear number",
+            "GmmpigNumber": "Grandmother mother ear number",
+            "MpigNumber": "Mother ear number",
+            "MgfpigNumber": "Her Grandfather ear number",
+            "MgmpigNumber": "Her Grandmother ear number",
+            "MgffpigNumber": "Her Grandfather father ear number",
+            "MgfmpigNumber": "Her Grandparent ear number",
+            "MgmfpigNumber": "Her Grandmother father ear number",
+            "MgmmpigNumber": "Her Grandmother mother ear number"
+        },
+        "historyPig": {
+            "text": "Is it a historical pig"
+        },
+        "fileType": {
+            "text": "File Type",
+            "placeholder": "Please select the file type",
+            "requiredSelect": "File type must be selected"
+        },
+        "sourceType": {
+            "text": "Source type"
+        }
+    },
+    "boarAllocation": {
+        "title": "Boar Transfer",
+        "dataDate": {
+            "text": "Transfer Date",
+            "emptyValidationMessage": "The transfer date cannot be empty"
+        },
+        "personName": {
+            "text": "person in charge",
+            "emptyValidationMessage": "The person in charge cannot be empty"
+        },
+        "createPageTitle": "Boar Transfer-New",
+        "editPageTitle": "Boar Transfer-Edit",
+        "associatedEarNumber": "Associated EarNumber"
+    },
+    "batchSetting": {
+        "baseInfo": "基本信息",
+        "relationNumber": {
+            "text": "关联耳号"
+        },
+        "relationBatch": {
+            "text": "关联批次",
+            "success": "关联成功",
+            "failed": "关联失败",
+            "info": "当前为第{0}页 共{1}页 {2}条数据，已关联{3}条数据"
+        },
+        "batchForm": {
+            "text": "批次模式"
+        },
+        "beginDate": {
+            "text": "转进开始日期",
+            "placeholder": "请选择批次转进开始日期",
+            "requiredMessage": "批次转进开始日期必填"
+        },
+        "endDate": {
+            "text": "转进结束日期",
+            "placeholder": "请选择批次转进结束日期",
+            "requiredMessage": "批次转进结束日期日期必填"
+        },
+        "finishDate": {
+            "text": "批次结束日期"
+        },
+        "isFinish": {
+            "text": "批次状态",
+            "trueText": "已结束",
+            "falseText": "未结束"
+        },
+        "batchType": {
+            "text": "批次类型",
+            "placeholder": "请选择批次类型",
+            "requiredMessage": "批次类型必选"
+        },
+        "productName": {
+            "text": "商品代号",
+            "placeholder": "请选择商品代号",
+            "requiredMessage": "商品名称必选"
+        },
+        "batchName": {
+            "text": "批次名称",
+            "placeholder": "请输入批次名称",
+            "requiredMessage": "批次名称必填"
+        },
+        "remarks": {
+            "text": "备注",
+            "placeholder": "请输入备注"
+        },
+        "dataDate": {
+            "text": "状态日期"
+        }
+    },
+    "boarBatchSetting": {
+        "title": "Boar Batch Setting",
+        "relationSowTitle": "Boar has been associated",
+        "status": {
+            "text": "Status"
+        },
+        "pigHouseUnitName": {
+            "text": "House name"
+        },
+        "relationNumber": {
+            "text": "Associated ear tag",
+            "success": "Association successful"
+        },
+        "finish": {
+            "trueText": "On",
+            "falseText": "End"
+        },
+        "pigField": {
+            "text": "Field"
+        },
+        "dataDate": {
+            "text": "Status Date"
+        },
+        "relation": {
+            "text": "Association"
+        },
+        "days": {
+            "text": "Days"
+        },
+        "page": {
+            "text": "Currently is page {0}, total {1} ​​page {2} data, linked",
+            "footer": "piece of data"
+        },
+        "beginDate": {
+            "text": "Transfer start date",
+            "placeholder": "Please select the start date of batch transfer",
+            "requiredMessage": "The batch transfer start date is required"
+        },
+        "endDate": {
+            "text": "Transfer to end date",
+            "placeholder": "Please select the end date of batch transfer",
+            "requiredMessage": "The end date of batch forwarding is required"
+        },
+        "finishDate": {
+            "text": "Batch end date"
+        },
+        "isFinish": {
+            "text": "Batch Status",
+            "trueText": "Ended",
+            "falseText": "Unfinished"
+        },
+        "batchForm": {
+            "text": "Batch Mode"
+        },
+        "batch": {
+            "name": "Batch name",
+            "retreatBegin": "Batch transfer start date",
+            "selectBegin": "Please select the start date of batch transfer",
+            "retreatEnd": "Batch transfer end date",
+            "selectEnd": "Please select the end date of batch forwarding",
+            "end": "Batch end date",
+            "rangeMessage": "Please enter the batch name",
+            "requiredMessage": "Batch name is required"
+        },
+        "IsItOver": {
+            "text": "Does it end"
+        },
+        "remarks": {
+            "text": "Remarks",
+            "placeholder": "Please enter remarks information"
+        },
+        "basicInformation": {
+            "text": "Basic Information"
+        },
+        "createPageTitle": "Boar Batch Settings-New",
+        "editPageTitle": "Boar Batch Settings-Edit"
+    },
+    "death": {
+        "dataDate": {
+            "text": "Date of death"
+        },
+        "deathTypeId": {
+            "text": "Death Type",
+            "requiredMessage": "Death type is required",
+            "items": {
+                "death": "Death",
+                "other": "Other"
+            },
+            "emptyMessage": "Death type cannot be empty"
+        },
+        "deathReasonId": {
+            "text": "Cause of Death",
+            "requiredMessage": "The cause of death is required",
+            "emptyMesage": "The cause of death cannot be empty"
+        },
+        "deathDescription": {
+            "text": "Description of death",
+            "stringLengthMessage": "Enter up to 30 characters"
+        },
+        "deathCount": {
+            "text": "Number of deaths"
+        }
+    },
+    "boarDeath": {
+        "title": "Boar Death",
+        "batchName": {
+            "text": "Boar Batch"
+        },
+        "createPageTitle": "Boar Death Record-New",
+        "editPageTitle": "Boar Death Record-Edit"
+    },
+    "feed": {
+        "dataDate": {
+            "text": "feeding date"
+        },
+        "feedType": {
+            "text": "Feeding Type",
+            "placeholder": "Please select feeding type"
+        },
+        "feedObject": {
+            "text": "Feeding Object",
+            "emptyMessage": "Required for feeding objects"
+        },
+        "productName": {
+            "text": "Feed name",
+            "emptyMessage": "The name of the feed is required",
+            "emptySelect": "Feed name must be selected"
+        },
+        "specification": {
+            "text": "Specifications"
+        },
+        "standardMeasureUnit": {
+            "text": "Unit of measurement"
+        },
+        "quantity": {
+            "text": "Quantity",
+            "requiredMessage": "Quantity is required",
+            "rangeMessage": "Please enter an integer between 1-999999",
+            "emptyMessage": "Quantity is required"
+        },
+        "personId": {
+            "text": "person in charge"
+        },
+        "sowFeeding": {
+            "text": "Sow feeding"
+        },
+        "earTag": {
+            "text": "Electronic Ear Tag Number",
+            "placeholder": "Please enter the electronic ear tag number"
+        },
+        "parity": {
+            "text": "Parents have been delivered"
+        },
+        "hisParity": {
+            "text": "Historical Parity"
+        },
+        "inState": {
+            "text": "Presence"
+        },
+        "pigHouseUnitId": {
+            "text": "Dongshe",
+            "requiredMessage": "Building is required",
+            "emptyMessage": "The building cannot be empty"
+        },
+        "createPageTitle": "Sow Feeding-New",
+        "editPageTitle": "Sow Feeding-Edit"
+    },
+    "boarFeed": {
+        "title": "Boar Feeding",
+        "createPageTitle": "Boar Feeding-New",
+        "editPageTitle": "Boar Feeding-Edit"
+    },
+    "pigFile": {
+        "earTag": {
+            "text": "Electronic Ear Tag Number",
+            "placeholder": "Please enter the electronic ear tag number"
+        },
+        "inState": {
+            "text": "Presence"
+        },
+        "pigState": {
+            "text": "Status"
+        },
+        "baseInfoTitle": "Basic Information",
+        "birthInfoTitle": "Birth Info",
+        "pedigreeInfoTitle": "Genealogy",
+        "birthDate": {
+            "text": "Date of Birth",
+            "placeholder": "Please select the date of birth"
+        },
+        "dateOfEntry": {
+            "text": "Date of admission"
+        },
+        "birthPlace": {
+            "text": "Birth place"
+        },
+        "birthUnitWeight": {
+            "text": "Birth weight (kg)",
+            "patternMessage": "Please enter a positive number, up to two decimal places"
+        },
+        "weaningDays": {
+            "text": "Weaning age (days)",
+            "patternMessage": "Please enter a positive integer; minimum value: 0, maximum value: 99999"
+        },
+        "leftNippleCount": {
+            "text": "Number of nipples (left)",
+            "patternMessage": "Please enter a positive integer; minimum value: 0, maximum value: 99999"
+        },
+        "rightNippleCount": {
+            "text": "Number of nipples (right)",
+            "patternMessage": "Please enter a positive integer; minimum value: 0, maximum value: 99999"
+        },
+        "weaningUnitWeight": {
+            "text": "Weaning weight (kg)",
+            "patternMessage": "Please enter a positive number, up to two decimal places"
+        },
+        "remarks": {
+            "text": "Remarks",
+            "placeholder": "Please enter remarks information"
+        },
+        "pedigreeRecord": "the pedigree record",
+        "grade": {
+            "text": "Breeding groups",
+            "requiredMessage": "Breeding groups is required",
+            "emptyMessage": "Breeding groups cannot be empty"
+        }
+    },
+    "boarFile": {
+        "title": "Boar File",
+        "createPageTitle": "Boar File-New",
+        "editPageTitle": "Boar File-Edit",
+        "birthPlace": {
+            "text": "Birthplace / place of introduction"
+        },
+        "XP1": "1.系谱是种猪间遗传关系的体现，请按照实际情况准备填写种猪系谱记录",
+        "XP2": "2.同一单位或猪场系谱录入规则需保持统一，全部采用猪只耳号或猪只个体号",
+        "XP3": "3.种猪育种企业：系谱信息建议全部填写种猪15位个体耳号"
+    },
+    "boarKnockOut": {
+        "title": "Boars eliminated",
+        "dataDate": {
+            "text": "Phase out date"
+        },
+        "batchName": {
+            "text": "Boar Batch"
+        },
+        "isLeave": {
+            "text": "Departure Status",
+            "trueText": "Exited",
+            "falseText": "Not leaving the field",
+            "requiredMessage": "Whether to leave is required"
+        },
+        "deathReasonId": {
+            "text": "Reason for Elimination",
+            "requiredMessage": "Reason for elimination is required"
+        },
+        "createPageTitle": "Boar Elimination-New",
+        "editPageTitle": "Boar Elimination-Edit"
+    },
+    "nitial": {
+        "dataDate": {
+            "text": "Beginning date"
+        },
+        "pigHouseUnitId": {
+            "text": "Dongshe",
+            "requiredMessage": "Building is required",
+            "emptyMessage": "The building cannot be empty"
+        },
+        "pigCount": {
+            "text": "Head Number",
+            "requiredMessage": "The first number is required",
+            "rangeMessage": "Please enter a number between 1-99999",
+            "patternMessage": "Please enter a positive integer",
+            "emptyMessage": "The first number cannot be empty"
+        },
+        "pigTotalWeight": {
+            "text": "Weight (kg)",
+            "noUnit": "Weight",
+            "rangeMessage": "Please enter a number between 0-999999",
+            "patternMessage": "Keep up to two decimal places",
+            "requiredMessage": "Weight is required"
+        },
+        "pigHouseUnitName": {
+            "text": "House name",
+            "requiredMessage": "Weight is required",
+            "emptyMessage": "Weight cannot be empty"
+        }
+    },
+    "boarNitial": {
+        "title": "Boar Period Beginning",
+        "pigHouseUnitName": {
+            "text": "House name"
+        },
+        "createPageTitle": "Boar Beginning-New",
+        "editPageTitle": "Boar period beginning-edit"
+    },
+    "sowNitial": {
+        "title": "Sow Beginning",
+        "dataDate": {
+            "text": "Beginning date"
+        },
+        "pigHouseUnitName": {
+            "text": "House name"
+        },
+        "weight": {
+            "text": "Weight (kg)",
+            "noUnit": "Weight",
+            "rangeMessage": "",
+            "patternMessage": "Keep up to two decimal places",
+            "requiredMessage": "Weight is required"
+        },
+        "createPageTitle": "Sow Period-Newly Added",
+        "editPageTitle": "Sow beginning-edit"
+    },
+    "sowPregnancyplan": {
+        "totalNumber": {
+            "text": "Total headers"
+        },
+        "totalWeight": {
+            "text": "Total weight"
+        },
+        "pigHouseUnitName": {
+            "text": "House name"
+        },
+        "lastEvent": {
+            "text": "Last event"
+        },
+        "pregnancyDays": {
+            "text": "Days of Gestation"
+        },
+        "dayUnit": {
+            "text": "Unit: Days"
+        },
+        "pregnancyPlan": {
+            "text": "Pregnancy Checkup Plan"
+        },
+        "dataDate": {
+            "text": "Document Date",
+            "requiredMessage": "The document date must be less than or equal to the current system date"
+        },
+        "pregnancyRecord": {
+            "text": "Pregnancy Examination Record",
+            "eidt": "Pregnancy Examination Record-Edit",
+            "add": "Pregnancy Examination Record-Add"
+        },
+        "taskStatus": {
+            "text": "Task Status"
+        },
+        "pushOrNot": {
+            "text": "Push Status",
+            "yes": "Pushed",
+            "no": "Not Pushed",
+            "push": "Push"
+        },
+        "waring": {
+            "text": "This feature is not yet open, please look forward to it!"
+        },
+        "createPageTitle": "Pregnancy Checkup Plan-Add Page",
+        "editPageTitle": "Pregnancy Checkup Plan-Edit Page"
+    },
+    "turn": {
+        "dataDate": {
+            "text": "Transfer date"
+        },
+        "inbatchType": {
+            "text": "Transfer in batch type"
+        }
+    },
+    "boarTurn": {
+        "title": "Boar Transfer Record",
+        "batchName": {
+            "text": "Boar Batch"
+        },
+        "createPageTitle": "Boar Transfer Record-New",
+        "editPageTitle": "Boar Transfer Record-Edit"
+    },
+    "semenCollection": {
+        "dataDate": {
+            "text": "Date of Collection"
+        },
+        "semenQuantity": {
+            "text": "Sperm Collection (ml)",
+            "rangeMessage": "Please enter a number greater than 0 and less than or equal to 9999.99",
+            "fixedMessage": "Please enter a number greater than 0 with a maximum of two decimal places",
+            "requiredMessage": "The amount of semen collected is required",
+            "emptyMessage": "The amount of sperm collected cannot be empty"
+        },
+        "semenColor": {
+            "text": "color"
+        },
+        "semenSmell": {
+            "text": "Smell"
+        },
+        "spermVitality": {
+            "text": "Sperm motility (%)",
+            "rangeMessage": "Please enter a number between 0-9999",
+            "fixedMessage": "Keep up to two decimal places",
+            "systemInfo": "Sperm motility system option is enabled. Sperm motility is required"
+        },
+        "spermDensity": {
+            "text": "Sperm density (100 million/ml)",
+            "rangeMessage": "Please enter a number between 0-9999",
+            "fixedMessage": "Keep up to two decimal places"
+        },
+        "deformityRate": {
+            "text": "Deformity rate (%)",
+            "rangeMessage": "Please enter a number between 0-9999",
+            "fixedMessage": "Keep up to two decimal places"
+        },
+        "spermVitalityAfter": {
+            "text": "Vitality after dilution (%)",
+            "rangeMessage": "Please enter a number between 0-9999",
+            "fixedMessage": "Keep up to two decimal places",
+            "requiredMessage": "Vitality after dilution is required",
+            "emptyMessage": "Vitality cannot be empty after dilution"
+        },
+        "dilutedCopies": {
+            "text": "Number of dilutions",
+            "rangeMessage": "Please enter a positive integer between 0-9999",
+            "patternMessage": "Please enter a positive integer",
+            "requiredMessage": "The number of diluted copies is required",
+            "emptyMessage": "The number of dilutions cannot be empty"
+        },
+        "personName": {
+            "text": "Essence Collector",
+            "emptyMessage": "The semen collector cannot be empty"
+        },
+        "warehouseId": {
+            "text": "Warehouse",
+            "emptyMessage": "The warehouse cannot be empty"
+        },
+        "createdOwnerName": {
+            "text": "Registrant"
+        },
+        "productId": {
+            "text": "Commodity",
+            "requiredMessage": "The product is required",
+            "emptyMessage": "The product cannot be empty",
+            "headerHelpMessage": "The product must be selected, please set the semen product of the corresponding variety in oa for the internal pig farm, and then synchronize it to the pig network. Product category: pig breeding, other"
+        },
+        "qiwei": {
+            "text": "Registrant"
+        },
+        "yanshe": {
+            "text": "Registrant"
+        }
+    },
+    "boarSemenCollection": {
+        "title": "Boar Collection Record",
+        "createPageTitle": "Boar Collection Record-New",
+        "editPageTitle": "Boar Collection Record-Edit",
+        "createOwnerName": "Created by",
+        "createDateTime": "Create Date",
+        "modifiedName": "Modified Person",
+        "modifiedDateTime": "Modified Date"
+    },
+    "reserveSemenCollection": {
+        "title": "Backup Collection Record",
+        "fatBathId": {
+            "text": "Fat Pig Batch",
+            "requiredMessage": "Fat pig batch is required"
+        },
+        "createPageTitle": "Backup Collection Record-New",
+        "editPageTitle": "Backup Collection Record-Edit"
+    },
+    "reserveTurnBoar": {
+        "title": "Reserve to Boar",
+        "dataDate": {
+            "text": "Transformation date"
+        },
+        "createPageTitle": "Backup to Boar-New",
+        "editPageTitle": "Backup to Boar-Edit"
+    },
+    "costCollection": {
+        "title": "Expense Collection",
+        "beginDate": {
+            "text": "Start Date"
+        },
+        "endDate": {
+            "text": "End date"
+        },
+        "mounth": {
+            "text": "Month",
+            "emptyMessage": "The month cannot be empty"
+        },
+        "setAccountingInterval": "Set Accounting Interval",
+        "notionalPoolingTypeName": {
+            "text": "Collection Type",
+            "notChooseMessage": "Please select the collection type first",
+            "emptyMessage": "The collection type cannot be empty"
+        },
+        "notionalPoolingObject": {
+            "text": "Object",
+            "requiredMessage": "Object is required",
+            "emptyMessage": "Object cannot be empty"
+        },
+        "subject": {
+            "text": "Subject Name",
+            "requiredMessage": "Subject name is required",
+            "emptyMessage": "The subject name cannot be empty"
+        },
+        "expenses": {
+            "text": "Amount (yuan)",
+            "requiredMessage": "Amount (yuan) is required",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number from 0 to 999999",
+            "patternMessage": "Please enter a positive number and up to two decimal places",
+            "emptyMessage": "Amount cannot be empty"
+        },
+        "createPageTitle": "Cost Collection-New",
+        "editPageTitle": "Expense Collection-Edit",
+        "notSetAccountingInterval": "Not set accounting period"
+    },
+    "costDepositcost": {
+        "title": "The initial inventory cost",
+        "earNumber": {
+            "text": "Ear number/stage/batch"
+        },
+        "pigCost": {
+            "text": "Fat pig cost/depreciation for breeding pigs (yuan)",
+            "rangeMessage": "Please enter a number between 0-999999.99",
+            "patternMessage": "Keep up to two decimal places",
+            "emptyMessage": "Fat pig cost/depreciation for breeding pigs cannot be empty"
+        },
+        "materialCost": {
+            "text": "Feed cost (yuan)",
+            "rangeMessage": "Please enter a number between 0-999999.99",
+            "patternMessage": "Keep up to two decimal places",
+            "emptyMessage": "The feed cost cannot be empty",
+            "column": "Feed Cost"
+        },
+        "medicantCost": {
+            "text": "Veterinary drug cost (yuan)",
+            "rangeMessage": "Please enter a number between 0-999999.99",
+            "patternMessage": "Keep up to two decimal places",
+            "emptyMessage": "Veterinary medicine cost cannot be empty",
+            "column": "Veterinary Drug Cost"
+        },
+        "vaccineCost": {
+            "text": "Vaccine cost (yuan)",
+            "rangeMessage": "Please enter a number between 0-999999.99",
+            "patternMessage": "Keep up to two decimal places",
+            "emptyMessage": "Vaccine cost cannot be empty",
+            "column": "Vaccine Cost"
+        },
+        "expensesCost": {
+            "text": "Expense (RMB)",
+            "rangeMessage": "Please enter a number between 0-999999.99",
+            "patternMessage": "Keep up to two decimal places",
+            "emptyMessage": "Expense cannot be empty",
+            "column": "Expenses"
+        },
+        "dataDate": {
+            "text": "Start Date"
+        },
+        "createPageTitle": "Beginning inventory cost-new",
+        "editPageTitle": "Beginning inventory cost-edit",
+        "earNumberBatch": "Ear Number/Batch",
+        "verificationTips": "",
+        "sowdetails": {
+            "text": "Sow details"
+        }
+    },
+    "costoriginal": {
+        "title": "Original value of pig assets",
+        "createPageTitle": "Original value of breeding pig assets-new",
+        "editPageTitle": "Original value of pig assets-edit",
+        "dataDate": {
+            "text": "Date"
+        },
+        "originalValue": {
+            "text": "Original value",
+            "rangeMessage": "Please enter a number between 0-999999",
+            "patternMessage": "Please enter a positive integer",
+            "emptyMessage": "The original value cannot be empty"
+        },
+        "originalValueUnit": {
+            "text": "Original value (yuan)",
+            "rangeMessage": "Please enter a number greater than or equal to 0, with a maximum of two decimal places",
+            "depreciatedMessage": "Accumulated depreciation cannot be greater than the original value",
+            "salvageValueMessage": "Residual value cannot be greater than original value"
+        },
+        "depreciatedMonths": {
+            "text": "Total Depreciation Months",
+            "rangeMessage": "Please enter a number between 0-999999",
+            "patternMessage": "Please enter an integer greater than or equal to 0",
+            "emptyMessage": "Total depreciation months cannot be empty"
+        },
+        "residualRate": {
+            "text": "Residual Value Ratio",
+            "rangeMessage": "Please enter a number between 0-1",
+            "patternMessage": "Please enter a positive integer",
+            "emptyMessage": "The residual value ratio cannot be empty"
+        },
+        "salvageValue": {
+            "text": "Residual Value",
+            "rangeMessage": "Please enter a number between 0-999999.99",
+            "patternMessage": "Please enter a positive integer",
+            "emptyMessage": "The residual value cannot be empty"
+        },
+        "salvageValueUnit": {
+            "text": "Residual value (yuan)",
+            "rangeMessage": "Please enter a number greater than or equal to 0, with a maximum of two decimal places"
+        },
+        "residualValueMethod": {
+            "text": "Residual value calculation method",
+            "message": "When calculating by fixed residual value, please fill in the residual value amount. When calculating by residual value ratio, please fill in the residual value ratio"
+        },
+        "depreciationMonths": {
+            "text": "Months depreciated at the beginning of the period",
+            "rangeMessage": "Please enter a number between 0-999999",
+            "patternMessage": "Please enter an integer greater than or equal to 0",
+            "emptyMessage": "The number of depreciated months cannot be empty"
+        },
+        "depreciated": {
+            "text": "Accumulated depreciation (yuan)",
+            "rangeMessage": "Please enter a number between 0-999999.99",
+            "patternMessage": "Please enter a positive integer",
+            "emptyMessage": "Accumulated depreciation cannot be empty"
+        },
+        "beginDate": {
+            "text": "Start Date",
+            "emptyMessage": "Start date cannot be empty"
+        }
+    },
+    "castSetting": {
+        "title": "Cost Calculation Settings",
+        "beginDate": {
+            "text": "Effective Date",
+            "requiredMessage": "The effective date is required"
+        },
+        "residualValue": {
+            "text": "Residual value of reserve pigs",
+            "placeholder": "Please enter the residual value of reserve pigs",
+            "requiredMessage": "Residual value of reserve pigs is required",
+            "patternMessage": "Illegal character"
+        },
+        "residualValueRate": {
+            "text": "Residual value ratio of reserve pigs",
+            "placeholder": "Please enter the residual value ratio of reserve pigs",
+            "requiredMessage": "Residual value ratio of reserve pigs is required"
+        },
+        "depreciationMonths": {
+            "text": "Total months of depreciation for back-up breeding pigs",
+            "placeholder": "Please enter the total number of months of depreciation for replacement pigs",
+            "requiredMessage": "The total number of months of depreciation of reserve pigs is required",
+            "patternMessage": "Illegal character"
+        },
+        "editPageTitle": "Modify the checkout period"
+    },
+    "allocation": {
+        "pigFarmName": {
+            "text": "Call out"
+        },
+        "pigHouseUnitName": {
+            "text": "Call out the building",
+            "requiredMessage": "Calling out the building is required",
+            "emptyMessage": "Recall the building cannot be empty"
+        },
+        "pigFieId": {
+            "text": "Call out field"
+        },
+        "inPigHouseUnitName": {
+            "text": "Transfer into the building",
+            "requiredMessage": "Required to be transferred to the building",
+            "emptyMessage": "The transferred building cannot be empty"
+        },
+        "inPigFarmName": {
+            "text": "Call in",
+            "choosePigFarmMessage": "Please choose to transfer in first",
+            "emptyMessage": "The transfer cannot be empty",
+            "placeholder": "Please choose to transfer in"
+        },
+        "personName": {
+            "text": "person in charge",
+            "emptyMessage": "The person in charge cannot be empty"
+        }
+    },
+    "fatAllocation": {
+        "title": "Fat Pig Transfer",
+        "dataDate": {
+            "text": "Transfer Date",
+            "emptyMessage": "The date cannot be empty"
+        },
+        "pigTotalWeight": {
+            "text": "Total weight (kg)",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number from 0 to 999999",
+            "patternMessage": "Please enter a positive number and up to two decimal places"
+        },
+        "earNumber": {
+            "text": "Recall Phase/Batch Number",
+            "requiredMessage": "Recall phase/batch number is required",
+            "emptyMessage": "Recall phase/batch number cannot be empty"
+        },
+        "inEarNumber": {
+            "text": "transfer phase/batch number",
+            "requiredMessage": "The loading phase/batch number is required",
+            "emptyMessage": "The loading phase/batch number cannot be empty"
+        },
+        "createPageTitle": "Fat Pig Allocation-New",
+        "editPageTitle": "Fat Pig Transfer-Edit",
+        "pigHouseUnitName": {
+            "text": "Call out the building",
+            "requiredMessage": "Calling out the building is required",
+            "emptyMessage": "Recall the building cannot be empty"
+        },
+        "inPigHouseUnitName": {
+            "text": "Transfer into the building",
+            "requiredMessage": "Required to be transferred to the building",
+            "emptyMessage": "The transferred building cannot be empty"
+        },
+        "transferInBatch": {
+            "text": "Load into batch",
+            "requiredMessage": "Loading batch is required",
+            "emptyMessage": "The loaded batch cannot be empty"
+        },
+        "pigCount": {
+            "text": "Head Number",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number from 1 to 999999",
+            "patternMessage": "Please enter a positive integer greater than 0"
+        },
+        "inPigFarmName": {
+            "text": "Call in",
+            "choosePigFarmMessage": "Please choose to transfer in first",
+            "emptyMessage": "The transfer cannot be empty",
+            "placeholder": "Please choose to transfer in"
+        },
+        "personName": {
+            "text": "person in charge",
+            "emptyMessage": "The person in charge cannot be empty"
+        },
+        "transferOutBatch": {
+            "text": "Recall batch",
+            "requiredMessage": "Recall batch is required",
+            "emptyMessage": "The recalled batch cannot be empty"
+        },
+        "outPigFarmName": {
+            "text": "Call out",
+            "choosePigFarmMessage": "Please choose to call out first",
+            "emptyMessage": "Call out cannot be empty",
+            "placeholder": "Please choose to call out"
+        },
+        "inBatchType": {
+            "text": "Transfer in batch type"
+        }
+    },
+    "fatBatchSetting": {
+        "title": "Fat Pig Batch Setting",
+        "createPageTitle": "Fat Pig Batch Settings-New",
+        "editPageTitle": "Fat Pig Batch Setting-Edit",
+        "batchForm": {
+            "text": "Batch Mode"
+        },
+        "beginDate": {
+            "text": "Transfer start date",
+            "placeholder": "Please select the start date of batch transfer",
+            "requiredMessage": "The batch transfer start date is required"
+        },
+        "endDate": {
+            "text": "Transfer to end date",
+            "placeholder": "Please select the end date of batch transfer",
+            "requiredMessage": "The end date of batch forwarding is required"
+        },
+        "finishDate": {
+            "text": "Batch end date"
+        },
+        "batchType": {
+            "text": "Batch Type",
+            "placeholder": "Please select the batch type",
+            "requiredMessage": "The batch type is required"
+        },
+        "IsEnd": {
+            "text": "Whether to end",
+            "yes": "Yes",
+            "no": "No"
+        },
+        "basicInformation": {
+            "text": "Basic Information"
+        },
+        "productName": {
+            "text": "Product Code",
+            "TooltipTitle": "Add product code",
+            "placeholder": "Please select a product name",
+            "requiredMessage": "Product name is required"
+        },
+        "goodsName": {
+            "text": "Product name",
+            "TooltipTitle": "Add product name",
+            "placeholder": "Please select a product name",
+            "requiredMessage": "Product name is required"
+        },
+        "remarks": {
+            "text": "Remarks",
+            "placeholder": "Please enter remarks information"
+        },
+        "batchName": {
+            "text": "Batch Name",
+            "placeholder": "Please enter the batch name",
+            "requiredMessage": "Batch name is required"
+        },
+        "FatDateAge": {
+            "text": "Current age"
+        },
+        "InventoryCount": {
+            "text": "Current inventory"
+        },
+        "avgInAge": {
+            "text": "avgInAge"
+        }
+    },
+    "fatDeath": {
+        "title": "Fat Pig Death Record",
+        "batchName": {
+            "text": "Fat Pig Batch",
+            "requiredMessage": "Fat pig batch is required",
+            "emptyMessage": "Fat pig batch cannot be empty"
+        },
+        "PigCount": {
+            "text": "Quantity (head)"
+        },
+        "createPageTitle": "Fat Pig Death Record-New",
+        "editPageTitle": "Fat Pig Death Record-Edit"
+    },
+    "fatFeed": {
+        "title": "Fat pig feeding",
+        "createPageTitle": "Fat Pig Feeding-New",
+        "editPageTitle": "Fat Pig Feeding-Edit"
+    },
+    "fatInventory": {
+        "title": "Fat pig inventory",
+        "dataDate": {
+            "text": "Inventory date"
+        },
+        "batchName": {
+            "text": "Phase/Batch",
+            "requiredMessage": "Phase/batch required",
+            "emptyMessage": "Phase/batch cannot be empty"
+        },
+        "pigHouseUnitName": {
+            "text": "Dongshe",
+            "requiredMessage": "Building is required"
+        },
+        "accountBookCount": {
+            "text": "Statistics head count"
+        },
+        "inventoryCount": {
+            "text": "Count the head count",
+            "requiredMessage": "Counting head count is required",
+            "patternMessage": "Please enter an integer between 0-99999",
+            "rangeMessage": "Please enter a number between 0-99999"
+        },
+        "dif": {
+            "text": "Difference",
+            "headerHelpMessage": "Reminder: The difference can only be done in a single order with all positive numbers or all negative numbers\nDifference=number of counting heads-number of counting heads.\nIf the difference is: positive number is generated Fat pig profit and loss inventory transfer in data\nIf the difference is: negative number generates fat pig profit and loss inventory transfer out data"
+        },
+        "pigCost": {
+            "text": "Amount (yuan)"
+        },
+        "personName": {
+            "text": "Counting people",
+            "requiredMessage": "Inventory person is required"
+        },
+        "createPageTitle": "Fat Pig Inventory-New",
+        "editPageTitle": "Fat pig inventory-edit"
+    },
+    "fatNitial": {
+        "title": "The beginning of the fat pig period",
+        "batchName": {
+            "text": "Batch",
+            "requiredMessage": "Batch is required",
+            "emptyMessage": "The batch cannot be empty"
+        },
+        "createPageTitle": "At the beginning of the fat pig period-new",
+        "editPageTitle": "Fat Pig Period Beginning-Edit",
+        "fatBatchName": {
+            "text": "Fat Pig Batch",
+            "requiredMessage": "Fat pig batch is required",
+            "emptyMessage": "Fat pig batch cannot be empty"
+        },
+        "totalNumber": {
+            "text": "Total headers"
+        },
+        "pigTotalWeight": {
+            "text": "Total weight (kg)",
+            "requiredMessage": "Total weight is required",
+            "rangeMessage": "Please enter a number between 0-999999",
+            "patternMessage": "Keep up to two decimal places"
+        },
+        "pigCount": {
+            "text": "Head Number (Head)",
+            "requiredMessage": "The first number is required",
+            "rangeMessage": "Please enter a number between 1-99999",
+            "patternMessage": "Please enter a positive integer",
+            "emptyMessage": "The first number cannot be empty"
+        },
+        "pigWeight": {
+            "text": "Weight (kg)",
+            "requiredMessage": "Weight is required",
+            "rangeMessage": "Please enter a number between 0-999999",
+            "patternMessage": "Keep up to two decimal places"
+        },
+        "dataDate": {
+            "text": "Beginning date"
+        }
+    },
+    "fatTurn": {
+        "title": "Fat pig transfer to house",
+        "pigTotalWeight": {
+            "text": "Total weight (kg)",
+            "requiredMessage": "Total weight is required",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number between 0-999999.99",
+            "patternMessage": "Please enter a positive number and up to two decimal places"
+        },
+        "pigCount": {
+            "text": "Head Number",
+            "limitMessage": "The input value cannot be greater than the number of columns",
+            "rangeMessage": "Please enter a number between 1-999999"
+        },
+        "createPageTitle": "Fat Pig Transfer-New",
+        "editPageTitle": "Fat Pig Transfer-Edit",
+        "pigCountMax": {
+            "text": "Maximum number of headers"
+        }
+    },
+    "disinfectionRecord": {
+        "title": "Disinfection Record",
+        "dataDate": {
+            "text": "Disinfection date",
+            "emptyMessage": "The disinfection date cannot be empty"
+        },
+        "antisepticType": {
+            "text": "Disinfection Type",
+            "requiredMessage": "Disinfection type is required",
+            "emptyMessage": "The disinfection type cannot be empty"
+        },
+        "productName": {
+            "text": "Disinfection medication",
+            "requiredMessage": "Required for disinfection medication",
+            "emptyMessage": "Disinfection medication cannot be empty"
+        },
+        "quantity": {
+            "text": "Total consumption (measured in this field)",
+            "requiredMessage": "Total usage is required",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number greater than 0 and less than or equal to 999999",
+            "patternMessage": "Please enter a positive number and up to two decimal places",
+            "emptyMessage": "Total usage cannot be empty"
+        },
+        "way": {
+            "text": "Disinfection method",
+            "requiredMessage": "Disinfection method is required",
+            "emptyMessage": "The disinfection method cannot be empty"
+        },
+        "personName": {
+            "text": "person in charge",
+            "requiredMessage": "The person in charge must fill in",
+            "emptyMessage": "The person in charge cannot be empty"
+        },
+        "createPageTitle": "Disinfection Record-New",
+        "editPageTitle": "Disinfection Record-Edit"
+    },
+    "healthCareRecord": {
+        "title": "Health Record",
+        "dataDate": {
+            "text": "Health Care Date",
+            "emptyMessage": "Health care date cannot be empty"
+        },
+        "healthCareName": {
+            "text": "Health Care Name",
+            "emptyMessage": "The health care name cannot be empty"
+        },
+        "productName": {
+            "text": "Health Medicine",
+            "requiredMessage": "Required for health medicine",
+            "emptyMessage": "Health drugs cannot be empty"
+        },
+        "quantity": {
+            "text": "Total Usage",
+            "requiredMessage": "Total usage is required",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number greater than 0 and less than or equal to 999999",
+            "patternMessage": "Please enter a positive number and up to two decimal places",
+            "emptyMessage": "Total usage cannot be empty"
+        },
+        "dosageUnit": {
+            "text": "Usage unit"
+        },
+        "healthCareMethods": {
+            "text": "Healthcare Methods",
+            "requiredMessage": "Required for health care method",
+            "emptyMessage": "Health care method cannot be empty"
+        },
+        "earNumber": {
+            "text": "Batch/Ear Number"
+        },
+        "pigCount": {
+            "text": "Head Number",
+            "numericMessage": "Must be a number",
+            "patternMessage": "Please enter a positive integer"
+        },
+        "personName": {
+            "text": "Technician",
+            "emptyMessage": "The technician cannot be empty"
+        },
+        "createPageTitle": "Health Record-New",
+        "editPageTitle": "Health Record-Edit"
+    },
+    "immunityPlan": {
+        "title": "Immunization Program",
+        "dataDate": {
+            "text": "Planned Immunization Date"
+        },
+        "immuneTypeName": {
+            "text": "Immunity Type"
+        },
+        "days": {
+            "text": "Method of Immunization",
+            "tips": "(day/date)"
+        },
+        "immuneProjectName": {
+            "text": "Immunity Project",
+            "requiredMessage": "Immunization item is required"
+        },
+        "productName": {
+            "text": "Vaccine Name",
+            "requiredMessage": "Vaccine name is required"
+        },
+        "specification": {
+            "text": "Specifications"
+        },
+        "dosageUnit": {
+            "text": "Unit of measurement"
+        },
+        "quantity": {
+            "text": "Planned Usage",
+            "requiredMessage": "Planned usage is required",
+            "rangeMessage": "Please enter a number greater than 0",
+            "patternMessage": "Keep up to two decimal places"
+        },
+        "wayName": {
+            "text": "Immunity Method",
+            "requiredMessage": "Immunization method is required"
+        },
+        "createPageTitle": "Immunization Plan-New",
+        "editPageTitle": "Immunization Plan-Edit"
+    },
+    "immunityRecord": {
+        "title": "Immunity Record",
+        "dataDate": {
+            "text": "Date of Immunization",
+            "requiredMessage": "Immunization date is required"
+        },
+        "immuneTypeName": {
+            "text": "Immunity Type",
+            "requiredMessage": "Immunity type is required"
+        },
+        "days": {
+            "text": "Method of Immunization (Day/Date)",
+            "label": "Method of Immunization"
+        },
+        "immuneProjectName": {
+            "text": "Immunity Project",
+            "requiredMessage": "Immunization item is required"
+        },
+        "immunePlanName": {
+            "text": "immunization plan"
+        },
+        "productName": {
+            "text": "Commodity",
+            "requiredMessage": "Item is required",
+            "emptyMessage": "The product cannot be empty"
+        },
+        "quantity": {
+            "text": "Total Usage",
+            "rangeMessage": "Please enter a number greater than 0",
+            "patternMessage": "Keep up to two decimal places",
+            "requiredMessage": "The quantity is required",
+            "emptyMessage": "Total usage cannot be empty"
+        },
+        "dosageUnit": {
+            "text": "Usage unit"
+        },
+        "wayName": {
+            "text": "Immunity Method",
+            "requiredMessage": "Immunization method is required",
+            "emptyMessage": "Immunity method cannot be empty"
+        },
+        "pigHouseUnitName": {
+            "text": "Dongshe",
+            "requiredMessage": "Building is required",
+            "emptyMessage": "The building cannot be empty"
+        },
+        "pigName": {
+            "text": "Batch/Ear Number"
+        },
+        "numericalOrderPlan": {
+            "text": "immunization plan",
+            "choice": "",
+            "planDate": "",
+            "immunityWayName": "",
+            "immunitycaption": "",
+            "OrderDate": "",
+            "choicePlan": ""
+        },
+        "personName": {
+            "text": "Technician",
+            "requiredMessage": "Technician is required"
+        },
+        "createPageTitle": "Immunity Record-New",
+        "editPageTitle": "Immunity Record-Edit"
+    },
+    "preventionRecord": {
+        "title": "Control Record",
+        "dataDate": {
+            "text": "Control Date"
+        },
+        "diseaseName": {
+            "text": "Disease",
+            "requiredMessage": "Illness is required"
+        },
+        "days": {
+            "text": "Symptoms",
+            "requiredMessage": "Symptoms are required"
+        },
+        "productName": {
+            "text": "Drugs",
+            "requiredMessage": "Medication required",
+            "emptyMessage": "The drug cannot be empty"
+        },
+        "quantity": {
+            "text": "Total Usage",
+            "rangeMessage": "Please enter a number greater than 0",
+            "patternMessage": "Keep up to two decimal places",
+            "requiredMessage": "The quantity is required",
+            "emptyMessage": "Total usage cannot be empty"
+        },
+        "dosageUnit": {
+            "text": "Usage unit"
+        },
+        "wayName": {
+            "text": "Medication Method",
+            "requiredMessage": "Medication method is required",
+            "emptyMessage": "Medication method cannot be empty"
+        },
+        "pigName": {
+            "text": "Batch/Ear Number"
+        },
+        "personName": {
+            "text": "Veterinarian"
+        },
+        "createPageTitle": "Prevention Record-New",
+        "editPageTitle": "Control Record-Edit"
+    },
+    "materialRequisitioned": {
+        "title": "Use of materials",
+        "dataDate": {
+            "text": "Received date"
+        },
+        "requisitionType": {
+            "text": "Unit Type",
+            "requiredMessage": "Unit type is required"
+        },
+        "requisitionObjectName": {
+            "text": "Acquisition Unit",
+            "requiredMessage": "The receiving unit is required",
+            "emptyMessage": "The receiving unit cannot be empty"
+        },
+        "warehouseId": {
+            "text": "Warehouse",
+            "requiredMessage": "The warehouse is required"
+        },
+        "productName": {
+            "text": "Name of material",
+            "requiredMessage": "The name of the material is required"
+        },
+        "specification": {
+            "text": "Specifications"
+        },
+        "measureUnit": {
+            "text": "Unit of measurement"
+        },
+        "quantity": {
+            "text": "Quantity",
+            "requiredMessage": "The quantity is required",
+            "rangeMessage": "Please enter a number between 1-99999",
+            "patternMessage": "Keep two decimal places"
+        },
+        "godownManName": {
+            "text": "Library Management"
+        },
+        "personName": {
+            "text": "Recipient",
+            "requiredMessage": "Recipient is required"
+        },
+        "pigCount": {
+            "text": "Storage"
+        },
+        "stockCount": {
+            "text": "Inventory"
+        },
+        "pigHouse": {
+            "text": "Dongshe"
+        },
+        "createPageTitle": "Material Requisition-New",
+        "editPageTitle": "Material Requisition-Edit"
+    },
+    "semenUse": {
+        "title": "Semen use scrap form",
+        "dataDate": {
+            "text": "Date"
+        },
+        "abstract": {
+            "text": "Type",
+            "requiredMessage": "Type is required",
+            "use": "Semen use",
+            "scrap": "Semen scrapped"
+        },
+        "productName": {
+            "text": "Commodity",
+            "requiredMessage": "The product is required",
+            "emptyMessage": "The product cannot be empty"
+        },
+        "warehouseId": {
+            "text": "Warehouse",
+            "requiredMessage": "The warehouse is required"
+        },
+        "quantity": {
+            "text": "Quantity (parts)",
+            "rangeMessage": "The maximum value cannot exceed 99999",
+            "requiredMessage": "The quantity is required"
+        },
+        "personId": {
+            "text": "person in charge"
+        },
+        "createPageTitle": "Semen Use Scrap Form-New",
+        "editPageTitle": "Semen use scrap form-edit"
+    },
+    "healthCareSetting": {
+        "title": "Healthcare Program Settings",
+        "dataDate": {
+            "text": "Activation Date",
+            "emptyMessage": "The date cannot be empty"
+        },
+        "pigTypeName": {
+            "text": "Pig type"
+        },
+        "immuneTypeName": {
+            "text": "Type of health care",
+            "requiredMessage": "Healthcare type is required",
+            "emptyMessage": "The health care type cannot be empty"
+        },
+        "days": {
+            "text": "Health care method (number of days)",
+            "rowEmptyMessage": "When the health care type of row {0} is {1}, the health care method (number of days) cannot be empty",
+            "rowNumericMessage": "When the health care type of line {0} is {1}, the health care method (number of days) is a positive integer of 1-999"
+        },
+        "setDataDate": {
+            "text": "Health care method (date)",
+            "rowEmptyMessage": "When the health care type of line {0} is universal, the health care method (date) cannot be empty"
+        },
+        "pigType": {
+            "text": "Pig Type",
+            "choosePigType": "Please select a pig type",
+            "emptyMessage": "Pig type cannot be empty",
+            "requiredMessage": "Pig type is required"
+        },
+        "immuneProjectName": {
+            "text": "Health Care Name",
+            "requiredMessage": "Health care name is required",
+            "headerHelpMessage": "Customizable, operation path: farm management-basic settings-type settings-health care name",
+            "emptyMessage": "The health care name cannot be empty"
+        },
+        "createPageTitle": "Healthcare Program Settings-New",
+        "editPageTitle": "Healthcare Program Settings-Edit"
+    },
+    "houseSetting": {
+        "title": "Building Settings",
+        "pigHouseUnitType": {
+            "text": "House Type",
+            "requiredMessage": "House type is required"
+        },
+        "isUse": {
+            "text": "Status",
+            "trueText": "Enable",
+            "falseText": "Disable",
+            "emptyMessage": "Status cannot be empty"
+        },
+        "capacity": {
+            "text": "Capacity",
+            "message": "Capacity is required",
+            "placeholder": "Please enter the number of pigs",
+            "capacity_number": "Must be a number",
+            "capacity_range": "Capacity must be greater than 0 and less than 99999",
+            "capacity_onlyNumber": "You can only enter integers, not decimals",
+            "emptyMessage": "The capacity cannot be empty"
+        },
+        "personName": {
+            "text": "person in charge",
+            "requiredMessage": "The person in charge must fill in",
+            "emptyMessage": "The person in charge cannot be empty"
+        },
+        "PigHouseUnitType": {
+            "message": "The building type cannot be empty"
+        },
+        "pigHouseUnitName": {
+            "text": "House name",
+            "requiredMessage": "Door name is required",
+            "message": "Enter up to 50 characters for the building name",
+            "emptyMessage": "The building name cannot be empty"
+        },
+        "remarks": {
+            "text": "Remarks"
+        },
+        "createPageTitle": "Add House",
+        "editPageTitle": "Edit House"
+    },
+    "fieldSetting": {
+        "pigFieldName": {
+            "text": "field name",
+            "requiredMessage": "field name is required",
+            "message": "Enter up to 50 characters for field name",
+            "emptyMessage": "field name cannot be empty"
+        },
+        "pigHouseName": {
+            "text": "Building"
+        },
+        "create": {
+            "title": "New field"
+        },
+        "edit": {
+            "title": "Modify field"
+        },
+        "deletecontroll": {
+            "text": "Please select the field to delete first"
+        }
+    },
+    "immuneProgramSetting": {
+        "title": "Immunization Program Settings",
+        "dataDate": {
+            "text": "Activation Date",
+            "emptyMessage": "The activation date cannot be empty"
+        },
+        "pigTypeName": {
+            "text": "Pig Type",
+            "choosePigTypeMessage": "Please select the pig type first",
+            "emptyMessage": "Pig type cannot be empty",
+            "requiredMessage": "Pig type is required"
+        },
+        "ImmuneType": {
+            "text": "Immunity Type",
+            "requiredMessage": "Immunity type is required",
+            "emptyMessage": "Immunity type cannot be empty"
+        },
+        "days": {
+            "text": "Method of Immunization (Days)",
+            "rowEmptyMessage": "When the immunity type of row {0} is {1}, the immunization method (number of days) cannot be empty",
+            "rowNumericMessage": "When the immunization type of line {0} is {1}, the immunization method (number of days) is a positive integer of 1-999"
+        },
+        "setDataDate": {
+            "text": "Method of Immunization (Date)",
+            "rowEmptyMessage": "When the immunity type of line {0} is general immunity, the immunity method (date) cannot be empty"
+        },
+        "immuneProjectName": {
+            "text": "Immunity Project",
+            "headerHelpMessage": "Customizable, operation path: farm management-basic settings-type settings-immune items",
+            "requiredMessage": "Required for immunization item",
+            "emptyMessage": "Immunity item cannot be empty"
+        },
+        "createPageTitle": "Immunization Program Settings-New",
+        "editPageTitle": "Immunization Program Settings-Edit"
+    },
+    "pigFarmSetting": {
+        "title": "Pig Farm Settings",
+        "PigFarmId": {
+            "text": "Pig Farm Code"
+        },
+        "PigFarmFullName": {
+            "text": "Full name of the pig farm"
+        },
+        "PigFarmName": {
+            "text": "abbreviation of pig farm"
+        },
+        "Begindate": {
+            "text": "Account creation date"
+        },
+        "PersonId": {
+            "text": "person in charge"
+        },
+        "Address": {
+            "text": "Detailed address"
+        },
+        "IsUse": {
+            "text": "Status",
+            "trueText": "Enable",
+            "falseText": "Disabled"
+        },
+        "pigWarehouse": {
+            "text": "Pig warehouse"
+        },
+        "materialWarehouse": {
+            "text": "MaterialWarehouse"
+        },
+        "basicInformation": "Basic Information",
+        "pigFarmProperties": "Pig Farm Properties",
+        "other": "other",
+        "createPageTitle": "Add Farm",
+        "editPageTitle": "Edit Pig Farm",
+        "addressMessage": "Please select the farm address"
+    },
+    "typeSetting": {
+        "title": "Pig Network Custom Type Settings",
+        "chooseOneMessage": "Please select a type to edit",
+        "reminName": {
+            "text": "Name",
+            "requiredMessage": "Name is required",
+            "stringLengthMessage": "The name must be less than 50 characters",
+            "limitCharacterMessage": "Illegal character"
+        },
+        "relation": {
+            "text": "Relationship",
+            "requiredMessage": "Relationship required"
+        },
+        "relationValue": {
+            "text": "Relational Value",
+            "requiredMessage": "Relationship value is required",
+            "rangeMessage": "Minimum: 0, Maximum: 99999",
+            "patternMessage": "Please enter a positive number, including decimals (four decimals), 0, and cannot be negative"
+        },
+        "excellentValue": {
+            "text": "Excellent Value",
+            "requiredMessage": "Excellent value is required",
+            "rangeMessage": "Minimum: 0, Maximum: 99999",
+            "patternMessage": "Please enter a positive number, including decimals (four decimals), 0, and cannot be negative"
+        },
+        "baselineValue": {
+            "text": "Underline value",
+            "requiredMessage": "Underline value is required",
+            "rangeMessage": "Minimum: 0, Maximum: 99999",
+            "patternMessage": "Please enter a positive number, including decimals (four decimals), 0, and cannot be negative"
+        },
+        "dataLevel": {
+            "text": "Level",
+            "requiredMessage": "Required for level"
+        },
+        "isUse": {
+            "text": "Status"
+        },
+        "remarks": {
+            "text": "Remarks",
+            "stringLengthMessage": "Enter up to 50 characters"
+        },
+        "reminCode": {
+            "text": "Variety code",
+            "requiredMessage": "Variety code is required",
+            "stringLengthMessage": "Variety code must be 2 characters",
+            "limitCharacterMessage": "Please enter the two-digit variety code of the variety, indicated by capital letters",
+            "TipMessage": "Note: The breed code is an important part of the breeder's ear number. Please fill in the 2-digit breed code (capital letters) in accordance with national or industry standards"
+        }
+    },
+    "birthPrompt": {
+        "title": "Delivery Reminder",
+        "SowEarNumber": {
+            "text": "Sow Ear Tag",
+            "HyperlinkTips": "Sow Details"
+        },
+        "PigHouseUnitName": "house",
+        "PigField": "Field",
+        "expectedDateOfChildbirth": {
+            "text": "Pre-production date"
+        },
+        "breedingDate": {
+            "text": "Mating Date"
+        },
+        "daysOfPregnancy": {
+            "text": "Days of Gestation"
+        },
+        "childBirthButton": {
+            "text": "Birth",
+            "DeliveryRecordNew": "Delivery Record-New",
+            "noSelectData": "Please select the delivery row",
+            "noPermission": "You have no permission to operate the delivery record"
+        },
+        "dsfs": "Please select the line of delivery",
+        "TypeSetting": {
+            "text": "Type Settings"
+        }
+    },
+    "pregnancyPrompt": {
+        "breedingButton": {
+            "text": "Pregnancy Check",
+            "noSelectData": "Please select the data to be checked for pregnancy",
+            "noPermission": "You do not have permission to operate pregnancy check records"
+        },
+        "days": {
+            "text": "Days of Gestation"
+        }
+    },
+    "firstPregnancyPrompt": {
+        "title": "Reminder for the first pregnancy checkup",
+        "EarNumber": "EarNumber",
+        "SowDetail": "Sow Details",
+        "PigHouseUnitName": "house",
+        "PigField": "Field",
+        "Days": "Days of Pregnancy",
+        "PregnancyButton": {
+            "text": "Pregnancy Check",
+            "PregnancyNew": "Pregnancy Examination Record-New",
+            "noSelectData": "Please select the data to be checked for pregnancy",
+            "noPermission": "You do not have permission to operate pregnancy check records"
+        },
+        "TypeSetting": "Type Setting"
+    },
+    "promptSummary": {
+        "title": "Reminder summary",
+        "warningPrompt": "Warning Prompt",
+        "weaning": "Weaning",
+        "breeding": "The day has not been bred",
+        "birth": "The day has not given birth",
+        "days": "Number of days",
+        "pigHouseUnitAndPigField": "Building House-Field",
+        "sowdetails": {
+            "text": "Sow details"
+        },
+        "tipsMessage": {
+            "TipsForMatching": "Tips ForMatching",
+            "TipsDelivery": "TipsDelivery",
+            "TipsWeaning": "Weaning Tips",
+            "TipsFirstPregnancy": "TipsFirstPregnancy",
+            "TipsSecondPregnancy": "TipsSecondPregnancy",
+            "TipsForDelivery": "TipsForDelivery"
+        }
+    },
+    "secondPregnancyPromp": {
+        "title": "Reminder for second pregnancy checkup",
+        "EarNumber": "EarNumber",
+        "SowDetail": "Sow Details",
+        "PigHouseUnitName": "house",
+        "PigField": "Field",
+        "Days": "Days of Pregnancy",
+        "PregnancyButton": {
+            "text": "Pregnancy Check",
+            "PregnancyNew": "Pregnancy Examination Record-New",
+            "noSelectData": "Please select the row for pregnancy check",
+            "noPermission": "You do not have permission to operate pregnancy check records"
+        },
+        "TypeSetting": "Type Setting"
+    },
+    "sowKnockOutPrompt": {
+        "title": "elimination reminder",
+        "SowEarNumber": {
+            "text": "Ear Tag",
+            "HyperlinkTips": "Sow Details",
+            "HyperlinkTipsBoar": "Boar Details"
+        },
+        "PigHouseUnitName": "house",
+        "PigField": "Field",
+        "describe": {
+            "text": "situation analysis"
+        },
+        "knockOutButton": {
+            "text": "eliminate",
+            "sowOutNew": "Sow Out-New",
+            "boarOutNew": "Boar Out-New",
+            "noSelectData": "Please select the data to be eliminated",
+            "noPermission": "You do not have the operating permission to eliminate"
+        },
+        "TypeSetting": "Type Setting",
+        "VarietiesName": "Varieties",
+        "MaxParity": "Already Produced Parity",
+        "PigType": "Gender",
+        "PigStateName": "PigState",
+        "MonthAge": "Month Of Age",
+        "EliminateCount": "Number for elimination",
+        "EliminateReason": "Reasons for elimination"
+    },
+    "sowKnockOut": {
+        "departureStatus": {
+            "text": "Departure Status",
+            "requiredMessage": "The exit status is required",
+            "yes": "Leave the field",
+            "no": "Not leaving"
+        },
+        "deathReasonId": {
+            "text": "Reason for Elimination",
+            "requiredMessage": "Reason for elimination is required"
+        },
+        "pigTotalWeight": {
+            "text": "Weight (kg)",
+            "rangeMessage": "Please enter a number between 0-999999",
+            "patternMessage": "Keep up to two decimal places",
+            "requiredMessage": "Weight is required"
+        },
+        "eliminationDate": {
+            "text": "Phase out date"
+        },
+        "sowElimination": {
+            "text": "Sow eliminated"
+        },
+        "sowEliminationRecord": {
+            "text": "Sow elimination record",
+            "yes": "Yes",
+            "no": "No"
+        },
+        "createPageTitle": "Sow Elimination-New",
+        "editPageTitle": "Sow Elimination-Edit"
+    },
+    "upperCotPrompt": {
+        "title": "Reminder for delivery bed",
+        "expectedDateOfChildbirth": {
+            "text": "Pre-production date"
+        },
+        "SowEarNumber": {
+            "text": "Sow Ear Tag",
+            "HyperlinkTips": "Sow Details"
+        },
+        "PigHouseUnitName": "house",
+        "PigField": "Field",
+        "breedingDate": {
+            "text": "Mating Date"
+        },
+        "daysOfPregnancy": {
+            "text": "Days of Gestation"
+        },
+        "turnHouseButton": {
+            "text": "Transfer",
+            "sowTurnHouseNew": "Sow Turning House Record-New",
+            "noSelectData": "Please select the row to be converted",
+            "noP,ermission": "You do not have the operating authority to record the transfer of sows"
+        },
+        "TypeSetting": "Type Setting"
+    },
+    "weaningPrompt": {
+        "title": "Weaning Reminder",
+        "SowEarNumber": {
+            "text": "Sow Ear Tag",
+            "HyperlinkTips": "Sow Details"
+        },
+        "PigHouseUnitName": "house",
+        "PigField": "Field",
+        "deliveryDate": {
+            "text": "Date of delivery"
+        },
+        "daysOfLactation": {
+            "text": "Number of breastfeeding days"
+        },
+        "breedingButton": {
+            "text": "Weaning",
+            "weaningNow": "Weaning Record-New",
+            "noSelectData": "Please select the row to be weaned",
+            "noPermission": "You do not have permission to operate the weaning record"
+        },
+        "TypeSetting": "Type Setting"
+    },
+    "withPrompt": {
+        "title": "Reminder to be equipped",
+        "SowEarNumber": {
+            "text": "Sow Ear Tag",
+            "HyperlinkTips": "Sow Details"
+        },
+        "PigHouseUnitName": "house",
+        "PigField": "Field",
+        "pigState": {
+            "text": "Status"
+        },
+        "dataDate": {
+            "text": "Event Date"
+        },
+        "days": {
+            "text": "Number of empty days（The reserve pig is of daily age）"
+        },
+        "breedingButton": {
+            "text": "Matching",
+            "breedingNew": "Sow Breeding-New",
+            "noSelectData": "Please select the data to be bred",
+            "noPermission": "You do not have permission to operate sow breeding"
+        },
+        "TypeSetting": "Type Setting"
+    },
+    "backDetermination": {
+        "title": "Backfat determination",
+        "msBackfatDetermination": {
+            "text": "Measurement Date"
+        },
+        "sowdetails": {
+            "text": "Sow details"
+        },
+        "lastState": {
+            "text": "Status"
+        },
+        "backFatIndex": {
+            "text": "Backfat Index (mm)",
+            "noUnit": "Backfat Index",
+            "rangeMessage": "Please enter a number between 0-99999",
+            "patternMessage": "Keep up to two decimal places",
+            "requiredMessage": "Backfat index is required"
+        },
+        "weight": {
+            "text": "Weight (kg)",
+            "noUnit": "Weight",
+            "rangeMessage": "",
+            "patternMessage": "Keep up to two decimal places",
+            "requiredMessage": "Weight is required"
+        },
+        "printComponent": {
+            "notSavedMessage": "The current document is not saved and cannot be printed",
+            "noData": "No data yet"
+        },
+        "checkWeight": {
+            "text": "Weight (kg)"
+        },
+        "avgGlma": {
+            "text": "Eye muscle area (mm)"
+        },
+        "avgDlma": {
+            "text": "Eye muscle thickness (mm)"
+        },
+        "sowBatch": {
+            "text": "Sow batch",
+            "batchMessage": "Sow batch is required"
+        },
+        "personName": {
+            "text": "person in charge",
+            "requiredMessage": "The person in charge is required"
+        },
+        "createPageTitle": "Backfat Determination-New",
+        "editPageTitle": "Backfat Determination-Edit"
+    },
+    "hbSowBreeding": {
+        "title": "Backup Service Record",
+        "dataDate": {
+            "text": "Mating Date"
+        },
+        "pigHouseUnit": {
+            "text": "The current building of the fat pig batch"
+        },
+        "lastState": {
+            "text": "Status"
+        },
+        "lastDate": {
+            "text": "Event Date"
+        },
+        "breedingMode": {
+            "title": "Backup breeding",
+            "text": "Matching Method",
+            "requiredMessage": "Mating method is required"
+        },
+        "firstBoar": {
+            "text": "First match with boar",
+            "requiredMessage": "The first matching boar is required"
+        },
+        "firstPro1": {
+            "text": "First match with boar",
+            "requiredMessage": "The first matching boar is required"
+        },
+        "firstPro2": {
+            "text": "First match with boar",
+            "requiredMessage": "The first matching boar is required"
+        },
+        "firstPro3": {
+            "text": "First match with boar",
+            "requiredMessage": "The first matching boar is required"
+        },
+        "score1": {
+            "text": "First match score",
+            "requiredMessage": "The first matching score is required",
+            "rangeMessage": "Please enter a number between 0-99999"
+        },
+        "secondBoar": {
+            "text": "Two Boars"
+        },
+        "score2": {
+            "text": "Second Score",
+            "requiredMessage": "The second score is required",
+            "rangeMessage": "Please enter a number between 0-99999"
+        },
+        "thirdBoar": {
+            "text": "Three Boars"
+        },
+        "score3": {
+            "text": "Three match scores",
+            "requiredMessage": "Three matching scores are required",
+            "rangeMessage": "Please enter a number between 0-99999"
+        },
+        "personName": {
+            "text": "person in charge",
+            "requiredMessage": "The person in charge is required"
+        },
+        "sowdetails": {
+            "text": "Sow details"
+        },
+        "sowBreedingRecords": {
+            "text": "Sow service record"
+        },
+        "sowBreeding": {
+            "text": "Sow breeding"
+        },
+        "firstSemenBatch": {
+            "text": "First batch of semen"
+        },
+        "secondSemenBatch": {
+            "text": "Secondary semen batch"
+        },
+        "thirdSemenBatch": {
+            "text": "Three matching semen batches"
+        },
+        "firstSemenUseCount": {
+            "text": "First semen dosage",
+            "rangeMessage": "Please enter a number between 0-99999"
+        },
+        "secondSemenUseCount": {
+            "text": "Amount of semen mixed",
+            "rangeMessage": "Please enter a number between 0-99999"
+        },
+        "thirdSemenUseCount": {
+            "text": "The amount of semen used in the third match",
+            "rangeMessage": "Please enter a number between 0-99999"
+        },
+        "createPageTitle": "Backup Breeding-New",
+        "editPageTitle": "Backup Breeding-Edit",
+        "sowCreatePageTitle": "Sow Mating-New",
+        "sowEditPageTitle": "Sow Mating-Edit",
+        "sowshowTitle": "Sow Mating-Edit"
+    },
+    "metaCheck": {
+        "title": "Pregnancy Examination for Sows",
+        "dataDate": {
+            "text": "Pregnancy Examination Date"
+        },
+        "days": {
+            "text": "Days of Gestation"
+        },
+        "pregnancyWay": {
+            "text": "Pregnancy Check Method",
+            "requiredMessage": "Pregnancy check method is required"
+        },
+        "pregnancyRecord": {
+            "text": "Pregnancy Examination Record",
+            "eidt": "Pregnancy Examination Record-Edit",
+            "add": "Pregnancy Examination Record-Add"
+        },
+        "pregnancyResult": {
+            "text": "Result of pregnancy test",
+            "requiredMessage": "The result of pregnancy test is required"
+        },
+        "pregnancyAbnormalDescription": {
+            "text": "Pregnancy abnormal description",
+            "rangMessage": "A maximum of 30 characters can be entered"
+        },
+        "personName": {
+            "text": "person in charge"
+        },
+        "sowdetails": {
+            "text": "Sow details"
+        },
+        "createPageTitle": "Sow Pregnancy Examination-New",
+        "editPageTitle": "Sow Pregnancy Check-Edit"
+    },
+    "pigPurchasing": {
+        "title": "Pig Purchase",
+        "titleOrder": {
+            "text": "Pig Purchase Order"
+        },
+        "dataDate": {
+            "text": "Purchase Date",
+            "emptyMessage": "Purchase date cannot be empty"
+        },
+        "ticketedPoint": {
+            "text": "Accounting Unit",
+            "placeholder": "Please select accounting unit",
+            "emptyMessage": "The accounting unit cannot be empty"
+        },
+        "typeName": {
+            "text": "Category",
+            "emptyMessage": "The category cannot be empty",
+            "placeholder": "Please select a category"
+        },
+        "supplierName": {
+            "text": "Supplier",
+            "emptyMessage": "The supplier cannot be empty",
+            "placeholder": "Please select a supplier"
+        },
+        "abstractName": {
+            "text": "Abstract",
+            "emptyMessage": "Summary cannot be empty",
+            "placeholder": "Please select the abstract"
+        },
+        "pigName": {
+            "text": "Batch/Ear Number",
+            "requiredMessage": "Batch/Ear number is required",
+            "emptyMessage": "The batch/ear tag cannot be empty"
+        },
+        "purchaserName": {
+            "text": "Buyer",
+            "emptyMessage": "The buyer cannot be empty",
+            "placeholder": "Please select a buyer"
+        },
+        "wareHouse": {
+            "text": "Warehouse",
+            "emptyMessage": "The warehouse cannot be empty",
+            "placeholder": "Please select a warehouse"
+        },
+        "productName": {
+            "text": "Product Name",
+            "noProduct": "This product does not exist in the enterprise network"
+        },
+        "quantity": {
+            "text": "Warehouse quantity",
+            "numbericMessage": "Must be a number",
+            "patternMessage": "Please enter a positive integer greater than 0",
+            "emptyMessage": "quantity cannot be empty"
+        },
+        "adjustQuantity": {
+            "text": "Adjustment Quantity",
+            "requiredMessage": "Adjustment quantity is required",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number from -999999 to 999999",
+            "patternMessage": "Please enter an integer",
+            "emptyMessage": "Adjustment quantity cannot be empty"
+        },
+        "settlementQuantity": {
+            "text": "Settlement Quantity",
+            "requiredMessage": "The settlement quantity is required",
+            "numericMessage": "Must be a number",
+            "patternMessage": "Please enter a positive integer greater than 0",
+            "emptyMessage": "The settlement quantity cannot be empty"
+        },
+        "unitPriceTax": {
+            "text": "Unit price including tax",
+            "numericlMessage": "Must be a number",
+            "rangeMessage": "Please enter a number from 0 to 999999",
+            "patternMessage": "Please enter a positive number with up to five decimal places"
+        },
+        "Amount": {
+            "text": "Amount",
+            "requiredMessage": "Amount is required",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number from 0 to 999999",
+            "patternMessage": "Please enter a positive number and up to two decimal places",
+            "emptyMessage": "Amount cannot be empty"
+        },
+        "unitDiscount": {
+            "text": "Unit Discount",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number from 0 to 999999",
+            "patternMessage": "Please enter a positive number and up to four decimal places"
+        },
+        "amountAdjust": {
+            "text": "Adjustment amount",
+            "requiredMessage": "The adjusted amount is required",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number from 0 to 999999",
+            "patternMessage": "Please enter a positive number and up to two decimal places",
+            "emptyMessage": "Adjustment amount cannot be empty"
+        },
+        "amountTotal": {
+            "text": "Settlement amount"
+        },
+        "packages": {
+            "text": "Number of Pieces",
+            "emptyMessage": "The number of pieces cannot be empty"
+        },
+        "pigTotalWeight": {
+            "text": "Total Weight",
+            "requiredMessage": "Total weight is required",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number from 0 to 999999",
+            "patternMessage": "Please enter a positive number and up to two decimal places",
+            "emptyMessage": "Total weight cannot be empty"
+        },
+        "pigType": {
+            "text": "Pig Type",
+            "choosePigType": "Please select the pig type first",
+            "emptyMessage": "Pig type cannot be empty",
+            "placeholder": "Please select the type of pig"
+        },
+        "pigDataDictionary": {
+            "batchModeNotAll": "Not All In All Out",
+            "batchModeAll": "All in and all out",
+            "pigHouseType": "House Type",
+            "pigHouse": "Dong House",
+            "batchNumber": "Batch",
+            "pigFarm": "Pig Farm",
+            "package": "standard package"
+        },
+        "pigHouse": {
+            "text": "Dongshe",
+            "requiredMessage": "Required for building",
+            "emptyMessage": "The building cannot be empty"
+        },
+        "isHb": {
+            "text": "Is it a Backup Pig",
+            "trueText": "Backup Pig",
+            "falseText": "Non-backup pig"
+        },
+        "specification": {
+            "text": "Specifications"
+        },
+        "measureUnit": {
+            "text": "Unit of measurement"
+        },
+        "taxRate": {
+            "text": "tax rate"
+        },
+        "noBindingProducts": {
+            "text": "The batch has no bound products"
+        },
+        "paymentApplication": {
+            "text": "Payment application form"
+        },
+        "noRelevantdata": {
+            "text": "There is no corresponding data for the Internet of enterprises!"
+        },
+        "totalAmountlimit": {
+            "text": "The total amount should be greater than 0"
+        },
+        "purchaseOrder": {
+            "text": "Purchase order"
+        },
+        "createPageTitle": "Pig Purchase-New",
+        "editPageTitle": "Pig Purchase-Edit"
+    },
+    "sowSell": {
+        "pigCount": {
+            "text": "Head Number",
+            "numericMessage": "Must be a number",
+            "patternMessage": "Please enter a positive integer"
+        },
+        "pigHouse": {
+            "text": "Dongshe",
+            "requiredMessage": "Required for building",
+            "emptyMessage": "The building cannot be empty"
+        },
+        "pigName": {
+            "text": "Batch/Ear Number",
+            "requiredMessage": "Batch/Ear number is required",
+            "emptyMessage": "The batch/earmark cannot be empty"
+        },
+        "grade": {
+            "text": "Level",
+            "requiredMessage": "Level is required",
+            "emptyMessage": "Level cannot be empty"
+        },
+        "specification": {
+            "text": "Specifications"
+        },
+        "standardMeasureUnit": {
+            "text": "Unit of measurement"
+        },
+        "taxRate": {
+            "text": "tax rate"
+        },
+        "unitPrice": {
+            "text": "Average head price (yuan)",
+            "textone": "Average unit price (yuan)",
+            "emptyMessage": "The first average unit price cannot be empty",
+            "rangeMessage": "Please enter a number greater than 0 and less than or equal to 9999999.9999",
+            "patternMessage": "Please enter a positive number and a maximum of two decimal places"
+        },
+        "Amount": {
+            "text": "Amount (yuan)",
+            "requiredMessage": "Amount is required",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number from 0 to 999999",
+            "patternMessage": "Please enter a positive number and up to two decimal places",
+            "emptyMessage": "Amount cannot be empty"
+        },
+        "Allamount": {
+            "text": "Total Amount (Yuan)",
+            "noUnit": "Total amount (yuan)"
+        },
+        "unitDiscount": {
+            "text": "Unit Discount",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number from 0 to 999999",
+            "patternMessage": "Please enter a positive number and up to four decimal places"
+        },
+        "pigTotalWeight": {
+            "text": "Total weight (kg)",
+            "noUnit": "Total weight (kg)",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number from 0 to 999999",
+            "patternMessage": "Please enter a positive number and up to two decimal places"
+        },
+        "averageWeight": {
+            "text": "Average head weight (kg)",
+            "noUnit": "Average head weight (kg)"
+        },
+        "unitPricePerKilogram": {
+            "text": "Unit price per kilogram (yuan)",
+            "noUnit": "Unit price per kilogram (yuan)",
+            "rangeMessage": "Please enter a number greater than 0 and less than or equal to 9999999.9999",
+            "patternMessage": "Please enter a positive number and a maximum of four decimal places"
+        },
+        "productName": {
+            "text": "Product Name",
+            "noProduct": "This product does not exist in the enterprise network",
+            "waring": "There are no products bound to the batch, please go to the fat pig batch setting place to set up products"
+        },
+        "pigSalesSlip": {
+            "text": "Pig Sales Order"
+        },
+        "salesperson": {
+            "text": "Salesperson",
+            "emptyMessage": "Salesperson is required",
+            "placeholder": "Please select a salesperson"
+        },
+        "pigType": {
+            "text": "Pig Type",
+            "emptyMessage": "Pig type is required",
+            "placeholder": ""
+        },
+        "ticketedPoint": {
+            "text": "Accounting Unit",
+            "emptyMessage": "Accounting unit is required"
+        },
+        "typeName": {
+            "text": "Category",
+            "emptyMessage": "Category is required"
+        },
+        "customer": {
+            "text": "Customer",
+            "emptyMessage": "Customer is required",
+            "placeholder": ""
+        },
+        "wareHouse": {
+            "text": "Warehouse",
+            "emptyMessage": "The warehouse cannot be empty",
+            "placeholder": "Please select a warehouse"
+        },
+        "abstractName": {
+            "text": "Summary",
+            "emptyMessage": "Summary is required"
+        },
+        "region": {
+            "text": "Region",
+            "emptyMessage": "The field is required",
+            "placeholder": ""
+        },
+        "date": {
+            "text": "Date"
+        },
+        "shippingAddress": {
+            "text": "Receiving address"
+        },
+        "varietiesName": {
+            "text": "Variety",
+            "placeholder": "Please select a variety",
+            "requiredMessage": "Type is required"
+        },
+        "dateOfSale": {
+            "text": "Sale Date"
+        },
+        "pigSales": {
+            "text": "Pig Sales"
+        },
+        "auditStatus": {
+            "text": "Audit Status",
+            "yes": "reviewed",
+            "no": "Unreviewed"
+        },
+        "Customerarrears": {
+            "text": "Customer arrears"
+        },
+        "Entrynumber": {
+            "text": "Entry number"
+        },
+        "Salesorder": {
+            "text": "Sales order"
+        },
+        "Salescontract": {
+            "text": "Sales contract"
+        },
+        "Salesslip": {
+            "text": "Sales slip"
+        },
+        "Discountsigning": {
+            "text": "Discount signing"
+        },
+        "Customercontact": {
+            "text": "Customer contact"
+        },
+        "Contactnumber": {
+            "text": "Contact number"
+        },
+        "IsGive": {
+            "text": "Free or not",
+            "yes": "Yes",
+            "no": "No"
+        },
+        "collection": {
+            "text": "Collection"
+        },
+        "receipt": {
+            "text": "receipt"
+        },
+        "moling": {
+            "text": "not count the small change",
+            "limitMessage": "Erasure cannot be greater than the total amount"
+        },
+        "amountReceivablelimit": {
+            "text": "The amount receivable",
+            "patternMessage": "The amount receivable should be greater than 0"
+        },
+        "BasicAmount": {
+            "text": "Basic amount (yuan)"
+        },
+        "NonStandardAmount": {
+            "text": "Amount of overweight / weight loss (yuan)"
+        },
+        "BatchName": {
+            "text": "Male/Sow batches"
+        },
+        "createPageTitle": "Pig Sales-New",
+        "editPageTitle": "Pig Sales-Edit"
+    },
+    "SowSellProject": {
+        "date": {
+            "text": "Date",
+            "emptyMessage": "date is required"
+        },
+        "projectname": {
+            "text": "project name",
+            "emptyMessage": "project name is required",
+            "message": "The maximum length of project name is 30 characters"
+        },
+        "projectdescribe": {
+            "text": "project describe",
+            "emptyMessage": "project describe is required",
+            "message": "The maximum length of project describe is 30 characters"
+        },
+        "projecttype": {
+            "text": "projecttype",
+            "emptyMessage": "projecttype is required",
+            "placeholder": "Please select a projecttype"
+        },
+        "begindate": {
+            "text": "BeginDate",
+            "emptyMessage": "begindate is required"
+        },
+        "enddate": {
+            "text": "EndDate",
+            "emptyMessage": "enddate is required"
+        },
+        "productName": {
+            "text": "Product Name",
+            "noProduct": "This product does not exist in the enterprise network",
+            "emptyMessage": "Product Name is required"
+        },
+        "standardMeasureUnit": {
+            "text": "Unit of measurement"
+        },
+        "standardweightlowerlimit": {
+            "text": "standard weight lower limit",
+            "rangeMessage": "Please enter a number from 0 to 999999999.99",
+            "patternMessage": "Please enter a positive number and up to two decimal places",
+            "emptyMessage": "standard weight lower limit is required"
+        },
+        "standardweightlimit": {
+            "text": "standard weight limit",
+            "rangeMessage": "Please enter a number from 0 to 999999999.99",
+            "patternMessage": "Please enter a positive number and up to two decimal places",
+            "emptyMessage": "standard weight limit is required"
+        },
+        "unitPrice": {
+            "text": "Unit price of Foundation (yuan / head)",
+            "emptyMessage": "Unit price of Foundation (yuan / head) is required"
+        },
+        "stepprice": {
+            "text": "Ladder price",
+            "emptyMessage": "Ladder price is required"
+        },
+        "notstepprice": {
+            "text": "Non ladder price"
+        },
+        "overweightUnitPrice": {
+            "text": "Unit price of overweight (yuan / kg)",
+            "rangeMessage": "Please enter a number from 0 to 999999",
+            "patternMessage": "Please enter a positive number and up to two decimal places",
+            "emptyMessage": "Unit price of overweight (yuan / kg) is required"
+        },
+        "lossweightUnitPrice": {
+            "text": "Unit price of weight reduction (yuan / kg)",
+            "rangeMessage": "Please enter a number from 0 to 999999",
+            "patternMessage": "Please enter a positive number and up to two decimal places",
+            "emptyMessage": "Unit price of weight reduction (yuan / kg) is required"
+        },
+        "auditStatus": {
+            "text": "Audit Status",
+            "yes": "reviewed",
+            "no": "Unreviewed"
+        },
+        "applicationCustomers": {
+            "text": "Application customers"
+        },
+        "multiIntervalcomputation": {
+            "text": "Multi interval computation"
+        },
+        "singleIntervalcomputation": {
+            "text": "Single interval computation"
+        },
+        "multiInterval": {
+            "text": "Multi interval"
+        },
+        "singleInterval": {
+            "text": "Single interval"
+        },
+        "customerList": {
+            "text": "Customer list:"
+        },
+        "customerName": {
+            "text": "Customer name"
+        },
+        "search": {
+            "text": "search"
+        },
+        "selectAll": {
+            "text": "Select all"
+        },
+        "revoke": {
+            "text": "revoke"
+        },
+        "previousPage": {
+            "text": "previous page"
+        },
+        "nextPage": {
+            "text": "next page"
+        },
+        "apply": {
+            "text": "apply"
+        },
+        "cancel": {
+            "text": "cancel"
+        },
+        "calculationRules": {
+            "text": "Calculation rules"
+        },
+        "overweightRange": {
+            "text": "Overweight range (kg)"
+        },
+        "greaterthan": {
+            "text": "greater than",
+            "patternMessage": "Must be non negative"
+        },
+        "Lessthanorequalto": {
+            "text": "Less than or equal to",
+            "patternMessage": "Must be a positive number"
+        },
+        "price": {
+            "text": "Unit Price",
+            "rangeMessage": "The unit price is not negative",
+            "patternMessage": "Must be a non positive number"
+        },
+        "weightlossInterval": {
+            "text": "Weight loss interval (kg)"
+        },
+        "examples": {
+            "text": "Examples"
+        },
+        "pricingStrategy": {
+            "text": "pricing strategy:"
+        },
+        "sucklingpigPricingtrategy": {
+            "text": "The standard weight of suckling pig is 7-10kg, the basic unit price is 500 yuan / head, 8 yuan / kg over 0-5kg, 6 yuan / kg over 5-10kg。"
+        },
+        "salesDetails": {
+            "text": "Sales details:"
+        },
+        "sucklingpigDetails": {
+            "text": "One suckling pig, weighing 18 kg。"
+        },
+        "overweightintervalSetting": {
+            "text": "Overweight interval setting:"
+        },
+        "smallRange": {
+            "text": "Range 0-5 unit price 8"
+        },
+        "bigRange": {
+            "text": "Range 5-10 unit price 6"
+        },
+        "totalSales": {
+            "text": "Total sales = 500 * 1 + 5 * 8 + (18-15) * 6 = 558 yuan"
+        },
+        "saleAccount": {
+            "text": "Total sales = 500 * 1 + (18-10) * 6 = 548 yuan"
+        },
+        "clear": {
+            "text": "empty"
+        },
+        "save": {
+            "text": "preservation"
+        },
+        "createPageTitle": "Product scheme setting-New",
+        "editPageTitle": "Product scheme setting-Edit"
+    },
+    "reserveTurnSow": {
+        "title": "Reserve to sow",
+        "dataDate": {
+            "text": "Transformation date"
+        },
+        "createPageTitle": "Backup to Sow-New",
+        "editPageTitle": "Backup to Sow-Edit",
+        "totalNumber": {
+            "text": "Total headers"
+        },
+        "totalWeight": {
+            "text": "Total weight"
+        },
+        "turnOutBatch": {
+            "text": "Transfer out batch",
+            "requiredMessage": "The transfer batch is required",
+            "emptyMessage": "The transfer batch cannot be empty"
+        },
+        "earNumber": {
+            "text": "earmark",
+            "requiredMessage": "The ear tag is required",
+            "emptyMessage": "The ear tag cannot be empty",
+            "placeholder": "Please select ear tag"
+        },
+        "turnOutPigHouseUnit": {
+            "text": "Transfer out of the building",
+            "emptyMessage": "The transferred building cannot be empty",
+            "requiredMessage": "Required to transfer out of the building"
+        },
+        "turnInPigHouseUnit": {
+            "text": "Transfer to the building",
+            "requiredMessage": "Transfer to the building is required",
+            "emptyMessage": "The transferred building cannot be empty"
+        },
+        "pigTotalWeight": {
+            "text": "Weight (kg)",
+            "requiredMessage": "Weight is required",
+            "rangeMessage": "Please enter a number between 0-999999.99",
+            "patternMessage": "Keep up to two decimal places",
+            "emptyMessage": "Weight cannot be empty"
+        },
+        "sowdetails": {
+            "text": "Sow details"
+        },
+        "turnInPigField": {
+            "text": "Transfer into field"
+        }
+    },
+    "ruttingRecord": {
+        "title": "Estestrus Record",
+        "sameEarNumberMessage": "Please select a different ear number data",
+        "dataDate": {
+            "text": "estrus date"
+        },
+        "pigHouseUnitName": {
+            "text": "The building where the batch is located",
+            "requiredMessage": "The building where the batch is located is required",
+            "emptyMessage": "The building where the batch is located cannot be empty"
+        },
+        "pigTotalWeight": {
+            "text": "Total weight (kg)",
+            "noUnit": "Total Weight",
+            "numericMessage": "Must be a number",
+            "rangeMessage": "Please enter a number from 0 to 999999",
+            "patternMessage": "Please enter a positive number and up to two decimal places"
+        },
+        "dayAge": {
+            "text": "Day Age",
+            "requiredMessage": "Day age is required",
+            "emptyMessage": "Day age cannot be empty"
+        },
+        "backfatThickness": {
+            "text": "Fat Thickness (mm)",
+            "noUnit": "Fat Thickness",
+            "rangeMessage": "Please enter a number between 0-9999",
+            "patternMessage": "Keep up to two decimal places",
+            "requiredMessage": "Fat thickness is required",
+            "emptyMessage": "Fat thickness cannot be empty"
+        },
+        "ruttingCount": {
+            "text": "Number of estrus (times)",
+            "noUnit": "Number of heats",
+            "rangeMessage": "Please enter a number between 0-9999",
+            "patternMessage": "Please enter a positive integer",
+            "requiredMessage": "The number of estrus is required",
+            "emptyMessage": "The number of estrus cannot be empty"
+        },
+        "batch": {
+            "text": "Batch",
+            "requiredMessage": "Batch is required",
+            "emptyMessage": "The batch cannot be empty"
+        },
+        "personName": {
+            "text": "person in charge",
+            "requiredMessage": "The person in charge is required"
+        },
+        "earNumber": {
+            "text": "earmark",
+            "requiredMessage": "The ear tag is required",
+            "emptyMessage": "The ear tag cannot be empty",
+            "placeholder": "Please select ear tag"
+        },
+        "pigHouseUnitId": {
+            "text": "Dongshe",
+            "requiredMessage": "Building is required",
+            "emptyMessage": "The building cannot be empty"
+        },
+        "sowdetails": {
+            "text": "Sow details"
+        },
+        "createPageTitle": "Essence Record-New",
+        "editPageTitle": "estrus record-edit"
+    },
+    "sowInfo": {
+        "content": {
+            "text": "Content"
+        },
+        "unitParity": {
+            "text": "Unit/Parity"
+        },
+        "unitDay": {
+            "text": "unit/day"
+        },
+        "type": {
+            "text": "Type"
+        },
+        "VaccinesDrugs": {
+            "text": "Vaccines/Drugs"
+        },
+        "consumption": {
+            "text": "Dosage"
+        },
+        "routeOfAdministration": {
+            "text": "Route of administration"
+        },
+        "nestWeight": {
+            "text": "Nest weight"
+        },
+        "dateOfDelivery": {
+            "text": "Date of delivery"
+        },
+        "expectedDateOfDelivery": {
+            "text": "Pre-production date"
+        },
+        "parity": {
+            "text": "Parents"
+        },
+        "boarBreeds": {
+            "text": "Boar Breed"
+        },
+        "abnormalDate": {
+            "text": "Exception Date"
+        },
+        "exceptionType": {
+            "text": "Exception Type"
+        },
+        "birthSituation": {
+            "text": "Baby birth"
+        },
+        "weaningLitterWeight": {
+            "text": "Weaning nest weight"
+        },
+        "weaningNumber": {
+            "text": "Number of weaning heads"
+        },
+        "weaningData": {
+            "text": "Weaning date"
+        },
+        "weaningSituation": {
+            "text": "Weaning situation"
+        },
+        "mailOut": {
+            "text": "Send"
+        },
+        "mailIn": {
+            "text": "Send in"
+        },
+        "fosterCare": {
+            "text": "Foster Care Situation"
+        },
+        "mummy": {
+            "text": "Mummy"
+        },
+        "stillbirth": {
+            "text": "Deadborn"
+        },
+        "malformation": {
+            "text": "Deformed"
+        },
+        "weakOffspring": {
+            "text": "Weak Boy"
+        },
+        "healthyBoy": {
+            "text": "健仔"
+        },
+        "liveBaby": {
+            "text": "Valid farrowing"
+        },
+        "data": {
+            "text": "Date"
+        },
+        "noDataAvailable": {
+            "text": "No data yet"
+        },
+        "weaningTimes": {
+            "text": "Weaning Times"
+        },
+        "weaningPerLitter": {
+            "text": "Weaned per litter"
+        },
+        "averageWeightOfWeanedIndividuals": {
+            "text": "Average weight of weaned individuals"
+        },
+        "averageBirthWeight": {
+            "text": "average weight of delivery individuals"
+        },
+        "totalLitterSizePerLitter": {
+            "text": "All litters in each nest"
+        },
+        "emptyTireTimes": {
+            "text": "Number of empty tires"
+        },
+        "matingTimes": {
+            "text": "Mating times"
+        },
+        "matingState": {
+            "text": "Mating situation"
+        },
+        "matingData": {
+            "text": "Mating Date"
+        },
+        "gestationalPeriod": {
+            "text": "Average gestation period"
+        },
+        "averageLitterSizeWeak": {
+            "text": "Average weaker number of litters"
+        },
+        "numberOfDeliveries": {
+            "text": "Number of births"
+        },
+        "negativeTimesOfPregnancyTest": {
+            "text": "Number of negative pregnancy tests"
+        },
+        "averageWeaningInterval": {
+            "text": "Average weaning interval"
+        },
+        "nonProductionDays": {
+            "text": "Non-production days"
+        },
+        "averageLitterSize": {
+            "text": "Number of healthy children per litter"
+        },
+        "numberOfAbortions": {
+            "text": "Number of abortions"
+        },
+        "temperaturechange": {
+            "text": "Temperature change"
+        },
+        "Intakechange": {
+            "text": "Daily feed intake and drinking water change"
+        },
+        "dailyfeedintake": {
+            "text": "Daily feed intake"
+        },
+        "dailydrinkingwater": {
+            "text": "Daily drinking water"
+        }
+    },
+    "sowAllocation": {
+        "title": "Sow Transfer",
+        "dataDate": {
+            "text": "Transfer Date",
+            "emptyMessage": "The transfer date cannot be empty"
+        },
+        "personId": {
+            "text": "person in charge"
+        },
+        "pigFarmName": {
+            "text": "Call out"
+        },
+        "inPigHouseUnitName": {
+            "text": "Transfer into the building",
+            "requiredMessage": "Required to be transferred to the building",
+            "emptyMessage": "The transferred building cannot be empty"
+        },
+        "pigHouseUnitName": {
+            "text": "Call out the building",
+            "requiredMessage": "Calling out the building is required",
+            "emptyMessage": "Recall the building cannot be empty"
+        },
+        "pigFieId": {
+            "text": "Call out field"
+        },
+        "inpigFieId": {
+            "text": "Call into field"
+        },
+        "inPigFarmName": {
+            "text": "Call in",
+            "choosePigFarmMessage": "Please choose to transfer in first",
+            "emptyMessage": "The transfer cannot be empty",
+            "placeholder": "Please choose to transfer in"
+        },
+        "personName": {
+            "text": "person in charge",
+            "emptyMessage": "The person in charge cannot be empty"
+        },
+        "createPageTitle": "Sow Transfer-New",
+        "editPageTitle": "Sow Transfer-Edit"
+    },
+    "sowBatchSetting": {
+        "title": "Sow batch settings",
+        "relationSowTitle": "Related Sow",
+        "status": {
+            "text": "Status"
+        },
+        "pigHouseUnitName": {
+            "text": "House name"
+        },
+        "relationNumber": {
+            "text": "Associated ear tag",
+            "success": "Association successful"
+        },
+        "finish": {
+            "trueText": "On",
+            "falseText": "End"
+        },
+        "pigField": {
+            "text": "Field"
+        },
+        "dataDate": {
+            "text": "Status Date"
+        },
+        "relation": {
+            "text": "Association"
+        },
+        "days": {
+            "text": "Days"
+        },
+        "page": {
+            "text": "Currently is page {0}, total {1} ​​page {2} data, linked",
+            "footer": "piece of data"
+        },
+        "beginDate": {
+            "text": "Transfer start date",
+            "placeholder": "Please select the start date of batch transfer",
+            "requiredMessage": "The batch transfer start date is required"
+        },
+        "endDate": {
+            "text": "Transfer to end date",
+            "placeholder": "Please select the end date of batch transfer",
+            "requiredMessage": "The end date of batch forwarding is required"
+        },
+        "finishDate": {
+            "text": "Batch end date"
+        },
+        "isFinish": {
+            "text": "Batch Status",
+            "trueText": "Ended",
+            "falseText": "Unfinished"
+        },
+        "batchForm": {
+            "text": "Batch Mode"
+        },
+        "batch": {
+            "name": "Batch name",
+            "retreatBegin": "Batch transfer start date",
+            "selectBegin": "Please select the start date of batch transfer",
+            "retreatEnd": "Batch transfer end date",
+            "selectEnd": "Please select the end date of batch forwarding",
+            "end": "Batch end date",
+            "rangeMessage": "Please enter the batch name",
+            "requiredMessage": "Batch name is required"
+        },
+        "IsItOver": {
+            "text": "Does it end"
+        },
+        "remarks": {
+            "text": "Remarks",
+            "placeholder": "Please enter remarks information"
+        },
+        "basicInformation": {
+            "text": "Basic Information"
+        },
+        "createPageTitle": "Sow Batch Settings-New",
+        "editPageTitle": "Sow Batch Settings-Edit"
+    },
+    "sowBirth": {
+        "title": "Delivery Record",
+        "dataDate": {
+            "text": "Date of delivery"
+        },
+        "days": {
+            "text": "Days of Gestation"
+        },
+        "pigTotalWeight": {
+            "text": "Sow weight (kg)",
+            "rangeMessage": "Please enter a number between 0-999999.99",
+            "patternMessage": "Keep up to two decimal places"
+        },
+        "healthCount": {
+            "text": "Jianzi Number",
+            "rangeMessage": "Please enter a number between 0-99"
+        },
+        "weakCount": {
+            "text": "Weak Boys",
+            "rangeMessage": "Please enter a number between 0-99"
+        },
+        "deformityCount": {
+            "text": "Deformed Number",
+            "rangeMessage": "Please enter a number between 0-99"
+        },
+        "stillBirthCount": {
+            "text": "Number of stillborn babies",
+            "rangeMessage": "Please enter a number between 0-99"
+        },
+        "mummyCount": {
+            "text": "Mummy Number",
+            "rangeMessage": "Please enter a number between 0-99"
+        },
+        "livingCount": {
+            "text": "Valid litter size",
+            "headerHelpMessage": "By default, the effective litter is calculated according to the healthy litter and the weak litter. It can be checked in the farm setting-type setting-system option, and the effective litter is calculated according to the healthy litter."
+        },
+        "nestTotalWeight": {
+            "text": "Total nest weight (kg)",
+            "rangeMessage": "Please enter a number between 0-999999.99",
+            "patternMessage": "Keep up to two decimal places"
+        },
+        "nestNumber": {
+            "text": "Wo Number",
+            "requireMessage": "The nest number is required"
+        },
+        "easyToLitter": {
+            "text": "Difficult to give birth",
+            "requireMessage": "Difficulty of giving birth is required"
+        },
+        "personName": {
+            "text": "person in charge",
+            "requiredMessage": "The person in charge is required"
+        },
+        "deleteConfirm": {
+            "confirm": "Delete descendant record synchronously？"
+        },
+        "ProgenydeleteConfirm": {
+            "confirm": "Descendant records exist in line {0}, delete？"
+        },
+        "createPageTitle": "Birth Record-New",
+        "editPageTitle": "Birth Record-Edit"
+    },
+    "sowProgeny": {
+        "title": "Progeny Record",
+        "earNumber": {
+            "text": "Progeny EarNumber",
+            "requireMessage": "Progeny EarNumber is required"
+        },
+        "birthTimes": {
+            "text": "Birth Times"
+        },
+        "nestNumber": {
+            "text": "Nest Number",
+            "requireMessage": "Nest Number is Required"
+        },
+        "weight": {
+            "text": "Birth Weight",
+            "rangeMessage": "Please enter a number between 0-999999.99",
+            "patternMessage": "Keep up to two decimal places"
+        },
+        "leftNipple": {
+            "text": "Left Nipple"
+        },
+        "rightNipple": {
+            "text": "Right Nipple"
+        },
+        "boarVarieties": {
+            "text": "Boar Varieties"
+        },
+        "sowVarieties": {
+            "text": "Sow Varieties"
+        },
+        "createPageTitle": "Progeny Record-New",
+        "editPageTitle": "Progeny Record-Edit"
+    },
+    "sowBirthPlan": {
+        "title": "Sow farrowing plan",
+        "sowDelivery": {
+            "text": "Sow farrowing"
+        },
+        "dataDate": {
+            "text": "Document Date"
+        },
+        "estimatedDate": {
+            "text": "Pre-production date"
+        },
+        "lastDate": {
+            "text": "Mating Date"
+        },
+        "days": {
+            "text": "Days of Gestation"
+        },
+        "personName": {
+            "text": "person in charge",
+            "requiredMessage": "The person in charge is required"
+        },
+        "pigHouseUnitName": {
+            "text": "House name"
+        },
+        "deliveryDate": {
+            "text": "Date of delivery"
+        },
+        "createPageTitle": "Childbirth Plan-New",
+        "editPageTitle": "Birth Planning-Edit"
+    },
+    "sowDeath": {
+        "title": "Sow Death Record",
+        "sowDeath": "Sow Death",
+        "dataDate": {
+            "text": "Date of death"
+        },
+        "lastState": {
+            "text": "Status"
+        },
+        "lastDate": {
+            "text": "Event Date"
+        },
+        "deathTypeId": {
+            "text": "Death Type",
+            "requiredMessage": "Death type is required",
+            "items": {
+                "death": "Death",
+                "other": "Other"
+            },
+            "emptyMessage": "Death type cannot be empty"
+        },
+        "deathReasonId": {
+            "text": "Cause of Death",
+            "requiredMessage": "The cause of death is required",
+            "emptyMesage": "The cause of death cannot be empty"
+        },
+        "createPageTitle": "Sow Death Record-New",
+        "editPageTitle": "Sow Death Record-Edit"
+    },
+    "sowFile": {
+        "title": "Sow File",
+        "parity": {
+            "text": "Parents have been delivered"
+        },
+        "alreadyProducedParity": {
+            "text": "Parents in history",
+            "requiredMessage": "Historical birth order is required",
+            "patternMessage": "Please enter a positive integer and no more than five digits"
+        },
+        "dataDate": {
+            "text": "Event Date"
+        },
+        "productName": {
+            "text": "Product Code",
+            "placeholder": "Please select the product code",
+            "requiredMessage": "Commodity code is required",
+            "goodsText": "Product Name",
+            "goodsplaceholder": "Please select a product name",
+            "goodsAdd": "Add commodity code"
+        },
+        "earNumberShortage": {
+            "text": "Ear Tag Number"
+        },
+        "earDefect": {
+            "text": "Ear missing number",
+            "rangeMessage": "Please enter the missing ear number"
+        },
+        "inState": {
+            "text": "Presence"
+        },
+        "birthDate": {
+            "text": "Date of Birth",
+            "placeholder": "Please select the date of birth",
+            "requiredMessage": "Birth date is required"
+        },
+        "baseInfoTitle": {
+            "text": "Basic Information"
+        },
+        "strainName": {
+            "text": "Strain",
+            "placeholder": "Please select strain",
+            "requiredMessage": "The strain is required",
+            "requiredSelect": "Strain must be selected"
+        },
+        "birthInfoTitle": {
+            "text": "Birth Information"
+        },
+        "varietiesName": {
+            "text": "Variety",
+            "placeholder": "Please select a variety",
+            "requiredMessage": "Species required",
+            "requiredSelect": "The variety must be selected"
+        },
+        "earTag": {
+            "text": "Electronic Ear Tag Number",
+            "placeholder": "Please enter the electronic ear tag number"
+        },
+        "dateOfEntry": {
+            "text": "Date of admission"
+        },
+        "birthPlace": {
+            "text": "Birthplace / place of introduction"
+        },
+        "birthUnitWeight": {
+            "text": "Birth weight (kg)",
+            "patternMessage": "Please enter a positive number, up to two decimal places"
+        },
+        "weaningDays": {
+            "text": "Weaning age (days)",
+            "patternMessage": "Please enter a positive integer; minimum value: 0, maximum value: 99999"
+        },
+        "leftNippleCount": {
+            "text": "Number of nipples (left)",
+            "patternMessage": "Please enter a positive integer; minimum value: 0, maximum value: 99999"
+        },
+        "rightNippleCount": {
+            "text": "Number of nipples (right)",
+            "patternMessage": "Please enter a positive integer; minimum value: 0, maximum value: 99999"
+        },
+        "weaningUnitWeight": {
+            "text": "Weaning weight (kg)",
+            "patternMessage": "Please enter a positive number, up to two decimal places"
+        },
+        "remarks": {
+            "text": "Remarks",
+            "placeholder": "Please enter remarks information"
+        },
+        "pedigreeInfoTitle": {
+            "text": "Genealogy"
+        },
+        "father": {
+            "text": "Father"
+        },
+        "mother": {
+            "text": "Mother"
+        },
+        "notAllow": {
+            "text": "You do not have permission to operate, or the farm does not exist"
+        },
+        "Batch": {
+            "text": "Batch"
+        },
+        "createPageTitle": "Sow File-New",
+        "editPageTitle": "Sow File-Edit",
+        "birthTip": "不填则默认为建账日期",
+        "tip": "1.个体号是种猪在平台中的唯一身份标识\r\n2.自繁种猪个体号：由2位品种代码+5位场代码+2位出生年份+6位出生顺序号（耳缺号）组成，系统自动生成\r\n3.内购或外够种猪：需真实登记原种猪个体号（15位），手动录入\r\n4.国外进口种猪：需按照《全国生猪遗传改良计划》要求对原种猪注册号进行转换后填写，手动录入",
+        "importXiPu": "Import the pedigree"
+    },
+    "sowFosterCare": {
+        "title": "Sow Boarding",
+        "pigCount": {
+            "text": "Number of Foster Heads",
+            "requiredMessage": "The number of foster heads is required",
+            "rangeMessage": "Please enter a positive integer between 1-99"
+        },
+        "fosterEarNumber": {
+            "text": "Foster Object",
+            "requiredMessage": "Fostering object is required",
+            "chooseLimitMessage": "The foster object and ear tag cannot be repeated"
+        },
+        "description": {
+            "text": "Reason for foster care"
+        },
+        "breedingDate": {
+            "text": "Mating Date",
+            "requiredMessage": "Mating date is required"
+        },
+        "boarEarNumber": {
+            "text": "Boar Ear Number",
+            "requiredMessage": "Boar ear number is required",
+            "emptyMessage": "Boar ear number cannot be empty"
+        },
+        "dataDate": {
+            "text": "Pregnancy Examination Date"
+        },
+        "pregnancyResult": {
+            "text": "Result of pregnancy test",
+            "requiredMessage": "The result of pregnancy test is required"
+        },
+        "childBirthButton": {
+            "data": "Date of delivery"
+        },
+        "healthCount": {
+            "text": "Jianzi Number",
+            "rangeMessage": "Please enter a positive integer before 0-99999",
+            "rangeMessage1": "Please enter a positive integer"
+        },
+        "healthTotalWeight": {
+            "text": "Jianzi Total Weight",
+            "rangeMessage": "Please enter a positive number, including up to two decimal places",
+            "rangeMessage1": "Minimum: 0, Maximum: 99999"
+        },
+        "weakCount": {
+            "text": "Weak Boys",
+            "rangeMessage": "Please enter a positive integer before 0-99999",
+            "rangeMessage1": "Please enter a positive integer"
+        },
+        "deformityCount": {
+            "text": "Deformed Number",
+            "rangeMessage": "Please enter a positive integer before 0-99999",
+            "rangeMessage1": "Please enter a positive integer"
+        },
+        "stillBirthCount": {
+            "text": "Number of stillborn babies",
+            "rangeMessage": "Please enter a positive integer before 0-99999",
+            "rangeMessage1": "Please enter a positive integer"
+        },
+        "mummyCount": {
+            "text": "Mummy Number",
+            "rangeMessage": "Please enter a positive integer before 0-99999",
+            "rangeMessage1": "Please enter a positive integer"
+        },
+        "parity": {
+            "text": "Parity",
+            "rangeMessage": "Please enter a positive integer before 0-99999",
+            "rangeMessage1": "Please enter a positive integer"
+        },
+        "weaningCount": {
+            "text": "Number of Weaning Heads",
+            "rangeMessage": "Please enter a positive integer, maximum value: 99999"
+        },
+        "weaningTotalWeight": {
+            "text": "Weaning nest weight",
+            "rangeMessage": "Please enter a positive number, including up to two decimal places",
+            "rangeMessage1": "Minimum: 0, Maximum: 99999"
+        },
+        "weaningTotaldata": {
+            "text": "Weaning date"
+        },
+        "fosterCare": {
+            "text": "Foster batch",
+            "requiredMessage": "Foster batch is required"
+        },
+        "createPageTitle": "Sow Boarding-New",
+        "editPageTitle": "Sow Boarding-Edit"
+    },
+    "sowHistory": {
+        "title": "Sow History",
+        "pregnancyResult": {
+            "text": "Result of pregnancy test"
+        },
+        "healthCount": {
+            "text": "Jianzi Number",
+            "rangeMessage": "Please enter a positive integer before 0-99999",
+            "rangeMessage1": "Please enter a positive integer"
+        },
+        "healthTotalWeight": {
+            "text": "Jianzi Total Weight",
+            "rangeMessage": "Please enter a positive number, including up to two decimal places",
+            "rangeMessage1": "Minimum: 0, Maximum: 99999"
+        },
+        "weakCount": {
+            "text": "Weak Boys",
+            "rangeMessage": "Please enter a positive integer before 0-99999",
+            "rangeMessage1": "Please enter a positive integer"
+        },
+        "deformityCount": {
+            "text": "Deformed Number",
+            "rangeMessage": "Please enter a positive integer before 0-99999",
+            "rangeMessage1": "Please enter a positive integer"
+        },
+        "stillBirthCount": {
+            "text": "Number of stillborn babies",
+            "rangeMessage": "Please enter a positive integer before 0-99999",
+            "rangeMessage1": "Please enter a positive integer"
+        },
+        "mummyCount": {
+            "text": "Mummy Number",
+            "rangeMessage": "Please enter a positive integer before 0-99999",
+            "rangeMessage1": "Please enter a positive integer"
+        },
+        "weaningCount": {
+            "text": "Number of Weaning Heads",
+            "rangeMessage": "Please enter a positive integer, maximum value: 99999"
+        },
+        "weaningData": {
+            "text": "Weaning date"
+        },
+        "weaningTotalWeight": {
+            "text": "Weaning nest weight",
+            "rangeMessage": "Please enter a positive number, including up to two decimal places",
+            "rangeMessage1": "Minimum: 0, Maximum: 99999"
+        },
+        "breedingDate": {
+            "text": "Mating Date",
+            "requiredMessage": "Mating date is required"
+        },
+        "parity": {
+            "text": "Parity",
+            "rangeMessage": "Please enter a positive integer before 0-99999",
+            "rangeMessage1": "Please enter a positive integer"
+        },
+        "boarEarNumber": {
+            "text": "Boar Ear Number",
+            "requiredMessage": "Boar ear number is required",
+            "emptyMessage": "Boar ear number cannot be empty",
+            "rangeMessage": "You can enter up to 25 characters"
+        },
+        "dataDate": {
+            "text": "Pregnancy Examination Date"
+        },
+        "childBirthButton": {
+            "data": "Date of delivery"
+        },
+        "createPageTitle": "Sow History-New",
+        "editPageTitle": "Sow History-Edit"
+    },
+    "sowBreedingplan": {
+        "totalNumber": {
+            "text": "Total headers"
+        },
+        "totalWeight": {
+            "text": "Total weight"
+        },
+        "pigHouseUnitName": {
+            "text": "House name"
+        },
+        "lastEvent": {
+            "text": "Last event"
+        },
+        "daysOpen": {
+            "text": "Number of empty days"
+        },
+        "animalBreeder": {
+            "text": "Servicers"
+        },
+        "dataDate": {
+            "text": "Document Date"
+        },
+        "warning": {
+            "text": "The document date must be less than or equal to the current system date"
+        },
+        "breedingPlan": {
+            "text": "Mating plan"
+        },
+        "pushOrNot": {
+            "text": "Push Status",
+            "push": "Push",
+            "yes": "Pushed",
+            "no": "Not Pushed"
+        },
+        "taskStatus": {
+            "text": "Task Status"
+        },
+        "createPageTitle": "Mating Plan-New",
+        "editPageTitle": "Mating Plan-Edit"
+    },
+    "sowTurn": {
+        "sowTransfer": {
+            "text": "Sow transfers to house"
+        },
+        "sowTransferRecord": {
+            "text": "Sow transfer record"
+        },
+        "dataDate": {
+            "text": "Transfer date"
+        },
+        "createPageTitle": "Sow Transfer Record-New",
+        "editPageTitle": "Sow Transfer Record-Edit"
+    },
+    "sowWeaning": {
+        "daysOfLactation": {
+            "text": "Number of breastfeeding days"
+        },
+        "weaningCount": {
+            "text": "Number of weaning heads (heads)",
+            "noUnit": "Number of Weaning Heads",
+            "rangeMessage": "Please enter a number between 1-99999",
+            "rangeMessage1": "Please enter a positive integer",
+            "requiredMessage": "The number of weaning heads is required",
+            "emptyMessage": "Weaning cannot be empty"
+        },
+        "totalWeaningLitterWeight": {
+            "text": "Total litter weight (kg)",
+            "rangeMessage": "Please enter a number between 0-99999",
+            "requiredMessage": "Required for weaning total nest weight",
+            "emptyMessage": "The total weaning weight cannot be empty"
+        },
+        "weaningRecords": {
+            "text": "Weaning record"
+        },
+        "sowWeight": {
+            "emptyMessage": "Sow weight cannot be empty"
+        },
+        "weaning": {
+            "text": "Weaning",
+            "emptyMessage": "Weaning cannot be empty"
+        },
+        "weaningTotaldata": {
+            "text": "Weaning date"
+        },
+        "createPageTitle": "Weaning Record-New",
+        "editPageTitle": "Weaning Record-Edit"
+    },
+    "sowWeaningPlan": {
+        "totalNumber": {
+            "text": "Total headers"
+        },
+        "totalWeight": {
+            "text": "Total weight"
+        },
+        "deliveryDate": {
+            "text": "Date of delivery"
+        },
+        "daysOfLactation": {
+            "text": "Number of breastfeeding days"
+        },
+        "dataDate": {
+            "text": "Document Date",
+            "requiredMessage": "The document date must be less than or equal to the current system date"
+        },
+        "weaningProgram": {
+            "text": "Weaning Plan"
+        },
+        "pushOrNot": {
+            "text": "Push Status",
+            "yes": "Pushed",
+            "no": "Not Pushed"
+        },
+        "taskStatus": {
+            "text": "Task Status"
+        },
+        "createPageTitle": "Weaning Plan-New",
+        "editPageTitle": "Weaning Plan-Edit"
+    },
+    "reviewComponent": {
+        "batchReview": {
+            "allReviewedTip": "The bill you selected has been reviewed and cannot be repeated",
+            "allNotReviewedTip": "The bill you selected has not been reviewed",
+            "successTip": "{0} documents have been reviewed (the reviewed documents will not be reviewed repeatedly)",
+            "success": "{0} documents have been cancelled (unapproved documents will not perform this operation)",
+            "allReviewed": "Reviewed successfully",
+            "allCancel": "Cancel review successfully",
+            "confirmText": "Are you sure you want to review these {0} items?",
+            "cancelText": "Are you sure you want to cancel review of these {0} items?",
+            "noPermission": "No review permission, no operation",
+            "notReview": "Only the documents reviewed by the current login can be cancelled"
+        }
+    },
+    "importExcelTemplats": {
+        "houseSetting": {
+            "title": "Import building data",
+            "fileName": "Building Settings-Import Template"
+        }
+    },
+    "boarInfo": {
+        "earNumber": "Ear Number",
+        "position": "position",
+        "state": "State",
+        "birthDays": "Day Age",
+        "day": "天",
+        "birthPlace": "Birth Place",
+        "strainVarieties": "Strain/Varieties",
+        "baseInfo": "Basic Information",
+        "semenRecord": "SemenRecord",
+        "breedingRecord": "breeding record",
+        "productionRecord": "Production Record",
+        "healthRecord": "Health Record",
+        "initInfo": "Initial Information",
+        "earNumberShortage": "Ear NumberShortage",
+        "birthDate": "Birth Date",
+        "inState": "Presence State",
+        "inDate": "Date of admission",
+        "birthWeight": "Birth Weight (kg)",
+        "leftNipple": "Number of nipples (left)",
+        "rightNipple": "Number of nipples (right)",
+        "analysisInfo": "Analysis Info",
+        "semenCount": "Total semen count",
+        "dilutedCopiesCount": "Total Copies of Diluted Copies",
+        "sowBreedingCount": "Total number of breeding sows",
+        "breedingSowDelivery": "The number of sows delivered (litter)",
+        "breedingSowAbnormal": "Abnormal number of breeding sows",
+        "avgWeekSemen": "Number of semen collections every 7 days",
+        "avgSemenQuantity": "Average Semen Quantity",
+        "avgdilutedCopies": "Average number of dilutions",
+        "avgSpermDensity": "Average Density",
+        "avgSpermVitality": "Average Vitality",
+        "sumFarrowing": "Total number of piglets born",
+        "sumAlive": "Total number of live births",
+        "sumEffective": "Total effective piglets produced",
+        "sumiHeath": "Total number of healthy litters",
+        "sumiWeak": "Total number of weak litters",
+        "avgFat": "Total number of piglets per litter",
+        "avgAlive": "Number of live births per litter",
+        "avgEffective": "Number of effective piglets per litter",
+        "avGiHeath": "Number of healthy children per nest",
+        "avGiWeak": "The average number of weak litters",
+        "fiveSemen": "The last 5 semen collections",
+        "interval": "Total time interval",
+        "avgSemenquantity": "Average semen quantity",
+        "avgdensity": "Average Density",
+        "meanactivity": "Meanactivity",
+        "avgdeformity": "Average Deformity Rate",
+        "date": "Date",
+        "semenQuantity": "Semen Quantity (ml)",
+        "semenColor": "Color",
+        "semenSmell": "Smell",
+        "spermVitality": "Sperm Vitality (%)",
+        "spermDensity": "Sperm Density",
+        "deformityRate": "Deformity Rate (%)",
+        "dilutedCopies": "DilutedCopies",
+        "breeding": "breeding situation",
+        "breedingDate": "Breeding Date",
+        "sowPigEarNumber": "SowPigEarNumber",
+        "sowVarieties": "Sow Breeds",
+        "pregnancyDate": "Exception Date",
+        "pregnancyResult": "Exception Type",
+        "pregnancyInterval": "Exception Interval",
+        "predate": "Pre-production date",
+        "childbirth": "Childbirth",
+        "farrowingDate": "Date of Delivery",
+        "pregnancyDay": "Pregnancy Day",
+        "healthCount": "健仔",
+        "weakCount": "Weak Boy",
+        "deformityCount": "Deformity",
+        "stillbirthCount": "stillbirth",
+        "mummyCount": "Mummy",
+        "pigCount": "Valid farrowing",
+        "nestTotalWeight": "Nest Weight",
+        "event": "Event",
+        "content": "Content",
+        "numericalOrder": "Serial Number",
+        "type": "Type",
+        "product": "Vaccines/Pharmaceuticals",
+        "dose": "Dosage",
+        "wayName": "Route of Administration",
+        "remarks": "Remarks",
+        "noData": "No data yet"
+    },
+    "inventoryIndex": {
+        "allCount": "Total Inventory",
+        "numText": "Head",
+        "sowCount": "Sow Stock",
+        "boarCount": "Boar Count",
+        "fatCount": "Fat pig stock",
+        "category": "Category",
+        "ruzhu": "Suckling Pig",
+        "baoyu": "保育",
+        "yufei": "Fattening",
+        "houbeizhu": "Backup Pig",
+        "houbeigongzhu": "Backup Boar",
+        "houbeimuzhu": "Reserve sow",
+        "countText": "Head Number",
+        "percent": "Percentage",
+        "knockout": "Sow culling stock details",
+        "feed": "Sow lactation stock details",
+        "other": "Other inventory details of sows",
+        "empty": "Details of sow's empty holding pen",
+        "pregency": "Pregnancy inventory of sows",
+        "info": "Sow inventory details",
+        "boarInfo": "Boar Inventory Details",
+        "fatInfo": "Fat pig stock details"
+    },
+    "produceIndex": {
+        "tabMonth": "Production Index (Month)",
+        "tabCom": "Production Index (Company)",
+        "tabPig": "Production Index (Pig Farm)",
+        "year": "year",
+        "placeholder": "Please select",
+        "searchText": "Query",
+        "refresh": "Refresh",
+        "more": "More Operations",
+        "index": "Index",
+        "month": "month",
+        "total": "Total",
+        "basicSow": "Basic sow number = total sow daily inventory/days",
+        "count": "Inventory",
+        "basicCount": "Average number of basic sows (head)",
+        "basicDeathTitle": "Basic sow mortality = number of dead sows/basic sow number;",
+        "basicDeath": "Basic sow mortality",
+        "basicKnock": "Basic sow culling rate",
+        "basicKnockTitle": "Basic sow culling rate = number of culled sows/basic sow number;",
+        "breedCount": "Number of breeding heads (heads)",
+        "breed": "breeding",
+        "weanTitle": "The number of days between weaning and estrus service = the sum of the days from weaning to estrus of the weaned sows / the number of sows that have been weaned (the sows from weaning to the month of service are included in the month of weaning",
+        "weanDays": "The number of days between weaning and estrus breeding (days)",
+        "weanWeekTitle": "Sow estrus breeding rate within 7 days after weaning = number of breeding heads within 7 days (including 7 days) after weaning / (total number of weaning heads-number of heads leaving the field within 7 days after weaning)",
+        "weanWeek": "estrus breeding rate within 7 days of weaning",
+        "birthTitle": "Farrowing rate = actual farrowing sows this month/expected farrowing sows this month",
+        "birth": "Birth",
+        "birthRatio": "Birth Rate",
+        "birthHouseTitle": "Number of birthing nests = Number of birthing nests",
+        "birthHouse": "Number of birthing litters (nest)",
+        "healthTitle": "Average healthy number of litters = healthy number of litters/number of delivery litters",
+        "healthCount": "Number of healthy children per nest (head)",
+        "liveTitle": "Average number of live births per litter = total number of live births/number of farrowing litters",
+        "liveCount": "The average live count per litter (head)",
+        "houseAverageTitle": "Total litters per litter = total litters/number of litters",
+        "houseAverage": "houseAverage total litter (head)",
+        "houseWeanTitle": "Average weaned number of litters = number of weaned piglets/number of weaned litters",
+        "houseWean": "Average weaned number of nests (heads)",
+        "mummyTitle": "Stillbirths and mummies = (number of stillbirths + number of mummies)/total number of litters",
+        "mummyName": "Stillborn and Mummy",
+        "hbTitle": "Backup survival rate = 1-the number of deaths in the selected time period / (beginning + transfer)",
+        "productPig": "Product Pig",
+        "hbLiving": "Backup Survival Rate",
+        "weanRatioTitle": "Pre-weaning survival rate = number of weaned piglets in the selected time period / effective number of litters corresponding to weaning * 100% ",
+        "weanRatio": "Survival rate before weaning",
+        "houseLivingTitle": "Survival rate of delivery room = (1- number of deaths in the selected time period / (beginning + transfer))*100",
+        "houseLiveRatio": "Survival Rate of Delivery Room",
+        "baoyuTitle": "Conservation survival rate = 1-the number of deaths in the selected time period/(beginning + transfer)",
+        "baoyu": "Preservation Survival Rate",
+        "hbBoar": "Survival rate of reserve boars (%) = 1-number of deaths in the selected time period/(beginning + transfer in)",
+        "hbBoarRatio": "Survival Rate of Reserve Boars",
+        "hbSowTitle": "Survival rate of gilts (%) = 1-number of deaths in the selected time period/(beginning + transfer)",
+        "hbSowRatio": "Survival rate of gilts",
+        "yfTitle": "Fattening survival rate = 1-number of deaths in the selected time period/(beginning + transfer)",
+        "yfRatio": "Fattening survival rate",
+        "rsTitle": "Pregnancy = Sum of days of pregnancy of farrowing sows/Number of farrowing sows",
+        "rsName": "Pregnancy",
+        "rsDay": "Pregnancy Period (Day)",
+        "brTitle": "Lactation period = sum of days of lactating sows/number of weaned sows",
+        "brName": "Breastfeeding",
+        "brDay": "Breastfeeding Period (Day)",
+        "npdTitle": "Daily NPD index and/days of the month*365.242199",
+        "produceName": "Sow Productivity",
+        "npd": "Non-Production Days (NPD)",
+        "lsyTitle": "LSY=(365.242199-NPD)/(pregnancy + lactation)",
+        "lsy": "Parents per year (LSY)",
+        "psyTitle": "PSY=LSY*weaning number per litter",
+        "psy": "Number of weaned piglets provided per year (PSY)",
+        "time": "period",
+        "week": "week",
+        "period": "period",
+        "SowPig": "Basic Sow Details",
+        "SowDead": "Sow Death Details",
+        "SowEliminate": "Sow Eliminate Details",
+        "BreedCount": "Sow Breeding Details",
+        "DNFQ": "Sow weaning service details",
+        "TBreed": "Sow breeding and farrowing details",
+        "sumPig": "Sow farrowing details",
+        "WCountAVG": "Weaning details of all litters",
+        "hbRatio": "Backup Death Details",
+        "DNRatio": "Details of survival before weaning",
+        "CFRatio": "Death Details in Delivery Room",
+        "BYRatio": "Conservation Death Details",
+        "BoarRatio": "Reserve boar death details",
+        "SowRatio": "Death Details of Reserve Sows",
+        "YFRatio": "Fattening Death Details",
+        "RSSpan": "Sow gestation period details",
+        "PRSpan": "Sow lactation period details",
+        "NPD": "Comprehensive Index of Productivity",
+        "To": "To"
+    },
+    "produceSummary": {
+        "month": "month",
+        "week": "week",
+        "day": "日",
+        "time": "Time Period",
+        "HB": "Backup to Mother",
+        "CG": "Procurement",
+        "DBI": "Transfer Transfer In",
+        "SW": "Death",
+        "TT": "Eliminate and leave",
+        "XS": "Sales",
+        "DBO": "Transfer Out",
+        "QT": "Other",
+        "CZ": "Baby",
+        "PDI": "Inventory Transfer In",
+        "PDO": "Inventory Transfer Out",
+        "HSI": "Recycle and Transfer",
+        "HBI": "Backup Transfer In",
+        "HBO": "Backup Transfer Out",
+        "CM": "emergence and transfer out",
+        "RJYX": "Negative pregnancy test",
+        "KT": "Empty Tire",
+        "LC": "Abortion",
+        "HBS": "Backup",
+        "DN": "Weaning",
+        "FQ": "Return to Love",
+        "HJ": "Total",
+        "JZ": "健仔",
+        "RZ": "Weak Boy",
+        "ST": "Stillborn",
+        "JX": "Deformed",
+        "mummy": "Mummy",
+        "unit": "Head",
+        "dyjz": "Corresponding to the birth of healthy children",
+        "dyrz": "Corresponding to the weak baby",
+        "zdn": "Total Weaning Number",
+        "loss": "Loss Number",
+        "dycz": "Corresponding to the total litter size",
+        "number": "第",
+        "pz": "Sow service details",
+        "yc": "Sow abnormal details",
+        "fm": "Sow farrowing details",
+        "dnmx": "Details of weaning per litter",
+        "summary": "Summary",
+        "table": "Table Overview",
+        "period": "period",
+        "search": "Search",
+        "refresh": "Refresh",
+        "more": "More Operations",
+        "sow": "Sow inventory changes",
+        "initial": "Beginning of Period",
+        "finish": "Terminal",
+        "product": "Commodity pig inventory",
+        "pztj": "Service Statistics",
+        "yctj": "Exception Statistics",
+        "fmtj": "Delivery Statistics",
+        "house": "House Number",
+        "live": "Total number of live boys",
+        "effect": "Total number of effective litters",
+        "dntj": "Weaning Statistics",
+        "weight": "Total Weight",
+        "averageWeight": "Average Weight of Nest",
+        "breed": "breeding",
+        "hbBreed": "Backup Breeding",
+        "dnBreed": "Weaning Breeding",
+        "fqBreed": "Returning Breeding",
+        "rjyxBreed": "Mating with negative pregnancy test",
+        "ktBreed": "Empty tyre breeding",
+        "lcBreed": "Abortion Breeding",
+        "qtBreed": "Other breeding",
+        "hjBreed": "Total Breeding",
+        "abnormal": "abnormal",
+        "hj": "Total",
+        "birth": "Birth",
+        "allLive": "Total live births",
+        "allEffect": "Total effective litters",
+        "dn": "Weaning",
+        "dnzz": "Weaned Piglets",
+        "boar": "Boar stock",
+        "zrhj": "Transfer to Total",
+        "zchj": "Transfer Out Total",
+        "qtzc": "Other Transfer Out",
+        "sowCount": "Sow Stock",
+        "fat": "Suckling pig stock",
+        "fatIn": "Suckling pig transfer in",
+        "fatOut": "Suckling Pig Transfer Out",
+        "baoyu": "Conservation stock",
+        "byI": "Conservation transfer in",
+        "byO": "Conservation transfer out",
+        "yf": "Fattening stock",
+        "yfI": "Fattening transfer in",
+        "yfO": "Fattening transfer out",
+        "hb": "Backup Column",
+        "qtswzc": "Other death transfer out"
+    },
+    "produceTrend": {
+        "index": "Index",
+        "search": "Search",
+        "refresh": "Refresh",
+        "more": "More Operations",
+        "year": "year",
+        "month": "month",
+        "day": "天",
+        "unit": "Head",
+        "npd": "NPD (Non-Production Days)",
+        "psy": "PSY (Annual Weaned Piglets)",
+        "sow": "Basic sow details",
+        "sowDeath": "Sow Death Details",
+        "sowKnock": "Sow culling details",
+        "sowBreed": "Sow Breeding Details",
+        "sowWean": "Sow Weaning Service Details",
+        "sowBreedBirth": "Sow breeding and farrowing details",
+        "sowBirth": "Sow farrowing details",
+        "wean": "Details of weaning every nest",
+        "hb": "Backup Death Details",
+        "weanLive": "Details of survival before weaning",
+        "cfDeath": "Death details in delivery room",
+        "byDeath": "Conservation Death Details",
+        "hbBoar": "Reserve boar death details",
+        "hbSow": "Death details of gilts",
+        "yfDeath": "Fattening death details",
+        "rs": "Sow gestation period details",
+        "br": "Sow lactation period details",
+        "produce": "Comprehensive Index of Productivity",
+        "weanTitle": "Average weaned number of litters = number of weaned piglets/number of weaned litters",
+        "weanName": "Average weaned number of litters (heads)",
+        "rsTitle": "Pregnancy = Sum of days of pregnancy of farrowing sows/Number of farrowing sows",
+        "rsName": "Pregnancy (days)",
+        "brTitle": "Lactation period = sum of days of lactating sows/number of weaned sows",
+        "brName": "Breastfeeding period (days)",
+        "npdTitle": "Daily NPD index and/days of the month*365.242199",
+        "npdName": "Non-Production Days (NPD)",
+        "lsyTitle": "LSY=(365.242199-NPD)/(pregnancy + lactation)",
+        "lsyName": "Parents per year (LSY)",
+        "psyTitle": "PSY=LSY*weaning number per litter",
+        "psyName": "Number of weaned piglets provided per year (PSY)"
+    },
+    "indexPage": {
+        "houseSet": "House Set",
+        "noHouse": "No data yet",
+        "link": "Add building",
+        "guideCom": "Company Initial Setup",
+        "guideFarm": "Initial Pig Farm Settings",
+        "watchPlat": "WatchPlat",
+        "all": "All",
+        "develop": "This feature is under development, so stay tuned",
+        "wean": "Weaning Record-New",
+        "breed": "Mating Record-New",
+        "birth": "Birth Record-New",
+        "saveErr": "Failed to save frequently used functions!",
+        "common": "Common Functions",
+        "jx": "Pig Farm Performance",
+        "cb": "Pig Farm Cost",
+        "wz": "Pig Farm Supplies",
+        "cw": "Pig Farm Finance",
+        "fy": "Pig Farm Stocking",
+        "dpz": "To be mated",
+        "dpt": "Prompt to be equipped",
+        "qpz": "Go to breeding",
+        "scrj": "First pregnancy checkup",
+        "scrjt": "Reminder for first pregnancy checkup",
+        "qrj": "Go to pregnancy checkup",
+        "srj": "Second pregnancy test",
+        "srjt": "Reminder for the second pregnancy test",
+        "fm": "To be delivered",
+        "qfm": "Go to childbirth",
+        "fmt": "Delivery Reminder",
+        "bed": "Upper delivery bed",
+        "bedt": "Reminder for delivery bed",
+        "qbed": "Go to transfer",
+        "dWean": "To be weaned",
+        "weant": "Weaning Reminder",
+        "qwean": "Go to weaning",
+        "weanWarn": "Wean Warn",
+        "breedWarn": "Breed Warn",
+        "birthWarn": "Birth Warn",
+        "qBirth": "Go to give birth",
+        "tip": "Production Tip",
+        "warn": "Production Warning",
+        "house": "house management",
+        "houseTip": "Statistics of the total house, male and female fertilizer stocks of different house types",
+        "count": "Total number of inventory",
+        "boarCount": "Boar Count",
+        "sowCount": "Sow Stock",
+        "fatCount": "Fat pig stock",
+        "outRatio": "OutRatio",
+        "boarDeathRate": "Boar Death Rate",
+        "sowFarrowingRate": "Service delivery rate",
+        "finishRate": "Matching completion rate",
+        "deliveryRate": "Delivery Rate",
+        "khRate": "Empty rate",
+        "deliveryFinishRate": "Delivery Finish Rate",
+        "weaningRate": "Weaning Survival Rate",
+        "byRate": "Nursing Survival Rate",
+        "byDeathRate": "Conservation of death rate",
+        "yfRate": "Fattening Survival Rate",
+        "yfDeathRate": "Fattening Death Rate",
+        "divideOutRate": "Column Out Rate",
+        "deliveryHouseDeathRate": "Delivery HouseDeathRate",
+        "hbRate": "Backup Survival Rate",
+        "recommend": "Recommend for you",
+        "produce": "Production Analysis Report",
+        "ad1": "Help you find out where the problems exist in the various indicators of the pig farm, and provide an effective basis for decision-making.",
+        "cost": "Cost Analysis Report",
+        "ad2": "Through the analysis report, we can clearly know whether the cost structure of each stage of the pig farm is reasonable, and where there can be cost control.",
+        "health": "Sow Health Index",
+        "ad3": "Use big data to calculate the risk of sow death and elimination in the pig farm, deal with it in time, and reduce losses",
+        "setting": "Common function settings",
+        "cancel": "Cancel",
+        "save": "Save",
+        "app": "Application Management",
+        "intelligent": "intelligent management",
+        "materialmanagement": "Material management",
+        "purchase": "Purchase",
+        "yuan": "Element",
+        "purchasethismonth": "Purchase this month",
+        "accumulatedpurchaseinthisyear": "Accumulated purchase in this year",
+        "pigsinstorage": "Pigs in storage",
+        "materialstorage": "Material storage",
+        "sale": "Sale",
+        "salesthismonth": "Sales this month",
+        "accumulatedsalesinthisyear": "Accumulated sales in this year",
+        "pigsales": "Pig sales",
+        "stock": "Stock",
+        "currentinventory": "Current inventory",
+        "materialrequisition": "Material requisition",
+        "inventorychecking": "Inventory checking",
+        "inventoryadjustment": "Inventory adjustment",
+        "other": "Other",
+        "pighousecount": "Number of buildings",
+        "dEliminate": "To be Eliminated",
+        "eliminatePrompt": "Elimination reminder",
+        "qEliminate": "Go to Eliminate"
+    },
+    "houseUnit": {
+        "watch": "Dongshe Monitoring",
+        "watchPlat": "WatchPlat",
+        "boar": "Boar",
+        "sow": "Sow",
+        "fat": "Fat Pig",
+        "EarNumber": "EarNumber",
+        "BatchName": "Batch Name",
+        "VarietiesName": "Varieties",
+        "ProductName": "Product",
+        "AlreadyProducedParity": "Parity",
+        "PigState": "State",
+        "Days": "Days",
+        "BatchForm": "Batch Form",
+        "BatchTypeName": "Batch Type",
+        "io": "All in and all out",
+        "fio": "Not all in, all out",
+        "boarDeathN": "Boar Death-New",
+        "nodata": "No data selected",
+        "boarTTN": "Boar Elimination-New",
+        "boarTurnN": "Boar Turning House-New",
+        "boarCJN": "Boar Collection-New",
+        "boarWYN": "Boar Feeding-New",
+        "boarDBN": "Boar Transfer-New",
+        "sowFQN": "Sows in Estrus-New",
+        "sowRJN": "Pregnancy Examination Record-New",
+        "sowDBN": "Sow Transfer-New",
+        "sowWYN": "Sow Feeding-New",
+        "sowTTN": "Sow Elimination-New",
+        "sowSWN": "Sow Death-New",
+        "myN": "Immunity Record-New",
+        "sowPZN": "Sow Mating-New",
+        "bbN": "Backfat Determination-New",
+        "sowTurnN": "Sow Turning to House-New",
+        "sowDNN": "Sow Weaning-New",
+        "sowFMN": "Sow farrowing-new",
+        "fatWYN": "Fat Pig Feeding-New",
+        "fatPDN": "Fat Pig Inventory-New",
+        "fatSWN": "Fatty Pig Death-New",
+        "fatTurnN": "FatTurnN",
+        "sellN": "Pig Sales-New",
+        "HB": "Backup",
+        "KH": "Empty Huai",
+        "FQ": "Return to Love",
+        "LC": "Abortion",
+        "KT": "Empty Tire",
+        "RS": "Pregnancy",
+        "BR": "Breastfeeding",
+        "DN": "Weaning",
+        "TT": "eliminate",
+        "SW": "Death",
+        "QT": "Other",
+        "sell": "Sales",
+        "DBZR": "Transfer Transfer In",
+        "advance": "Advanced Search",
+        "refresh": "Refresh",
+        "list": "List Mode",
+        "table": "Icon Mode",
+        "boarDeath": "Boar Death",
+        "boarTT": "Boars eliminated",
+        "boarTurn": "BoarTurn",
+        "boarCJ": "Boar Collection",
+        "boarWY": "Boar Feeding",
+        "boarDB": "Boar Transfer",
+        "sowFQ": "Sow in heat",
+        "sowRJ": "Sow Pregnancy Examination",
+        "sowDB": "Sow Transfer",
+        "sowWY": "Sow feeding",
+        "sowTT": "Sows eliminated",
+        "sowSW": "Sow Death",
+        "my": "Sow immunity",
+        "sowPZ": "Sow Mating",
+        "bb": "Backfat determination",
+        "sowTurn": "Sow Turning to House",
+        "sowDN": "Sow weaning",
+        "sowFM": "Sow farrowing",
+        "fatWY": "Fat pig feeding",
+        "fatPD": "Fat pig inventory",
+        "fatSW": "Fat pig died",
+        "fatTurn": "FatTurn",
+        "XS": "Pig Sales",
+        "sort": "Sort",
+        "all": "All",
+        "up": "Collapse",
+        "down": "Expand",
+        "operation": "Selected conditions",
+        "del": "Clear all",
+        "count": "Number of heads",
+        "col": "Column",
+        "day": "Number of days",
+        "index": "Serial Number",
+        "electric": "Electronic labeling",
+        "product": "Product Code",
+        "begin": "Transfer to start date",
+        "end": "Transfer to end date",
+        "batchend": "Batch end date",
+        "create": "create",
+        "delete": "delete",
+        "age": "day age",
+        "monthage": "month age",
+        "newday": "day",
+        "num": "head",
+        "avgage": "average age",
+        "quantity": "quantity",
+        "dayage": "Days/age",
+        "temperature": "temperature(℃)",
+        "temperatureTimestamp": "Temperature measurement date",
+        "backFatIndex": "Backfat thickness(mm)",
+        "backFatDate": "Backfat measurement date",
+        "feedingquantity": "Yesterday's feed intake(kg)",
+        "temperatureno": "temperature",
+        "fatcondition": "Fat condition",
+        "FeedIntake": "Yesterday's feeding",
+        "oestrus": "oestrus",
+        "backFat": "Backfat thickness",
+        "pigmanage": "Pig management"
+    },
+    "guide": {
+        "first": "First Step: Set up company basic information",
+        "departmentTitle": "Department Settings",
+        "departmentDes": "Here you can set the company's departmental support level settings, export information, etc., to help manage the company's organizational structure.",
+        "productTitle": "Product Code",
+        "productDes": "After setting the product, the male/female file and the fat pig batch can be associated with the code, and the information is also brought out by the purchase and sales.",
+        "entTitle": "Unit Option Setting",
+        "entDes": "Set the company's personalized functions, all options can be turned on or off. Special reminder: Please enable [Pig House General Warehouse].",
+        "warehouseTitle": "Warehouse Settings",
+        "warehouseDes": "After setting up the company's warehouse information, you can select the entered warehouse information when you use it for materials and semen use.",
+        "providerTitle": "Supplier Profile",
+        "providerDes": "After setting the company's supplier information, when purchasing pigs, you can select the entered supplier information.",
+        "second": "Step 2: Set up personnel information and system permissions",
+        "staffTitle": "StaffTitle",
+        "staffDes": "Maintain the company's employee information, when the employee information is created, and the production document is completed, the person who can select the document",
+        "personTitle": "Introducing Person",
+        "personDes": "Introduce other registered users of the platform, and when completing the production documents, you can choose the person to introduce.",
+        "authTitle": "Authorization Assignment",
+        "authDes": "Assign different functional permissions to different personnel under the company.",
+        "farmTitle": "Farm Assignment",
+        "farmDes": "Different pig farms under the company are assigned to different personnel for management.",
+        "third": "Pig Farm:",
+        "farmSet": "Farm Set",
+        "farmSetDes": "Manage all farms under the company, fill in the name, scale, person in charge and other information to complete the creation",
+        "pighouseTitle": "Pighouse Settings",
+        "pighouseDes": "Manage all the building information under the company, fill in the type, name, capacity, and person in charge information to complete the creation.",
+        "boarTitle": "Boar File",
+        "boarDes": "Manage all boar information, and at the same time query boar production history data, etc.",
+        "sowTitle": "Sow File",
+        "sowDes": "Manage all sow information, and at the same time query the sow's production history data, etc.",
+        "fatTitle": "Fat Pig Batch Setting",
+        "fatDes": "Prioritize setting [commodity code] to manage all fat pig batches. After the batch is created, the pigs can be managed to realize batch management.",
+        "boarInitialTitle": "Boar Initial Title",
+        "boarInitialDes": "Boars in the boar file can be initialized to a house or stall, and the weight can be recorded to provide data for subsequent boar business production.",
+        "sowInitialTitle": "SowInitialTitle",
+        "sowInitialDes": "The sows in the sow file can be initialized to a house or stall, and the weight can be recorded to provide data for subsequent sow business production.",
+        "fatInitialTitle": "Fat pig period beginning",
+        "fatInitialDes": "It is possible to initialize a batch of fat pigs to a certain house or stall, record the weight and the number of heads, and provide data for subsequent production of fat pigs.",
+        "historyTitle": "Sow History Record",
+        "historyDes": "Maintain sow breeding, pregnancy check, delivery and other information. Realize basic sow management business and provide basis for follow-up business.",
+        "departMenu": "Department Settings",
+        "productMenu": "Product Code",
+        "entMenu": "Unit Option Settings",
+        "warehouseMenu": "Warehouse Menu",
+        "providerMenu": "Provider Profile",
+        "staffMenu": "Staff File",
+        "personMenu": "Introducing people",
+        "authMenu": "Authorization Assignment",
+        "farmMenu": "Farm Assignment",
+        "farmsetMenu": "farmset menu",
+        "pighouseMenu": "Pighouse Settings",
+        "boarMenu": "Boar File",
+        "sowMenu": "Sow File",
+        "fatMenu": "Fat Pig Batch Setting",
+        "boarinitialMenu": "Boar Beginning",
+        "sowinitialMenu": "Sow in the beginning",
+        "fatinitialMenu": "Fat pig period beginning",
+        "history": "Sow History Record"
+    },
+    "prompt": {
+        "unit": "Head",
+        "PrepareBreed": "PrepareBreed",
+        "BedPrompt": "Bed Prompt",
+        "Delivery": "Delivery Reminder",
+        "WeaningPrompt": "Weaning Prompt",
+        "FirstCheck": "Reminder for the first pregnancy check",
+        "SecondCheck": "Reminder for the second pregnancy check",
+        "warn": "Warning Prompt",
+        "day": "day",
+        "noWean": "Not Weaned",
+        "noBreed": "No Breeding",
+        "noBirth": "No birth",
+        "noData": "No data temporarily",
+        "infoText": "Currently is page {0}, a total of {1} page {2} data",
+        "all": "All",
+        "clear": "Clear Conditions",
+        "state": "State",
+        "num": "Number of days",
+        "col": "Dongshe-Column",
+        "ear": "earmark"
+    },
+    "litterweightmeasure": {
+        "title": "Sow Beginning",
+        "dataDate": {
+            "text": "Beginning date"
+        },
+        "pigHouseUnitName": {
+            "text": "House name"
+        },
+        "weight": {
+            "text": "Weight (kg)",
+            "noUnit": "Weight",
+            "rangeMessage": "",
+            "patternMessage": "Keep up to two decimal places",
+            "requiredMessage": "Weight is required"
+        },
+        "createPageTitle": "Sow Period-Newly Added",
+        "editPageTitle": "Sow beginning-edit"
+    },
+    "weaningweight": {
+        "title": "Sow Beginning",
+        "dataDate": {
+            "text": "Beginning date"
+        },
+        "pigHouseUnitName": {
+            "text": "House name"
+        },
+        "weight": {
+            "text": "Weight (kg)",
+            "noUnit": "Weight",
+            "rangeMessage": "",
+            "patternMessage": "Keep up to two decimal places",
+            "requiredMessage": "Weight is required"
+        },
+        "createPageTitle": "Sow Period-Newly Added",
+        "editPageTitle": "Sow beginning-edit"
+    },
+    "growthperformance": {
+        "title": "Sow Beginning",
+        "dataDate": {
+            "text": "Beginning date"
+        },
+        "pigHouseUnitName": {
+            "text": "House name"
+        },
+        "weight": {
+            "text": "Weight (kg)",
+            "noUnit": "Weight",
+            "rangeMessage": "",
+            "patternMessage": "Keep up to two decimal places",
+            "requiredMessage": "Weight is required"
+        },
+        "createPageTitle": "Sow Period-Newly Added",
+        "editPageTitle": "Sow beginning-edit"
+    },
+    "purchasingManagement": {
+        "other": "other",
+        "etc": "etc",
+        "unitName": "category",
+        "supplier": "supplier",
+        "expand": "expand",
+        "warehouseIn": "warehouseIn",
+        "addUp": "addUp",
+        "save": "save",
+        "materialType": "materialType",
+        "placeholderProduct": "Please enter the product name",
+        "inputPrice": "Please enter the product price",
+        "search": "search",
+        "purchaseHistory": "purchaseHistory",
+        "purchaseLast": "purchaseLast",
+        "piece": "piece",
+        "product": "product",
+        "buyAgain": "buyAgain",
+        "loading": "loading"
+    },
+    "materialRequisition": {
+        "recipientsType": "recipientsType",
+        "expand": "expand",
+        "recipientsObject": "recipientsObject",
+        "recipientsWarehouse": "recipientsWarehouse",
+        "materialType": "materialType",
+        "placeholderProduct": "Please enter the product name",
+        "addUp": "addUp",
+        "save": "save",
+        "search": "search",
+        "product": "product",
+        "loading": "loading",
+        "inventory": "inventory",
+        "recipientsHistory": "recipientsHistory"
+    },
+    "materialCheck": {
+        "warehouseIn": "warehouseIn",
+        "materialType": "materialType",
+        "placeholderProduct": "Please enter the product name",
+        "appendProduct": "appendProduct",
+        "save": "save",
+        "loading": "loading",
+        "inventory": "inventory",
+        "checkHistory": "checkHistory"
+    },
+    "menuSummaryList": {
+        "JCSZ": "基础设置",
+        "SCLR": "生产录入",
+        "SCCX": "生产查询",
+        "ZHBB": "综合报表",
+        "SCFX": "生产分析",
+        "FZFX": "繁殖分析"
+    }
+}

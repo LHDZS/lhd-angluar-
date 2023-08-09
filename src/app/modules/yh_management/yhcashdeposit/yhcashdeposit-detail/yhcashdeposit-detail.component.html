@@ -1,0 +1,306 @@
+<div id="deposit" class="deposit">
+    <nx-zlw-form-detail #detailInstance [model]="model"></nx-zlw-form-detail>
+    <app-print-page class="print"
+        #printPage
+        (getSource)="getSource($event)"
+        [ENV]="environment.ENV"
+        [menu_id]="tokenData.menu_id"
+        (jump)="jump()"
+    ></app-print-page>
+    <dx-popup
+        #popup
+        container="#deposit"
+        style="z-index: 100"
+        width="80%"
+        [minWidth]="1170"
+        height="80%"
+        [showTitle]="true"
+        [title]="receiptTitle"
+        [dragEnabled]="true"
+        [closeOnOutsideClick]="false"
+        [(visible)]="receiptApplyVisible"
+        [shading]="true"
+        [resizeEnabled]="true"
+        (onHiding)="onPopupHiding()"
+    >
+        <dxo-position at="center center"> </dxo-position>
+        <div style="height: 100%; display: flex; flex-direction: column">
+            <div style="display: flex; background: #fff; padding: 0 0 20px; align-items: center">
+                <div style="flex: 1; display: flex">
+                    <div style="margin-right: 10px; display: flex; align-items: center">
+                        <span style="margin-right: 10px; white-space: nowrap"> 日期 : </span>
+                        <div>
+                            <nz-range-picker
+                                #rangePicker
+                                [(ngModel)]="searchdatereceipt"
+                                nzFormat="yyyy-MM-dd"
+                                nzSize="large"
+                                nzSeparator="|"
+                            ></nz-range-picker>
+                        </div>
+                    </div>
+                    <div style="margin-right: 10px; display: flex; align-items: center" *ngIf="!showHide" >
+                        <span style="margin-right: 10px; white-space: nowrap"> 养户名称 : </span>
+                        <dx-select-box
+                            [dataSource]="farmerNameDataSource_receiptApply"
+                            displayExpr="YHFarmerName"
+                            valueExpr="YHFarmerID"
+                            [searchEnabled]="true"
+                            [searchExpr]="YHFarmerIDSearch"
+                            [(value)]="ReceiptYHFarmerID"
+                            [showClearButton]="true"
+                        >
+                        </dx-select-box>
+                    </div>
+                    <div style="margin-right: 10px; display: flex; align-items: center">
+                        <span style="margin-right: 10px; white-space: nowrap"> 收款单号 : </span>
+                        <dx-text-box [(value)]="ReceiptNumber" placeholder=""  ></dx-text-box>
+                    </div>
+                    <div style="margin-right: 10px; display: flex; align-items: center">
+                        <span style="margin-right: 10px; white-space: nowrap"> 收款摘要 : </span>
+                        <dx-text-box [(value)]="ReceiptAbstract" placeholder=""  ></dx-text-box>
+                    </div>
+                    <div style="margin-right: 10px; display: flex; align-items: center">
+                        <span style="margin-right: 10px; white-space: nowrap"> 金额 : </span>
+                        <dx-number-box [(value)]="ReceiptAmount" placeholder=""  ></dx-number-box>
+                    </div>
+                </div>
+                <dx-button text="查询" type="default" stylingMode="contained" (onClick)="searchReceiptApply()">
+                </dx-button>
+            </div>
+            <div style="height: calc(100% - 100px)">
+                <dx-data-grid
+                    [columnAutoWidth]="true"
+                    columnResizingMode='widget'
+                    height="100%"
+                    [dataSource]="receiptApplyList"
+                    [showBorders]="true"
+                    [showRowLines]="true"
+                    [hoverStateEnabled]="true"
+                    [rowAlternationEnabled]="true"
+                >
+                    <dxo-sorting mode="multiple" [showSortIndexes]="false"></dxo-sorting>
+                    <dxo-paging [pageIndex]="0" [enabled]="true" [pageSize]="20"></dxo-paging>
+                    <dxo-pager
+                        [allowedPageSizes]="[10, 15, 20, 50, 100]"
+                        infoText="当前为第{0}页 共{1}页 {2}条数据"
+                        [showInfo]="true"
+                        [showNavigationButtons]="true"
+                        [showPageSizeSelector]="true"
+                        [visible]="true"
+                    >
+                    </dxo-pager>
+                    <dxi-column
+                        caption="日期"
+                        alignment="center"
+                        dataField="DataDate"
+                        [allowHeaderFiltering]="false"
+                        [allowFiltering]="false"
+                    ></dxi-column>
+                    <dxi-column
+                        caption="收款单据号"
+                        alignment="center"
+                        dataField="Number"
+                        [allowHeaderFiltering]="false"
+                        [allowFiltering]="false"
+                    ></dxi-column>
+                    <dxi-column
+                        caption="交款单位"
+                        alignment="center"
+                        dataField="YHFarmerName"
+                        dataType="string"
+                    ></dxi-column>
+                    <dxi-column
+                        caption="金额"
+                        alignment="center"
+                        dataField="Amount"
+                        [allowHeaderFiltering]="false"
+                        [allowFiltering]="false"
+                    ></dxi-column>
+                    <dxi-column caption="收款摘要" alignment="center" dataField="ReceiptAbstractName" dataType="string">
+                    </dxi-column>
+                    <dxi-column
+                        caption="备注"
+                        alignment="center"
+                        dataField="Remarks"
+                        [allowHeaderFiltering]="false"
+                        [allowFiltering]="false"
+                    ></dxi-column>
+                    <dxi-column
+                        caption="选择"
+                        alignment="center"
+                        cellTemplate="operateCell"
+                        [fixed]="true"
+                        fixedPosition="right"
+                    >
+                        <div *dxTemplate="let row of 'operateCell'">
+                            <div (click)="checkReceiptApply(row)">
+                                <dx-check-box [value]="checkId == row.data.NumericalOrder" ></dx-check-box>
+                            </div>
+                        </div>
+                    </dxi-column>
+                </dx-data-grid>
+            </div>
+
+            <div style="height: 40px">
+                <dx-button text="取消" style="float: right" (onClick)="onCancel()" type="contained"></dx-button>
+                <dx-button
+                    text="确定"
+                    style="float: right; margin-right: 20px"
+                    (onClick)="onReceiptApplySure()"
+                    type="default"
+                ></dx-button>
+            </div>
+        </div>
+    </dx-popup>
+    <dx-popup
+        #popup2
+        container="#deposit"
+        style="z-index: 100"
+        width="80%"
+        height="80%"
+        [minWidth]="1170"
+        [showTitle]="true"
+        [title]="paymentTitle"
+        [dragEnabled]="true"
+        [closeOnOutsideClick]="false"
+        [(visible)]="paymentApplyVisible"
+        [shading]="true"
+        [resizeEnabled]="true"
+        (onHiding)="onPopupHiding()"
+    >
+        <dxo-position at="center center"> </dxo-position>
+        <div style="height: 100%; display: flex; flex-direction: column">
+            <div style="display: flex; background: #fff; padding: 0 0 20px; align-items: center">
+                <div style="flex: 1; display: flex">
+                    <div style="margin-right: 10px; display: flex; align-items: center">
+                        <span style="margin-right: 10px; white-space: nowrap"> 日期 : </span>
+                        <div>
+                            <nz-range-picker
+                                #rangePicker
+                                [(ngModel)]="searchdatepayment"
+                                nzFormat="yyyy-MM-dd"
+                                nzSize="large"
+                                nzSeparator="|"
+                            ></nz-range-picker>
+                        </div>
+                    </div>
+                    <div style="margin-right: 10px; display: flex; align-items: center" *ngIf="!showHide">
+                        <span style="margin-right: 10px; white-space: nowrap"> 养户名称 : </span>
+                        <dx-select-box
+                            [dataSource]="farmerNameDataSource_paymentApply"
+                            displayExpr="YHFarmerName"
+                            valueExpr="YHFarmerID"
+                            [searchEnabled]="true"
+                            [searchExpr]="YHFarmerIDSearch"
+                            [(value)]="PaymentYHFarmerID"
+                            [showClearButton]="true"
+                        >
+                        </dx-select-box>
+                    </div>
+                    <div style="margin-right: 10px; display: flex; align-items: center">
+                        <span style="margin-right: 10px; white-space: nowrap"> 付款单号 : </span>
+                        <dx-text-box [(value)]="PaymentNumber" placeholder=""></dx-text-box>
+                    </div>
+                    <div style="margin-right: 10px; display: flex; align-items: center">
+                        <span style="margin-right: 10px; white-space: nowrap"> 付款摘要 : </span>
+                        <dx-text-box [(value)]="PaymentAbstract" placeholder=""  ></dx-text-box>
+                    </div>
+                    <div style="margin-right: 10px; display: flex; align-items: center">
+                        <span style="margin-right: 10px; white-space: nowrap"> 金额 : </span>
+                        <dx-number-box [(value)]="PaymentAmount" placeholder=""></dx-number-box>
+                    </div>
+                </div>
+                <dx-button text="查询" type="default" stylingMode="contained" (onClick)="searchPaymentApply()">
+                </dx-button>
+            </div>
+            <div style="height: calc(100% - 100px)">
+                <dx-data-grid
+                    [columnAutoWidth]="true"
+                    columnResizingMode='widget'
+                    height="100%"
+                    [dataSource]="paymentApplyList"
+                    [showBorders]="true"
+                    [showRowLines]="true"
+                    [hoverStateEnabled]="true"
+                    [rowAlternationEnabled]="true"
+                >
+                    <dxo-sorting mode="multiple" [showSortIndexes]="false"></dxo-sorting>
+                    <dxo-paging [pageIndex]="0" [enabled]="true" [pageSize]="20"></dxo-paging>
+                    <dxo-pager [allowedPageSizes]="[10, 15, 20, 50, 100]"
+                               infoText='当前为第{0}页 共{1}页 {2}条数据'
+                               [showInfo]="true"
+                               [showNavigationButtons]="true"
+                               [showPageSizeSelector]="true"
+                               [visible]="true">
+                    </dxo-pager>
+                    <dxi-column
+                        caption="日期"
+                        alignment="center"
+                        dataField="DataDate"
+                        [allowHeaderFiltering]="false"
+                        [allowFiltering]="false"
+                    ></dxi-column>
+                    <dxi-column
+                        caption="付款单据号"
+                        alignment="center"
+                        dataField="Number"
+                        [allowHeaderFiltering]="false"
+                        [allowFiltering]="false"
+                    ></dxi-column>
+                    <dxi-column
+                        caption="收款单位"
+                        alignment="center"
+                        dataField="YHFarmerName"
+                        [allowHeaderFiltering]="false"
+                        [allowFiltering]="false"
+                    ></dxi-column>
+                    <dxi-column
+                        caption="金额"
+                        alignment="center"
+                        dataField="Amount"
+                        [allowHeaderFiltering]="false"
+                        [allowFiltering]="false"
+                    ></dxi-column>
+                    <dxi-column
+                        caption="付款摘要"
+                        alignment="center"
+                        dataField="ReceiptAbstractName"
+                        [allowHeaderFiltering]="false"
+                        [allowFiltering]="false"
+                    ></dxi-column>
+                    <dxi-column
+                        caption="备注"
+                        alignment="center"
+                        dataField="Remarks"
+                        [allowHeaderFiltering]="false"
+                        [allowFiltering]="false"
+                    ></dxi-column>
+                    <dxi-column
+                        caption="选择"
+                        alignment="center"
+                        cellTemplate="ysoperateCell"
+                        [fixed]="true"
+                        fixedPosition="right"
+                    >
+                        <div *dxTemplate="let row of 'ysoperateCell'">
+                            <div (click)="checkPaymentApply(row)">
+                                <dx-check-box [value]="checkId == row.data.NumericalOrder"></dx-check-box>
+                            </div>
+                        </div>
+                    </dxi-column>
+                </dx-data-grid>
+            </div>
+
+            <div style="height: 40px">
+                <dx-button text="取消" style="float: right" (onClick)="onCancel()" type="contained"></dx-button>
+                <dx-button
+                    text="确定"
+                    style="float: right; margin-right: 20px"
+                    (onClick)="onPaymentApplySure()"
+                    type="default"
+                ></dx-button>
+            </div>
+        </div>
+    </dx-popup>
+</div>

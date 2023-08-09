@@ -1,0 +1,194 @@
+html,
+body {
+    margin: 0px;
+    height: 100%;
+    // overflow: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.content {
+    line-height: 1.5;
+
+    h2 {
+        font-size: 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+.content-block {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 20px;
+
+    .screen-x-small & {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+// 解决上传组件占位问题
+.editor-grid-body {
+    background-color: #fff;
+    overflow: hidden;
+    height: 99%;
+    padding-bottom: 35px;
+    box-sizing: border-box;
+}
+
+.responsive-paddings {
+    padding: 20px;
+
+    .screen-large & {
+        padding: 40px;
+    }
+}
+
+.dx-card.wide-card {
+    border-radius: 0;
+    margin-left: 0;
+    margin-right: 0;
+    border-right: 0;
+    border-left: 0;
+}
+
+.full-height-scrollable > .dx-scrollable-wrapper > .dx-scrollable-container > .dx-scrollable-content {
+    height: 100%;
+
+    & > .dx-scrollview-content {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+    }
+}
+
+$side-panel-min-width: 60px;
+
+.form-container {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f5f8;
+    min-width: 1080px;
+}
+
+// 去掉表格下面空白时的线条
+dx-data-grid .dx-row.dx-freespace-row.dx-column-lines > td {
+    border: none !important;
+}
+
+// 设置表格头部过滤器的位置
+// dx-data-grid .dx-column-indicators {
+//     margin-top: 3px;
+// }
+// 设置表格头部过滤器颜色
+dx-data-grid .dx-header-filter {
+    color: #a1a1a2 !important;
+}
+// 设置表格数据行行高
+dx-data-grid .dx-row.dx-data-row {
+    height: 32px;
+    line-height: 20px;
+}
+dx-data-grid .dx-data-row .disabled {
+    background-color: #f7f7f7;
+    cursor: not-allowed;
+}
+
+dx-data-grid .dx-data-row .error {
+    background-color: #F56C6C;
+    cursor: not-allowed;
+}
+
+.dx-datagrid-rowsview .dx-error.dx-row:not(.dx-row-focused):hover > td {
+    background-color: #F56C6C;
+}
+
+.dx-datagrid-rowsview .dx-error.dx-row:not(.dx-row-focused) > td {
+    background-color: #F56C6C;
+}
+
+a {
+    text-decoration: none;
+}
+.anticon-calendar:after {
+    font-size: 18px;
+    font-family: 'iconfont';
+    content: '\e646';
+    color: #8fa0ad;
+}
+.anticon-calendar svg {
+    display: none;
+}
+// 操作列的通用样式
+dx-data-grid .dx-row .dx-command-edit .command-cell,
+dx-data-grid .dx-row .dx-command-edit .command-cell:hover {
+    text-decoration: none;
+    color: #1890ff !important;
+    margin-right: 5px;
+}
+.dx-datagrid .dx-link {
+    text-decoration: none;
+    color: #1890ff !important;
+    margin-right: 5px;
+}
+.dx-datagrid .dx-link:last-of-type {
+    margin-right: 0px;
+}
+dx-data-grid .dx-row .dx-command-edit .command-cell:last-of-type {
+    margin-right: 0px;
+}
+dx-data-grid .dx-row .dx-command-edit .command-cell.command-cell-disabled {
+    color: #ccc !important;
+    cursor: not-allowed;
+}
+dx-data-grid .dx-datagrid-headers .dx-datagrid-table .dx-header-row > td {
+    text-align: center !important;
+}
+dx-drop-down-button .dropdwon-button-outlined {
+    background-color: #d9544f;
+    color: #fff;
+    border-radius: 4px;
+    border-color: #d9544f;
+}
+dx-drop-down-button .dropdwon-button-outlined .dx-buttongroup .dx-buttongroup-wrapper .dx-item {
+    color: #fff;
+}
+dx-drop-down-button
+    .dropdwon-button-outlined
+    .dx-buttongroup
+    .dx-buttongroup-wrapper
+    .dx-item
+    .dx-button-content
+    .dx-icon {
+    color: #fff;
+}
+dx-drop-down-button .dx-button-has-icon .dx-icon {
+    font-size: 18px;
+}
+
+.dx-toolbar-menu-section .dx-toolbar-hidden-button .dx-button {
+    color: #333;
+}
+.dx-toolbar-menu-section .dx-toolbar-hidden-button .dx-button.dx-state-hover {
+    background-color: #fdebe8;
+}
+.dx-header-row > .required > .dx-datagrid-text-content::before {
+    content: '* ';
+    color: red;
+}
+.dx-datagrid-header-panel {
+    border-bottom: none;
+}
+.dx-datagrid-rowsview .dx-select-checkboxes-hidden > tbody > tr > td > .dx-select-checkbox {
+    display: inline-block !important;
+}
+.ant-calendar-picker {
+    width: 100%;
+    min-width: 150px;
+}

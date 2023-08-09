@@ -1,0 +1,67 @@
+<div class="review-container" [ngStyle]="{'justify-content':model.isMember ? 'flex-start' : 'space-around'}">
+    <ng-container *ngFor="let item of model.levelOrder; let i = index">
+        <div class="review-creator" *ngIf="item == makingCode" [ngStyle]="{'margin-left':model.isMember ? '8px' : '40px'}">
+            <span>{{ 'reviewComponent.maker' | NxI18nTranslate }}：</span>
+            <span class="">{{ model.ownerName ? model.ownerName : '-' }}</span>
+        </div>
+        <ng-container *ngIf="!model.isMember">
+        <div class="review-audit" *ngIf="item == warehouseCode">
+            <span>{{ warehouseText }}：</span>
+            <span class="review-reviewer">{{
+                warehouseReviewer ? (warehouseReviewer['CheckedByName'] ? warehouseReviewer['CheckedByName'] : '') : ''
+            }}</span>
+            <div class="review-option">
+                <!-- true 是审核,false 是取消审核-->
+                <a
+                    href="javascript:void(0)"
+                    [ngClass]="{
+                        'review-display': permission.$$audit || permission.$$manager,
+                        'review-hidden': !permission.$$audit && !permission.$$manager
+                    }"
+                    (click)="review('warehouse', warehouseCode)"
+                    >{{
+                        warehouseReviewer ? (warehouseReviewer['IsAdd'] ? auditDisplayText : cancelAuditDisplayText) : ''
+                    }}</a
+                >
+            </div>
+        </div>
+        <div class="review-audit" *ngIf="item == financeCode">
+            <span>{{ financeText }}：</span>
+            <span class="review-reviewer">{{
+                financeReviewer ? (financeReviewer['CheckedByName'] ? financeReviewer['CheckedByName'] : '') : ''
+            }}</span>
+            <div class="review-option">
+                <!-- true 是审核,false 是取消审核-->
+                <a
+                    href="javascript:void(0)"
+                    [ngClass]="{
+                        'review-display': permission.$$audit || permission.$$manager,
+                        'review-hidden': !permission.$$audit && !permission.$$manager
+                    }"
+                    (click)="review('finance', financeCode)"
+                    >{{ financeReviewer ? (financeReviewer['IsAdd'] ? auditDisplayText : cancelAuditDisplayText) : '' }}</a
+                >
+            </div>
+        </div>
+        <div class="review-audit" *ngIf="item == reviewCode">
+            <span>{{ 'reviewComponent.audit' | NxI18nTranslate }}：</span>
+            <span class="review-reviewer">{{
+                reviewer ? (reviewer['CheckedByName'] ? reviewer['CheckedByName'] : '') : ''
+            }}</span>
+            <div class="review-option">
+                <!-- true 是审核,false 是取消审核-->
+                <a
+                    href="javascript:void(0)"
+                    [ngClass]="{
+                        'review-display': permission.$$audit || permission.$$manager,
+                        'review-hidden': !permission.$$audit && !permission.$$manager
+                    }"
+                    (click)="review('review', reviewCode)"
+                    >{{ reviewer ? (reviewer['IsAdd'] ? auditDisplayText : cancelAuditDisplayText) : '' }}</a
+                >
+            </div>
+        </div>
+        </ng-container>
+    </ng-container>
+    
+</div>

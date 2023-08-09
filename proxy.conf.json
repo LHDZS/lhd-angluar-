@@ -1,0 +1,6 @@
+{
+    "/api": {
+        "target": "https://z.t.nxin.com",
+        "secure": true
+    }
+}

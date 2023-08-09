@@ -1,0 +1,77 @@
+[
+    {
+        "caption": "*Số tai cá nhân",
+        "dataField": "EarNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Số bố",
+        "dataField": "FpigNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Số mẹ",
+        "dataField": "MpigNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số ông nội",
+        "dataField": "GfpigNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số bà nội",
+        "dataField": "GmpigNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số ông ngoại",
+        "dataField": "MgfpigNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số bà ngoại",
+        "dataField": "MgmpigNumber",
+        "dataType": "date"
+    },
+    {
+        "caption": "Số bố ông nội",
+        "dataField": "GffpigNumber",
+        "dataType": "date"
+    },
+    {
+        "caption": "Số mẹ ông nội",
+        "dataField": "GfmpigNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số bố bà nội",
+        "dataField": "GmfpigNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số mẹ bà nội",
+        "dataField": "GmmpigNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số bốông ngoại",
+        "dataField": "MgffpigNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số mẹ ông ngoại",
+        "dataField": "MgfmpigNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số bố bà ngoại",
+        "dataField": "MgmfpigNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số mẹ bà ngoại",
+        "dataField": "MgmmpigNumber",
+        "dataType": "string"
+    }
+]

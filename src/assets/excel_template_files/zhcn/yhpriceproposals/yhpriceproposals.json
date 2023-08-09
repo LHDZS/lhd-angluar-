@@ -1,0 +1,32 @@
+[
+  {
+    "caption": "*制单日期",
+    "dataField": "DataDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "*商品类型",
+    "dataField": "ProductCollectType",
+    "dataType": "string"
+  },
+  {
+    "caption": "*生效日期",
+    "dataField": "EffectDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "备注",
+    "dataField": "Remarks",
+    "dataType": "string"
+  },
+  {
+    "caption": "*商品代号",
+    "dataField": "ProductID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*单价",
+    "dataField": "UnitPrice",
+    "dataType": "string"
+  }
+]

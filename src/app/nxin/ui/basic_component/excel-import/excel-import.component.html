@@ -1,0 +1,107 @@
+<div class="nx-excel-import">
+    <dx-popup
+        #popup
+        [width]="model.width"
+        [minWidth]="model.minWidth"
+        [height]="model.height"
+        [minHeight]="model.minHeight"
+        [showTitle]="model.IsShowTitle"
+        [position]="model.position"
+        [title]="model.title"
+        [dragEnabled]="true"
+        [closeOnOutsideClick]="false"
+        [(visible)]="model.visible"
+        [shading]="true"
+        [resizeEnabled]="true"
+        (onHidden)="close()"
+        (onHiding)="closing($event)"
+    >
+        <div class="content-container">
+            <p class="content-describe">
+                {{ 'importComponent.tip' | NxI18nTranslate }}，
+                <span
+                    style="color: #d9544f; cursor: pointer"
+                    *ngIf="model.customTemplateKey && hasCustomTemplate"
+                    (click)="downloadCustomTemplateEvent()"
+                    >{{ 'importComponent.downloadTip' | NxI18nTranslate }}</span
+                >
+                <a
+                    *ngIf="!model.customTemplateKey || !hasCustomTemplate"
+                    href="{{ model.xlsxTemplatePath }}"
+                    target="_blank"
+                    download
+                    (click)="downloadTemplateEvent()"
+                    >{{ 'importComponent.downloadTip' | NxI18nTranslate }}
+                </a>
+            </p>
+            <p style="color: #d9544f; font-size: 12px" *ngIf="hasCustomTemplate">
+                *{{ model.customTemplateFileName }}已实现根据自定义单据设置自动生成，如变更单据设置请下载并且确认导入模板
+            </p>
+            <div class="import-area">
+                <div class="uploadarea" (click)="importFile()">
+                    <img src="../../../../../assets/img/upload.png" />
+                    <P class="upload">
+                        <a href="javascript:void(0)">{{ 'importComponent.clickUpload' | NxI18nTranslate }}</a>
+                    </P>
+                    <P>
+                        <label style="color: #ccc"
+                            >{{ 'importComponent.uploadSupport' | NxI18nTranslate }}xls、xlsx</label
+                        >
+                    </P>
+                </div>
+                <div class="import-files">
+                    <p class="import-files-item" *ngFor="let item of filenames">{{ item }}</p>
+                </div>
+                <div></div>
+                <p
+                    [ngClass]="{
+                        'import-tips': true,
+                        'import-tips-hidden': !hasError
+                    }"
+                >
+                    有
+                    <span class="error-nums"
+                        ><strong>{{ errMsgList.length }}</strong></span
+                    >
+                    {{ 'importComponent.error.num' | NxI18nTranslate }},&nbsp;
+                    <a href="javascript:void(0)" (click)="viewException()">{{
+                        'importComponent.error.view' | NxI18nTranslate
+                    }}</a>
+                </p>
+            </div>
+            <div class="options-container">
+                <div class="import-loading" [hidden]="!importing">
+                    <dx-load-indicator height="40" width="40"></dx-load-indicator>
+                    <p class="importing-tips">导入数据中，请耐心等待一会儿</p>
+                </div>
+                <dx-button
+                    stylingMode="contained"
+                    text="{{ importing ? importingText : importText }}"
+                    type="default"
+                    [width]="120"
+                    [disabled]="importing || hasError"
+                    (onClick)="confirmClick($event)"
+                >
+                </dx-button>
+            </div>
+        </div>
+    </dx-popup>
+    <dx-popup
+        title="{{ 'importComponent.errorListTitle' | NxI18nTranslate }}"
+        [(visible)]="isShowErrMsgTip"
+        [width]="300"
+        [height]="460"
+        [shading]="false"
+        [resizeEnabled]="true"
+        [position]="errTipPostion"
+    >
+        <div class="message-box-wrapper">
+            <dx-scroll-view width="100%" height="100%">
+                <div class="message-box-info" *ngFor="let info of errMsgList">
+                    <p [innerHTML]="info | SafeHtml"></p>
+                </div>
+                <!-- <p *ngFor="let item of errMsgList" style="color: #828282" [innerHTML]="item | SafeHtml"></p> -->
+            </dx-scroll-view>
+        </div>
+    </dx-popup>
+</div>

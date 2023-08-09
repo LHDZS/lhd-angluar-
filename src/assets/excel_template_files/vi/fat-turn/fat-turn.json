@@ -1,0 +1,41 @@
+[
+  {
+    "caption": "*Ngày chuyển chuồng",
+    "dataField": "DataDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "*Lô chuyển ra",
+    "dataField": "OutBatchId",
+    "dataType": "string"
+  },
+  {
+    "caption": "*Chuồng chuyển ra",
+    "dataField": "OutPigHouseUnitId",
+    "dataType": "string"
+  },
+  {
+    "caption": "*Lô chuyển vào",
+    "dataField": "InBatchID",
+    "dataType": "string"
+  },
+  
+  {
+    "caption": "*Chuồng chuyển vào",
+    "dataField": "InPigHouseUnitID",
+    "dataType": "string"
+  },
+
+  
+  
+  {
+    "caption": "* Số con",
+    "dataField": "PigCount",
+    "dataType": "string"
+  },
+  {
+    "caption": "Cân nặng (kg)",
+    "dataField": "Weight",
+    "dataType": "string"
+  }
+]

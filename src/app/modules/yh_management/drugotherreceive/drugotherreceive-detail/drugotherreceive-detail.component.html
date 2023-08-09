@@ -1,0 +1,434 @@
+<nx-zlw-form-detail #detailInstance [model]="model" [detailModel]="this"></nx-zlw-form-detail>
+<app-print-page class="print"
+    #printPage
+    (getSource)="getSource($event)"
+    [ENV]="environment.ENV"
+    [menu_id]="tokenData.menu_id"
+    (jump)="jump()"
+></app-print-page>
+
+<dx-popup
+    [(visible)]="outVisible"
+    width="60%"
+    [maxHeight]="600"
+    [minWidth]="1000"
+    [dragEnabled]="false"
+    [showTitle]="true"
+    (onHiding)="onPopupHiding()"
+    resizeEnabled="true"
+    [title]="popTitle"
+    showCloseButton="true"
+>
+  <dx-form #form id="form" [colCount]="4" width="100%" [(formData)]="formData"
+  validationGroup="customerData" [showOptionalMark]="false" [showRequiredMark]="true" [readOnly]="$form">
+  <dxi-item itemType="group" [colSpan]="4" [colCount]="4">
+    <dxi-item
+        [label]="{ text: '商品代号', alignment: 'right',showColon: false }"
+        editorType="dxSelectBox"
+        dataField="ProductID"
+        [editorOptions]="{
+            dataSource: cProductNameSource,
+            valueExpr: 'ProductID',
+            displayExpr: 'cProductName',
+            showClearButton:true,
+            searchEnabled:true,
+            placeholder: '请选择商品代号'
+        }"
+    >
+    </dxi-item>
+    <dxi-item [label]="{ text: '通用名', alignment: 'right' }">
+        <dx-text-box
+            showClearButton="true"
+            placeholder="请输入通用名"
+            [(value)]="formData.CommonName"
+        >
+        </dx-text-box>
+    </dxi-item>
+    <dxi-item>
+        <span></span>
+    </dxi-item>
+    <dxi-item>
+      <dx-button class="zz-dxButton"
+          text="查询"
+          (onClick)="onSearch()"
+      >
+      </dx-button>
+      <dx-button class="zz-dxButton" style="margin-left: 20px;"
+          text="重置"
+          (onClick)="reset()"
+          >
+      </dx-button>
+    </dxi-item>
+  </dxi-item>
+  </dx-form>
+  <dx-data-grid
+      #gridRef
+      style="margin-top: 20px;"
+      height="70%"
+      [dataSource]="AutoDataSourceFilter"
+      [allowColumnResizing]="true"
+      [columnAutoWidth]="true"
+      columnResizingMode='widget'
+      id="grid-container"
+      keyExpr="DetailID"
+      [(selectedRowKeys)]="selectedRows"
+      [showBorders]="true"
+      (onEditorPreparing)="onEditorPreparingFn2($event)"
+  >
+  <dxo-editing mode="cell" [allowUpdating]="true"> </dxo-editing>
+  <dxo-sorting mode="none"></dxo-sorting>
+  <dxo-selection showCheckBoxesMode="always" mode="multiple"> </dxo-selection>
+      <dxi-column dataField="cProductName" dataType="string" caption="商品代号" [allowEditing]="false" [fixed]="true"></dxi-column>
+      <dxi-column dataField="CommonName" dataType="string" caption="通用名" [allowEditing]="false" ></dxi-column>
+      <dxi-column dataField="ProductBatchName" dataType="string" caption="批号" [allowEditing]="false" ></dxi-column>
+      <dxi-column *ngIf="itemIF('2201131702170001355')"  dataField="HenhouseName" dataType="string" caption="栋舍"  [allowEditing]="false" ></dxi-column>
+      <dxi-column *ngIf="itemIF('2201131702170001255')" dataField="cQuantity" dataType="number" caption="库存数量" [allowEditing]="false" ></dxi-column>
+      <dxi-column *ngIf="itemIF('2201131702170001355')" dataField="cQuantity" dataType="number" caption="结存数量" [allowEditing]="false" ></dxi-column>
+      <dxi-column dataField="MeasureUnitName" dataType="string" caption="计量单位"  [allowEditing]="false" ></dxi-column>
+      <dxi-column *ngIf="itemIF('2201131702170001255')" caption="领用数量" dataField="Quantity" dataType="number"  [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+      <dxo-format type="fixedPoint" [precision]="4"></dxo-format>
+      </dxi-column>
+      <dxi-column *ngIf="itemIF('2201131702170001255')" caption="领用件数" dataField="Packages" dataType="number" [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+        <dxo-format type="fixedPoint" [precision]="4"></dxo-format>
+      </dxi-column>
+      <dxi-column *ngIf="itemIF('2201131702170001355')" caption="退回数量" dataField="Quantity" dataType="number"  [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+        <dxo-format type="fixedPoint" [precision]="4"></dxo-format>
+        </dxi-column>
+        <dxi-column *ngIf="itemIF('2201131702170001355')" caption="退回件数" dataField="Packages" dataType="number" [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+          <dxo-format type="fixedPoint" [precision]="4"></dxo-format>
+        </dxi-column>
+      <dxi-column dataField="ProductionPDate" dataType="string"  caption="生产日期"  [allowEditing]="false" ></dxi-column>
+      <dxi-column dataField="ProductValidity" dataType="string" caption="保质期"  [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="ValidDate" dataType="string" caption="有效日期"  [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="Specification" dataType="string" caption="规格" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="bIsStandardPackText" dataType="string" caption="标品" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="StandardPack" dataType="string" caption="标包" [allowEditing]="false"></dxi-column>
+      <dxo-summary [recalculateWhileEditing]="true">
+        <dxi-total-item column="cProductName" displayFormat="合计："></dxi-total-item>
+        <dxi-total-item
+            column="Packages"
+            summaryType="sum"
+            displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 4 }"
+        ></dxi-total-item>
+        <dxi-total-item
+            column="Quantity"
+            summaryType="sum"
+            displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 4 }"
+        ></dxi-total-item>
+        <dxi-total-item
+            column="cQuantity"
+            summaryType="sum"
+            displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 4 }"
+        ></dxi-total-item>
+    </dxo-summary>
+  </dx-data-grid>
+  <div height="40px" style="margin-top: 10px;text-align: center;">
+    <dx-form *ngIf="itemIF('2201131702170001255')" [colCount]="3" width="100%" [(formData)]="formData"
+      validationGroup="customerData" [showOptionalMark]="false" [showRequiredMark]="true">
+      <dxi-item
+          [label]="{ text: '栋舍', alignment: 'right',showColon: false }"
+          editorType="dxSelectBox"
+          dataField="HenhouseID"
+          [editorOptions]="{
+              dataSource: HenhouseSourceall,
+              valueExpr: 'HenhouseID',
+              displayExpr: 'HenhouseName',
+              showClearButton:true,
+              searchEnabled:true,
+              placeholder: '请选择栋舍'
+          }"
+      >
+      </dxi-item>
+    </dx-form>
+  </div>
+<div height="40px" style="margin-top: 10px;text-align: center;">
+    <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+    text="确定"
+    [disabled]="!selectedRows?.length"
+    (onClick)="getSelection(1)"
+  >
+  </dx-button>
+  <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+    text="确定并继续"
+    [disabled]="!selectedRows?.length"
+    (onClick)="getSelection(2)"
+  >
+  </dx-button>
+  <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+    text="关闭"
+    (onClick)="getSelection(3)"
+  >
+  </dx-button>
+</div>
+</dx-popup>
+
+<dx-popup
+    [(visible)]="outVisible2"
+    width="60%"
+    [maxHeight]="400"
+    [minWidth]="1000"
+    [dragEnabled]="false"
+    [showTitle]="true"
+    (onHiding)="onPopupHiding2()"
+    resizeEnabled="true"
+    title="批次累计领药金额："
+    showCloseButton="true"
+>
+  <dx-form #form2 id="form" [colCount]="8" width="100%" [(formData)]="TotalFormData"
+  validationGroup="customerData" [showOptionalMark]="false" [showRequiredMark]="true" [readOnly]="$form">
+    <dxi-item [label]="{ text: '养户批次', alignment: 'right',showColon: false }" [colSpan]="2" editorType="dxTextBox"
+        [editorOptions]="{ showClearButton:true,readOnly:true }" dataField="TotalYHBatchName">
+      </dxi-item>
+      <dxi-item [label]="{ text: '领苗总只数', alignment: 'right',showColon: false }" [colSpan]="2" editorType="dxTextBox"
+      [editorOptions]="{ showClearButton:true,format:'#,##0',readOnly:true }" dataField="TotalQuantity">
+    </dxi-item>
+    <dxi-item [label]="{ text: '领苗计价只数', alignment: 'right',showColon: false }" [colSpan]="2" editorType="dxTextBox"
+        [editorOptions]="{ showClearButton:true,format:'#,##0',readOnly:true }" dataField="TotalValueQuantity">
+      </dxi-item>
+      <dxi-item [label]="{ text: '批次品种', alignment: 'right',showColon: false }" [colSpan]="2" editorType="dxTextBox"
+        [editorOptions]="{ showClearButton:true,readOnly:true }" dataField="TotalBreedingName">
+      </dxi-item>
+      <dxi-item [label]="{ text: '设定只药费', alignment: 'right',showColon: false }" [colSpan]="2" editorType="dxTextBox"
+        [editorOptions]="{ showClearButton:true,format:'#,##0.##',readOnly:true }" dataField="TotalOneMedicineFee">
+      </dxi-item>
+      <dxi-item [label]="{ text: '领苗日期', alignment: 'right',showColon: false }" [colSpan]="6" editorType="dxTextBox"
+        [editorOptions]="{ showClearButton:true,readOnly:true }" dataField="TotalDataDate">
+      </dxi-item>
+  </dx-form>
+  <dx-data-grid
+      #gridRef2
+      style="margin-top: 20px;"
+      [dataSource]="lingliaoDataSource"
+      [allowColumnResizing]="true"
+      [allowColumnReordering]="true"
+      [columnAutoWidth]="true"
+      columnResizingMode='widget'
+      id="grid-container"
+      keyExpr="RecordID"
+      [showBorders]="true"
+  >
+    <!-- 弹出框表格数据存储 -->
+    <dxo-state-storing
+      [enabled]="true"
+      [type]="'custom'"
+      [storageKey]="storageKey"
+      [customSave]="customStateStoringSave"
+      [customLoad]="customStateStoringLoad"
+  ></dxo-state-storing>
+    <dxo-editing mode="cell" [allowUpdating]="false"> </dxo-editing>
+    <dxo-sorting mode="none"></dxo-sorting>
+    <template *ngFor = "let item of gridRefColumns let i = index">
+        <dxi-column
+            [fixed]="item.fixed"
+            [cssClass]="classType(item)"
+            [dataType]="item.dataType"
+            [width]="item.width"
+            [caption]="item.caption"
+            [dataField]="item.dataField"
+            [allowEditing]="item.allowEditing"
+            [alignment]="item.alignment"
+            [calculateDisplayValue]="item.calculateDisplayValue"
+            [editorOptions]="item.editorOptions"
+            [sortIndex]="item.sortIndex ? item.sortIndex : i"
+            [cellTemplate]="item.cellTemplate"
+        >   
+            <dxo-lookup
+                *ngIf="item.calculateDisplayValue"
+                [dataSource]="giveDataSource(item.lookupData.dataSource)"
+                [displayExpr]="item.lookupData.displayExpr"
+                [valueExpr]="item.lookupData.valueExpr"
+            ></dxo-lookup>
+            <dxo-format *ngIf="item.editorOptions" type="fixedPoint" [precision]="item.precision"></dxo-format>
+        </dxi-column>
+    </template>
+      <!-- <dxi-column dataField="iSortPlusName" dataType="string" caption="内置属性" [allowEditing]="false" [fixed]="true"></dxi-column>
+      <dxi-column  caption="已领金额" dataField="Amount" dataType="number" [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+        <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+        </dxi-column>
+        <dxi-column  caption="按领苗计价数只均药费" dataField="ValueAmount2" dataType="number" [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+          <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+        </dxi-column>
+        <dxi-column  caption="按领苗计价数应领金额" dataField="ValueAmount" dataType="number" [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+          <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+        </dxi-column>
+        <dxi-column  caption="按领苗计价数差额" dataField="ValueBalance" dataType="number" [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+          <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+        </dxi-column>
+        <dxi-column  caption="按领苗总只数只均药费" dataField="TotalAmount2" dataType="number" [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+          <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+        </dxi-column>
+        <dxi-column  caption="按领苗总只数应领金额" dataField="TotalAmount" dataType="number" [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+          <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+        </dxi-column>
+        <dxi-column  caption="按领苗总只数差额" dataField="TotalBalance" dataType="number" [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+          <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+        </dxi-column> -->
+  </dx-data-grid>
+<div  style="margin-top: 20px;text-align: center;">
+  <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+    text="关闭"
+    (onClick)="getSelection2(3)"
+  >
+  </dx-button>
+</div>
+</dx-popup>
+
+<!-- 引入订药申请 -->
+<dx-popup
+    [(visible)]="citeVisible"
+    width="70%"
+    [maxHeight]="700"
+    [minWidth]="1200"
+    [dragEnabled]="false"
+    [showTitle]="true"
+    resizeEnabled="true"
+    title="引入订药申请"
+    showCloseButton="true"
+    >
+    <dx-form #form id="form" [colCount]="5" width="100%" [(formData)]="citeFormData"
+    validationGroup="customerData" [showOptionalMark]="false" [showRequiredMark]="true" [readOnly]="$form"
+    (onFieldDataChanged)="onFieldDataChanged($event)">
+    <dxi-item itemType="group" [colSpan]="5" [colCount]="3">
+        <dxi-item
+            [label]="{ text: '养户名称', alignment: 'right',showColon: false }"
+            editorType="dxSelectBox"
+            dataField="YHFarmerID"
+            [editorOptions]="{
+                dataSource: YHFarmerSource,
+                valueExpr: 'YHFarmerID',
+                displayExpr: 'YHFarmerName',
+                showClearButton:true,
+                searchEnabled:true,
+                placeholder: '请选择',
+                disabled: FarmerDisabled
+            }"
+        >
+        </dxi-item>
+        <dxi-item
+          [label]="{ text: '养殖批次', alignment: 'right',showColon: false }"
+          editorType="dxSelectBox"
+          dataField="YHBatch"
+          [editorOptions]="{
+              dataSource: BatchSource,
+              valueExpr: 'YHBatchID',
+              displayExpr: 'YHBatchName',
+              showClearButton:true,
+              searchEnabled:true,
+              placeholder: '请选择',
+              disabled: BatchDisabled || !BatchSource?.length
+          }"
+        >
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '领用状态', alignment: 'right',showColon: false }"
+            editorType="dxSelectBox"
+            dataField="LyStatus"
+            [editorOptions]="{
+                dataSource: ReferenceStateSource,
+                valueExpr: 'value',
+                displayExpr: 'name',
+                showClearButton:true,
+                searchEnabled:true,
+                placeholder: '请选择'
+            }"
+        >
+        </dxi-item>
+    </dxi-item>
+    <dxi-item itemType="group" [colSpan]="5" [colCount]="3">
+        <dxi-item
+            [label]="{ text: '养户管理员',showColon: false }"
+        >
+            <span >{{citeFormData.PersonNames}}</span>
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '养殖场',showColon: false }"
+        >
+            <span>{{citeFormData.ChickenFarmName}}</span>
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '批次品种',showColon: false }"
+        >
+            <span>{{citeFormData.BreedingName}}</span>
+        </dxi-item>
+    </dxi-item>
+    <dxi-item itemType="group" [colSpan]="5" [colCount]="3">
+        <dxi-item
+            [label]="{ text: '当前存栏',showColon: false }"
+        >
+            <span>{{citeFormData.CurrQuantity}}</span>
+        </dxi-item>
+        <dxi-item
+            [label]="{ text: '当前日龄',showColon: false }"
+        >
+            <span>{{citeFormData.CurrDaysOld}}</span>
+        </dxi-item>
+    </dxi-item>
+    </dx-form>
+    <dx-data-grid 
+        class="data-grid-wrapper"
+        #citeDetailGrid
+        [dataSource]="citeDataSource"
+        width="100%"
+        height="calc(100% - 140px)"
+        [allowColumnResizing]="true"
+        [columnAutoWidth]="true"
+        columnResizingMode='widget'
+        [showBorders]="true"
+        [(selectedRowKeys)]="citeSelectedRows"
+        keyExpr="NumericalOrderDetailSource"
+        (onEditorPreparing)="onEditorPreparingFn2($event)"
+    >   
+        <!-- <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager
+            [showPageSizeSelector]="true"
+            [allowedPageSizes]="[10, 25, 50, 100]"
+        ></dxo-pager> -->
+        <dxo-paging [pageIndex]="0" [enabled]="true" [pageSize]="10"></dxo-paging>
+        <dxo-pager
+            [allowedPageSizes]="[10, 15, 20, 50, 100]"
+            infoText="当前为第{0}页 共{1}页 {2}条数据"
+            [showInfo]="true"
+            [showNavigationButtons]="true"
+            [showPageSizeSelector]="true"
+            [visible]="true"
+        >
+        </dxo-pager>
+        <dxo-editing mode="cell" [allowUpdating]="true"> </dxo-editing>
+        <dxo-sorting mode="none"></dxo-sorting>
+        <dxo-selection showCheckBoxesMode="always" selectAllMode="page" mode="multiple"></dxo-selection>
+        <dxi-column width="80" caption="领用状态" dataField="QuoteStatusText" alignment="center" [fixed]="true" cellTemplate="QuoteStatusCell" 
+            [allowEditing]="false" cssClass="disabled">
+            <div *dxTemplate="let item of 'QuoteStatusCell'">
+                <span [ngStyle]="typeColor(item.row.data.LyStatus)">{{item.row.data.LyStatusText}}</span>
+            </div>
+        </dxi-column>
+        <dxi-column width="100" caption="单据号" dataField="NumberSource" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="100" caption="养户名称" dataField="YHFarmerName" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="120" caption="养殖批次" dataField="YHBatchName" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="100" caption="行号" dataField="LySerialNo" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="100" caption="申请日期" dataField="DataDate" dataType="date" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="100" caption="申请人" dataField="PersonName" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="100" caption="通用名" dataField="LyCommonName" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="110" caption="商品代号" dataField="LyProductName" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="100" caption="计量单位" dataField="LyMeasureUnitName" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="100" caption="数量" dataField="LyQuantity" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="100" caption="生产厂家" dataField="Vendor" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+        <dxi-column width="100" caption="备注" dataField="Remarks" alignment="center" [allowEditing]="false" cssClass="disabled"></dxi-column>
+    </dx-data-grid>
+    <div height="40px" style="margin-top: 10px;text-align: center;">
+        <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+            text="确定"
+            [disabled]="!citeSelectedRows?.length"
+            (onClick)="getSelection3(1)"
+        >
+        </dx-button>
+        <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+            text="关闭"
+            (onClick)="getSelection3(3)"
+        >
+        </dx-button>
+    </div>
+</dx-popup>

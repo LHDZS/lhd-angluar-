@@ -1,0 +1,23 @@
+<dx-tab-panel
+    #tabPanel
+    height="calc(100% - 60px)"
+    [selectedIndex]="0"
+    [loop]="false"
+    [animationEnabled]="true"
+    [swipeEnabled]="false"
+    (onTitleClick)="TitleClick($event)"
+>
+<dxi-item title="整单列表">
+    <div class="form-container">
+        <nx-zlw-header-search-panel #headerSearchPanel [model]="searchPanelModel"></nx-zlw-header-search-panel>
+        <nx-zlw-toolbar-panel #toolbar [model]="toolbarPanelModel"></nx-zlw-toolbar-panel>
+        <div class="data-grid-wrapper">
+            <nx-zlw-form-list #list [model]="dataGridModel"></nx-zlw-form-list>
+        </div>
+    </div>
+    <nx-excel-import #excel [model]="excelModel"></nx-excel-import>
+</dxi-item>
+<dxi-item title="明细列表">
+    <yhpoultrysales-list-detail ></yhpoultrysales-list-detail>
+</dxi-item>
+</dx-tab-panel>

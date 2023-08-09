@@ -1,0 +1,28 @@
+[
+    {
+        "caption": "*Ngày đo",
+        "dataField": "DataDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "*Nhân viên đo",
+        "dataField": "PersonID",
+        "dataType": "string"
+    },
+    {
+        "caption": "* Số tai heo nái",
+        "dataField": "SowEarNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "* Số con đang nuôi",
+        "dataField": "PigCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Cân nặng ổ 21 ngày tuổi",
+        "dataField": "PigTotalWeight",
+        "dataType": "string"
+    }
+    
+]

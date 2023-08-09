@@ -1,0 +1,33 @@
+[
+        {
+          "caption": "* 淘汰日期",
+          "dataField": "DataDate",
+          "dataType": "date"
+        },
+        {
+          "caption": "母猪批次",
+          "dataField": "BatchID",
+          "dataType": "string"
+        },
+        {
+          "caption": "* 耳号",
+          "dataField": "EarNumber",
+          "dataType": "string"
+        },
+        {
+          "caption": "* 是否离场",
+          "dataField": "IsLeave",
+          "dataType": "string"
+        },
+        {
+          "caption": "* 淘汰原因",
+          "dataField": "DeathReasonID",
+          "dataType": "string"
+        },
+        {
+          "caption": "* 重量（公斤）",
+          "dataField": "Weight",
+          "dataType": "string"
+        }
+
+]

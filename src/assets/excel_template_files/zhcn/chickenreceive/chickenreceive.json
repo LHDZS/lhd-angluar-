@@ -1,0 +1,85 @@
+[
+    {
+      "caption": "*日期",
+      "dataField": "DataDate",
+      "dataType": "date"
+    },
+    {
+      "caption": "*养户名称",
+      "dataField": "YHFarmerID",
+      "dataType": "string"
+    },
+    {
+      "caption": "*养户批次",
+      "dataField": "YHBatch",
+      "dataType": "string"
+    },
+    {
+      "caption": "*领苗日龄",
+      "dataField": "DaysOld",
+      "dataType": "string"
+    },
+    {
+      "caption": "*总部仓库",
+      "dataField": "OutWarehouse",
+      "dataType": "string"
+    },{
+      "caption": "*苗源类型",
+      "dataField": "SourceType",
+      "dataType": "string"
+    },{
+      "caption": "苗供应商",
+      "dataField": "SupplierID",
+      "dataType": "string"
+    },
+    {
+      "caption": "司机",
+      "dataField": "Driver",
+      "dataType": "string"
+    },
+    {
+      "caption": "*期初",
+      "dataField": "isbegin",
+      "dataType": "string"
+    },
+    {
+      "caption": "*商品代号",
+      "dataField": "ProductID",
+      "dataType": "string"
+    },
+    {
+      "caption": "批号",
+      "dataField": "ProductBatchID",
+      "dataType": "string"
+    },
+    {
+      "caption": "计价只数",
+      "dataField": "ValueQuantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "*单价",
+      "dataField": "UnitPrice",
+      "dataType": "string"
+    },
+    {
+      "caption": "*途补只数",
+      "dataField": "DonateQuantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "栋舍",
+      "dataField": "HenhouseID",
+      "dataType": "string"
+    },
+    {
+      "caption": "*赠",
+      "dataField": "Gift",
+      "dataType": "string"
+    },
+    {
+      "caption": "备注",
+      "dataField": "RemarksDetail",
+      "dataType": "string"
+    }
+]

@@ -1,0 +1,43 @@
+:host {
+    .editor-header-item {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        font-size: 14px;
+        .label {
+            margin-right: 5px;
+            white-space: nowrap;
+            flex: none;
+            text-align: right;
+        }
+        ::ng-deep label[required]::before {
+            color: red;
+            content: '* ';
+            font-weight: 600;
+        }
+        ::ng-deep label[required='false']::before {
+            content: '';
+        }
+        .editor {
+            height: 100%;
+            max-width: 230px;
+            min-width: 230px;
+            width: 50%;
+            display: flex;
+            align-items: center;
+            ::ng-deep .dx-texteditor{
+                width: 100%;
+            }
+        }
+        .editorMax {
+            height: 100%;
+            width: 80%;
+            max-width: 260px;
+            display: flex;
+            align-items: center;
+            ::ng-deep .dx-texteditor{
+                width: 100%;
+            }
+        }
+    }
+}

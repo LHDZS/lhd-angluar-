@@ -1,0 +1,72 @@
+<div [class]="heightType ? 'editor-grid-container editor-grid-height' : 'editor-grid-container'">
+    <div class="editor-grid-fixed-toolbar-wrapper" *ngIf="_toolbar">
+        <ng-content select="editor-toolbar"></ng-content>
+    </div>
+    <div
+        class="editor-grid-content-wrapper"
+        [ngClass]="{
+            'has-fixed-toolbar': _toolbar
+        }"
+    >
+        <div
+            class="editor-grid-scroll-content"
+            [ngClass]="{
+                'has-fixed-review': (_review || _remoteReveiw) && mode == 'edit'
+            }"
+        >   
+            
+            <div class="header-wrapper" *ngIf="_header">
+                <ng-content select="editor-header"></ng-content>
+            </div>
+            <div
+                class="data-grid-wrapper"
+                [ngStyle]="{
+                    height: __gridWrapperHeight
+                }"
+                *ngIf="_dataGrid && !_multipleGrid && !_headerGrid && !_tabsGrid"
+            >
+                <ng-content select="dx-data-grid"></ng-content>
+            </div>
+            <div class="tabs-grid-wrapper" *ngIf="_tabsGrid">
+                <ng-content select="editor-tabs-grid"></ng-content>
+            </div>
+            <div class="tabs-header-grid" *ngIf="_headerGrid">
+                <ng-content select="editor-header-grid"></ng-content>
+            </div>
+            <div class="editor-multiple-grid-wrapper" *ngIf="_multipleGrid">
+                <ng-content select="editor-multiple-grid"></ng-content>
+            </div>
+            <div class="option-row-wrapper" *ngIf="_dataGrid && _optionRow && !_multipleGrid">
+                <ng-content select="editor-option-row"></ng-content>
+            </div>
+            <div class="remark-wrapper" *ngIf="_remark">
+                <ng-content select="editor-remark"></ng-content>
+            </div>
+            <div class="html-editor-wrapper">
+                <ng-content select="editor-html-editor"></ng-content>
+            </div>
+            <div class="customize-template">
+                <ng-content select="editor-customize-template"></ng-content>
+            </div>
+            <div class="approval-wrapper">
+                <ng-content select="editor-approval"></ng-content>
+            </div>
+            <div class="reviewed-shadow" *ngIf="_reviewed">
+                <div
+                    [ngClass]="{
+                        'reviewed-icon': true,
+                        'reviewed-zh': _lang == 'zh',
+                        'reviewed-vi': _lang == 'vi'
+                    }"
+                ></div>
+            </div>
+        </div>
+        <div class="editor-grid-fixed-review-wrapper" *ngIf=" (_review || _remoteReveiw ) && mode == 'edit'">
+            <ng-content select="editor-review"></ng-content>
+            <ng-content select="editor-review-remote"></ng-content>
+        </div>
+        <div class="deleted-shadow" *ngIf="_deleted">
+            <span class="content">单据已被删除</span>
+        </div>
+    </div>
+</div>

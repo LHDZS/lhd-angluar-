@@ -1,0 +1,9 @@
+<div class="editor-tabs-grid">
+    <div class="editor-tabs"><span *ngFor="let item of companies let i=index" [class]="tabIndex == i ? 'opt' : ''" (click)="tabsClick(item,i)">{{item.CompanyName}}</span></div>
+    <div id="product-details">
+        <div class="editor-tree"><span *ngFor="let item of products let i=index" [class]="treeIndex == i ? 'opt' : ''" (click)="selectItem(item,i)">{{item.text}}</span></div>
+        <div class="editor-grid">
+            <ng-content select="dx-data-grid"></ng-content>
+        </div>
+    </div>
+</div>

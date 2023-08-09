@@ -1,0 +1,90 @@
+:host .header-search-panel {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    background-color: #fff;
+    transition: 0.5;
+    position: relative;
+    display: flex;
+    .overlap {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 10px;
+        background: #fff;
+        z-index: 100;
+    }
+
+    .search-conditions {
+        flex: 1;
+        table{
+            border:none;
+            width:100%;
+        }
+        tr{ 
+            height: 56px;
+            
+        }
+        
+        .column-label{
+            text-align: right;
+            white-space: nowrap;
+            padding-right: 6px;
+            width:1%;
+        }
+        .column-content{
+            width:30%;
+            padding-right: 10px;
+        }
+        .column-content > *{
+            max-width: 300px;
+        }
+        
+        
+    }
+
+    .search-button {
+        padding-top: 8px;
+        white-space: nowrap;
+        .button-item {
+            display: inline-block;
+            margin-left: 14px;
+            .open-button {
+                display: flex;
+                align-items: center;
+                height: 34px;
+                cursor: pointer;
+            }
+            .open-button:hover {
+                color: #d9544f;
+            }
+        }
+
+        .button-item:first-child {
+            margin-left: 0px;
+        }
+    }
+}
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-label .selectbox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-label .datebox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-label .textbox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-label .span-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-label .tagbox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .range-date-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-label .radio-group-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .selectbox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .datebox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .textbox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .span-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .tagbox-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .range-date-widget,
+:host .header-search-panel .search-conditions .search-condition-item .search-condition-widget .radio-group-widget {
+    width: calc(100% - 10px);
+    max-width: 300px;
+}
+
+:host ::ng-deep .dx-button-mode-outlined {
+    border-color: #e5e5e5;
+}

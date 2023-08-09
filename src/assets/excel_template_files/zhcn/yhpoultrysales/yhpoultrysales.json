@@ -1,0 +1,57 @@
+[
+    {
+      "caption": "*订单日期",
+      "dataField": "DataDate",
+      "dataType": "string"
+    },
+    {
+      "caption": "*客户",
+      "dataField": "CustomerID",
+      "dataType": "string"
+    },
+    {
+      "caption": "业务员",
+      "dataField": "SalesManID",
+      "dataType": "string"
+    },
+    {
+      "caption": "*部门",
+      "dataField": "MarketID",
+      "dataType": "string"
+    },
+    {
+      "caption": "*销售日期",
+      "dataField": "ReqDeliveryDate",
+      "dataType": "string"
+    },
+    {
+      "caption": "时段",
+      "dataField": "SalesPeriod",
+      "dataType": "string"
+    },
+    {
+      "caption": "*商品代号",
+      "dataField": "ProductID",
+      "dataType": "string"
+    },
+    {
+      "caption": "*只数",
+      "dataField": "Quantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "*单价",
+      "dataField": "UnitPrice",
+      "dataType": "string"
+    },
+    {
+      "caption": "明细备注",
+      "dataField": "RemarksDetail",
+      "dataType": "string"
+    },
+    {
+      "caption": "表头备注",
+      "dataField": "Remarks",
+      "dataType": "string"
+    }
+]

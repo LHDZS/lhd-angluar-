@@ -1,0 +1,104 @@
+[
+    {
+      "caption": "*Nhân viên",
+      "dataField": "PersonID",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Ngày",
+      "dataField": "DataDate",
+      "dataType": "date"
+    },
+    {
+      "caption": "* Loại heo",
+      "dataField": "PigType",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Loại mua",
+      "dataField": "PurchaseType",
+      "dataType": "string"
+    },
+  
+    {
+      "caption": "*Đơn vị hạch toán",
+      "dataField": "TicketedPointId",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Nhà cung cấp",
+      "dataField": "SupplierId",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Diễn giải",
+      "dataField": "PurchaseAbstract",
+      "dataType": "string"
+    },
+    {
+        "caption": "*Chuồng",
+        "dataField": "PigHouseUnitId",
+        "dataType": "string"
+    },
+    {
+      "caption": "*Lô/số tai",
+      "dataField": "PigId",
+      "dataType": "string"
+    },
+    {
+      "caption": "Vào lô",
+      "dataField": "InBatchId",
+      "dataType": "string"
+    },
+    {
+      "caption": "Giống heo",
+      "dataField": "Varieties",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Số con",
+      "dataField": "Quantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Tổng trọng lượng",
+      "dataField": "PigTotalWeight",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Đơn giá kg",
+      "dataField": "KGUnitPrice",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Tổng tiền",
+      "dataField": "Amount",
+      "dataType": "string"
+    },
+    {
+      "caption": "Số tiền điều chỉnh",
+      "dataField": "AmountAdjust",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Số tiền thanh toán",
+      "dataField": "AmountTotal",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Tặng",
+      "dataField": "FreeOrNot",
+      "dataType": "string"
+    },
+    {
+      "caption": "Heo nái chờ phân bổ",
+      "dataField": "DeferredExpenses",
+      "dataType": "string"
+    },
+    {
+      "caption": "Tuổi trung bình mỗi ngày",
+      "dataField": "ShowAge",
+      "dataType": "string"
+  }
+]
+  

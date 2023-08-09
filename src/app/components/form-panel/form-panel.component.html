@@ -1,0 +1,227 @@
+<div style="position: relative">
+    <a
+        *ngIf="model.caption && makingPermission.$$making"
+        class="iconfont iconset setting_btn"
+        href="javascript:void(0)"
+        (click)="this.model.columnSettingDisabled = !this.model.columnSettingDisabled"
+    ></a>
+    <dx-form
+        #form
+        id="form"
+        [colCount]="7"
+        width="100%"
+        [(formData)]="model.data"
+        style="padding-right: 10px"
+        validationGroup="customerData"
+        [showOptionalMark]="false"
+        [showRequiredMark]="true"
+        [readOnly]="model.readOnly"
+        (onFieldDataChanged)="onFieldDataChanged($event)"
+    >
+        <dxi-item itemType="group" *ngIf="model.caption" [caption]="model.caption" [colSpan]="7" [colCount]="1">
+        </dxi-item>
+        <dxi-item itemType="group" [colSpan]="6" [colCount]="3">
+            <div *ngFor="let item of conditionArr; let i = index">
+                <dxi-item
+                    *ngIf="!item.hasTemplate"
+                    [label]="{ text: item.label, alignment: 'right' }"
+                    [editorOptions]="item.editorOptions"
+                    [dataField]="item.dataField"
+                    [editorType]="item.editorType"
+                    [colSpan]="item.colSpan"
+                    [visible]="item.visible"
+                >
+                    <dxi-validation-rule
+                        *ngIf="item.required"
+                        type="required"
+                        [message]="item.validationMessage"
+                    ></dxi-validation-rule>
+                    <dxi-validation-rule
+                        *ngIf="!item.required && item.requiredType === 'pattern'"
+                        type="pattern"
+                        [pattern]="item.requiredPattern"
+                        [message]="item.validationMessage"
+                    >
+                    </dxi-validation-rule>
+                </dxi-item>
+                <dxi-item *ngIf="item.hasTemplate && item.visible">
+                    <div style="display: flex; align-items: center">
+                        <div class="search-condition-label" [ngStyle]="{ 'text-align': 'right' }">
+                            <span *ngIf="item.required" class="star">*</span>
+                            {{ item.label }}：
+                        </div>
+                        <div class="product-wrapper">
+                            <dx-select-box
+                                *ngIf="item.editorType === 'dxSelectBox'"
+                                [(value)]="model.data[item.dataField]"
+                                [(dataSource)]="item.editorOptions.items"
+                                [displayExpr]="item.editorOptions.displayExpr"
+                                [valueExpr]="item.editorOptions.valueExpr"
+                                [placeholder]="item.editorOptions.placeholder"
+                                [searchEnabled]="item.editorOptions.searchEnabled"
+                                [readOnly]="model.readOnly"
+                                [disabled]="item.editorOptions.disabled"
+                                width="100%"
+                                (onValueChanged)="onValueChanged($event, item)"
+                                (onFocusIn)="item.conditionFun.onFocusIn()"
+                                itemTemplate="selectTemplate"
+                            >
+                                <div *dxTemplate="let ite of 'selectTemplate'">
+                                    <div [title]="ite[item.editorOptions.displayExpr]">
+                                        {{ ite[item.editorOptions.displayExpr] }}
+                                    </div>
+                                </div>
+                                <dx-validator #validator>
+                                    <dxi-validation-rule
+                                        *ngIf="item.required && item.requiredType !== 'pattern'"
+                                        type="required"
+                                        [message]="item.validationMessage"
+                                    >
+                                    </dxi-validation-rule>
+                                    <dxi-validation-rule
+                                        *ngIf="item.requiredType === 'pattern'"
+                                        type="pattern"
+                                        [pattern]="item.requiredPattern"
+                                        [message]="item.validationMessage"
+                                    >
+                                    </dxi-validation-rule>
+                                </dx-validator>
+                            </dx-select-box>
+                            <!-- <p *ngIf="item.editorType == 'dxTextBox'">
+                                {{ item.required }}{{ item.validationMessage }}
+                            </p> -->
+                            <dx-text-box
+                                *ngIf="item.editorType == 'dxTextBox'"
+                                width="100%"
+                                [(value)]="model.data[item.dataField]"
+                                [showClearButton]="item.editorOptions.showClearButton"
+                                [disabled]="item.editorOptions.disabled"
+                                [readOnly]="item.editorOptions.readOnly"
+                                (onValueChanged)="onValueChanged($event, item)"
+                                (onFocusIn)="item.conditionFun.onFocusIn()"
+                                [placeholder]="item.editorOptions.placeholder"
+                            >
+                                <dx-validator #validator>
+                                    <dxi-validation-rule
+                                        *ngIf="item.required"
+                                        type="required"
+                                        [message]="item.validationMessage"
+                                    >
+                                    </dxi-validation-rule>
+                                    <dxi-validation-rule
+                                        *ngIf="item.requiredType === 'pattern'"
+                                        type="pattern"
+                                        [pattern]="item.requiredPattern"
+                                        [message]="item.validationMessage"
+                                    >
+                                    </dxi-validation-rule>
+                                </dx-validator>
+                            </dx-text-box>
+                            <dx-date-box
+                                *ngIf="item.editorType == 'dxDateBox'"
+                                width="100%"
+                                [(value)]="model.data.BirthDate"
+                                [openOnFieldClick]="true"
+                                [showClearButton]="true"
+                                dateSerializationFormat="yyyy-MM-dd"
+                                [acceptCustomValue]="true"
+                                displayFormat="shortdate"
+                                [placeholder]="item.editorOptions.placeholder"
+                                (onValueChanged)="onValueChanged($event, item)"
+                                [max]="item.editorOptions.max"
+                                [readOnly]="model.readOnly"
+                            >
+                            </dx-date-box>
+                            <a
+                                *ngIf="item.hasTooltip"
+                                [nzTooltipTitle]="item.tooltipTitle"
+                                nz-tooltip
+                                id="link"
+                                style="color: #666666; font-size: 24px !important; margin-left: 10px"
+                                [class]="item.tooltipClass"
+                                href="javascript:void(0)"
+                                (click)="item.conditionFun.tooltipClick()"
+                            ></a>
+                        </div>
+                    </div>
+                </dxi-item>
+            </div>
+        </dxi-item>
+        <dxi-item itemtype="empty" *ngIf="model.hasQrcode" style="width: 240px">
+            <div
+                class="pic"
+                style="height: 155px"
+                [ngStyle]="{
+                    'background-image': model.qrcodeUrl ? 'url(' + model.qrcodeUrl + ')' : '',
+                    height: model.qrcodeUrl ? '155px' : '1px'
+                }"
+            ></div>
+        </dxi-item>
+    </dx-form>
+</div>
+<dx-popup
+    #popup
+    [width]="600"
+    [height]="500"
+    [showTitle]="true"
+    title="表单设置"
+    [dragEnabled]="true"
+    [closeOnOutsideClick]="false"
+    [(visible)]="model.columnSettingDisabled"
+    [shading]="false"
+    [resizeEnabled]="true"
+    (onHidden)="_hidden()"
+>
+    <div
+        style="height: 100%; display: flex; justify-content: space-between; align-items: center; flex-direction: column"
+    >
+        <div style="height: calc(100% - 60px); width: 100%">
+            <dx-data-grid
+                #dataGrid
+                id="gridContainer"
+                width="100%"
+                height="100%"
+                [(dataSource)]="model.conditionItems"
+                (onEditorPreparing)="onEditorPreparing($event)"
+            >
+                <dxo-row-dragging
+                    [allowReordering]="true"
+                    [onReorder]="onReorder"
+                    [onDragStart]="onDragStart"
+                    [showDragIcons]="true"
+                    [allowReordering]="false"
+                ></dxo-row-dragging>
+                <dxo-scrolling mode="virtual"></dxo-scrolling>
+                <dxo-editing mode="cell" [allowUpdating]="true"> </dxo-editing>
+                <dxo-sorting mode="none"></dxo-sorting>
+                <dxi-column caption="字段名称" dataField="showLabel" [allowEditing]="false"></dxi-column>
+                <dxi-column caption="显示名称" dataField="label"></dxi-column>
+                <dxi-column
+                    caption="必填项"
+                    dataField="required"
+                    dataType="boolean"
+                    [width]="80"
+                    [showEditorAlways]="true"
+                ></dxi-column>
+                <dxi-column
+                    caption="显示"
+                    dataField="headVisible"
+                    [width]="80"
+                    dataType="boolean"
+                    [showEditorAlways]="true"
+                ></dxi-column>
+            </dx-data-grid>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: center">
+            <dx-button
+                text="取消"
+                type="default"
+                width="100px"
+                style="margin-right: 20px"
+                (onClick)="_onCancel()"
+            ></dx-button>
+            <dx-button text="保存" type="default" width="100px" (onClick)="_onSave()"></dx-button>
+        </div>
+    </div>
+</dx-popup>

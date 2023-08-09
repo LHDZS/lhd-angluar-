@@ -1,0 +1,41 @@
+{
+    "items": [
+        {
+            "key": "@button-default-bg",
+            "value": "rgba(217, 84, 79, 1)"
+        },
+        {
+            "key": "@button-default-border-color",
+            "value": "rgba(205, 66, 60, 1)"
+        },
+        {
+            "key": "@datagrid-selection-bg",
+            "value": "rgba(255, 241, 240, 1)"
+        },
+        {
+            "key": "@datagrid-row-selected-color",
+            "value": "rgba(51, 51, 51, 1)"
+        },
+        {
+            "key": "@datagrid-columnchooser-item-color",
+            "value": "rgba(92, 96, 100, 1)"
+        },
+        {
+            "key": "@datagrid-columnchooser-font-weight",
+            "value": "normal"
+        },
+        {
+            "key": "@SCHEDULER_APPOINTMENT_BASE_COLOR",
+            "value": "rgba(217, 84, 79, 1)"
+        },
+        {
+            "key": "@SCHEDULER_CURRENT_TIME_CELL_COLOR",
+            "value": "rgba(217, 84, 79, 1)"
+        }
+    ],
+    "baseTheme": "generic.carmine",
+    "outputColorScheme": "custom-scheme",
+    "makeSwatch": false,
+    "version": "20.1.4",
+    "widgets": []
+}

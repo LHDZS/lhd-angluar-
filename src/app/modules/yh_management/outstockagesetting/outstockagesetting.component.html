@@ -1,0 +1,50 @@
+<view-container>
+    <dx-load-panel shadingColor="rgba(0,0,0,0)" [showPane]="true" [shading]="true" [showIndicator]="true"
+        [(visible)]="loading">
+    </dx-load-panel>
+    <editor-grid #editorGrid [fullScreen]="false" [mode]="mode">
+        <editor-toolbar>
+            <dx-button position="left" [elementAttr]="{ name: 'save-btn' }" (onClick)="onSave()"></dx-button>
+            <dx-button position="left" [elementAttr]="{ name: 'edit-btn' }" (onClick)="onUpdate('1')"></dx-button>
+        </editor-toolbar>
+        <editor-multiple-grid>
+            <editor-grid-tab (onOptionClick)="onSettingOptionClick($event)">
+                <editor-grid-item  title=" " [options]="[{ text: '+ 增行', key: 'add',visible:edited },{ text: '- 删行', key: 'del',visible:edited }]">
+                    <dx-data-grid
+                        #detailGrid
+                        [dataSource]="settingDataSource"
+                        width="100%"
+                        height="100%"
+                        [sorting]="false"
+                        (onEditorPreparing)="onEditorPreparingFn($event)"
+                    >
+                        <dxi-column maxWidth="30" cssClass="disabled" caption="序号" dataField="IDENTITY_RECORD" [allowEditing]="false"  alignment="center"></dxi-column>
+                        <dxi-column cssClass="required" calculateDisplayValue="BreedingName" caption="品种" dataField="BreedingID" alignment="center" >
+                            <dxo-lookup
+                                [dataSource]="BreedingDataSource"
+                                displayExpr="BreedingName"
+                                allowClearing = "true"
+                                valueExpr="BreedingID">
+                            ></dxo-lookup>
+                        </dxi-column>
+                        <dxi-column cssClass="required" calculateDisplayValue="SexTypeName" caption="公母" dataField="SexType" alignment="center" >
+                            <dxo-lookup
+                                [dataSource]="SexTypeDataSource"
+                                displayExpr="SexTypeName"
+                                allowClearing = "true"
+                                valueExpr="SexType">
+                            ></dxo-lookup>
+                        </dxi-column>
+                        <dxi-column cssClass="required"  caption="最小出栏日龄" dataField="MinDaysOld" dataType="number" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+                            <dxo-format type="fixedPoint" [precision]="0"></dxo-format>
+                        </dxi-column>
+                        <dxi-column caption="最大出栏日龄" dataField="MaxDaysOld" dataType="number" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+                            <dxo-format type="fixedPoint" [precision]="0"></dxo-format>
+                        </dxi-column>
+                        <dxo-editing mode="cell" [enabled]="!edited" [allowUpdating]="!edited"></dxo-editing>
+                    </dx-data-grid>
+                </editor-grid-item>
+            </editor-grid-tab>
+        </editor-multiple-grid>
+    </editor-grid>
+</view-container>

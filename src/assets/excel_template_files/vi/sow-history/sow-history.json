@@ -1,0 +1,82 @@
+[
+    {
+        "caption": "*Số tai heo cái",
+        "dataField": "SowEarNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Ngày phối giống",
+        "dataField": "BreedingDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "Số tai heo đực",
+        "dataField": "BoarEarNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "Ngày khám thai",
+        "dataField": "PregnancyDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "Kết quả khám thai",
+        "dataField": "PregnancyResult",
+        "dataType": "string"
+    },
+    {
+        "caption": "Ngày đẻ",
+        "dataField": "FarrowingDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "Số con khỏe",
+        "dataField": "HealthCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Tổng cân nặng con khỏe",
+        "dataField": "HealthTotalWeight",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số con yếu",
+        "dataField": "WeakCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số cin dị dạng",
+        "dataField": "DeformityCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số thai chết",
+        "dataField": "StillbirthCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số thai lưu",
+        "dataField": "MummyCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Lứa",
+        "dataField": "Parity",
+        "dataType": "string"
+    },
+    {
+        "caption": "Ngày cai sữa",
+        "dataField": "WeaningDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "Số con cai sữa",
+        "dataField": "WeaningCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Cân nặng ổ cai sữa",
+        "dataField": "WeaningTotalWeight",
+        "dataType": "string"
+    }
+]

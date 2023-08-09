@@ -1,0 +1,212 @@
+:host .form-container {
+    background-color: #fff;
+}
+
+:host .form-toolbar {
+    width           : 100%;
+    padding         : 8px;
+    background-color: #ffffff;
+    box-sizing      : border-box;
+    position        : absolute;
+    border-bottom   : 2px solid #f4f4ff;
+    z-index         : 99;
+}
+
+:host ::ng-deep .dx-form-group-caption {
+    font-size  : 14px;
+    font-weight: 600;
+}
+
+:host .form-wrapper {
+    padding         : 16px 24px 0px 24px;
+    background-color: #ffffff;
+    box-sizing      : border-box;
+    height          : 100%;
+    margin-top      : 54px;
+}
+
+:host ::ng-deep .dx-field-item-required-mark {
+    padding-right: 5px;
+}
+
+:host ::ng-deep .dx-field-item-label-content {
+    display       : flex !important;
+    flex-direction: row-reverse;
+}
+
+:host ::ng-deep .dx-item {
+    margin-bottom: 10px;
+}
+
+:host ::ng-deep .dx-form-group-with-caption>.dx-form-group-content {
+    padding-bottom: 0;
+}
+
+:host ::ng-deep .product-wrapper {
+    display    : flex;
+    line-height: 36px;
+}
+
+:host ::ng-deep .product-wrapper {
+    display    : flex;
+    line-height: 36px;
+}
+
+:host ::ng-deep .search-panel {
+    margin-top: 30px;
+}
+
+.contract-body{
+    width: 100%;
+    padding-left: 40px;
+    vertical-align: middle;
+    
+    .div_gray {
+        margin-top: 20px;
+        background-color: #f6f6f6;
+        width: 100%;
+    }
+    .div_gray h5 {
+        border-left: 4px solid red;
+        padding-left: 20px;
+        font-weight: 500;
+    }
+
+    .card {
+        margin-top: 15px;
+        
+        .area {
+
+            tr {
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: flex-start;
+                width: 100%;
+            }
+            
+            td {
+                padding: 10px;
+            }
+
+            .column-label {
+                line-height: 35px;
+                display: table-cell;
+                text-align: center;
+                vertical-align: middle;
+                white-space: nowrap;
+                padding-right: 6px;
+                width: auto;
+                height: 48px;
+                .star {
+                    color: red;
+                }
+            }
+
+            .column-content {
+                flex-grow: 1;
+
+                * {
+                    max-width: 260px;
+                }
+            }
+            
+            .area-select  {
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: flex-start;
+                align-items: center;
+
+                dx-select-box {
+                    max-width: 140px;
+                }
+            }
+
+            .area-text {
+                min-width: 330px;
+            }
+
+            .data-grid-container {
+                max-width: 800px;
+            }
+
+            .area-button {
+                margin-left: 10px;
+                border: #d9544f solid 1px;
+            }
+        }
+    }
+
+    .upload {
+        width: 2em;
+        height: 2em;
+    }
+
+    .upload-text {
+        display: inline;
+        line-height: 28px;
+        vertical-align: bottom;
+    }
+}
+
+.foot {
+    height: 100px;
+}
+
+:host ::ng-deep dx-html-editor {
+    min-height: 400px;
+    max-height: 700px;
+    margin: 11px;
+}
+
+:host ::ng-deep body {
+    margin: 0px;
+    height: 100%;
+    overflow: auto;
+}
+
+.contract {
+    overflow-x: auto;
+    height: calc(100vh);
+}
+
+:host .row-options {
+    width: calc(100% - 16px);
+    height: 40px;
+    // line-height: 40px;
+    margin: 0px 8px;
+    // border: 1px solid #e4e7ed;
+    border-bottom: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+:host .append-row,
+.remove-row {
+    color: #d9544f;
+    width: 55px;
+    text-align: center;
+    vertical-align: top;
+    padding-left: 8px;
+    margin-right: 15px;
+    font-weight: 600;
+    user-select: none;
+}
+:host .append-row:hover,
+.remove-row:hover {
+    cursor: pointer;
+}
+// :host ::ng-deep nx-zlw-toolbar-panel .dx-button-mode-contained.dx-button-default {
+//     background-color: #1890ff;
+//     border-color: transparent;
+//     color: #fff;
+// }
+
+// :host ::ng-deep .dx-button-mode-contained.dx-button-default {
+//     background-color: #1890ff;
+//     border-color: transparent;
+//     color: #fff;
+// }
+
+// :host ::ng-deep .dx-datagrid-headers .dx-datagrid-table .dx-header-row > td {
+//     border-top: 2px solid #1890ff;
+// }

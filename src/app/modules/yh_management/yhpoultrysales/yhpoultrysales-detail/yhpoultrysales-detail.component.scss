@@ -1,0 +1,20 @@
+:host ::ng-deep .toolbar-wrapper {
+    margin-top: 0px !important;
+}
+:host ::ng-deep .data-grid-container {
+    height: calc(100% - 246px) !important;
+}
+:host ::ng-deep .data-grid-container.has-review {
+    height: calc(100% - 286px) !important;
+}
+:host .uploader-wrapper{
+    background-color: #fff;
+    padding: 0px 8px 8px 8px;
+    box-sizing: border-box;
+}
+.print {
+    position: absolute;
+    top: 18px;
+    right: 120px;
+    z-index: 100;
+}

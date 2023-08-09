@@ -1,0 +1,22 @@
+[
+    {
+        "caption": "* 耳号",
+        "dataField": "Pig",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 栋舍",
+        "dataField": "PigHouseName",
+        "dataType": "string"
+    },
+    {
+        "caption": " 栏位",
+        "dataField": "PigField",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 重量（公斤）",
+        "dataField": "PigTotalWeight",
+        "dataType": "string"
+    }
+]

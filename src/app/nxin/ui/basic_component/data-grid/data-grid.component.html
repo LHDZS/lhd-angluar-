@@ -1,0 +1,8 @@
+<dx-data-grid (onRowDblClick)="onRowDblClickEvent($event)" [dataSource]="[{}]">
+    <dxi-column
+        *ngFor="let column of model.columns"
+        [caption]="column.caption"
+        dataField="A"
+        [width]="column.width"
+    ></dxi-column>
+</dx-data-grid>

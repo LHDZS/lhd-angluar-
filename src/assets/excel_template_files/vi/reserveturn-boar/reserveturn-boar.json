@@ -1,0 +1,42 @@
+[
+  {
+    "caption": "*Ngày chuyển giống",
+    "dataField": "Date",
+    "dataType": "date"
+  },
+  {
+    "caption": "*Lô chuyển ra",
+    "dataField": "OutBatchName",
+    "dataType": "string"
+  },
+  {
+    "caption": "*Chuồng chuyển ra",
+    "dataField": "OutPigHouseUnitName",
+    "dataType": "string"
+  },
+  {
+    "caption": "*Số tai",
+    "dataField": "EarNumber",
+    "dataType": "string"
+  },
+  {
+    "caption": "Chuyển vào lô heo rừng  ",
+    "dataField": "InBatchName",
+    "dataType": "string"
+  },
+  {
+    "caption": "*Chuồng chuyển vào",
+    "dataField": "InPigHouseUnitName",
+    "dataType": "string"
+  },
+  {
+    "caption": "Ô chuyển vào",
+    "dataField": "PigField",
+    "dataType": "string"
+  },
+  {
+    "caption": "Cân nặng (kg)",
+    "dataField": "PigTotalWeight",
+    "dataType": "string"
+  }
+]

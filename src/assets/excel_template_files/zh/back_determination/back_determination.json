@@ -1,0 +1,42 @@
+[
+        {
+            "caption": "*负责人",
+            "dataField": "PersonName",
+            "dataType": "string"
+        },
+        {
+            "caption": "*测定日期",
+            "dataField": "DataDate",
+            "dataType": "date"
+        },
+        {
+            "caption": "母猪批次",
+            "dataField": "BatchName",
+            "dataType": "string"
+        },
+        {
+            "caption": "* 耳号",
+            "dataField": "EarNumber",
+            "dataType": "string"
+        },
+        {
+            "caption": "* 背膘指数",
+            "dataField": "BackFatIndex",
+            "dataType": "string"
+        },
+        {
+            "caption": "* 重量（公斤）",
+            "dataField": "CheckWeight",
+            "dataType": "string"
+        },
+        {
+            "caption": "眼肌面积（毫米）",
+            "dataField": "AvgGlma",
+            "dataType": "string"
+        },
+        {
+            "caption": "眼肌厚度（毫米）",
+            "dataField": "AvgDlma",
+            "dataType": "string"
+        }
+    ]

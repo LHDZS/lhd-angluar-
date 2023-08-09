@@ -1,0 +1,448 @@
+<view-container>
+
+<dx-popup
+    #popup
+    [width]="400"
+    [height]="400"
+    [showTitle]="true"
+    title="{{ messageBoxDisplayText }}"
+    [dragEnabled]="true"
+    [closeOnOutsideClick]="false"
+    [(visible)]="messageBoxVisible"
+    [shading]="false"
+    [resizeEnabled]="true"
+>
+    <dxo-position at="right bottom" offset="-220 -280" of="Window"> </dxo-position>
+    <div class="message-box-wrapper">
+        <dx-scroll-view width="100%" height="100%">
+            <p *ngIf="messageBoxInfo.length == 0" style="font-size: 14px">{{ notMessageDisplayText }}</p>
+            <div class="message-box-info" *ngFor="let info of messageBoxInfo">
+                <p [innerHTML]="info | SafeHtml"></p>
+            </div>
+        </dx-scroll-view>
+    </div>
+</dx-popup>
+
+<div class="editor-grid-body">
+    <editor-grid #editorGrid [fullScreen]="false" [mode]="mode">
+        <editor-toolbar #editorToolbar [zqModel]="this">
+            <dx-button position="left" [elementAttr]="{ name: 'add-btn' }" (onClick)="onCreate('1')"></dx-button>
+            <dx-button position="left" [elementAttr]="{ name: 'save-btn' }" (onClick)="onSave()"></dx-button>
+            <dx-button position="left" [elementAttr]="{ name: 'cancel-btn' }" (onClick)="onCancel()"></dx-button>
+            <dx-button position="left" [elementAttr]="{ name: 'delete-btn' }" (onClick)="onDelete()"></dx-button>
+            <dx-button position="left" [elementAttr]="{ name: 'refer-btn' }" (onClick)="onCreate('2')"></dx-button>
+        </editor-toolbar>
+        <editor-header>
+            <editor-header-group [MaxClass]="false">
+                <editor-header-item [defaultValue]="defaultData.DataDate">
+                    <label required>制单日期</label>
+                    <dx-date-box
+                        [(value)]="data.DataDate"
+                        [openOnFieldClick]="true"
+                        [showClearButton]="false"
+                        [acceptCustomValue]="false"
+                        displayFormat="yyyy-MM-dd"
+                        [readOnly]="submited"
+                    ></dx-date-box>
+                </editor-header-item>
+                <editor-header-item [defaultValue]="defaultData.BreedingID">
+                    <label required>品种</label>
+                    <dx-select-box
+                        [(value)]="data.BreedingID"
+                        [dataSource]="breedingSource"
+                        placeholder=""
+                        valueExpr="BreedingID"
+                        displayExpr="BreedingName"
+                        searchEnabled="true" 
+                        [searchExpr]="['BreedingName','MnemonicCode']"
+                        [readOnly]="submited || hasDetail"
+                    ></dx-select-box>
+                </editor-header-item>
+                <editor-header-item [defaultValue]="defaultData.EffectDate">
+                    <label required>生效日期</label>
+                    <dx-date-box
+                        [(value)]="data.EffectDate"
+                        [openOnFieldClick]="true"
+                        [showClearButton]="false"
+                        [acceptCustomValue]="false"
+                        displayFormat="yyyy-MM-dd"
+                        [readOnly]="submited"
+                    ></dx-date-box>
+                </editor-header-item>
+                <editor-header-item>
+                    <label>单据号：</label>
+                    <span>{{ data.Number || '--' }}</span>
+                </editor-header-item>
+                <editor-header-item [defaultValue]="data.Remarks">
+                    <label>备注</label>
+                    <dx-text-box placeholder=""  [readOnly]="submited" [(value)]="data.Remarks" ></dx-text-box>
+                </editor-header-item>
+            </editor-header-group>
+        </editor-header>
+        <editor-multiple-grid>
+            <editor-grid-tab  (onOptionClick)="onDetailOptionClick($event)" >
+                <editor-grid-item [hidden]="rqFlag" [title]="title1" [options]="[{ text: '添加', key: 'addStock',visible:submited },{ text: '行筛选', key: 'rowFilter' },{ text: '删行', key: 'del',visible:submited },{ text: '收起/展开', key: 'expand' }]">
+                    <dx-data-grid
+                        #detailGrid
+                        [dataSource]="detailSource"
+                        width="100%"
+                        [height]="300"
+                        [sorting]="false"
+                        (onEditorPreparing)="onDetailEditorPreparing($event)"
+                    >
+                        <dxo-filter-row [visible]="rowFilter"></dxo-filter-row>
+                        <dxi-column dataField="IDENTITY_RECORD"></dxi-column>
+                        <template *ngFor = "let item of columnSettingArr">
+                            <template *ngIf="item.visible">
+                                <dxi-column
+                                    [fixed] = "item.fixed"
+                                    [cssClass]="classType(item)"
+                                    [minWidth] = "item.width"
+                                    [caption] = "item.caption"
+                                    [dataField] = "item.dataField"
+                                    [dataType] = "item.dataType?item.dataType:'string'"
+                                    [allowEditing]="item.allowEditing"
+                                    [alignment]="item.editorOptions ? 'right' : 'center'"
+                                    [calculateDisplayValue] = "item.calculateDisplayValue"
+                                    [editorOptions] = "item.editorOptions ? item.editorOptions : undefined"
+                                >
+                                    <dxo-lookup
+                                        *ngIf="item.calculateDisplayValue"
+                                        [dataSource]="giveDataSource(item)"
+                                        [displayExpr]="item.displayExpr"
+                                        [valueExpr]="item.valueExpr"
+                                        [allowClearing]="item.allowClearing"
+                                        (Changed)="itemValueChanged($event)"
+                                    ></dxo-lookup>
+                                    <dxo-format *ngIf="item.editorOptions" type="fixedPoint" [precision]="item.fixedPoint"></dxo-format>
+                                </dxi-column>
+                            </template>
+                        </template>
+                        <dxo-editing [enabled]="true" [allowUpdating]="!submited"></dxo-editing>
+                    </dx-data-grid>
+                </editor-grid-item>
+            </editor-grid-tab>
+            <editor-grid-tab (onOptionClick)="onQmDetailOptionClick($event)">
+                <editor-grid-item [hidden]="qmFlag" [title]="title2" [options]="[{ text: '添加', key: 'addStock',visible:submited },{ text: '行筛选', key: 'rowFilter' },{ text: '删行', key: 'del',visible:submited },{ text: '收起/展开', key: 'expand' }]">
+                    <dx-data-grid
+                        #qmdetailGrid
+                        [dataSource]="qmdetailSource"
+                        [height]="300"
+                        [allowColumnResizing]="true"
+                        columnResizingMode = 'widget'
+                        [sorting]="false"
+                        (onEditorPreparing)="onQmDetailEditorPreparing($event)"
+                    >
+                       <dxo-filter-row [visible]="qmrowFilter"></dxo-filter-row>
+                        <dxi-column dataField="IDENTITY_RECORD"></dxi-column>
+                        <template *ngFor = "let item of columnSettingArr2">
+                            <template *ngIf="item.visible">
+                                <dxi-column
+                                    [fixed] = "item.fixed"
+                                    [cssClass]="classType(item)"
+                                    [minWidth] = "item.width"
+                                    Width = "100"
+                                    [caption] = "item.caption"
+                                    [dataField] = "item.dataField"
+                                    [allowEditing]="item.allowEditing"
+                                    [alignment]="item.editorOptions ? 'right' : 'center'"
+                                    [calculateDisplayValue] = "item.calculateDisplayValue"
+                                    [editorOptions] = "item.editorOptions ? item.editorOptions : undefined"
+                                >
+                                    <dxo-lookup
+                                        *ngIf="item.calculateDisplayValue"
+                                        [dataSource]="giveDataSource(item)"
+                                        [displayExpr]="item.displayExpr"
+                                        [valueExpr]="item.valueExpr"
+                                    ></dxo-lookup>
+                                    <dxo-format *ngIf="item.editorOptions" type="fixedPoint" [precision]="item.fixedPoint"></dxo-format>
+                                </dxi-column>
+                            </template>
+                        </template>
+                        <dxo-editing [enabled]="true" [allowUpdating]="!submited"></dxo-editing>
+                    </dx-data-grid>
+                </editor-grid-item>
+            </editor-grid-tab>
+            <editor-grid-tab (onOptionClick)="onSlDetailOptionClick($event)">
+                <editor-grid-item [hidden]="slFlag" [title]="title3" [options]="[{ text: '添加', key: 'addStock',visible:submited },{ text: '行筛选', key: 'rowFilter' },{ text: '删行', key: 'del',visible:submited },{ text: '收起/展开', key: 'expand' }]">
+                    <dx-data-grid
+                        #sldetailGrid
+                        [dataSource]="sldetailSource"
+                        [height]="300"
+                        [allowColumnResizing]="true"
+                        columnResizingMode = 'widget'
+                        [sorting]="false"
+                        (onEditorPreparing)="onSlDetailEditorPreparing($event)"
+                    >
+                       <dxo-filter-row [visible]="slrowFilter"></dxo-filter-row>
+                        <dxi-column dataField="IDENTITY_RECORD"></dxi-column>
+                        <template *ngFor = "let item of columnSettingArr3">
+                            <template *ngIf="item.visible">
+                                <dxi-column
+                                    [fixed] = "item.fixed"
+                                    [cssClass]="classType(item)"
+                                    [minWidth] = "item.width"
+                                    Width = "100"
+                                    [caption] = "item.caption"
+                                    [dataField] = "item.dataField"
+                                    [allowEditing]="item.allowEditing"
+                                    [alignment]="item.editorOptions ? 'right' : 'center'"
+                                    [calculateDisplayValue] = "item.calculateDisplayValue"
+                                    [editorOptions] = "item.editorOptions ? item.editorOptions : undefined"
+                                >
+                                    <dxo-lookup
+                                        *ngIf="item.calculateDisplayValue"
+                                        [dataSource]="giveDataSource(item)"
+                                        [displayExpr]="item.displayExpr"
+                                        [valueExpr]="item.valueExpr"
+                                    ></dxo-lookup>
+                                    <dxo-format *ngIf="item.editorOptions" type="fixedPoint" [precision]="item.fixedPoint"></dxo-format>
+                                </dxi-column>
+                            </template>
+                        </template>
+                        <dxo-editing [enabled]="true" [allowUpdating]="!submited"></dxo-editing>
+                    </dx-data-grid>
+                </editor-grid-item>
+            </editor-grid-tab>
+            <editor-grid-tab (onOptionClick)="onYzDetailOptionClick($event)">
+                <editor-grid-item [hidden]="yzFlag" [title]="title4" [options]="[{ text: '添加', key: 'addStock',visible:submited },{ text: '行筛选', key: 'rowFilter' },{ text: '删行', key: 'del',visible:submited },{ text: '引入价格方案', key: 'addJg',visible:submited },{ text: '收起/展开', key: 'expand' }]">
+                    <dx-data-grid
+                        #yzdetailGrid
+                        [dataSource]="yzdetailSource"
+                        [height]="300"
+                        [allowColumnResizing]="true"
+                        columnResizingMode = 'widget'
+                        [sorting]="false"
+                        (onEditorPreparing)="onYzDetailEditorPreparing($event)"
+                    >
+                       <dxo-filter-row [visible]="yzrowFilter"></dxo-filter-row>
+                        <dxi-column dataField="IDENTITY_RECORD"></dxi-column>
+                        <template *ngFor = "let item of columnSettingArr4">
+                            <template *ngIf="item.visible">
+                                <dxi-column
+                                    [fixed] = "item.fixed"
+                                    [cssClass]="classType(item)"
+                                    [minWidth] = "item.width"
+                                    Width = "100"
+                                    [caption] = "item.caption"
+                                    [dataField] = "item.dataField"
+                                    [allowEditing]="item.allowEditing"
+                                    [alignment]="item.editorOptions ? 'right' : 'center'"
+                                    [calculateDisplayValue] = "item.calculateDisplayValue"
+                                    [editorOptions] = "item.editorOptions ? item.editorOptions : undefined"
+                                >
+                                    <dxo-lookup
+                                        *ngIf="item.calculateDisplayValue"
+                                        [dataSource]="giveDataSource(item)"
+                                        [displayExpr]="item.displayExpr"
+                                        [valueExpr]="item.valueExpr"
+                                    ></dxo-lookup>
+                                    <dxo-format *ngIf="item.editorOptions" type="fixedPoint" [precision]="item.fixedPoint"></dxo-format>
+                                </dxi-column>
+                            </template>
+                        </template>
+                        <dxo-editing [enabled]="true" [allowUpdating]="!submited"></dxo-editing>
+                    </dx-data-grid>
+                </editor-grid-item>
+            </editor-grid-tab>
+        </editor-multiple-grid>
+        <editor-review-remote
+            #review
+            [numericalOrder]="data.NumericalOrder"
+            [appId]="appId"
+            [load]="getReviewInfo"
+            [userId]="userId"
+            [operation]="operationReview"
+            [order]="true"
+            [orderly]="['review']"
+            (onReviewOptionChanged)="onReviewOptionChanged($event)"
+        >
+            <editor-review-remote-item type="review"></editor-review-remote-item>
+            <editor-review-remote-item type="making"></editor-review-remote-item>
+        </editor-review-remote>
+    </editor-grid>
+    <div
+        [ngClass]="{
+            'reviewed-img': true,
+            'reviewed-img-hidden': !reviewed,
+            'reviewed-zh': lang == 'zh' || lang == 'zh_cn',
+            'reviewed-vi': lang == 'vi'
+        }"
+    ></div>
+    <app-upload-view [readonly]="submited" (fileListChange)="fileListChanged($event)" [numericalOrder]="data.NumericalOrder"></app-upload-view>
+</div>
+<dx-popup
+    [(visible)]="outVisible"
+    width="70%"
+    [minWidth]="1000"
+    [maxHeight]="700"
+    [dragEnabled]="false"
+    [showTitle]="true"
+    (onHiding)="onPopupHiding()"
+    resizeEnabled="true"
+    [title]="outTitle"
+    showCloseButton="true"
+    >
+    
+    <div class="grid_items">
+        <div class="grid_item">
+            <div class="item_title">可选商品代号（{{ mindex }}）
+                <span class="item_but" (click)="onFocusedCellChanging($event)">选择》</span>
+            </div>
+            <dx-data-grid
+                #gridRef
+                width="100%"
+                height="94%"
+                [dataSource]="AutoDataSourceFilter"
+                [allowColumnResizing]="true"
+                [columnAutoWidth]="false"
+                [showBorders]="true"
+                [(selectedRowKeys)]="selectedRows"
+                (onEditorPreparing)="onEditorPreparingFn3($event,'1')"
+            >   
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxo-row-dragging
+                [allowReordering]="true"
+                [onReorder]="onReorder"
+                [showDragIcons]="showDragIcons"
+                ></dxo-row-dragging>
+                <dxo-scrolling mode="virtual"></dxo-scrolling>
+                <dxo-sorting mode="none"></dxo-sorting>
+                <dxo-editing mode="cell" [allowUpdating]="true"> </dxo-editing>
+                <dxo-selection showCheckBoxesMode="always" mode="multiple"> </dxo-selection>
+                <dxi-column dataField="ProductName" dataType="string" caption="商品代号" [allowEditing]="false" [fixed]="true"></dxi-column>
+                <dxi-column dataField="MeasureUnitName" dataType="string" caption="单位"  [allowEditing]="false" [fixed]="true"></dxi-column>
+                <dxi-column caption="单价" dataField="UnitPrice" dataType="number" [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+                    <dxo-format type="fixedPoint" [precision]="4"></dxo-format>
+                  </dxi-column>
+            </dx-data-grid>
+        </div>
+        <div class="grid_item">
+            <div class="item_title">已选商品代号（{{ nindex }}）
+                <span class="item_but" (click)="onFocusedCellChanging2($event)">删除《</span>
+                <span class="item_but1" (click)="getSelection()">确定</span>
+            </div>
+            <dx-data-grid
+                #gridRef2
+                width="100%"
+                height="94%"
+                [dataSource]="AutoDataSourceFilter2"
+                [allowColumnResizing]="true"
+                [columnAutoWidth]="false"
+                [showBorders]="true"
+                [(selectedRowKeys)]="selectedRows2"
+                (onEditorPreparing)="onEditorPreparingFn3($event,'2')"
+            >
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxo-row-dragging
+                [allowReordering]="true"
+                [onReorder]="onReorder2"
+                [showDragIcons]="showDragIcons"
+                ></dxo-row-dragging>
+                <dxo-scrolling mode="virtual"></dxo-scrolling>
+                <dxo-sorting mode="none"></dxo-sorting>
+                <dxo-editing mode="cell" [allowUpdating]="true"> </dxo-editing>
+                <dxo-selection showCheckBoxesMode="always" mode="multiple"> </dxo-selection>
+                <dxi-column dataField="ProductName" dataType="string" caption="商品代号" [allowEditing]="false" [fixed]="true"></dxi-column>
+                <dxi-column dataField="MeasureUnitName" dataType="string" caption="单位"  [allowEditing]="false" [fixed]="true"></dxi-column>
+                <dxi-column caption="单价" dataField="UnitPrice" dataType="number" [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+                    <dxo-format type="fixedPoint" [precision]="4"></dxo-format>
+                  </dxi-column>
+            </dx-data-grid>
+        </div>
+    </div>
+</dx-popup>
+<dx-popup
+    [(visible)]="jgVisible"
+    width="80%"
+    [minWidth]="1000"
+    [minHeight]="480"
+    [maxHeight]="800"
+    [dragEnabled]="false"
+    [showTitle]="true"
+    (onHiding)="onJgPopupHiding()"
+    resizeEnabled="true"
+    title="引入价格方案弹出框："
+    showCloseButton="true"
+    >
+    <div class="grid_items1">
+        <dx-load-panel shadingColor="rgba(0,0,0,0)" [showPane]="true" [shading]="true" [showIndicator]="true"
+            [(visible)]="loading">
+        </dx-load-panel>
+        <div class="grid_item">
+            <div class="item_title">
+                <dx-date-box
+                    class="item_dx"
+                    width="150"
+                    showClearButton="true"
+                    placeholder="生效日期≥"
+                    [(value)]="formData.StartEffectDate"
+                >
+                </dx-date-box>
+                —
+                <dx-date-box
+                    width="150"
+                    class="item_dx1"
+                    showClearButton="true"
+                    placeholder="生效日期≤"
+                    [(value)]="formData.EndEffectDate"
+                >
+                </dx-date-box>
+                <dx-text-box
+                    width="150"
+                    class="item_dx"
+                    showClearButton="true"
+                    placeholder="单据号"
+                    [(value)]="formData.Number"
+                >
+                </dx-text-box>
+                <dx-text-box
+                    width="150"
+                    class="item_dx"
+                    showClearButton="true"
+                    placeholder="备注"
+                    [(value)]="formData.Remarks"
+                >
+                </dx-text-box>
+                <span class="item_but" (click)="onQuery('1')">查询</span>
+                <span class="item_but" (click)="onQuery('2')">重置</span>
+            </div>
+            <dx-data-grid
+                #gridRef3
+                width="100%"
+                height="80%"
+                [dataSource]="JgDataSourceFilter"
+                [allowColumnResizing]="true"
+                [columnAutoWidth]="true"
+                columnResizingMode='widget'
+                [showBorders]="true"
+                columnResizingMode = 'widget'
+                [(selectedRowKeys)]="jgselectedRows"
+            >   
+                <dxo-scrolling mode="virtual"></dxo-scrolling>
+                <dxo-sorting mode="none"></dxo-sorting>
+                <dxo-editing mode="cell" [allowUpdating]="true"> </dxo-editing>
+                <dxo-selection showCheckBoxesMode="always" mode="multiple"> </dxo-selection>
+                <dxi-column dataField="EffectDate" dataType="string" sortOrder="desc" sortIndex="1" caption="生效日期" [allowEditing]="false" [fixed]="true"></dxi-column>
+                <dxi-column dataField="Number" dataType="string" sortOrder="desc" sortIndex="2" caption="领用价格方案单号" [allowEditing]="false" [fixed]="true"></dxi-column>
+                <dxi-column dataField="Remarks" dataType="string" caption="备注" [allowEditing]="false"></dxi-column>
+                <dxi-column dataField="CreatedOwnerName" dataType="string" caption="创建人" [allowEditing]="false"></dxi-column>
+                <dxi-column dataField="CreatedDate" dataType="string" caption="创建时间" [allowEditing]="false"></dxi-column>
+            </dx-data-grid>
+        </div>
+        <div height="40px" style="margin-top: 10px;text-align: center;">
+            <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+            text="确定"
+            [disabled]="!jgselectedRows?.length"
+            (onClick)="getYzSelection('1')"
+          >
+          </dx-button>
+          <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+            text="关闭"
+            (onClick)="getYzSelection('3')"
+          >
+          </dx-button>
+        </div>
+    </div>
+</dx-popup>
+</view-container>

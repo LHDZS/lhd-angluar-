@@ -1,0 +1,103 @@
+.yhfamershortcut {
+    background-color: #fff;
+    overflow: hidden;
+    height: 99%;
+}
+
+:host .form-toolbar {
+    width           : 100%;
+    padding         : 8px;
+    background-color: #ffffff;
+    box-sizing      : border-box;
+    position        : absolute;
+    border-bottom   : 2px solid #f4f4ff;
+    z-index         : 99;
+}
+
+:host ::ng-deep .dx-form-group-caption {
+    font-size  : 14px;
+    font-weight: 600;
+}
+
+:host .form-wrapper {
+    height: 100%;
+    overflow-y: auto;
+    padding: 65px 24px 0px 24px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+:host ::ng-deep .dx-field-item-required-mark {
+    padding-right: 5px;
+}
+
+:host ::ng-deep .dx-field-item-label-content {
+    display       : flex !important;
+    flex-direction: row-reverse;
+}
+
+:host ::ng-deep .dx-item {
+    margin-bottom: 10px;
+}
+
+:host ::ng-deep .dx-form-group-with-caption>.dx-form-group-content {
+    padding-bottom: 0;
+}
+
+:host ::ng-deep .product-wrapper {
+    display    : flex;
+    line-height: 36px;
+}
+
+:host ::ng-deep .product-wrapper {
+    display    : flex;
+    line-height: 36px;
+}
+
+#form h5 {
+    border-left: 4px solid red;
+    padding-left: 20px;
+    font-weight: 500;
+}
+
+.gray {
+    background-color: #f6f6f6;
+    // width: 420%;
+}
+.div_gray {
+    background-color: #f6f6f6;
+    width: 100%;
+}
+.div_gray h5 {
+    border-left: 4px solid red;
+    padding-left: 20px;
+    font-weight: 500;
+}
+
+.lhd_but {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.item_but {
+    margin-right: 20px;
+    cursor: pointer;
+    color: rgb(0, 110, 255);
+}
+.lhd_dxi {
+    width: 100%;
+}
+
+.lhd_card .product {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    div {
+        flex: 0 0 50%;
+        margin-bottom: 20px;
+        span {
+            display: inline-block;
+            width: 50%;
+        }
+    }
+}

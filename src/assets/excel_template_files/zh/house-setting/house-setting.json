@@ -1,0 +1,27 @@
+[
+    {
+        "caption": "* 栋舍类型",
+        "dataField": "PigHouseType",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 栋舍名称",
+        "dataField": "PigHouseName",
+        "dataType": "string"
+    },
+    {
+        "caption": "容量",
+        "dataField": "Capacity",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 负责人",
+        "dataField": "Persons",
+        "dataType": "string"
+    },
+    {
+        "caption": "备注",
+        "dataField": "Remarks",
+        "dataType": "string"
+    }
+]

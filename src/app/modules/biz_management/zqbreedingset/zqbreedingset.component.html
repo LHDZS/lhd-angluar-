@@ -1,0 +1,79 @@
+<div class="form-container">
+    <nx-zlw-header-search-panel #headerSearchPanel [model]="searchPanelModel"></nx-zlw-header-search-panel>
+    <nx-zlw-toolbar-panel #toolbarPanel [model]="toolbarPanelModel"></nx-zlw-toolbar-panel>
+    <div class="wrapper">
+        <nx-zlw-form-list #formListInstance [model]="model"></nx-zlw-form-list>
+    </div>
+    <dx-popup
+        width="500"
+        height="430"
+        [(visible)]="popupVisible"
+        [dragEnabled]="false"
+        [showTitle]="true"
+        [title]="title"
+        (onHiding)="onHiding($event)"
+    >
+        <dx-form
+            #form
+            id="form"
+            [colCount]="1"
+            width="100%"
+            [(formData)]="formData"
+            style="padding-right: 10px"
+            [showRequiredMark]="true"
+        >
+            <dxi-item
+                [label]="{ text: '名称', alignment: 'right',showColon: false }"
+                dataField="BreedingName"
+                [editorOptions]="{ placeholder: '请输入名称' }"
+            >
+                <dxi-validation-rule type="required" message="名称必填"> </dxi-validation-rule>
+                <dxi-validation-rule type="stringLength" min="0" max="50" message="名称内容长度最大50字">
+                </dxi-validation-rule>
+                <dxi-validation-rule type="pattern" message="非法字符" [pattern]="limitCharacter"></dxi-validation-rule>
+            </dxi-item>
+            <dxi-item
+                [label]="{ text: '编码', alignment: 'right',showColon: false }"
+                dataField="BreedingNo"
+                [editorOptions]="{ placeholder: '' ,disabled:true}"
+            >
+            </dxi-item>
+            <dxi-item *ngIf="PoultryTypeFlag"
+                [label]="{ text: '禽别', alignment: 'right',showColon: false }"
+                editorType="dxSelectBox"
+                [editorOptions]="{
+                    dataSource: PoultryTypeSource,
+                    valueExpr: 'DictId',
+                    displayExpr: 'DictName',
+                    placeholder: '请选择禽别'
+                }"
+                dataField="PoultryType"
+            >
+                <dxi-validation-rule type="required" message="禽别必填"></dxi-validation-rule>
+            </dxi-item>
+            <dxi-item
+                [label]="{ text: '状态', alignment: 'right',showColon: false }"
+                editorType="dxRadioGroup"
+                dataField="Status"
+                [editorOptions]="{
+                    items: [
+                        { label: '启用', value: true },
+                        { label: '禁用', value: false }
+                    ],
+                    valueExpr: 'value',
+                    displayExpr: 'label',
+                    layout: 'horizontal'
+                }"
+            >
+            </dxi-item>
+            <dxi-item [label]="{ text: '说明', alignment: 'right',showColon: false }" editorType="dxTextArea" dataField="Remarks"
+            [editorOptions]="{ placeholder: '请输入说明', height: 80 }">
+            <dxi-validation-rule type="stringLength" min="0" max="512" message="说明最多可输入512个字符">
+            </dxi-validation-rule>
+             </dxi-item>
+            <dxi-item style="text-align: right">
+                <dx-button type="default" text="保存" (onClick)="onFormSubmit()" [disabled]="saveDisabled"></dx-button>
+            </dxi-item>
+        </dx-form>
+    </dx-popup>
+</div>

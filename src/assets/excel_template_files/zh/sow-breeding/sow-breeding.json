@@ -1,0 +1,53 @@
+[
+    {
+        "caption": "* 负责人",
+        "dataField": "PersonID",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 配种日期",
+        "dataField": "DataDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "母猪批次",
+        "dataField": "Batch",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 耳号",
+        "dataField": "PigEarNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "转入栋舍",
+        "dataField": "PigHouseUnitIn",
+        "dataType": "string"
+    },
+    {
+        "caption": "转入栏位",
+        "dataField": "PigField",
+        "dataType": "string"
+    },
+
+    {
+        "caption": "重量(公斤)",
+        "dataField": "PigTotalWeight",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 配种方式",
+        "dataField": "BreedingMode",
+        "dataType": "string"
+    },
+    {
+        "caption": "*首配公猪",
+        "dataField": "BoarPigID1",
+        "dataType": "string"
+    },
+    {
+        "caption": "首配评分",
+        "dataField": "Score1",
+        "dataType": "string"
+    }
+]

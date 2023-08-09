@@ -1,0 +1,270 @@
+<div class="yhfamershortcut">
+  <dx-load-panel shadingColor="rgba(0,0,0,0)" [showPane]="true" [shading]="true" [showIndicator]="true"
+    [(visible)]="loading">
+  </dx-load-panel>
+  <app-print-page class="print" #printPage (getSource)="getSource($event)" [ENV]="environment.ENV"
+    [menu_id]="tokenData.menu_id" (jump)="jump()"></app-print-page>
+  <editor-grid #editorGrid [showCheckBox]="false" [fullScreen]="false" [mode]="mode">
+    <editor-toolbar [zqModel]="this" [allowEditing]="false">
+      <dx-button position="left" [elementAttr]="{ name: 'add-btn' }" (onClick)="onCreate()"></dx-button>
+      <dx-button position="left" [elementAttr]="{ name: 'save-btn' }" (onClick)="onSave()"></dx-button>
+      <dx-button position="left" [elementAttr]="{ name: 'cancel-btn' }" (onClick)="onCancel()"></dx-button>
+      <dx-button position="left" [elementAttr]="{ name: 'delete-btn' }" (onClick)="onDelete()"></dx-button>
+      <!-- <dx-button position="left" text="重新获取数据" [disabled]="!numericalOrder" type="default" (onClick)="onReacquire()"></dx-button> -->
+    </editor-toolbar>
+    <editor-header>
+      <editor-header-group [MaxClass]="false" [expressionType]="true" [labelHeight]="'200px'" [flex]="'0 0 25%'"
+        [labelWidth]="'110px'">
+        <editor-header-item>
+          <label required>结算日期</label>
+          <dx-date-box placeholder="请选择日期" [(value)]="dataFormData.DataDate" [max]="MaxDataDate"
+            [openOnFieldClick]="true" displayFormat="yyyy-MM-dd" [readOnly]="true"></dx-date-box>
+        </editor-header-item>
+        <editor-header-item>
+          <label required>养户名称</label>
+          <dx-text-box placeholder=" " [(value)]="dataFormData.YHFarmerName" [readOnly]="true"></dx-text-box>
+        </editor-header-item>
+        <editor-header-item>
+          <label required>养户批次</label>
+          <dx-text-box placeholder=" " [(value)]="dataFormData.YHBatchName" [readOnly]="true"></dx-text-box>
+        </editor-header-item>
+        <editor-header-item>
+          <label>养殖价格方案</label>
+          <dx-text-box placeholder=" " [(value)]="dataFormData.FarmingPriceNumber" [readOnly]="true"></dx-text-box>
+        </editor-header-item>
+        <editor-header-item>
+          <label required>账期月份</label>
+          <dx-date-box placeholder="请选择月份" [(value)]="dataFormData.AccountMonth" maxZoomLevel="year"
+            displayFormat="yyyy-MM" [max]="MaxDataDate" [openOnFieldClick]="true" [(readOnly)]="submited"
+            (onValueChanged)="onChanged()"></dx-date-box>
+        </editor-header-item>
+        <editor-header-item>
+          <label>管理员</label>
+          <!-- <dx-select-box placeholder=" " [(value)]="dataFormData.PersonID" [dataSource]="PersonSource"
+            displayExpr="PersonName" valueExpr="PersonID" searchEnabled="true" (onValueChanged)="onChanged()"></dx-select-box> -->
+          <dx-tag-box [(value)]="dataFormData.PersonIDs" [dataSource]="PersonSource" [maxDisplayedTags]="1"
+            displayExpr="PersonName" valueExpr="PersonID" searchEnabled="true" [(readOnly)]="submited"
+            (onValueChanged)="onChanged()"></dx-tag-box>
+        </editor-header-item>
+        <editor-header-item>
+          <label>养殖合同编号</label>
+          <dx-text-box placeholder=" " [(value)]="dataFormData.ContractNo" [readOnly]="true"></dx-text-box>
+        </editor-header-item>
+        <editor-header-item>
+          <label>养户批次序号</label>
+          <dx-text-box placeholder=" " [(value)]="dataFormData.SerialNo" [readOnly]="true"></dx-text-box>
+        </editor-header-item>
+        <editor-header-item>
+          <label>养殖场</label>
+          <!-- <dx-select-box placeholder=" " [(value)]="dataFormData.ChickenFarmID" [dataSource]="ChickenFarmSource"
+            displayExpr="ChickenFarmName" valueExpr="ChickenFarmID" [showClearButton]="true" searchEnabled="true"
+            [readOnly]="true"></dx-select-box> -->
+          <dx-text-box placeholder=" " [(value)]="dataFormData.ChickenFarmName" [readOnly]="true"></dx-text-box>
+        </editor-header-item>
+        <editor-header-item>
+          <label>保证金余额</label>
+          <dx-text-box placeholder=" " [(value)]="dataFormData.remainingsum" [readOnly]="true"></dx-text-box>
+        </editor-header-item>
+        <editor-header-item>
+          <label>单据号</label>
+          <dx-text-box placeholder=" " [(value)]="dataFormData.Number" [readOnly]="true"></dx-text-box>
+        </editor-header-item>
+        <editor-header-item>
+          <label>养户签字</label>
+          <img class="settImg" *ngIf="dataFormData.ConfirmUrl" [(src)]="dataFormData.ConfirmUrl" alt="">
+        </editor-header-item>
+        <editor-header-item [itemWidth]="'100%'">
+          <label>备注</label>
+          <dx-text-box placeholder=" " [(value)]="dataFormData.Remarks" [(readOnly)]="submited" (onValueChanged)="onChanged()"></dx-text-box>
+        </editor-header-item>
+      </editor-header-group>
+    </editor-header>
+    <editor-header [title]="title1" [HeaderVisible]="HeaderVisible1" [expressionType]="expressionType1">
+      <editor-header-group [labelHeight]="labelHeight1" [MaxClass]="false" [flex]="'0 0 25%'" [labelWidth]="'110px'">
+        <editor-header-item *ngFor="let list of columnSettingArr" [text]="list.text" [visible]="list.visible">
+          <label>
+            <span>{{list.caption}}</span>
+            <p class="editor_p">{{list.text}}</p>
+          </label>
+          <dx-text-box *ngIf="!list.type" placeholder="" [id]="list.dataField"
+            (mouseenter)="toggleDefault(list.dataField)" (mouseleave)="toggleDefault(list.dataField)"
+            [(value)]="dataFormData[list.dataField]" [readOnly]="list.readOnly"></dx-text-box>
+          <dx-number-box *ngIf="list.type == 'number'" [(value)]="dataFormData[list.dataField]"
+            [readOnly]="list.readOnly || submited" format="#0.0" (onValueChanged)="onChanged()"></dx-number-box>
+        </editor-header-item>
+      </editor-header-group>
+    </editor-header>
+    <editor-header [title]="title2" [HeaderVisible]="HeaderVisible2" [expressionType]="expressionType2">
+      <editor-header-group [labelHeight]="labelHeight2" [MaxClass]="false" [flex]="'0 0 25%'" [labelWidth]="'110px'">
+        <editor-header-item *ngFor="let list of columnSettingArr2" [text]="list.text" [visible]="list.visible"
+          (onValueChanged)="onChanged()">
+          <label>
+            <span>{{list.caption}}</span>
+            <p class="editor_p">{{list.text}}</p>
+          </label>
+          <dx-text-box placeholder=" " [(value)]="dataFormData[list.dataField]" [readOnly]="list.readOnly"
+            (onValueChanged)="onChanged()"></dx-text-box>
+        </editor-header-item>
+      </editor-header-group>
+    </editor-header>
+    <editor-header [title]="title3" [HeaderVisible]="HeaderVisible3" [expressionType]="expressionType3">
+      <editor-header-group [labelHeight]="labelHeight3" [MaxClass]="false" [flex]="'0 0 25%'" [labelWidth]="'110px'">
+        <editor-header-item *ngFor="let list of columnSettingArr3" [text]="list.text" [visible]="list.visible">
+          <label>
+            <span>{{list.caption}}</span>
+            <p class="editor_p">{{list.text}}</p>
+          </label>
+          <dx-text-box placeholder=" " *ngIf="!list.type" [(value)]="dataFormData[list.dataField]"
+            [readOnly]="list.readOnly"></dx-text-box>
+          <dx-number-box *ngIf="list.type == 'number'" [(value)]="dataFormData[list.dataField]"
+            [readOnly]="list.readOnly || submited" [min]="0" format="#0.00" (onValueChanged)="onNumChanged($event)"></dx-number-box>
+        </editor-header-item>
+      </editor-header-group>
+    </editor-header>
+
+    <editor-tabs-grid [companies]="companiesData" [products]="productsData" (TabsClick)="tabsClick($event)"
+      (SelectItem)="selectItem($event)">
+      <dx-data-grid #detailGrid [dataSource]="detailSource" width="100%" height="100%" [sorting]="false"
+        keyExpr="Number">
+        <dxo-selection mode="single"></dxo-selection>
+        <dxi-column dataField="IDENTITY_RECORD"></dxi-column>
+        <template *ngFor="let item of detailSourceArr">
+          <dxi-column [fixed]="item.fixed" [minWidth]="item.width" [caption]="item.caption" [dataField]="item.dataField"
+            [dataType]="item.dataType" [allowEditing]="false" [alignment]="item.alignment">
+          </dxi-column>
+        </template>
+        <dxo-summary>
+          <dxi-total-item column="IDENTITY_RECORD" displayFormat="合计"></dxi-total-item>
+          <dxi-total-item column="ElementQuantity" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 1 }"></dxi-total-item>
+          <dxi-total-item column="NetWeight" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 4 }"></dxi-total-item>
+          <dxi-total-item column="Quantity" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 1 }"></dxi-total-item>
+          <dxi-total-item column="DeathQuantity" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 2 }"></dxi-total-item>
+          <dxi-total-item column="CullQuantity" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 2 }"></dxi-total-item>
+          <dxi-total-item column="DeathCullOuter" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 2 }"></dxi-total-item>
+          <dxi-total-item column="WeedOuter" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 2 }"></dxi-total-item>
+          <dxi-total-item column="UnknownQuantity" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 2 }"></dxi-total-item>
+          <dxi-total-item column="Amount" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 2 }"></dxi-total-item>
+          <dxi-total-item column="Packages" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 2 }"></dxi-total-item>
+          <dxi-total-item column="ValueQuantity" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 2 }"></dxi-total-item>
+          <dxi-total-item column="SettlementAmount" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 2 }"></dxi-total-item>
+          <dxi-total-item column="ThrowQuantity" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 2 }"></dxi-total-item>
+          <dxi-total-item column="TotalQuantity" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 2 }"></dxi-total-item>
+          <dxi-total-item column="SunsidyAmount" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 2 }"></dxi-total-item>
+          <dxi-total-item column="AdjustAmount" summaryType="sum" displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 2 }"></dxi-total-item>
+        </dxo-summary>
+      </dx-data-grid>
+    </editor-tabs-grid>
+
+    <editor-customize-template>
+      <app-upload-view [readonly]="!permission.$$edit && !permission.$$add || submited" (fileListChange)="fileListChanged($event)"
+          [numericalOrder]="numericalOrder"></app-upload-view>
+    </editor-customize-template>
+
+    <editor-review-remote #review [numericalOrder]="numericalOrder" [appId]="appId" [ConfirmStatus]="dataFormData.ConfirmStatus" [load]="getReviewInfo"
+      [userId]="userId" [operation]="operationReview" [order]="true" [orderly]="['review']"
+      (onReviewOptionChanged)="onReviewOptionChanged($event)">
+      <editor-review-remote-item type="review"></editor-review-remote-item>
+      <!-- <editor-review-remote-item type="finance"></editor-review-remote-item>
+        <editor-review-remote-item type="warehouse"></editor-review-remote-item> -->
+      <editor-review-remote-item type="making"></editor-review-remote-item>
+    </editor-review-remote>
+  </editor-grid>
+
+  <!-- <div class="uploader-wrapper">
+    <app-upload-view [readonly]="!permission.$$edit && !permission.$$add" (fileListChange)="fileListChanged($event)"
+      [numericalOrder]="numericalOrder"></app-upload-view>
+  </div> -->
+
+  <div [ngClass]="{
+        'reviewed-img': true,
+        'reviewed-img-hidden': !reviewed,
+        'reviewed-zh': lang == 'zh' || lang == 'zh_cn',
+        'reviewed-vi': lang == 'vi'
+    }"></div>
+  <dx-tooltip target="#ChickenReceiveDate" [(visible)]="ReceiveVisible" position="bottom" (hideOnOutsideClick)="false">
+    <p>{{this.dataFormData.AllChickenReceiveDate}}</p>
+  </dx-tooltip>
+  <!-- 批次结算单新增弹出框 -->
+  <dx-popup [width]="800" [height]="250" [showTitle]="true" title="批次结算单新增弹出框" [(visible)]="addVisible">
+    <div style="text-align: center;">
+      <dx-form #addForm [colCount]="2" width="100%" [(formData)]="addFormData" style="padding-right: 10px"
+        [showRequiredMark]="true" (onFieldDataChanged)="onFieldDataChanged($event)">
+        <dxi-item [label]="{ text: '结算日期', alignment: 'right',showColon: false }" editorType="dxDateBox"
+          dataField="DataDate" [editorOptions]="{ width: '100%',placeholder:'请选择日期' }">
+          <dxi-validation-rule type="required" message="日期必填"> </dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [label]="{ text: '养户名称', alignment: 'right',showColon: false }" editorType="dxSelectBox"
+          dataField="YHFarmerID" [editorOptions]="{
+                  dataSource: YHFarmerSource,
+                  valueExpr: 'YHFarmerID',
+                  displayExpr: 'YHFarmerName',
+                  showClearButton:true,
+                  searchEnabled:true,
+                  searchExpr:['YHFarmerName','MnemonicCode'],
+                  placeholder: '请选择'
+              }">
+          <dxi-validation-rule type="required" message="养户名称必填"> </dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [label]="{ text: '养户批次', alignment: 'right',showColon: false }" editorType="dxSelectBox"
+          dataField="YHBatch" [editorOptions]="{
+                  dataSource: YHBatchSource,
+                  valueExpr: 'YHBatchID',
+                  displayExpr: 'YHBatchName',
+                  showClearButton:true,
+                  searchEnabled:true,
+                  searchExpr:['YHBatchName','YHBatchID'],
+                  placeholder: '请选择'
+              }">
+          <dxi-validation-rule type="required" message="养户批次必填"> </dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [label]="{ text: '养殖价格方案', alignment: 'right',showColon: false }" editorType="dxSelectBox"
+          dataField="FarmingPriceID" [editorOptions]="{
+                  dataSource: FarmingPriceSource,
+                  valueExpr: 'FarmingPriceID',
+                  displayExpr: 'FarmingPriceNumber',
+                  showClearButton:true,
+                  searchEnabled:true,
+                  placeholder: '请选择'
+              }">
+          <!-- <dxi-validation-rule type="required" message="养殖价格方案必填"> </dxi-validation-rule> -->
+        </dxi-item>
+        <dxi-item [colSpan]="2" style="text-align: center;margin-top: 30px;">
+          <dx-button style="margin-right: 15px" type="normal" text="关闭" (onClick)="delConfirm(false)">
+          </dx-button>
+          <dx-button type="normal" text="确认" [disabled]="loading" (onClick)="delConfirm(true)">
+          </dx-button>
+        </dxi-item>
+      </dx-form>
+    </div>
+  </dx-popup>
+  <!-- 报错 -->
+  <dx-popup #popup [width]="400" [height]="400" [showTitle]="true" title="{{ messageBoxDisplayText }}"
+    [dragEnabled]="true" [closeOnOutsideClick]="false" [(visible)]="messageBoxVisible" [shading]="false"
+    [resizeEnabled]="true">
+    <dxo-position at="right bottom" offset="-220 -280" of="Window"> </dxo-position>
+    <div class="message-box-wrapper">
+      <dx-scroll-view width="100%" height="100%">
+        <p *ngIf="messageBoxInfo.length == 0" style="font-size: 14px">{{ notMessageDisplayText }}</p>
+        <div class="message-box-info" *ngFor="let info of messageBoxInfo">
+          <p [innerHTML]="info | SafeHtml"></p>
+        </div>
+      </dx-scroll-view>
+    </div>
+  </dx-popup>
+</div>

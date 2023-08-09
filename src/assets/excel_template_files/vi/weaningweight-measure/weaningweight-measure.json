@@ -1,0 +1,22 @@
+[
+    {
+        "caption": "*Ngày đo",
+        "dataField": "DataDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "*Tên nhân viên",
+        "dataField": "PersonID",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Số tai hậu bị",
+        "dataField": "PigEarNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Thể trọng cá thể cai sữa (kg)",
+        "dataField": "PigWeight",
+        "dataType": "string"
+    }
+]

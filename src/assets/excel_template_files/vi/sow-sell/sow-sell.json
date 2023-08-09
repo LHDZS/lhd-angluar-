@@ -1,0 +1,125 @@
+[
+    {
+      "caption": "*Ngày",
+      "dataField": "DataDate",
+      "dataType": "date"
+    },
+    {
+      "caption": "*Đơn vị hạch toán",
+      "dataField": "TicketedPointId",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Loại hình heo",
+      "dataField": "PigType",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Loại bán",
+      "dataField": "SalesType",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Diễn giải",
+      "dataField": "SalesAbstract",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Khách hàng",
+      "dataField": "CustomerId",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Nhân viên",
+      "dataField": "PersonID",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Khu vực",
+      "dataField": "MarketId",
+      "dataType": "string"
+    },
+    {
+      "caption": "Mã nhập trại",
+      "dataField": "EntryNumber",
+      "dataType": "string"
+    },
+    {
+      "caption": "Người liên hệ bênkhách hàng",
+      "dataField": "CustomerContact",
+      "dataType": "string"
+    },
+    {
+      "caption": "SĐT liên hệ",
+      "dataField": "ContactNumber",
+      "dataType": "string"
+    },
+    {
+      "caption": "Địa chỉ nhận hàng",
+      "dataField": "ShippingAddress",
+      "dataType": "string"
+    },
+    {
+      "caption": "Chuồng",
+      "dataField": "PigHouseUnitId",
+      "dataType": "string"
+    },
+    {
+      "caption": "Con đực/Lợn nái lô",
+      "dataField": "BatchId",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Lô/Số tai",
+      "dataField": "PigId",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Cấp bậc",
+      "dataField": "Level",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Giống",
+      "dataField": "VarietiesName",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Số con",
+      "dataField": "PigCount",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Đơn giá theo con",
+      "dataField": "UnitPriceTax",
+      "dataType": "string"
+    },
+    {
+      "caption": "Tổng cân nặng (kg)",
+      "dataField": "PigTotalWeight",
+      "dataType": "string"
+    },
+    {
+      "caption": "Đơn giá theo cân (kg)",
+      "dataField": "UnitWeight",
+      "dataType": "string"
+    },
+    {
+      "caption": "*Tổng tiền",
+      "dataField": "AmountTotal",
+      "dataType": "string"
+    },
+    {
+      "caption": "tặng kèm",
+      "dataField": "IsGive",
+      "dataType": "string"
+    },
+   {
+      "caption": "Chú Thích",
+      "dataField": "Remarks",
+      "dataType": "string"
+    }
+
+    			
+
+]

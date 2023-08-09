@@ -1,0 +1,117 @@
+<nx-zlw-form-detail #detailInstance [model]="model"></nx-zlw-form-detail>
+<dx-load-panel shadingColor="rgba(0,0,0,0)" [showPane]="true" [shading]="true" [showIndicator]="true"
+    [(visible)]="loading">
+</dx-load-panel>
+<app-print-page class="print"
+    #printPage
+    (getSource)="getSource($event)"
+    [ENV]="environment.ENV"
+    [menu_id]="tokenData.menu_id"
+    (jump)="jump()"
+></app-print-page>
+<dx-popup
+    [(visible)]="outVisible"
+    width="60%"
+    [maxHeight]="600"
+    [minWidth]="1000"
+    [dragEnabled]="false"
+    [showTitle]="true"
+    (onHiding)="onPopupHiding()"
+    resizeEnabled="true"
+    title="领料汇总弹出框："
+    showCloseButton="true"
+>
+  <dx-form #form id="form" [colCount]="9" width="100%" [(formData)]="TotalFormData"
+  validationGroup="customerData" [showOptionalMark]="false" [showRequiredMark]="true" [readOnly]="$form">
+    <dxi-item [label]="{ text: '养户批次', alignment: 'right',showColon: false }" [colSpan]="2" editorType="dxTextBox"
+        [editorOptions]="{ showClearButton:true,readOnly:true }" dataField="TotalYHBatchName">
+      </dxi-item>
+      <dxi-item [label]="{ text: '领苗总只数', alignment: 'right',showColon: false }" [colSpan]="2" editorType="dxTextBox"
+      [editorOptions]="{ showClearButton:true,readOnly:true }" dataField="TotalQuantity">
+    </dxi-item>
+    <dxi-item [label]="{ text: '领苗计价只数', alignment: 'right',showColon: false }" [colSpan]="2" editorType="dxTextBox"
+        [editorOptions]="{ showClearButton:true,readOnly:true }" dataField="TotalValueQuantity">
+      </dxi-item>
+      <dxi-item [label]="{ text: '领苗日期', alignment: 'right',showColon: false }" [colSpan]="3" editorType="dxTextBox"
+        [editorOptions]="{ showClearButton:true,readOnly:true }" dataField="TotalDataDate">
+      </dxi-item>
+  </dx-form>
+  <dx-data-grid
+      #gridRef
+      style="margin-top: 20px;"
+      height="80%"
+      [dataSource]="AutoDataSourceFilter"
+      [allowColumnResizing]="true"
+      [columnAutoWidth]="true"
+      columnResizingMode='widget'
+      id="grid-container"
+      keyExpr="RecordID"
+      [showBorders]="true"
+  >
+    <dxo-editing mode="cell" [allowUpdating]="false"> </dxo-editing>
+    <dxo-sorting mode="none"></dxo-sorting>
+      <dxi-column dataField="cProductName" dataType="string" caption="商品代号" [allowEditing]="false" [fixed]="true"></dxi-column>
+      <dxi-column dataField="Specification" dataType="string" caption="规格" [allowEditing]="false" ></dxi-column>
+      <dxi-column dataField="bIsStandardPackText" dataType="string" caption="标品" [allowEditing]="false" ></dxi-column>
+      <dxi-column dataField="StandardPack" dataType="string" caption="标包" alignment="right" [allowEditing]="false" ></dxi-column>
+      <dxi-column  caption="件数" dataField="Packages" dataType="number" [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+        <dxo-format type="fixedPoint" [precision]="4"></dxo-format>
+        </dxi-column>
+        <dxi-column  caption="数量" dataField="Quantity" dataType="number" [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+          <dxo-format type="fixedPoint" [precision]="4"></dxo-format>
+        </dxi-column>
+      <dxi-column dataField="MeasureUnitName" dataType="string" caption="计量单位" [allowEditing]="false" ></dxi-column>
+      <dxi-column dataField="iSortPlusName" dataType="string" caption="内置属性" [allowEditing]="false" ></dxi-column>
+      <dxi-column dataField="YHFarmerName" dataType="string" caption="养户名称" [allowEditing]="false" ></dxi-column>
+      <dxo-summary [recalculateWhileEditing]="true">
+        <dxi-total-item column="cProductName" displayFormat="合计："></dxi-total-item>
+        <dxi-total-item
+            column="Packages"
+            summaryType="sum"
+            displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 4 }"
+        ></dxi-total-item>
+        <dxi-total-item
+            column="Quantity"
+            summaryType="sum"
+            displayFormat="{0}"
+            [valueFormat]="{ type: 'fixedPoint', precision: 4 }"
+        ></dxi-total-item>
+    </dxo-summary>
+  </dx-data-grid>
+<div height="40px" style="margin-top: 10px;text-align: center;">
+  <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+    text="关闭"
+    (onClick)="getSelection(3)"
+  >
+  </dx-button>
+</div>
+</dx-popup>
+
+<!-- 修改提示 -->
+<dx-popup
+[width]="300"
+[height]="180"
+[showTitle]="true"
+title="提示"
+[(visible)]="modifyVisible"
+>
+<div style="text-align: center;">
+    <p>当前修改会清空下列栋舍信息是否操作？</p>
+    <div>
+        <dx-button
+            style="margin-right: 15px"
+            type="normal"
+            text="确定"
+            (onClick)="farConfirm()"
+            >
+        </dx-button>
+        <dx-button
+            type="normal"
+            text="取消"
+            (onClick)="farCancel()"
+            >
+        </dx-button>
+    </div>
+</div>
+</dx-popup>

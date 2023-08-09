@@ -1,0 +1,31 @@
+:host .wrapper {
+    flex    : 1;
+    overflow: hidden;
+}
+
+.context {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.search-panel {
+    display: flex;
+
+    table {
+        flex-grow: 1;
+    }
+}
+
+td.label {
+    white-space: nowrap;
+}
+
+.tool-panel {
+    display: flex;
+    justify-content: flex-end;
+
+    dx-button {
+        margin: 5px;
+    }
+}

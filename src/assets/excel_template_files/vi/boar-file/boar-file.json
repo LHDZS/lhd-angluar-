@@ -1,0 +1,112 @@
+[
+    {
+        "caption": "*Loại hồ sơ",
+        "dataField": "FileType",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Loại heo đực",
+        "dataField": "BoarType",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Số tai",
+        "dataField": "EarNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Số tai khuyết",
+        "dataField": "EarNumberShortage",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số tai cá nhân",
+        "dataField": "Code",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Giống",
+        "dataField": "Strain",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Chủng loại",
+        "dataField": "Varieties",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Ngày sinh",
+        "dataField": "BirthDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "*Mã hàng hóa",
+        "dataField": "ProductName",
+        "dataType": "string"
+    },
+    {
+        "caption": "Kiểu nguồn",
+        "dataField": "PigSourceType",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số thẻ tai điện tử",
+        "dataField": "EarTag",
+        "dataType": "string"
+    },
+    {
+        "caption": "Đàn lợn giống",
+        "dataField": "Grade",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Có phải heo lịch sử không",
+        "dataField": "IsHistory",
+        "dataType": "string"
+    },
+    {
+        "caption": "Ngày nhập trại",
+        "dataField": "DateOfEntry",
+        "dataType": "date"
+    },
+    {
+        "caption": "Nơi sinh",
+        "dataField": "BirthPlace",
+        "dataType": "string"
+    },
+    {
+        "caption": "Mã nhân giống trường sinh",
+        "dataField": "BreedingFarmIdentifiy",
+        "dataType": "string"
+    },
+    {
+        "caption": "Cân nặng sơ sinh（kg）",
+        "dataField": "BirthUnitWeight",
+        "dataType": "string"
+    },
+    {
+        "caption": "ngày tuổi cai sữa ( ngày)",
+        "dataField": "WeaningDays",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số vú trái",
+        "dataField": "LeftNippleCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số vú phải",
+        "dataField": "RightNippleCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Thể trọng cai sữa (kg)",
+        "dataField": "WeaningUnitWeight",
+        "dataType": "string"
+    },
+    {
+        "caption": "Ghi chú mô tả",
+        "dataField": "Remarks",
+        "dataType": "string"
+    }
+]

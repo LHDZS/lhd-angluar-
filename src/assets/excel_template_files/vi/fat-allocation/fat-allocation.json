@@ -1,0 +1,47 @@
+[
+    {
+        "caption": "*Người phụ trách",
+        "dataField": "PersonID",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Ngày điều chuyển",
+        "dataField": "DataDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "*Trại điều vào",
+        "dataField": "InPigFarmId",
+        "dataType": "string"
+    },
+    {
+        "caption": "* Lô điều ra",
+        "dataField": "BatchId",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Chuồng điều ra",
+        "dataField": "PigHouseUnitId",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Chuồng điều vào",
+        "dataField": "InPigHouseUnitID",
+        "dataType": "string"
+    },
+    {
+        "caption": "* Lô điều vào",
+        "dataField": "InPigID",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số con",
+        "dataField": "PigCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Tổng cân nặng (kg)",
+        "dataField": "PigTotalWeight",
+        "dataType": "string"
+    }
+]

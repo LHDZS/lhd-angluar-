@@ -1,0 +1,67 @@
+[
+    {
+        "caption": "*Xác định ngày tháng  ",
+        "dataField": "DataDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "*Xác định loại  ",
+        "dataField": "TestType",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Nhân viên đo",
+        "dataField": "PersonID",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Số tai hậu bị",
+        "dataField": "EarNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Cân nặng (kg)",
+        "dataField": "PigWeight",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Lượng dùng cám (kg)",
+        "dataField": "MaterialsUsed",
+        "dataType": "string"
+    },
+    {
+        "caption": "Độ dày mỡ lưng 1 (cm)",
+        "dataField": "BackfatThickness1",
+        "dataType": "string"
+    },
+    {
+        "caption": "Độ dày mỡ lưng 2 (cm)",
+        "dataField": "BackfatThickness2",
+        "dataType": "string"
+    },
+    {
+        "caption": "Độ dày mỡ lưng 3 (cm)",
+        "dataField": "BackfatThickness3",
+        "dataType": "string"
+    },
+    {
+        "caption": "Diện tích mỡ lưng (mm)",
+        "dataField": "OcularMuscleArea",
+        "dataType": "string"
+    },
+    {
+        "caption": "Độ dày mỡ lưng (mm)",
+        "dataField": "OcularMuscleThickness",
+        "dataType": "string"
+    },
+    {
+        "caption": "mỡ trong cơ (mm)",
+        "dataField": "IntermuscularFat",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Máy đo",
+        "dataField": "Cod",
+        "dataType": "string"
+    }
+]

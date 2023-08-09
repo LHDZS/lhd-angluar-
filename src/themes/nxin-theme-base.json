@@ -1,0 +1,185 @@
+{
+    "items": [
+        {
+            "key": "@datagrid-columnchooser-item-color",
+            "value": "rgba(0, 0, 0, 0.85)"
+        },
+        {
+            "key": "@datagrid-columnchooser-font-weight",
+            "value": "bold"
+        },
+        {
+            "key": "@datagrid-menu-icon-color",
+            "value": "rgba(0, 0, 0, 0.45)"
+        },
+        {
+            "key": "@datagrid-cell-modified-border-color",
+            "value": "rgba(24, 144, 255, 1)"
+        },
+        {
+            "key": "@datagrid-drag-header-border-color",
+            "value": "rgba(145, 213, 255, 1)"
+        },
+        {
+            "key": "@datagrid-row-invalid-faded-border-color",
+            "value": "rgba(255, 77, 79, 1)"
+        },
+        {
+            "key": "@datagrid-row-selected-color",
+            "value": "rgba(0, 0, 0, 0.85)"
+        },
+        {
+            "key": "@datagrid-selection-bg",
+            "value": "rgba(230, 247, 255, 1)"
+        },
+        {
+            "key": "@datagrid-group-row-color",
+            "value": "rgba(0, 0, 0, 0.45)"
+        },
+        {
+            "key": "@datagrid-summary-color",
+            "value": "rgba(0, 0, 0, 0.45)"
+        },
+        {
+            "key": "@datagrid-focused-border-color",
+            "value": "rgba(145, 213, 255, 1)"
+        },
+        {
+            "key": "@datagrid-row-error-bg",
+            "value": "rgba(255, 241, 240, 1)"
+        },
+        {
+            "key": "@datagrid-spin-icon-color",
+            "value": "rgba(0, 0, 0, 0.45)"
+        },
+        {
+            "key": "@datagrid-row-focused-bg",
+            "value": "rgba(250, 250, 250, 1)"
+        },
+        {
+            "key": "@datagrid-row-selected-border-color",
+            "value": "rgba(145, 213, 255, 1)"
+        },
+        {
+            "key": "@datagrid-search-bg",
+            "value": "rgba(145, 213, 255, 1)"
+        },
+        {
+            "key": "@datagrid-group-row-bg",
+            "value": "rgba(250, 250, 250, 1)"
+        },
+        {
+            "key": "@base-link-color",
+            "value": "rgba(24, 144, 255, 1)"
+        },
+        {
+            "key": "@base-icon-color",
+            "value": "rgba(0, 0, 0, 0.45)"
+        },
+        {
+            "key": "@base-label-color",
+            "value": "rgba(0, 0, 0, 0.85)"
+        },
+        {
+            "key": "@base-accent",
+            "value": "rgba(24, 144, 255, 1)"
+        },
+        {
+            "key": "@base-success",
+            "value": "rgba(82, 196, 26, 1)"
+        },
+        {
+            "key": "@base-warning",
+            "value": "rgba(250, 173, 20, 1)"
+        },
+        {
+            "key": "@base-danger",
+            "value": "rgba(255, 77, 79, 1)"
+        },
+        {
+            "key": "@base-border-color",
+            "value": "rgba(228, 231, 237, 1)"
+        },
+        {
+            "key": "@base-text-color",
+            "value": "rgba(0, 0, 0, 0.85)"
+        },
+        {
+            "key": "@badge-bg",
+            "value": "rgba(24, 144, 255, 1)"
+        },
+        {
+            "key": "@base-hover-bg",
+            "value": "rgba(24, 144, 255, 1)"
+        },
+        {
+            "key": "@base-hover-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "@filterbuilder-item-operator-color",
+            "value": "rgba(82, 196, 26, 0.5)"
+        },
+        {
+            "key": "@filterbuilder-plus-icon-color",
+            "value": "rgba(82, 196, 26, 0.5)"
+        },
+        {
+            "key": "@filterbuilder-group-operation-color",
+            "value": "rgba(255, 77, 79, 0.5)"
+        },
+        {
+            "key": "@filterbuilder-remove-icon-color",
+            "value": "rgba(255, 77, 79, 0.5)"
+        },
+        {
+            "key": "@base-border-radius-large",
+            "value": "2px"
+        },
+        {
+            "key": "@base-border-radius",
+            "value": "2px"
+        },
+        {
+            "key": "@tabs-tab-selected-bg",
+            "value": "rgba(24, 144, 255, 1)"
+        },
+        {
+            "key": "@tabs-tab-selected-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "@tabs-tab-color",
+            "value": "rgba(0, 0, 0, 0.85)"
+        },
+        {
+            "key": "@treeview-focused-bg",
+            "value": "rgba(0, 0, 0, 0.25)"
+        },
+        {
+            "key": "@treeview-spin-icon-color",
+            "value": "rgba(0, 0, 0, 0.25)"
+        },
+        {
+            "key": "@progressbar-bg",
+            "value": "rgba(228, 231, 237, 1)"
+        },
+        {
+            "key": "@slider-bar-bg",
+            "value": "rgba(228, 231, 237, 1)"
+        },
+        {
+            "key": "@scrollable-scrollbar-active-bg",
+            "value": "rgba(228, 231, 237, 1)"
+        },
+        {
+            "key": "@base-font-family",
+            "value": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto,\"Helvetica Neue\", Helvetica, \"PingFang SC\", \"Hiragino Sans GB\", \"Microsoft YaHei\",SimSun, sans-serif"
+        }
+    ],
+    "baseTheme": "generic.softblue",
+    "outputColorScheme": "Nxin-Theme",
+    "makeSwatch": false,
+    "version": "20.1.3",
+    "widgets": []
+}

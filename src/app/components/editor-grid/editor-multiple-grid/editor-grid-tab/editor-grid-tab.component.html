@@ -1,0 +1,15 @@
+<div class="editor-grid-tab-container">
+    <div class="editor-grid-tab-panel" *ngIf="_items.first.title !== ''">
+        <div class="tab-item" [ngClass]="{ active: item.active }" *ngFor="let item of _items">
+            <div class="title">{{ item.title }}</div>
+            <div class="options">
+                <div class="item" *ngFor="let option of item.options" (click)="_onOptionClick(option)">
+                    <span *ngIf="!option.visible" >{{ option.text }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="editor-grid-tab-content" [ngStyle]="{ height: height + 'px' }">
+        <ng-content select="editor-grid-item"></ng-content>
+    </div>
+</div>

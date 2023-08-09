@@ -1,0 +1,77 @@
+[
+    {
+      "caption": "*出栏日期",
+      "dataField": "DataDate",
+      "dataType": "date"
+    },
+    {
+      "caption": "*养户名称",
+      "dataField": "YHFarmerID",
+      "dataType": "string"
+    },
+    {
+      "caption": "*养户批次",
+      "dataField": "YHBatch",
+      "dataType": "string"
+    },
+    {
+      "caption": "*入库仓库",
+      "dataField": "InWarehouse",
+      "dataType": "string"
+    },
+    {
+      "caption": "*期初",
+      "dataField": "isbegin",
+      "dataType": "string"
+    },
+    {
+      "caption": "*入库商品代号",
+      "dataField": "ProductID",
+      "dataType": "string"
+    },
+    {
+      "caption": "笼数",
+      "dataField": "CageQuantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "*只数",
+      "dataField": "ElementQuantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "毛重(公斤)",
+      "dataField": "GrossWeight",
+      "dataType": "string"
+    },
+    {
+      "caption": "皮重(公斤)",
+      "dataField": "BareWeight",
+      "dataType": "string"
+    },
+    {
+      "caption": "车重(公斤)",
+      "dataField": "VehicleWeight",
+      "dataType": "string"
+    },
+    {
+      "caption": "单价",
+      "dataField": "UnitPrice",
+      "dataType": "string"
+    },
+    {
+      "caption": "栋舍",
+      "dataField": "HenhouseID",
+      "dataType": "string"
+    },
+    {
+      "caption": "税率",
+      "dataField": "TaxRate",
+      "dataType": "TaxRate"
+    },
+    {
+      "caption": "备注",
+      "dataField": "RemarksDetail",
+      "dataType": "string"
+    }
+]

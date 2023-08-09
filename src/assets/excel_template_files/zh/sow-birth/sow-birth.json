@@ -1,0 +1,77 @@
+[
+    {
+        "caption": "* 负责人",
+        "dataField": "PersonID",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 分娩日期",
+        "dataField": "DataDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "母猪批次",
+        "dataField": "BatchID",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 耳号",
+        "dataField": "EarNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "转入栋舍",
+        "dataField": "InPigHouseUnitID",
+        "dataType": "string"
+    },
+    {
+        "caption": "转入栏位",
+        "dataField": "InPigField",
+        "dataType": "string"
+    },
+    {
+        "caption": "母猪重量（公斤）",
+        "dataField": "Weight",
+        "dataType": "string"
+    },
+    {
+        "caption": "健仔数",
+        "dataField": "HealthCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "弱仔数",
+        "dataField": "WeakCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "畸形数",
+        "dataField": "DeformityCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "死胎数",
+        "dataField": "StillbirthCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "木乃伊数",
+        "dataField": "MummyCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "窝总重（公斤）",
+        "dataField": "NestTotalWeight",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 产仔难易",
+        "dataField": "EasyToLitter",
+        "dataType": "string"
+    },
+    {
+        "caption": "* 肥猪批次",
+        "dataField": "FatPigID",
+        "dataType": "string"
+    }
+]

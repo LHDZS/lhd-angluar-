@@ -1,0 +1,76 @@
+[{
+    "caption": "*Nhân viên lấy tinh",
+    "dataField": "PersonID",
+    "dataType": "string"
+},
+{
+    "caption": "*kho",
+    "dataField": "WarehouseId",
+    "dataType": "string"
+},
+{
+    "caption": "*Ngày",
+    "dataField": "DataDate",
+    "dataType": "date"
+},
+{
+    "caption": "Lợn rừng lô",
+    "dataField": "BoarBatchName",
+    "dataType": "string"
+},
+{
+    "caption": "*Số tai",
+    "dataField": "EarNumber",
+    "dataType": "string"
+},
+{
+    "caption": "Lượng lấy tinh (ml)",
+    "dataField": "SemenQuantity",
+    "dataType": "string"
+},
+{
+    "caption": "màu sắc",
+    "dataField": "SemenColor",
+    "dataType": "string"
+},
+{
+    "caption": "Mùi vị",
+    "dataField": "SemenSmell",
+    "dataType": "string"
+},
+{
+    "caption": "*Độ di dộng(%)",
+    "dataField": "SpermVitality",
+    "dataType": "string"
+},
+{
+    "caption": "Mật độ tinh trùng (trăm triệu/ml)",
+    "dataField": "SpermDensity",
+    "dataType": "string"
+},
+{
+    "caption": "Tỷ lệ dị dạng (%)",
+    "dataField": "DeformityRate",
+    "dataType": "string"
+},
+{
+    "caption": "*Độ di dộng sau pha loãng (%)",
+    "dataField": "SpermVitalityAfter",
+    "dataType": "string"
+},
+{
+    "caption": "*Số liều pha loãng",
+    "dataField": "DilutedCopies",
+    "dataType": "string"
+},
+{
+    "caption": "*Hàng hóa",
+    "dataField": "ProductID",
+    "dataType": "string"
+},
+{
+    "caption": "Một lô tinh trùng",
+    "dataField": "BatchName",
+    "dataType": "string"
+}
+]

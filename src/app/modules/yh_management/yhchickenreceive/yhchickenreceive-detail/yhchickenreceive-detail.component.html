@@ -1,0 +1,160 @@
+<nx-zlw-form-detail #detailInstance [model]="model"></nx-zlw-form-detail>
+<dx-load-panel shadingColor="rgba(0,0,0,0)" [showPane]="true" [shading]="true" [showIndicator]="true"
+    [(visible)]="loading">
+</dx-load-panel>
+<app-print-page class="print"
+    #printPage
+    (getSource)="getSource($event)"
+    [ENV]="environment.ENV"
+    [menu_id]="tokenData.menu_id"
+    (jump)="jump()"
+></app-print-page>
+<dx-popup
+    [(visible)]="outVisible"
+    width="60%"
+    [maxHeight]="600"
+    [minWidth]="1000"
+    [dragEnabled]="false"
+    [showTitle]="true"
+    (onHiding)="onPopupHiding()"
+    resizeEnabled="true"
+    title="批量增行弹出框"
+    showCloseButton="true"
+>
+  <dx-form #form id="form" [colCount]="3" width="100%" [(formData)]="formData"
+  validationGroup="customerData" [showOptionalMark]="false" [showRequiredMark]="true" [readOnly]="$form">
+  <dxi-item itemType="group" [colSpan]="3" [colCount]="3">
+    <dxi-item
+        [label]="{ text: '商品代号', alignment: 'right',showColon: false }"
+        editorType="dxSelectBox"
+        dataField="ProductID"
+        [editorOptions]="{
+            dataSource: cProductNameSource,
+            valueExpr: 'ProductID',
+            displayExpr: 'cProductName',
+            showClearButton:true,
+            searchEnabled:true,
+            placeholder: '请选择商品代号'
+        }"
+    >
+    </dxi-item>
+    <dxi-item>
+        <span></span>
+    </dxi-item>
+    <dxi-item>
+      <dx-button class="zz-dxButton"
+          text="查询"
+          (onClick)="onSearch()"
+      >
+      </dx-button>
+      <dx-button class="zz-dxButton" style="margin-left: 20px;"
+          text="重置"
+          (onClick)="reset()"
+          >
+      </dx-button>
+    </dxi-item>
+  </dxi-item>
+  </dx-form>
+  <dx-data-grid
+      #gridRef
+      style="margin-top: 20px;"
+      height="70%"
+      [dataSource]="AutoDataSourceFilter"
+      [allowColumnResizing]="true"
+      [columnAutoWidth]="true"
+      columnResizingMode='widget'
+      id="grid-container"
+      keyExpr="DetailID"
+      [(selectedRowKeys)]="selectedRows"
+      [showBorders]="true"
+      (onEditorPreparing)="onEditorPreparingFn2($event)"
+  >
+  <dxo-editing mode="cell" [allowUpdating]="true"> </dxo-editing>
+  <dxo-sorting mode="none"></dxo-sorting>
+  <dxo-selection showCheckBoxesMode="always" mode="multiple"> </dxo-selection>
+      <dxi-column dataField="cProductName" dataType="string" caption="商品代号" [width]="150" [allowEditing]="false" [fixed]="true"></dxi-column>
+      <dxi-column dataField="ProductBatchName" dataType="string" caption="批号" [width]="150" [allowEditing]="false" ></dxi-column>
+      <dxi-column dataField="MeasureUnitName" dataType="string" caption="计量单位" [width]="120" [allowEditing]="false" ></dxi-column>
+      <dxi-column dataField="cQuantity" dataType="number" caption="库存数量" [width]="120" [allowEditing]="false" ></dxi-column>
+      <dxi-column  caption="领用计价数量" dataField="ValueQuantity" dataType="number" [width]="150" [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+      <dxo-format type="fixedPoint" [precision]="0"></dxo-format>
+      </dxi-column>
+      <dxi-column  caption="途补只数" dataField="DonateQuantity" dataType="number" [width]="100" [allowEditing]="true" alignment="right" [editorOptions]="{ type: 'fixedPoint',  min: 0  }">
+        <dxo-format type="fixedPoint" [precision]="0"></dxo-format>
+      </dxi-column>
+      <dxi-column dataField="HatchBatchName" dataType="string"  caption="孵化批次" [width]="120" [allowEditing]="false" ></dxi-column>
+      <dxi-column dataField="FarmName" dataType="string" caption="来源鸡场" [width]="120" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="HenhouseName" dataType="string" caption="来源栋舍" [width]="120"  [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="BatchName" dataType="string" caption="来源禽批次" [width]="120" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="BreedingName" dataType="string" caption="来源品种" [width]="100" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="ImmuneSubjectName" dataType="string" caption="免疫项目" [width]="100" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="DebeakingName" dataType="string" caption="断喙" [width]="80" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="BatchRemarks" dataType="string" caption="批号备注" [width]="100" [allowEditing]="false"></dxi-column>
+  </dx-data-grid>
+  <div height="40px" style="margin-top: 10px;text-align: center;">
+    <dx-form [colCount]="3" width="100%" [(formData)]="formData"
+      validationGroup="customerData" [showOptionalMark]="false" [showRequiredMark]="true">
+      <dxi-item
+          [label]="{ text: '养户场栋舍', alignment: 'right',showColon: false }"
+          editorType="dxSelectBox"
+          dataField="HenHouseID"
+          [editorOptions]="{
+              dataSource: HenhouseBydataSource,
+              valueExpr: 'HenhouseID',
+              displayExpr: 'HenhouseName',
+              showClearButton: true,
+              searchEnabled: true,
+              placeholder: '请选择养户场栋舍'
+          }"
+      >
+      </dxi-item>
+    </dx-form>
+  </div>
+<div height="40px" style="margin-top: 10px;text-align: center;">
+    <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+    text="确定"
+    [disabled]="!selectedRows?.length"
+    (onClick)="getSelection(1)"
+  >
+  </dx-button>
+  <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+    text="确定并继续"
+    [disabled]="!selectedRows?.length"
+    (onClick)="getSelection(2)"
+  >
+  </dx-button>
+  <dx-button  style="line-height:30px;margin-left: 15px;background:#d9544f;border-color:transparent;color:#fff;"
+    text="关闭"
+    (onClick)="getSelection(3)"
+  >
+  </dx-button>
+</div>
+</dx-popup>
+
+<!-- 修改提示 -->
+<dx-popup
+[width]="300"
+[height]="180"
+[showTitle]="true"
+title="提示"
+[(visible)]="modifyVisible"
+>
+<div style="text-align: center;">
+    <p>当前修改会清空下列栋舍信息是否操作？</p>
+    <div>
+        <dx-button
+            style="margin-right: 15px"
+            type="normal"
+            text="确定"
+            (onClick)="farConfirm()"
+            >
+        </dx-button>
+        <dx-button
+            type="normal"
+            text="取消"
+            (onClick)="farCancel()"
+            >
+        </dx-button>
+    </div>
+</div>
+</dx-popup>

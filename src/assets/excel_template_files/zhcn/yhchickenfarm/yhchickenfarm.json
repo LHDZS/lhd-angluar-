@@ -1,0 +1,88 @@
+[
+  {
+    "caption": "*养殖场名称",
+    "dataField": "ChickenFarmName",
+    "dataType": "date"
+  },
+  {
+    "caption": "*养殖场类型",
+    "dataField": "YHFarmType",
+    "dataType": "string"
+  },
+  {
+ "caption": "*合作日期",
+ "dataField": "StartDate",
+ "dataType": "string"
+  },
+  {
+ "caption": "管理部门",
+"dataField": "MarketID",
+  "dataType": "string"
+  },
+
+  {
+    "caption": "*地区",
+    "dataField": "AreaID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*详细地址",
+    "dataField": "FullAddress",
+    "dataType": "string"
+  },
+  {
+    "caption": "存栏仓库",
+    "dataField": "WarehouseID",
+    "dataType": "string"
+  },
+  {
+    "caption": "饲料仓库",
+    "dataField": "FeedWarehouseID",
+    "dataType": "string"
+  },
+  {
+    "caption": "药杂仓库",
+    "dataField": "DrugWarehouseID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*家禽种类",
+    "dataField": "PoultryCategory",
+    "dataType": "string"
+  },
+  {
+    "caption": "备注",
+    "dataField": "Remarks",
+    "dataType": "string"
+  },
+  {
+    "caption": "状态",
+    "dataField": "Status",
+    "dataType": "string"
+  },
+  {
+    "caption": "*栋舍名称",
+    "dataField": "HenhouseName",
+    "dataType": "string"
+  },
+  {
+    "caption": "容量（只）",
+    "dataField": "iCount",
+    "dataType": "string"
+  },
+  {
+    "caption": "面积（平方米）",
+    "dataField": "AreaSize",
+    "dataType": "string"
+  },
+  {
+    "caption": "场区",
+    "dataField": "ZoningName",
+    "dataType": "string"
+  },
+  {
+    "caption": "备注",
+    "dataField": "RemarksDetail",
+    "dataType": "string"
+  }
+]

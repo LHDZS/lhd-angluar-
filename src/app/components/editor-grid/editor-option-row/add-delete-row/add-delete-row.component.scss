@@ -1,0 +1,22 @@
+:host {
+    .add-delete {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        font-size: 14px;
+        .option-item {
+            user-select: none;
+            color: #d9544f;
+        }
+        .option-item:first-of-type {
+            margin-right: 10px;
+        }
+        .option-item:hover {
+            cursor: pointer;
+        }
+        .option-item-disabeld {
+            color: #cccccc;
+            pointer-events: none;
+        }
+    }
+}

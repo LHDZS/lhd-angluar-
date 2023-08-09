@@ -1,0 +1,83 @@
+[
+    {
+        "caption": "*Người đứng đầu  ",
+        "dataField": "PersonID",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Ngày sinh  ",
+        "dataField": "DataDate",
+        "dataType": "date"
+    },
+    
+    {
+        "caption": "*Số tai",
+        "dataField": "EarNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "Chuồng chuyển vào",
+        "dataField": "InPigHouseUnitID",
+        "dataType": "string"
+    },
+    {
+        "caption": "Ô chuyển vào",
+        "dataField": "InPigField",
+        "dataType": "string"
+    },
+    {
+        "caption": "Cân nặng heo mẹ (kg)",
+        "dataField": "Weight",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số con khỏe",
+        "dataField": "HealthCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số con yếu",
+        "dataField": "WeakCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số dị dạng",
+        "dataField": "DeformityCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số thai chết",
+        "dataField": "StillbirthCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Số thai khô",
+        "dataField": "MummyCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Tổng cân nặng ổ (kg)",
+        "dataField": "NestTotalWeight",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Tình trạnh đẻ",
+        "dataField": "EasyToLitter",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Lô heo thịt",
+        "dataField": "FatPigID",
+        "dataType": "string"
+    },
+    {
+        "caption": "Lợn nái lô  ",
+        "dataField": "BatchId",
+        "dataType": "string"
+    },
+    {
+        "caption": "Vào lô  ",
+        "dataField": "InBatchId",
+        "dataType": "string"
+    }
+]

@@ -1,0 +1,28 @@
+[
+        {
+          "caption": "* 寄养日期",
+          "dataField": "DataDate",
+          "dataType": "date"
+        },
+        {
+          "caption": "* 耳号",
+          "dataField": "EarNumber",
+          "dataType": "string"
+        },
+        {
+          "caption": "* 寄养头数",
+          "dataField": "PigCount",
+          "dataType": "string"
+        },
+      
+        {
+          "caption": "* 寄养对象",
+          "dataField": "FosterSowPigId",
+          "dataType": "string"
+        },
+        {
+          "caption": "寄养原因",
+          "dataField": "Description",
+          "dataType": "string"
+        }
+]

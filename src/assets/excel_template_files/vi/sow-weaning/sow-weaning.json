@@ -1,0 +1,53 @@
+[
+    {
+        "caption": "*Người Phụ trách",
+        "dataField": "PersonID",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Ngày cai sữa",
+        "dataField": "DataDate",
+        "dataType": "date"
+    },
+    
+    {
+        "caption": "*Số tai",
+        "dataField": "EarNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "Chuồng chuyển vào",
+        "dataField": "InPigHouseUnitID",
+        "dataType": "string"
+    },
+    {
+        "caption": "Ô",
+        "dataField": "InPigField",
+        "dataType": "string"
+    },
+    {
+        "caption": "Cân nặng heo nái (kg)",
+        "dataField": "Weight",
+        "dataType": "string"
+    },
+    {
+        "caption": "*Số con cai sữa (con)",
+        "dataField": "PigCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "Tổng cân nặng ổ cai sữa (kg)",
+        "dataField": "PigTotalWeight",
+        "dataType": "string"
+    },
+    {
+        "caption": "Lợn nái lô  ",
+        "dataField": "BatchId",
+        "dataType": "string"
+    },
+    {
+        "caption": "Vào lô  ",
+        "dataField": "InBatchId",
+        "dataType": "string"
+    }
+]

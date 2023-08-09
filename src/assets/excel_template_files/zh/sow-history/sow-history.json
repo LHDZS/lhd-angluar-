@@ -1,0 +1,82 @@
+[
+    {
+        "caption": "*母猪耳号",
+        "dataField": "SowEarNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "*配种日期",
+        "dataField": "BreedingDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "公猪耳号",
+        "dataField": "BoarEarNumber",
+        "dataType": "string"
+    },
+    {
+        "caption": "妊检日期",
+        "dataField": "PregnancyDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "妊检结果",
+        "dataField": "PregnancyResult",
+        "dataType": "string"
+    },
+    {
+        "caption": "分娩日期",
+        "dataField": "FarrowingDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "健仔数",
+        "dataField": "HealthCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "健仔总重",
+        "dataField": "HealthTotalWeight",
+        "dataType": "string"
+    },
+    {
+        "caption": "弱仔数",
+        "dataField": "WeakCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "畸形数",
+        "dataField": "DeformityCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "死胎数",
+        "dataField": "StillbirthCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "木乃伊数",
+        "dataField": "MummyCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "胎次",
+        "dataField": "Parity",
+        "dataType": "string"
+    },
+    {
+        "caption": "断奶日期",
+        "dataField": "WeaningDate",
+        "dataType": "date"
+    },
+    {
+        "caption": "断奶头数",
+        "dataField": "WeaningCount",
+        "dataType": "string"
+    },
+    {
+        "caption": "断奶窝重",
+        "dataField": "WeaningTotalWeight",
+        "dataType": "string"
+    }
+]

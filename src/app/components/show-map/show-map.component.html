@@ -1,0 +1,17 @@
+<div>
+  <div id="container" style="margin-top: 50px;"></div>
+  <div id="myPageTop" style="margin-top: 50px;">
+    <table>
+      <tr>
+        <td>
+          <label>请输入关键字：</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <dx-text-box [(value)]="searchValue" (onValueChanged)="searchCity($event)" [buttons]="searchButton"></dx-text-box>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

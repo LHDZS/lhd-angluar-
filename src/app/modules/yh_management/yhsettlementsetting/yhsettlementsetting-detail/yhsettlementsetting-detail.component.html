@@ -1,0 +1,91 @@
+<div class="yhfamershortcut">
+  <editor-grid #editorGrid [showCheckBox]="false" [fullScreen]="false" [mode]="mode">
+    <editor-toolbar [zqModel]="this" [allowEditing]="false">
+      <!-- <dx-button position="left" [elementAttr]="{ name: 'add-btn' }" (onClick)="onCreate()"></dx-button>
+      <dx-button position="left" [elementAttr]="{ name: 'save-btn' }" (onClick)="onSave()"></dx-button>
+      <dx-button position="left" [elementAttr]="{ name: 'cancel-btn' }" (onClick)="onCancel()"></dx-button>
+      <dx-button position="left" [elementAttr]="{ name: 'delete-btn' }" (onClick)="onDelete()"></dx-button>
+      <dx-button position="left" type="default" icon="back" text="计算" (onClick)="onCalculation()"></dx-button> -->
+    </editor-toolbar>
+    <editor-header [title]="title1" [HeaderVisible]="HeaderVisible1" [expressionType]="expressionType1">
+      <editor-header-group [labelHeight]="labelHeight1" [defaultHeight]="200" [labelWidth]="'110px'">
+        <editor-header-item *ngFor="let list of columnSettingArr" [text]="list.text" [visible]="list.visible" [itemWidth]="'100%'">
+          <label>
+            <span>{{list.caption}}</span>
+            <p class="editor_p">{{list.text}}</p>
+          </label>
+          <dx-text-box placeholder="请计算" [(value)]="columnSettingData[list.dataField]" [readOnly]="true" (click)="clickList(list,false)"></dx-text-box>
+        </editor-header-item>
+      </editor-header-group>
+    </editor-header>
+    <editor-header [title]="title2" [HeaderVisible]="HeaderVisible2" [expressionType]="expressionType2">
+      <editor-header-group [labelHeight]="labelHeight2" [labelWidth]="'110px'">
+        <editor-header-item *ngFor="let list of columnSettingArr2" [text]="list.text" [visible]="list.visible" [itemWidth]="'100%'">
+          <label>
+            <span>{{list.caption}}</span>
+            <p class="editor_p">{{list.text}}</p>
+          </label>
+          <dx-text-box placeholder="请计算" [(value)]="columnSettingData[list.dataField]" [readOnly]="true" (click)="clickList(list,false)"></dx-text-box>
+        </editor-header-item>
+      </editor-header-group>
+    </editor-header>
+    <editor-header [title]="title3" [HeaderVisible]="HeaderVisible3" [expressionType]="expressionType3" >
+      <editor-header-group [labelHeight]="labelHeight3" [labelWidth]="'110px'">
+        <editor-header-item *ngFor="let list of columnSettingArr3" [text]="list.text" [visible]="list.visible" [itemWidth]="'100%'">
+          <label>
+            <span>{{list.caption}}</span>
+            <p class="editor_p">{{list.text}}</p>
+          </label>
+          <dx-text-box placeholder="请计算" [(value)]="columnSettingData[list.dataField]" [readOnly]="true" (click)="clickList(list,false)"></dx-text-box>
+        </editor-header-item>
+      </editor-header-group>
+    </editor-header>
+    <editor-header [title]="title4" [HeaderVisible]="HeaderVisible4" [expressionType]="expressionType4">
+      <editor-header-group [labelHeight]="labelHeight4" [labelWidth]="'110px'">
+        <editor-header-item *ngFor="let list of columnSettingArr4" [text]="list.text" [visible]="list.visible" [itemWidth]="'100%'">
+          <label>
+            <span>{{list.caption}}</span>
+            <p class="editor_p">{{list.text}}</p>
+          </label>
+          <dx-text-box placeholder="请计算" [(value)]="columnSettingData[list.dataField]" [readOnly]="true" (click)="clickList(list,true)"></dx-text-box>
+        </editor-header-item>
+      </editor-header-group>
+    </editor-header>
+  </editor-grid>
+
+
+  <app-formula-computing #formulaComputing [(visible)]="visible" (sure)="sureFormula($event)">
+  </app-formula-computing>
+
+  <!-- 养殖价格方案 -->
+  <dx-popup
+    [width]="800"
+    [height]="250"
+    [showTitle]="true"
+    title="养殖价格方案"
+    [(visible)]="FarmingPriceVisible"
+  >
+    <div style="text-align: center;">
+      <div class="popup-bottom">
+          <div class="boxs">
+              <span class="box" *ngFor="let item of youngMerchandiseData"><dx-check-box [(value)]="item.type" (onValueChanged)="onValueChangedItem($event,item)"></dx-check-box> {{item.name}}</span>
+          </div>
+      </div>
+      <div>
+          <dx-button
+              style="margin-right: 15px"
+              type="normal"
+              text="取消"
+              (onClick)="delConfirm(false)"
+              >
+          </dx-button>
+          <dx-button
+              type="normal"
+              text="确认"
+              (onClick)="delConfirm(true)"
+              >
+          </dx-button>
+      </div>
+    </div>
+  </dx-popup>
+</div>

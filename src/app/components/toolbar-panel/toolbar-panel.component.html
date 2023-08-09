@@ -1,0 +1,240 @@
+<div class="toolbar-wrapper" [ngClass]="{ 'detail-tool-bar': !model.checkInfo.visible }">
+    <div class="toolbar-buttons" [ngClass]="{ 'detail-tool-bar': !model.checkInfo.visible }">
+        <div class="option-main">
+            <div class="option-main-item" *ngFor="let item of model.mainPanel; let i = index">
+                <div class="option-main-item-wrapper" *ngIf="item.widget.props.visible">
+                    <dx-button
+                        *ngIf="item.type == 'Button'"
+                        [elementAttr]="item.widget.props.elementAttr"
+                        [text]="item.widget.props.text"
+                        [icon]="item.widget.props.icon"
+                        [type]="item.widget.props.type"
+                        [stylingMode]="item.widget.props.stylingMode"
+                        [disabled]="item.widget.props.disabled"
+                        [visible]="item.widget.props.visible"
+                        (onClick)="onClickEvent($event, item.widget)"
+                    ></dx-button>
+                    <!-- <dx-button
+                        *ngIf="item.type == 'DropDownButton'"
+                        type="default"
+                        text="保存"
+                        icon="iconfont iconsave"
+                        [disabled]="item.widget.props.disabled"
+                        (onClick)="onButtonClickEvent($event, item.widget)"
+                    ></dx-button> -->
+                    <dx-drop-down-button
+                        *ngIf="item.type == 'DropDownButton'"
+                        [splitButton]="item.widget.props.splitButton"
+                        [useSelectMode]="false"
+                        [width]="item.widget.props.width"
+                        [height]="item.widget.props.height"
+                        [stylingMode]="item.widget.props.stylingMode"
+                        [elementAttr]="{ class: 'dropdwon-button-outlined' }"
+                        [text]="item.widget.props.text"
+                        [dropDownOptions]="item.widget.props.dropDownOptions"
+                        [items]="item.widget.props.items"
+                        [icon]="item.widget.props.icon"
+                        [disabled]="item.widget.props.disabled"
+                        [keyExpr]="item.widget.props.keyExpr"
+                        [displayExpr]="item.widget.props.displayExpr"
+                        (onButtonClick)="onButtonClickEvent($event, item.widget)"
+                        (onItemClick)="onItemClickEvent($event, item.widget)"
+                    ></dx-drop-down-button>
+                    <div *ngIf="item.type == 'Num'">
+                        <div style="display: flex; align-items: center">
+                            <span style="margin-right: 10px">{{ printQuantityPerLine }}:</span>
+                            <div
+                                style="
+                                    display: flex;
+                                    align-items: center;
+                                    box-shadow: 0 0 0 1px #d9544f inset;
+                                    border-radius: 4px;
+                                "
+                            >
+                                <dx-button
+                                    icon="add"
+                                    [disabled]="item.widget.props.focusStateEnabled"
+                                    type="default"
+                                    stylingMode="contained"
+                                    (onClick)="onClickEvent('add', item.widget)"
+                                ></dx-button>
+                                <div style="width: 50px; text-align: center; font-size: 18px">
+                                    {{ item.widget.props.text }}
+                                </div>
+                                <dx-button
+                                    icon="minus"
+                                    [disabled]="item.widget.props.disabled"
+                                    type="default"
+                                    stylingMode="contained"
+                                    (onClick)="onClickEvent('minus', item.widget)"
+                                ></dx-button>
+                                <div
+                                    style="
+                                        position: absolute;
+                                        height: 1px;
+                                        width: 50%;
+                                        background: #d9544f;
+                                        bottom: 0;
+                                        left: 50%;
+                                        transform: translateX(-50%);
+                                    "
+                                ></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="item.type == 'RadioGroup'" style="display: flex;">
+                        <div style="text-align: center; font-weight: 700;height:26px;line-height: 26px;">
+                            {{ item.widget.props.text }}
+                        </div>
+                        <dx-radio-group
+                            style="margin-left: 16px;"
+                            class="type-select"
+                            layout='horizontal'
+                            [items]="item.widget.props.items"
+                            [displayExpr]='item.widget.props.displayExpr'
+                            [valueExpr]='item.widget.props.valueExpr'
+                            [(value)]='item.widget.props.value'
+                            (onValueChanged)="onValueChanged($event, item.widget)"
+                            >
+                        </dx-radio-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="option-other" id="option-other-container">
+            <div class="option-other-item">
+                <dx-button
+                    *ngFor="let item of model.otherPanel; let i = index"
+                    [elementAttr]="item[model.otherPanelKeys[i]].props.elementAttr"
+                    [visible]="
+                        model.otherPanelKeys[i] === 'headSetting'
+                            ? makingPermission.$$making && item[model.otherPanelKeys[i]].props.visible
+                            : item[model.otherPanelKeys[i]].props.visible
+                    "
+                    [text]="item[model.otherPanelKeys[i]].props.text"
+                    [icon]="item[model.otherPanelKeys[i]].props.icon"
+                    [type]="item[model.otherPanelKeys[i]].props.type"
+                    [hint]="item[model.otherPanelKeys[i]].props.hint"
+                    [stylingMode]="item[model.otherPanelKeys[i]].props.stylingMode"
+                    [disabled]="item[model.otherPanelKeys[i]].props.disabled"
+                    [focusStateEnabled]="item[model.otherPanelKeys[i]].props.focusStateEnabled"
+                    (onClick)="onOtherButtonClickEvent($event, item, model.otherPanelKeys[i])"
+                ></dx-button>
+                <dx-drop-down-button
+                    *ngIf="model.moreButton.props.visible"
+                    [items]="model.moreButton.props.items"
+                    [disabled]="model.moreButton.props.disabled"
+                    [showArrowIcon]="model.moreButton.props.showArrowIcon"
+                    [stylingMode]="model.moreButton.props.stylingMode"
+                    [icon]="model.moreButton.props.icon"
+                    [hint]="model.moreButton.props.hint"
+                    [dropDownOptions]="model.moreButton.props.dropDownOptions"
+                    [displayExpr]="model.moreButton.props.displayExpr"
+                    (onItemClick)="onMoreItemClickEvent($event)"
+                >
+                </dx-drop-down-button>
+            </div>
+            <dx-popup
+                [shading]="false"
+                [width]="model.columnSettingOffset.width"
+                [height]="model.columnSettingOffset.height"
+                [visible]="model.columnSettingDisabled"
+                [closeOnOutsideClick]="true"
+                [showTitle]="false"
+                (onHidden)="onColumnSettingHidden($event)"
+            >
+                <dxo-position
+                    [at]="model.columnSettingOffset.at"
+                    [my]="model.columnSettingOffset.my"
+                    [offset]="model.columnSettingOffset.offset"
+                >
+                </dxo-position>
+                <div *dxTemplate="let item of 'content'">
+                    <dx-scroll-view width="100%" height="100%">
+                        <div
+                            style="padding: 5px 0px"
+                            class="column-setting-item"
+                            *ngFor="let item of model.settings; let i = index"
+                        >
+                            <dx-check-box
+                                [(value)]="item.visibled"
+                                [disabled]="item.disabled"
+                                (onValueChanged)="onColumnSettingCheckEvent($event, item.dataField, item.caption)"
+                            ></dx-check-box>
+                            &nbsp;
+                            <span
+                                *ngIf="!item.edit"
+                                (click)="showEdit(i)"
+                                style="display: block; min-width: 100px; height: 20px"
+                                >{{ item.caption }}</span
+                            >
+                            <dx-text-box
+                                [ngClass]="'textBox' + i"
+                                *ngIf="item.edit"
+                                [activeStateEnabled]="item.edit"
+                                [showClearButton]="true"
+                                [(value)]="item.caption"
+                                (onValueChanged)="editValueChanged(item.caption, item.dataField, i)"
+                                (onFocusOut)="editValueChanged(item.caption, item.dataField, i)"
+                                (onEnterKey)="editValueChanged(item.caption, item.dataField, i)"
+                            ></dx-text-box>
+                        </div>
+                    </dx-scroll-view>
+                </div>
+            </dx-popup>
+        </div>
+    </div>
+    <div
+        [ngClass]="{
+            'check-info': model.checkInfo.type == 'info',
+            'check-success': model.checkInfo.type == 'success',
+            'check-error': model.checkInfo.type == 'error'
+        }"
+        *ngIf="model.checkInfo.visible"
+    >
+        <div
+            [ngClass]="{
+                'check-info-img': model.checkInfo.type == 'info',
+                'check-success-img': model.checkInfo.type == 'success',
+                'check-error-img': model.checkInfo.type == 'error'
+            }"
+        >
+            <span
+                style="height: 100%"
+                [ngClass]="{
+                    'check-info-icon': model.checkInfo.type == 'info',
+                    'check-success-icon': model.checkInfo.type == 'success',
+                    'check-error-icon': model.checkInfo.type == 'error'
+                }"
+            >
+                <i style="line-height: 33px; font-size: 18px !important" [ngClass]="model.checkInfo.icon"></i>
+            </span>
+        </div>
+        <div
+            [ngClass]="{
+                'check-info-message': model.checkInfo.type == 'info',
+                'check-success-message': model.checkInfo.type == 'success',
+                'check-error-message': model.checkInfo.type == 'error'
+            }"
+            style="color: #3e4345"
+            [innerHTML]="model.checkInfo.message | SafeHtml"
+        ></div>
+        <div
+            [ngClass]="{
+                'check-info-clear': model.checkInfo.type == 'info',
+                'check-success-clear': model.checkInfo.type == 'success',
+                'check-error-clear': model.checkInfo.type == 'error'
+            }"
+        >
+            <span
+                [ngClass]="{
+                    'dx-icon dx-icon-close': true,
+                    'check-info-clear-text': model.checkInfo.type == 'info',
+                    'check-success-clear-text': model.checkInfo.type == 'success',
+                    'check-error-clear-text': model.checkInfo.type == 'error'
+                }"
+                (click)="clear()"
+            ></span>
+        </div>
+    </div>
+</div>

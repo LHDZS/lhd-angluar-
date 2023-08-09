@@ -1,0 +1,362 @@
+[
+    {
+      "caption": "*周龄",
+      "dataField": "DaysOld",
+      "dataType": "string"
+    },
+    {
+      "caption": "母死淘率%",
+      "dataField": "HenDeadRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高母育雏成累计死淘率%",
+      "dataField": "MaxHenSumDeadRate1",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低母育雏成累计死淘率%",
+      "dataField": "MinHenSumDeadRate1",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高母产蛋期累计死淘率%",
+      "dataField": "MaxHenSumDeadRate2",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低母产蛋期累计死淘率%",
+      "dataField": "MinHenSumDeadRate2",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高母平均体重",
+      "dataField": "MaxHenAvgWeight",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低母平均体重",
+      "dataField": "MinHenAvgWeight",
+      "dataType": "string"
+    },
+    {
+      "caption": "母均匀度%",
+      "dataField": "HenEven",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高母周增重",
+      "dataField": "MaxHenWeekAddWeight",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低母周增重",
+      "dataField": "MinHenWeekAddWeight",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高母采食量",
+      "dataField": "MaxHenFeedQuantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低母采食量",
+      "dataField": "MinHenFeedQuantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "公死淘率%",
+      "dataField": "CockDeadRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高公育雏成累计死淘率%",
+      "dataField": "MaxCockSumDeadRate1",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低公育雏成累计死淘率%",
+      "dataField": "MinCockSumDeadRate1",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高公产蛋期累计死淘率%",
+      "dataField": "MaxCockSumDeadRate2",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低公产蛋期累计死淘率%",
+      "dataField": "MinCockSumDeadRate2",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高公平均体重",
+      "dataField": "MaxCockAvgWeight",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低公平均体重",
+      "dataField": "MinCockAvgWeight",
+      "dataType": "string"
+    },
+    {
+      "caption": "公均匀度%",
+      "dataField": "CockEven",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高公周增重",
+      "dataField": "MaxCockWeekAddWeight",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低公周增重",
+      "dataField": "MinCockWeekAddWeight",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高公采食量",
+      "dataField": "MaxCockFeedQuantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低公采食量",
+      "dataField": "MinCockFeedQuantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "公母死淘率%",
+      "dataField": "CockHenDeadRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高公母育雏成累计死淘率%",
+      "dataField": "MaxCockHenSumDeadRate1",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低公母育雏成累计死淘率%",
+      "dataField": "MinCockHenSumDeadRate1",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高公母产蛋期累计死淘率%",
+      "dataField": "MaxCockHenSumDeadRate2",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低公母产蛋期累计死淘率%",
+      "dataField": "MinCockHenSumDeadRate2",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高公母采食量",
+      "dataField": "MaxCockHenFeedQuantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低公母采食量",
+      "dataField": "MinCockHenFeedQuantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高饮水量",
+      "dataField": "MaxWaterQuantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低饮水量",
+      "dataField": "MinWaterQuantity",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高产蛋率%",
+      "dataField": "MaxLayEggRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低产蛋率%",
+      "dataField": "MinLayEggRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "产蛋率浮动%",
+      "dataField": "LayEggRateGap",
+      "dataType": "string"
+    },
+    {
+      "caption": "平均蛋重",
+      "dataField": "EggWeightAvg",
+      "dataType": "string"
+    },
+    {
+      "caption": "种蛋合格率%",
+      "dataField": "QualifiedRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "累计种蛋合格率%",
+      "dataField": "SumQualifiedRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高入舍鸡产蛋率%",
+      "dataField": "MaxIntoLayEggRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低入舍鸡产蛋率%",
+      "dataField": "MinIntoLayEggRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高入舍鸡周产蛋",
+      "dataField": "MaxIntoWeekLayEgg",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低入舍鸡周产蛋",
+      "dataField": "MinIntoWeekLayEgg",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高入舍鸡周累计产蛋",
+      "dataField": "MaxIntoWeekSumLayEgg",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低入舍鸡周累计产蛋",
+      "dataField": "MinIntoWeekSumLayEgg",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高入舍鸡周产种蛋",
+      "dataField": "MaxIntoWeekQualifiedEgg",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低入舍鸡周产种蛋",
+      "dataField": "MinIntoWeekQualifiedEgg",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高入舍鸡周累计产种蛋",
+      "dataField": "MaxIntoWeekSumQualifiedEgg",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低入舍鸡周累计产种蛋",
+      "dataField": "MinIntoWeekSumQualifiedEgg",
+      "dataType": "string"
+    },
+    {
+      "caption": "产蛋重",
+      "dataField": "EggWeight",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高温度℃",
+      "dataField": "MaxTemperature",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低温度℃",
+      "dataField": "MinTemperature",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高相对湿度%",
+      "dataField": "MaxHumidity",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低相对湿度%",
+      "dataField": "MinHumidity",
+      "dataType": "string"
+    },
+    {
+      "caption": "最高光照强度",
+      "dataField": "MaxLightIntensity",
+      "dataType": "string"
+    },
+    {
+      "caption": "最低光照强度",
+      "dataField": "MinLightIntensity",
+      "dataType": "string"
+    },
+    {
+      "caption": "光照时间",
+      "dataField": "LightTime",
+      "dataType": "string"
+    },
+    {
+      "caption": "受精率%",
+      "dataField": "FertilityRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "累计受精率%",
+      "dataField": "SumFertilityRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "入孵蛋活胚率%",
+      "dataField": "LiveEmbryoRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "受精蛋健雏率%",
+      "dataField": "EggHealthyChicksRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "累计受精蛋健雏率%",
+      "dataField": "SumEggHealthyChicksRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "活胚健雏率%",
+      "dataField": "LiveEmbryoHealthyChicksRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "健雏率%",
+      "dataField": "HealthyChicksRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "累计健雏率%",
+      "dataField": "SumHealthyChicksRate",
+      "dataType": "string"
+    },
+    {
+      "caption": "入孵蛋孵化率%",
+      "dataField": "EggHatchability",
+      "dataType": "string"
+    },
+    {
+      "caption": "累计孵化率%",
+      "dataField": "SumHatchability",
+      "dataType": "string"
+    },
+    {
+      "caption": "入舍鸡周产雏数",
+      "dataField": "IntoWeekChicks",
+      "dataType": "string"
+    },
+    {
+      "caption": "入舍鸡累计产雏数",
+      "dataField": "IntoWeekSumChicks",
+      "dataType": "string"
+    },
+    {
+      "caption": "入舍鸡周产母雏数",
+      "dataField": "IntoWeekHenChicks",
+      "dataType": "string"
+    },
+    {
+      "caption": "入舍鸡累计产母雏数",
+      "dataField": "IntoWeekSumHenChicks",
+      "dataType": "string"
+    }
+]

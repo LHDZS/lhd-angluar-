@@ -1,0 +1,165 @@
+:host .wrapper{
+    flex:1;
+    overflow: hidden;
+}
+.yh_tab_Header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 37px;
+    border: 1px solid #eee;
+    border-bottom: #fafafa;
+    user-select: none;
+    .yh_tab_list {
+        cursor: pointer;
+        padding: 0 15px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .yh_tab_select {
+        color: #d9544f;
+        background-color: #fff;
+    }
+}
+.yhcycleweight {
+    width: 100%;
+    height: calc(100% - 37px);
+    display: flex;
+}
+.print {
+    position: absolute;
+    top: 61px;
+    right: 61px;
+    // opacity: 0;
+}
+.searchList {
+    // width: 25%;
+    // max-width: 50%;
+    // height: calc(100vh - 60px);
+    padding: 10px 0px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    background-color: #fff;
+    position: relative;
+    
+    .search-save {
+        // width: 100%;
+        position: absolute;
+        top: 0; right: 5px; bottom: 0; left: 0;
+        padding: 16px;
+        overflow-x: hidden;
+        .l_button {
+            margin: 0 auto;
+            margin-top: 20px;
+            width: 70%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .list_grid {
+            width: 100%;
+            margin-top: 15px;
+            user-select: none;
+        }
+    }
+    .search-bar {
+        width: 400px;
+        min-width: 200px;
+        max-width: 646px;
+        height: calc(100vh - 85px);
+        resize: horizontal;
+        cursor: ew-resize;
+        cursor: col-resize;
+        opacity: 0;
+        overflow: scroll;
+    }
+    /* 拖拽线 */
+    .search-line {
+        position: absolute;
+        right: 0; top: 0; bottom: 0;
+        border-right: 2px solid #eee;
+        border-left: 1px solid #bbb;
+        pointer-events: none;
+    }
+    .search-bar:hover ~ .search-line,
+    .search-bar:active ~ .search-line {
+        border-left: 1px dashed skyblue;
+    }
+    .search-bar::-webkit-scrollbar {
+        width: 200px; height: inherit;
+    }
+    
+    /* Firefox只有下面一小块区域可以拉伸 */
+    @supports (-moz-user-select: none) {
+        .search-bar:hover ~ .search-line,
+        .search-bar:active ~ .search-line {
+            border-left: 1px solid #bbb;
+        }
+        .search-bar:hover ~ .search-line::after,
+        .search-bar:active ~ .search-line::after {
+            content: '';
+            position: absolute;
+            width: 16px; height: 16px;
+            bottom: 0; right: -8px;
+            // background: url(./resize.svg);
+            background-size: 100% 100%;
+        }
+    }
+}
+.itemDetail {
+    // width: calc(100% - 374px);
+    // min-width: calc(75% - 4px);
+    height: 100%;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    overflow-y: auto;
+    .detail_grid {
+        width: 100%;
+        display: flex;
+        div {
+            text-align: center;
+        }
+        .left_skin {
+            width: 35%;
+            // height: calc(100vh - 300px);
+            margin-left: 5px;
+            .screen_text {
+                width: 40%;
+                // max-width: 300px;
+            }
+            .form_content {
+                width: 60%;
+            }
+
+        }
+        .right_hair {
+            width: 63%;
+            // height: calc(100vh - 300px);
+            margin-left: 5px;
+            .screen_text {
+                width: 20%;
+            }
+            .form_content {
+                width: 80%;
+                .Vehicle {
+                    display: flex;
+                }
+            }
+        }
+        .grid_form {
+            display: flex;
+            padding: 10px;
+            box-sizing: border-box;
+            .screen_text {
+                font-size: calc( 0.8rem + 1.5vw);
+                background-color: #ccc;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 5px;
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,85 @@
+<nx-zlw-form-detail #detailInstance [model]="model"></nx-zlw-form-detail>
+<dx-load-panel shadingColor="rgba(0,0,0,0)" [showPane]="true" [shading]="true" [showIndicator]="true"
+    [(visible)]="loading">
+</dx-load-panel>
+
+<dx-popup
+    [width]="1000"
+    [height]="700"
+    [showTitle]="true"
+    title="引入生产标准弹出框"
+    [(visible)]="popupVisible"
+    [dragEnabled]="false"
+>
+    <div style="overflow-y: auto;width: 100%;height:100%;">
+        <div style="display: flex; flex-direction: column; height: 100%">
+            <div style="height: calc(100% - 100px); min-height: 200px">
+                <dx-data-grid
+                    #pigList
+                    [columnAutoWidth]="true"
+                    height="100%"
+                    [dataSource]="popupDataSource"
+                    [showBorders]="true"
+                    [showRowLines]="true"
+                    [hoverStateEnabled]="true"
+                    [rowAlternationEnabled]="true"
+                    (onRowDblClick)="onRowDblClick($event)"
+                >
+                    <!-- <dxo-paging [pageIndex]="0" [enabled]="true" [pageSize]="20"></dxo-paging>
+                    <dxo-pager
+                        [allowedPageSizes]="[10, 15, 20, 50, 100]"
+                        infoText="当前为第{0}页 共{1}页 {2}条数据"
+                        [showInfo]="true"
+                        [showNavigationButtons]="true"
+                        [showPageSizeSelector]="true"
+                        [visible]="true"
+                    >
+                    </dxo-pager>
+
+                    <dxo-column-fixing [enabled]="true"></dxo-column-fixing> -->
+                    <dxo-selection mode="single"></dxo-selection>
+
+                    <dxi-column
+                        caption="标准名称"
+                        alignment="center"
+                        dataField="name"
+                        [allowHeaderFiltering]="false"
+                        [allowFiltering]="false"
+                    >
+                    </dxi-column>
+                    <dxi-column
+                        caption="品种"
+                        alignment="center"
+                        dataField=""
+                        [allowHeaderFiltering]="false"
+                        [allowFiltering]="false"
+                    >
+                    </dxi-column>
+                    <dxi-column
+                        caption="标准类型"
+                        alignment="center"
+                        dataField=""
+                        [allowHeaderFiltering]="false"
+                        [allowFiltering]="false"
+                    >
+                    </dxi-column>
+                    <dxi-column
+                        caption="代次"
+                        alignment="center"
+                        dataField=""
+                        [allowHeaderFiltering]="false"
+                        [allowFiltering]="false"
+                    >
+                    </dxi-column>
+                    <!-- <div *dxTemplate="let d of 'optionCellTemplate'">
+                        <div style="text-align: center">
+                            <span (click)="selected(d)" style="cursor: pointer; color: #1890ff">选择</span>
+                        </div>
+                    </div> -->
+
+                </dx-data-grid>
+            </div>
+
+        </div>
+    </div>
+</dx-popup>

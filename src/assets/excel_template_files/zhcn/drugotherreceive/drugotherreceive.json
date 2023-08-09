@@ -1,0 +1,73 @@
+[
+  {
+    "caption": "*日期",
+    "dataField": "DataDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "*养户名称",
+    "dataField": "YHFarmerID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*养户批次",
+    "dataField": "YHBatch",
+    "dataType": "string"
+  },
+   {
+    "caption": "*类别",
+    "dataField": "ReceiveType",
+    "dataType": "string"
+  },
+
+  {
+    "caption": "*总部仓库",
+    "dataField": "OutWarehouse",
+    "dataType": "string"
+  },
+  {
+    "caption": "*期初",
+    "dataField": "isbegin",
+    "dataType": "string"
+  },
+  {
+    "caption": "*商品代号",
+    "dataField": "ProductID",
+    "dataType": "string"
+  },
+  {
+    "caption": "批号",
+    "dataField": "ProductBatchID",
+    "dataType": "string"
+  },
+  {
+    "caption": "件数",
+    "dataField": "Packages",
+    "dataType": "string"
+  },
+  {
+    "caption": "数量",
+    "dataField": "Quantity",
+    "dataType": "string"
+  },
+  {
+    "caption": "*单价",
+    "dataField": "UnitPrice",
+    "dataType": "string"
+  },
+  {
+    "caption": "栋舍",
+    "dataField": "HenhouseID",
+    "dataType": "string"
+  },
+  {
+    "caption": "*赠",
+    "dataField": "Gift",
+    "dataType": "string"
+  },
+  {
+    "caption": "备注",
+    "dataField": "RemarksDetail",
+    "dataType": "string"
+  }
+]

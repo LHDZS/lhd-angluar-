@@ -1,0 +1,34 @@
+[
+    {
+      "caption": "* 负责人",
+      "dataField": "PersonID",
+      "dataType": "string"
+    },
+    {
+        "caption": "* 妊检日期",
+        "dataField": "DataDate",
+        "dataType": "date"
+    },
+    {
+      "caption": "母猪批次",
+      "dataField": "BatchID",
+      "dataType": "string"
+    },
+    {
+        "caption": "* 耳号",
+        "dataField": "EarNumber",
+        "dataType": "string"
+      },
+      
+      
+      {
+        "caption": "* 妊检方式",
+        "dataField": "PregnancyWay",
+        "dataType": "string"
+      },
+      {
+        "caption": "* 妊检结果",
+        "dataField": "PregnancyResult",
+        "dataType": "string"
+      }
+]

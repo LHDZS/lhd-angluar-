@@ -1,0 +1,34 @@
+[
+  
+  {
+    "caption": "*转舍日期",
+    "dataField": "DataDate",
+    "dataType": "date"
+  },
+  {
+    "caption": "公猪批次",
+    "dataField": "InBatchID",
+    "dataType": "string"
+  },
+  {
+    "caption": "* 耳号",
+    "dataField": "EarNumber",
+    "dataType": "string"
+  },
+  {
+    "caption": "* 转入栋舍",
+    "dataField": "InPigHouseUnitID",
+    "dataType": "string"
+  },
+
+  {
+    "caption": "转入栏位",
+    "dataField": "InPigField",
+    "dataType": "string"
+  },
+  {
+    "caption": "* 重量（公斤）",
+    "dataField": "Weight",
+    "dataType": "string"
+  }
+]
